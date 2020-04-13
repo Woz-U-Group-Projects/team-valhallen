@@ -37,12 +37,13 @@ router.get('/profile', function (req, res, next) {
       .findByPk(parseInt(req.user.userId))
       .then(user => {
         if (user) {
-          res.render('profile', {
-            fName: user.fName,
-            lName: user.lName,
-            email: user.email,
-            unitId: user.unitId
-          }).then(user => res.json(user));
+          res.send(JSON.stringify(user))
+          // res.render('profile', {
+          //   fName: user.fName,
+          //   lName: user.lName,
+          //   email: user.email,
+          //   unitId: user.unitId
+          // }).then(user => res.json(user));
         } else {
           res.send('User not found');
         }
