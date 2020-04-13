@@ -1,11 +1,15 @@
 import React from "react";
-import  Task from "./components/Task";
 import "./App.css";
+import UserPage from "./screens/UserPage";
+
+//This is where we combine components for rendering
 
 function App() {
   return (
     <div className="App">
-      <Task />
+      
+      <UserPage />
+
     </div>
   );
 }
