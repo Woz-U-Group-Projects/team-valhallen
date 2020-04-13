@@ -1,12 +1,17 @@
 import React from "react";
-import  Task from "./components/Task";
 import "./App.css";
-import User from "./components/User";
+import  Login from "./components/Login";
+// import User from "./components/User";
+// import Task from "./components/Task";
+import TenantHome from "./components/TenantHome";
+
 
 function App() {
   return (
     <div className="App">
-      <User />
+      <h1>MainQuest</h1>
+      <Login />
+      <TenantHome />
     </div>
   );
 }

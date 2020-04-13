@@ -7,7 +7,7 @@ class User extends React.Component {
     super(props);
     this.state = { users: [] };
     this.fName = React.createRef();
-    this.sName = React.createRef();
+    this.lName = React.createRef();
     this.email = React.createRef();
     this.password = React.createRef();
     this.phone = React.createRef();
@@ -30,9 +30,9 @@ class User extends React.Component {
   };
 
   addUser = () => {
-    let url = "http://localhost:3001/users";
+    let url = "http://localhost:3001/users/signup/";
     axios.post(url, { fName: this.fName.current.value,
-                      sName: this.sName.current.value,
+                      lName: this.lName.current.value,
                       email: this.email.current.value,
                       password: this.password.current.value,
                       phone: this.phone.current.value
@@ -41,7 +41,7 @@ class User extends React.Component {
       this.getData();
       // empty the input
       this.fName.current.value = "";
-      this.sName.current.value = "";
+      this.lName.current.value = "";
       this.email.current.value = "";
       this.password.current.value = "";
       this.phone.current.value = "";
@@ -70,8 +70,8 @@ class User extends React.Component {
       <div>
         <h3>First Name</h3>
         <input ref={this.fName} />
-        <h3> Second Name</h3>
-        <input ref={this.sName} />
+        <h3> Last Name</h3>
+        <input ref={this.lName} />
         <h3>Email</h3>
         <input ref={this.email} />
         <h3>Password</h3>
@@ -81,8 +81,8 @@ class User extends React.Component {
         <button type="button" className="btn btn-primary" onClick={this.addUser}>add User</button>
         <ul>
           {this.state.users.map(p => (
-            <li key={p.id}>
-              {p.fName} : { p.sName} : {p.email} # {p.phone}
+            <li key={p.userId}>
+              {p.fName} : { p.lName} : {p.email} # {p.phone}
             </li>
           ))}
         </ul>

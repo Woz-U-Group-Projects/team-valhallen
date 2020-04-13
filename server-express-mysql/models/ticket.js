@@ -10,9 +10,21 @@ module.exports = (sequelize, DataTypes) => {
       },
       unitId: DataTypes.INTEGER,
       userId: DataTypes.INTEGER,
-      issue: DataTypes.STRING,
+      note: DataTypes.STRING,
       techid: DataTypes.INTEGER,
-      complete: DataTypes.BOOLEAN
+      complete: DataTypes.BOOLEAN,
+      creationDate: DataTypes.DATE,
+      category: DataTypes.STRING,
+      subCategory: DataTypes.STRING,
+      access: DataTypes.BOOLEAN,
+      priority: DataTypes.STRING,
+      status: DataTypes.STRING,
+      assigned: DataTypes.BOOLEAN,
+      dueDate: DataTypes.DATE,
+      accessDate: DataTypes.DATE,
+      accessConfirm: DataTypes.BOOLEAN,
+      mainNote: DataTypes.STRING
+
     },
     {}
   );
