@@ -9,7 +9,7 @@ var session = require('express-session');
 
 var tasksRouter = require("./routes/tasks");
 var usersRouter = require("./routes/users");
-var loginRouter = require("./routes/login");
+// var loginRouter = require("./routes/login");
 var tenantRouter = require("./routes/tenant");
 var ticketHistoryRouter = require("./routes/ticketHistory");
 var ticketsRouter = require("./routes/tickets");
@@ -27,7 +27,7 @@ app.use(passport.session());
 
 app.use("/tasks", tasksRouter);
 app.use("/users", usersRouter);
-app.use("/login", loginRouter);
+// app.use("/login", loginRouter);
 app.use("/tenant", tenantRouter);
 app.use("/ticketHistory", ticketHistoryRouter);
 app.use("/tickets", ticketsRouter);

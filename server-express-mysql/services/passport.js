@@ -9,6 +9,7 @@ passport.use(
     models.User.findOne({ where: { email: email } })
       .then(user => {
         if (!user) {
+          console.log('didnt work');
           return done(null, false, { message: 'Incorrect email.' });
         }
         if (user.password !== password) {

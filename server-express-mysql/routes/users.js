@@ -1,77 +1,93 @@
 var express = require("express");
 var router = express.Router();
 var models = require("../models");
-var passport = require('../services/passport');
+// var passport = require('../services/passport');
+const authService = require("../services/auth");
+const bcrypt = require("bcryptjs");
 
 
 
-router.get("/", function(req, res, next) {
+router.get("/", function (req, res, next) {
   models.User.findAll().then(users => res.json(users));
 });
 
 
-router.get("/signup", function(req, res, next) {
+router.get("/signup", function (req, res, next) {
   models.User.findAll().then(users => res.json(users));
-  });
-  ​
-  router.post("/signup", function(req, res, next) {
-    let newUser = new models.User();
-    newUser.fName = req.body.fName;
-    newUser.lName = req.body.lName;
-    newUser.email = req.body.email;
-    newUser.password = req.body.password;
-    newUser.phone = req.body.phone;
-    newUser.save().then(user => res.json(user));
-  }); 
-  
-
-router.post('/login', passport.authenticate('local', { failureRedirect: '/users/login' }),
-  function (req, res, next) { res.redirect('profile').then(user => res.json(user)) });
-
-
-
-
-router.get('/profile', function (req, res, next) {
-  if (req.user) {
-    models.User
-      .findByPk(parseInt(req.user.userId))
-      .then(user => {
-        if (user) {
-          res.send(JSON.stringify(user))
-          // res.render('profile', {
-          //   fName: user.fName,
-          //   lName: user.lName,
-          //   email: user.email,
-          //   unitId: user.unitId
-          // }).then(user => res.json(user));
-        } else {
-          res.send('User not found');
-        }
-      });
-  } 
 });
-// router.delete("/:id", function(req, res, next) {
-//   let userId = parseInt(req.params.id);
-//   models.User.findByPk(userId)
-//     .then(user => user.destroy())
-//     .then(() => res.send({ userId }))
-//     .catch(err => res.status(400).send(err));
-// });
 
-router.put("/:id", function(req, res, next) {
-  models.User.update(
-    {
-      fName: req.body.fName,
-      lName: req.body.lName,
-      email: req.body.email,
-      phone: req.body.phone
-    },
-    {
-      where: { userId: parseInt(req.params.id) }
+
+router.post('/signup', function (req, res, next) {
+  models.User
+    .findOrCreate({
+      where: {
+        email: req.body.email
+      },
+      defaults: {
+        fName: req.body.fName,
+        lName: req.body.lName,
+        email: req.body.email,
+        phone: req.body.phone,
+        password: authService.hashPassword(req.body.password) 
+      }
+    })
+    .spread(function (result, created) {
+      if (created) {
+        res.send('User successfully created');
+        res.redirect('/users/login');
+      } else {
+        res.send('This user already exists');
+      }
+    });
+});
+
+router.post('/login', function (req, res, next) {
+  models.User.findOne({
+    where: {
+      email: req.body.email
     }
-  ).then(users => res.json(users));
+  }).then(user => {
+    if (!user) {
+      console.log('User not found')
+      return res.status(401).json({
+        message: "Login Failed"
+      });
+    } else {
+      let passwordMatch = authService.comparePasswords(req.body.password, user.password);
+      if (passwordMatch) {
+        let token = authService.signUser(user);
+        res.cookie('jwt', token);
+        res.send('Login successful');
+      } else {
+        console.log('Wrong password');
+        res.send('Wrong password');
+      }
+    }
+  });
 });
 
+router.get("/login", function (req, res, next) {
+  models.User.findAll().then(users => res.json(users));
+});
+
+router.get('/tenantProfile', function (req, res, next) {
+  let token = req.cookies.jwt;
+  authService.verifyUser(token)
+    .then(user => {
+      if (user) {
+        res.send(JSON.stringify(user));
+      } else {
+        res.status(401);
+        res.send('Must be logged in');
+      }
+    })
+});
+
+
+router.get('/logout', function (req, res, next) {
+  res.cookie('jwt', "", { expires: new Date(0) });
+  res.send('Logged out');
+  });
 
 
 module.exports = router;

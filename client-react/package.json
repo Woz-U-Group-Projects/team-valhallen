@@ -7,11 +7,13 @@
     "bootstrap": "^4.4.1",
     "cors": "^2.8.5",
     "express-session": "^1.17.0",
+    "jwt-decode": "^2.2.0",
     "passport": "^0.4.1",
     "passport-local": "^1.0.0",
     "react": "^16.8.6",
     "react-bootstrap": "^1.0.0",
     "react-dom": "^16.8.6",
+    "react-router-dom": "^5.1.2",
     "react-scripts": "3.0.1"
   },
   "scripts": {

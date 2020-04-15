@@ -1,23 +1,30 @@
 var express = require("express");
 var router = express.Router();
 var models = require("../models");
-
-// router.get('/', function(req, res, next) {
-//   models.User.findAll().then(users => {
-//     res.json(users);
-//   });
-// });
+//var passport = require('../services/passport');
+var authService = require('../services/auth');
+​
+​
 router.get('/', function(req, res, next) {
-  models.User.findAll({}).then(foundUsers => {
-    const mappedUsers = foundUsers.map(user => ({
-      userId: user.userId,
-      users: `${user.email} ${user.password}`
-    }));
-    res.json(mappedUsers);
+  models.User.findAll().then(users => {
+    res.json(users);
   });
 });
+​
 
-router.post('/', function(req, res, next) { 
+// router.get('/', function(req, res, next) {
+//   models.User.findAll({}).then(foundUsers => {
+//     const mappedUsers = foundUsers.map(user => ({
+//       UserId: user.userId,
+//       users: `${user.email} ${user.password}`
+//     }));
+//     res.json(mappedUsers);
+//   });
+// });
+
+​
+​
+/*router.post('/', function(req, res, next) { 
   models.User
   .findOne({
     where: {
@@ -29,6 +36,39 @@ router.post('/', function(req, res, next) {
     res.json(users);
   });
 });
-  
-   
-  module.exports = router;
+*/
+​
+/*
+router.post('/', passport.authenticate('local',{
+  failureRedirect: '/'
+}),
+function (req, res, next) {
+  res.redirect('users/profile/' +req.user.UserId);
+});
+*/
+​
+router.post('/', function(req, res, next){
+  models.User.findOne({
+    where: {
+      email: req.body.email,
+      password: req.body.password
+    }
+  }).then(user => {
+    if (!user) {
+      console.log('User not found')
+      return res.status(401).json({
+        message: "Login Failed"
+      });
+    }
+    if (user) {
+      let token = authService.signUser(user);
+      res.cookie('jwt', token);
+      res.send('Login successful');
+    } else {
+      console.log('wrong Password');
+      res.redirect('/login')
+    }
+  });
+});
+​
+module.exports = router;
