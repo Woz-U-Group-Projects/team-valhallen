@@ -1,39 +1,65 @@
 const initialState = {
-    user: [
+    details: [
         {
-            email: 'amlippi@gmail.com',
-            password: 'Password1',
-            phone: '1234567890',
-            unitId: '2'
+            email: "rescue183@yahoo.com",
+            password: "renegade",
+            phone: 8675309,
+            userType: "tenant",
+            unit: "69"
         }
     ],
-    updateEmailText:"",
-    updatePassText:"",
-    updatePhoneText:"",
-    updateUnitText:""
+    updateEmail:"",
+    updatePassword:"",
+    updatePhone:"",
+    updateUserType:"",
+    updateUnit:""
 };
 
 function editUserReducer(state = initialState, action) {
     switch (action.type) {
-        case 'USER_EMAIL_CHANGED':
+        case 'ADD_USER':
             return {
                 ...state,
-                updateEmailText: action.text
+                details: [
+                    ...state.details,
+                    {
+                        email: state.updateEmail,
+                        password: state.updatePassword,
+                        phone: state.updatePhone,
+                        userType: state.updateUserType,
+                        unit: state.updateUnit
+                    }
+                ],
+                updateEmail:"",
+                updatePassword:"",
+                updatePhone:"",
+                updateUserType:"",
+                updateUnit:""
             };
-        case 'USER_PASS_CHANGED':
+        case 'UPDATE_EMAIL':
             return {
                 ...state,
-                updatePassText: action.text
+                updateEmail: action.text
             };
-        case 'USER_PHONE_CHANGED':
+        case 'UPDATE_PASSWORD':
             return {
                 ...state,
-                updatePhoneText: action.text
+                updatePassword: action.text
             };
-        case 'USER_UNIT_CHANGED':
+        case 'UPDATE_PHONE':
             return {
                 ...state,
-                updateUnitText: action.text
+                updatePhone: action.text
+            };
+        case 'UPDATE_USER_TYPE':
+            return {
+                ...state,
+                updateUserType: action.text
+            };
+        case 'UPDATE_UNIT':
+            return {
+                 ...state,
+                updateUnit: action.text
             };
         default:
             return state;

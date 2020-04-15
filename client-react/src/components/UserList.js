@@ -1,9 +1,8 @@
 import React from "react";
 import axios from "axios";
-//import { connect } from 'react-redux';
 import UserDetail from "./UserDetail";
 import { connect } from 'react-redux';
-import { updateUser, userEmailChanged, userPassChanged, userPhoneChanged, userUnitChanged } from '../actions/index';
+import { details, updateEmail, updatePassword, updatePhone, updateUserType, updateUnit } from '../actions/actions';
 import '../task.min.css'
 
 class UserList extends React.Component {
@@ -11,8 +10,9 @@ class UserList extends React.Component {
     super(props);
     this.state = { 
       users: [],                    // used to store array of users
-      multiId: 'userId',            // used to pass selected user type to render
-      viewSelected: false           // used to determine if user view is selected
+      viewSelected: false,          // used to determine if user view is selected
+      selectedUser: '',             // used to pass selected userId to child component 
+      user: []                      // used to pass user details
     };   
   }
 
@@ -22,46 +22,44 @@ class UserList extends React.Component {
 
   getUsers = () => {
     let url = "http://localhost:3001/users";     
-    axios.get(url).then(response => this.setState({ users: response.data, multiId: 'userId' })); 
+    axios.get(url).then(response => this.setState({ users: response.data })); 
     this.setState({ viewSelected: false });
   };
 
   getTechs = () => {
     let url = "http://localhost:3001/users/techs";     
-    axios.get(url).then(response => this.setState({ users: response.data, multiId: 'techId' }));
+    axios.get(url).then(response => this.setState({ users: response.data }));
     this.setState({ viewSelected: false });
   };
 
   getMgrs = () => {
     let url = "http://localhost:3001/users/mgrs";     
-    axios.get(url).then(response => this.setState({ users: response.data, multiId: 'mgrId' }));
+    axios.get(url).then(response => this.setState({ users: response.data }));
     this.setState({ viewSelected: false });
   };
 
   viewUser = (id) => {
-    console.log("View User #" + id);            // for verification of id passed from render JSX
-    this.setState({ viewSelected: true });      // viewSelected for rendering user detail component
-    //this.props.dispatch({ type: 'SENDUSERID' });//     
-    //return { id: state.id };  call in userDetail Comp  // action to connect to redux store
+    this.setState({ viewSelected: true, selectedUser: id });      // viewSelected for rendering user detail component
+    let url = "http://localhost:3001/users/" + id;
+    axios.get(url, { userid: id }).then(response => {
+      this.setState({ user: response.data })
+    });
   };
 
   render() {
-    const idType = this.state.multiId;          // stores id type based off of selection of list type
     const viewSelected = this.state.viewSelected;    //stores if view user is selected
     let viewComp; 
 
     if (viewSelected){                          // renders userDetail if true
-      viewComp = <UserDetail 
-        user={this.props.user}
-        onUpdateUser={this.props.onUpdateUser}
-        onUserEmailChanged={this.props.onUserEmailChanged}
-        onUserPassChanged={this.props.onUserPassChanged}
-        onUserPhoneChanged={this.props.onUserPhoneChanged}
-        onUserUnitChanged={this.props.onUserUnitChanged}
-        updateEmailText={this.props.updateEmailText}
-        updatePassText={this.props.updatePassText}
-        updatePhoneText={this.props.updatePhoneText}
-        updateUnitText={this.props.updateUnitText}
+      viewComp = <UserDetail
+        userId={this.state.selectedUser}
+        userDetails={this.state.user} 
+        details={this.props.details} 
+        onUpdateEmail={this.props.onUpdateEmail}
+        onUpdatePassword={this.props.onUpdatePassword}
+        onUpdatePhone={this.props.onUpdatePhone}
+        onUpdateUserType={this.props.onUpdateUserType}
+        onUpdateUnit={this.props.onUpdateUnit}
         />;
     }
 
@@ -77,24 +75,20 @@ class UserList extends React.Component {
               <th>User Name</th>
               <th>Email</th>
               <th>Phone Number</th>
-              <th>Unit Number</th>
               <th></th>
             </tr>
 
             {this.state.users.map(p => (
-              <tr key={p.idType}>
+              <tr key={p.userId}>
                 <td>{p.fName} {p.lName}</td> 
                 <td>{p.email}</td> 
                 <td>{p.phone}</td> 
-                <td>{p.unitId}</td>
                 <td><button onClick={() => this.viewUser(p.userId)}>View User</button></td>
               </tr>
             ))}
 
           </tbody>
         </table>
-
-        <div>{idType}</div>
 
         <div className="detail-container">
           { viewComp }
@@ -107,20 +101,21 @@ class UserList extends React.Component {
 
 function mapDispatchToProps(dispatch) {
   return {
-    onUpdateUser: () => dispatch(updateUser()),
-    onUserEmailChanged: text => dispatch(userEmailChanged(text)),
-    onUserPassChanged: text => dispatch(userPassChanged(text)),
-    onUserPhoneChanged: text => dispatch(userPhoneChanged(text)),
-    onUserUnitChanged: text => dispatch(userUnitChanged(text)),
+    onUpdateEmail: text => dispatch(updateEmail(text)),
+    onUpdatePassword: text => dispatch(updatePassword(text)),
+    onUpdatePhone: text => dispatch(updatePhone(text)),
+    onUpdateUserType: text => dispatch(updateUserType(text)),
+    onUpdateUnit: text => dispatch(updateUnit(text))
   };
 }
 function mapStateToProps(state) {
   return{
-    items: state.items,
-    updateEmailText: state.updateEmailText,
-    updatePassText: state.updatePassText,
-    updatePhoneText: state.updatePhoneText,
-    updateUnitText: state.updateUnitText
+    details: state.details,
+    updateEmail: state.updateEmail,
+    updatePassword: state.updatePassword,
+    updatePhone: state.updatePhone,
+    updateUserType: state.updateUserType,
+    updateUnit: state.updateUnit
   };
 }
 

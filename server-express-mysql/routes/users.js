@@ -3,15 +3,21 @@ var router = express.Router();
 var models = require("../models");
 
 router.get("/", function(req, res, next) {
-  models.User.findAll().then(users => res.json(users));
+  models.User.findAll({
+    where:{ userType: "tenant" }
+  }).then(users => res.json(users));
 });
 
 router.get("/techs", function(req, res, next) {
-  models.Technician.findAll().then(users => res.json(users));
+  models.User.findAll({
+    where:{ userType: "tech" }
+  }).then(users => res.json(users));
 });
 
 router.get("/mgrs", function(req, res, next) {
-  models.Manager.findAll().then(users => res.json(users));
+  models.User.findAll({
+    where:{ userType: "manager" }
+  }).then(users => res.json(users));
 });
 
 router.get("/:id", function(req, res, next) {       //get userID from DB
@@ -33,5 +39,27 @@ router.put("/:id", function(req, res, next) {
   ).then(user => res.json(user));
 });
 
+/*
+router.get('/login', function(req, res, next) {
+  models.User.findAll().then(users => res.json(users));
+});
+
+router.post('/login', function(req, res, next) {
+  models.User
+    .findOne({
+      where: {
+        email: req.body.email,
+        password: req.body.password
+      }
+    })
+    .then(user => {
+      if (user) {
+        res.send('Login succeeded!');
+      } else {
+        res.send('Invalid login!');
+      }
+    });
+});
+*/
 
 module.exports = router;
