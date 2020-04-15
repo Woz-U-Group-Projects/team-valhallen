@@ -1,6 +1,7 @@
 import React from "react";
 import "./App.css";
 import UserPage from "./screens/UserPage";
+import UserPage from "./screens/UserPage";
 //import ManagerHome from "./screens/ManagerHome";
 //import Login from "./components/Login";
 
