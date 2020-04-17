@@ -22,16 +22,16 @@ class TenantDetails extends React.Component {
 
     getTenant = () => {
         let url = "http://localhost:3001/users/tenantProfile/";
-        axios.get(url, { userId: userId }).then(response => this.setState({ user: response.data, viewSelected: true, selectedUser: userId }));
+        axios.get(url).then(response => this.setState({ user: response.data, viewSelected: true, selectedUser: this.state.user.userId }));
     };
 
-    viewTenant = (id) => {
-        this.setState({ viewSelected: true, selectedUser: id });
-        let url = "http://localhost:3001/users/" + id;
-        axios.get(url, { userid: id }).then(response => {
-          this.setState({ user: response.data })
-        });
-      };
+    // viewTenant = (id) => {
+    //     this.setState({ viewSelected: true, selectedUser: id });
+    //     let url = "http://localhost:3001/users/tenantProfile" + id;
+    //     axios.get(url, { userid: id }).then(response => {
+    //       this.setState({ user: response.data })
+    //     });
+    //   };
 
 
     render() {
@@ -42,7 +42,6 @@ class TenantDetails extends React.Component {
             viewComp = <TenantDetail
                 userId={this.state.selectedUser}
                 tenantDetails={this.state.user}
-                details={this.props.details}
             />;
         }
         return (
@@ -61,23 +60,14 @@ class TenantDetails extends React.Component {
                         </tr>
                     </thead>
                     <tbody>
-                        {this.state.user.map(p => (
-                            <tr key={p.userId}>
-                                <td>{p.fName} {p.lName}</td>
-                                <td>{p.email}</td>
-                                <td>{p.phone}</td>
-                                <td><button onClick={() => this.viewTenant(p.userId)}>View User</button></td>
-                            </tr>
-                        ))}
-
-                        {/* <tr >
+                        <tr >
                             <td></td>
-                            <td><div>{props.userDetails.fName} </div></td>
-                            <td>{props.userDetails.lName}</td>
-                            <td>{props.userDetails.email}</td>
-                            <td>{props.userDetails.phone}</td>
+                            <td>{this.props.tenantDetails.fName}</td>
+                            <td>{this.props.tenantDetails.lName}</td>
+                            <td>{this.props.tenantDetails.email}</td>
+                            <td>{this.props.tenantDetails.phone}</td>
                             <td><button>Edit Details</button></td>
-                        </tr> */}
+                        </tr>
                     </tbody>
                 </Table>
             </div>

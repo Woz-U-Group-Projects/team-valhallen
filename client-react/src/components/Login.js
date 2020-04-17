@@ -43,9 +43,7 @@ class Login extends React.Component {
             if (res) {
                 localStorage.setItem('usertoken', res.data);
                 this.props.history.push('/tenantProfile');
-                return res.data
-                ;
-                
+                return res.data;  
             }
         }).catch(err => {
             console.log(err)
