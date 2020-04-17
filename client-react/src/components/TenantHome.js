@@ -27,16 +27,9 @@ class TenantHome extends React.Component {
     return (
       <div>
         <div>
-          <TenantDetails />
+          
         </div>
-        <hr />
-        <div>
-          <TicketHistory />
-        </div>
-        <hr />
-        <div>
-          <CreateTicket />
-        </div>
+        
       </div>
     );
   }
