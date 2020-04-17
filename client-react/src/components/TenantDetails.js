@@ -9,7 +9,6 @@ class TenantDetails extends React.Component {
     constructor (props) {
         super(props);
         this.state = {
-            users: [],
             user: [],
             viewSelected: false,
             selectedUser: '',
@@ -18,6 +17,7 @@ class TenantDetails extends React.Component {
 
     componentDidMount() {
         this.getTenant();
+        this.viewTenant();
     }
 
     getTenant = () => {
@@ -25,13 +25,15 @@ class TenantDetails extends React.Component {
         axios.get(url).then(response => this.setState({ user: response.data, viewSelected: true, selectedUser: this.state.user.userId }));
     };
 
-    // viewTenant = (id) => {
-    //     this.setState({ viewSelected: true, selectedUser: id });
-    //     let url = "http://localhost:3001/users/tenantProfile" + id;
-    //     axios.get(url, { userid: id }).then(response => {
-    //       this.setState({ user: response.data })
-    //     });
-    //   };
+    viewTenant = (userId) => {
+        
+        
+        this.setState({ viewSelected: true, selectedUser: userId });
+        let url = "http://localhost:3001/users/tenantProfile/";
+        axios.get(url, { userid: userId }).then(response => {
+          this.setState({ user: response.data })
+        });
+      };
 
 
     render() {
@@ -62,10 +64,10 @@ class TenantDetails extends React.Component {
                     <tbody>
                         <tr >
                             <td></td>
-                            <td>{this.props.tenantDetails.fName}</td>
-                            <td>{this.props.tenantDetails.lName}</td>
-                            <td>{this.props.tenantDetails.email}</td>
-                            <td>{this.props.tenantDetails.phone}</td>
+                            <td key={this.viewTenant}>{this.state.user.fName}</td>
+                            <td>{this.state.user.lName}</td>
+                            <td>{this.state.user.email}</td>
+                            <td>{this.state.user.phone}</td>
                             <td><button>Edit Details</button></td>
                         </tr>
                     </tbody>

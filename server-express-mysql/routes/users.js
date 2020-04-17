@@ -79,7 +79,7 @@ router.post('/login', function(req, res, next){
   });
 });
 
-router.get('/tenantProfile', function (req, res, next) {
+router.get('/tenantProfile/', function (req, res, next) {
   let token = req.cookies.jwt;
   if (token) {
     authService.verifyUser(token)
