@@ -10,8 +10,8 @@ class Login extends React.Component {
     constructor (props) {
         super(props);
         this.state = {
-            user: {}
-            // value: 'tenant'    
+            users: [],
+            userType: ''   
         };
         this.email = React.createRef();
         this.password = React.createRef();
