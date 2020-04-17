@@ -97,6 +97,7 @@ router.get('/tenantProfile', function (req, res, next) {
   }
 });
 
+
 // end login Router -------------------------------------------------*
 
 module.exports = router;

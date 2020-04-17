@@ -40,8 +40,13 @@ class Login extends React.Component {
             password: this.password.current.value,
             userType: this.userType.current.value
         }).then(res => {
-            localStorage.setItem('usertoken', res.data)
-            return res.data
+            if (res) {
+                localStorage.setItem('usertoken', res.data);
+                this.props.history.push('/tenantProfile');
+                return res.data
+                ;
+                
+            }
         }).catch(err => {
             console.log(err)
         })
