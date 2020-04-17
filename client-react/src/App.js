@@ -5,7 +5,7 @@ import  Login from "./components/Login";
 import  Landing from "./components/Landing";
 import  TenantProfile from "./components/TenantDetails";
 import  Navbar from "./components/Navbar";
-import Signup from "./components/UserSignUp";
+import UserSignUp from "./components/UserSignUp";
 // import User from "./components/User";
 // import Task from "./components/Task";
 // import TenantHome from "./components/TenantHome";
@@ -20,7 +20,7 @@ function App() {
         <Navbar />
         <Route exact path="/" component={Landing} />
         <div className="container">
-          <Route exact path="/signup" component={Signup} />
+          <Route exact path="/signup" component={UserSignUp} />
           <Route exact path="/login" component={Login} />
           <Route exact path="/tenantProfile/:id" component={TenantProfile} />
         </div>
