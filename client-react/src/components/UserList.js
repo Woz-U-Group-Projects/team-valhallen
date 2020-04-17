@@ -91,7 +91,7 @@ class UserList extends React.Component {
         </table>
 
         <div className="detail-container">
-          { viewComp }
+          { viewComp } 
         </div>
 
       </div>
