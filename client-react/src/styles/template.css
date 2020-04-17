@@ -1,0 +1,313 @@
+/* Initial Responsive Set anything above 0px without a @media operatorchanges to default */
+/* Custom Code Dy: Joel J. De Alba */
+
+
+/* ----------------------------------------------------------0000000000000------------------------------------------------------------------- */
+
+/* -- Size 1 Full-Max ------------------------------------------------------------------------------------------------------------------------*/
+
+
+    @media only screen and (min-width: 0px) {
+        /* Body Styling */
+        body {
+            background-color: rgb(241, 173, 70);
+            }
+        /* First Main-Quest Grey Window */
+            #win1 {
+            background: rgb(201, 197, 197);
+            border-style: solid;
+            border-color: rgb(241, 167, 29);
+            border-radius: 10px;
+            box-shadow: -5px 5px 5px 1px rgb(104, 104, 104);
+            margin-top: 100px;
+            margin-bottom: 50px;
+            margin-left: 100px;
+            margin-right: 100px;
+            }
+        /* Navigation Box (#win1 Inline) */
+        nav {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+            background-color: rgb(201,197,197);
+            margin-top: -30px;
+            margin-left: 10px;
+            margin-right: 10px;
+            border-style: solid;
+            border-color: rgb(241, 167, 29);
+            border-radius: 10px;
+            box-shadow: -5px 5px grey;
+            }
+        /* Logo Image (Nav Inline) */
+            .logo {
+                height: 100px;
+                margin-top: -40px;
+                margin-left: 50px;
+            }
+            .logo:hover {
+                cursor: pointer;
+            }
+        /* App Menu Button Div-Block */
+            .mncnt1 {
+                display: none;
+            }
+        /* Main Header Text (Nav Inline) */
+            .hdtxt1 {
+                display: none;
+            }
+        /* Main Button(s) Div-Block */
+            .btndvid {
+            grid-column: 2 / 5;
+            height: 40px;
+            margin-top: 10px;
+            margin-left: 150px;
+            }
+            .tsttxt{
+                height: 25px;
+            }
+            .btn1 {    
+                grid-column: 2 / 3;
+                width: 140px;
+                Height: 40px;
+                border-style: solid;
+                border-color: rgb(241, 167, 29);
+                border-radius: 50px;
+                padding-right: 10px;
+                padding-left: 10px;
+                background: rgb(255,225,194);
+                background: -moz-radial-gradient(circle, rgba(255,225,194,1) 43%, rgba(255,104,0,1) 100%);
+                background: -webkit-radial-gradient(circle, rgba(255,225,194,1) 43%, rgba(255,104,0,1) 100%);
+                background: radial-gradient(circle, rgba(255,225,194,1) 43%, rgba(255,104,0,1) 100%);
+                filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ffe1c2",endColorstr="#ff6800",GradientType=1);
+            }
+            .btn1:hover,
+            .btn1:active,
+            .btn1:focus {
+                    cursor: pointer;
+                    box-shadow: 0px 0px 10px .5px orange;
+                    background: rgb(255,225,194);
+                    background: -moz-radial-gradient(circle, rgba(255,225,194,1) 10%, rgba(255,104,0,1) 100%);
+                    background: -webkit-radial-gradient(circle, rgba(255,225,194,1) 10%, rgba(255,104,0,1) 100%);
+                    background: radial-gradient(circle, rgba(255,225,194,1) 10%, rgba(255,104,0,1) 100%);
+                    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ffe1c2",endColorstr="#ff6800",GradientType=1);
+                }
+            .btn2 {
+                width: 140px;
+                height: 40px;
+                margin-left: 25px;
+                margin-right: 25px;
+                border-style: solid;
+                border-color: rgb(241, 167, 29);
+                border-radius: 50px;
+                background: rgb(255,225,194);
+                background: -moz-radial-gradient(circle, rgba(255,225,194,1) 43%, rgba(255,104,0,1) 100%);
+                background: -webkit-radial-gradient(circle, rgba(255,225,194,1) 43%, rgba(255,104,0,1) 100%);
+                background: radial-gradient(circle, rgba(255,225,194,1) 43%, rgba(255,104,0,1) 100%);
+                filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ffe1c2",endColorstr="#ff6800",GradientType=1);
+            }
+            .btn2:hover,
+            .btn2:active,
+            .btn2:focus {
+                cursor: pointer;
+                box-shadow: 0px 0px 10px .5px orange;
+                background: rgb(255,225,194);
+                background: -moz-radial-gradient(circle, rgba(255,225,194,1) 10%, rgba(255,104,0,1) 100%);
+                background: -webkit-radial-gradient(circle, rgba(255,225,194,1) 10%, rgba(255,104,0,1) 100%);
+                background: radial-gradient(circle, rgba(255,225,194,1) 10%, rgba(255,104,0,1) 100%);
+                filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ffe1c2",endColorstr="#ff6800",GradientType=1);
+            }
+            .btn3 {
+                width: 140px;
+                height: 40px;
+                margin-left: 0px;
+                border-style: solid;
+                border-color: rgb(241, 167, 29);
+                border-radius: 50px;
+                background: -moz-radial-gradient(circle, rgba(255,225,194,1) 43%, rgba(255,104,0,1) 100%);
+                background: -webkit-radial-gradient(circle, rgba(255,225,194,1) 43%, rgba(255,104,0,1) 100%);
+                background: radial-gradient(circle, rgba(255,225,194,1) 43%, rgba(255,104,0,1) 100%);
+                filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ffe1c2",endColorstr="#ff6800",GradientType=1);
+            }
+            .btn3:hover,
+            .btn3:active,
+            .btn3:focus {
+                cursor: pointer;
+                box-shadow: 0px 0px 10px .5px orange;
+                background: rgb(255,225,194);
+                background: -moz-radial-gradient(circle, rgba(255,225,194,1) 10%, rgba(255,104,0,1) 100%);
+                background: -webkit-radial-gradient(circle, rgba(255,225,194,1) 10%, rgba(255,104,0,1) 100%);
+                background: radial-gradient(circle, rgba(255,225,194,1) 10%, rgba(255,104,0,1) 100%);
+                filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ffe1c2",endColorstr="#ff6800",GradientType=1);
+            }
+            .mncont1 {
+                background: whitesmoke;
+                height: 600px;
+                margin-top: 30px;
+                margin-bottom: 30px;
+                margin-left: 20px;
+                margin-right: 20px;
+                border-style: solid;
+                border-width: 2px;
+                border-color: rgb(241, 167, 29);
+                border-radius: 5px;
+                box-shadow: 0px 0px 10px rgb(255, 197, 120);
+            }
+        }
+
+
+/* ----------------------------------------------------------0000000000000------------------------------------------------------------------- */
+
+/* -- Size 2 Full ----------------------------------------------------------------------------------------------------------------------------*/
+
+
+    @media only screen and (max-width: 1400px) {
+        /* Body Styling */
+        body {
+            background-color: rgb(241, 173, 70);
+            }
+        /* First Main-Quest Grey Window */
+            #win1 {
+            background: rgb(201, 197, 197);
+            border-style: solid;
+            border-color: rgb(241, 167, 29);
+            border-radius: 10px;
+            box-shadow: -5px 5px 5px 1px rgb(104, 104, 104);
+            margin-top: 100px;
+            margin-bottom: 50px;
+            margin-left: 20px;
+            margin-right: 20px;
+            }
+        /* Navigation Box (#win1 Inline) */
+        nav {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+            background-color: rgb(201,197,197);
+            margin-top: -30px;
+            margin-left: 10px;
+            margin-right: 10px;
+            border-style: solid;
+            border-color: rgb(241, 167, 29);
+            border-radius: 10px;
+            box-shadow: -5px 5px grey;
+            }
+        /* Logo Image (Nav Inline) */
+            .logo {
+                height: 100px;
+                margin-top: -40px;
+                margin-left: 50px;
+            }
+            .logo:hover {
+                cursor: pointer;
+            }
+            .menu {
+                height: 40px;
+                margin-top: 10px;
+            }
+        /* App Menu Button Div-Block */
+            .mncnt1 {
+                display: inline-block;
+                grid-column: 5 / 5;
+            }
+        /* Main Header Text (Nav Inline) */
+            .hdtxt1 {
+                display: none;
+            }
+        /* Main Button(s) Div-Block */
+            .btndvid {
+            grid-column: 2 / 5;
+            height: 40px;
+            margin-top: 10px;
+            margin-left: 30px;
+            display: none;
+            }
+            .tsttxt{
+                height: 25px;
+            }
+            .btn1 {    
+                grid-column: 2 / 3;
+                width: 140px;
+                Height: 40px;
+                border-style: solid;
+                border-color: rgb(241, 167, 29);
+                border-radius: 50px;
+                padding-right: 10px;
+                padding-left: 10px;
+                background: rgb(255,225,194);
+                background: -moz-radial-gradient(circle, rgba(255,225,194,1) 43%, rgba(255,104,0,1) 100%);
+                background: -webkit-radial-gradient(circle, rgba(255,225,194,1) 43%, rgba(255,104,0,1) 100%);
+                background: radial-gradient(circle, rgba(255,225,194,1) 43%, rgba(255,104,0,1) 100%);
+                filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ffe1c2",endColorstr="#ff6800",GradientType=1);
+            }
+            .btn1:hover,
+            .btn1:active,
+            .btn1:focus {
+                    cursor: pointer;
+                    box-shadow: 0px 0px 10px .5px orange;
+                    background: rgb(255,225,194);
+                    background: -moz-radial-gradient(circle, rgba(255,225,194,1) 10%, rgba(255,104,0,1) 100%);
+                    background: -webkit-radial-gradient(circle, rgba(255,225,194,1) 10%, rgba(255,104,0,1) 100%);
+                    background: radial-gradient(circle, rgba(255,225,194,1) 10%, rgba(255,104,0,1) 100%);
+                    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ffe1c2",endColorstr="#ff6800",GradientType=1);
+                }
+            .btn2 {
+                width: 140px;
+                height: 40px;
+                margin-left: 25px;
+                margin-right: 25px;
+                border-style: solid;
+                border-color: rgb(241, 167, 29);
+                border-radius: 50px;
+                background: rgb(255,225,194);
+                background: -moz-radial-gradient(circle, rgba(255,225,194,1) 43%, rgba(255,104,0,1) 100%);
+                background: -webkit-radial-gradient(circle, rgba(255,225,194,1) 43%, rgba(255,104,0,1) 100%);
+                background: radial-gradient(circle, rgba(255,225,194,1) 43%, rgba(255,104,0,1) 100%);
+                filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ffe1c2",endColorstr="#ff6800",GradientType=1);
+            }
+            .btn2:hover,
+            .btn2:active,
+            .btn2:focus {
+                cursor: pointer;
+                box-shadow: 0px 0px 10px .5px orange;
+                background: rgb(255,225,194);
+                background: -moz-radial-gradient(circle, rgba(255,225,194,1) 10%, rgba(255,104,0,1) 100%);
+                background: -webkit-radial-gradient(circle, rgba(255,225,194,1) 10%, rgba(255,104,0,1) 100%);
+                background: radial-gradient(circle, rgba(255,225,194,1) 10%, rgba(255,104,0,1) 100%);
+                filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ffe1c2",endColorstr="#ff6800",GradientType=1);
+            }
+            .btn3 {
+                width: 140px;
+                height: 40px;
+                margin-left: 0px;
+                border-style: solid;
+                border-color: rgb(241, 167, 29);
+                border-radius: 50px;
+                background: -moz-radial-gradient(circle, rgba(255,225,194,1) 43%, rgba(255,104,0,1) 100%);
+                background: -webkit-radial-gradient(circle, rgba(255,225,194,1) 43%, rgba(255,104,0,1) 100%);
+                background: radial-gradient(circle, rgba(255,225,194,1) 43%, rgba(255,104,0,1) 100%);
+                filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ffe1c2",endColorstr="#ff6800",GradientType=1);
+            }
+            .btn3:hover,
+            .btn3:active,
+            .btn3:focus {
+                cursor: pointer;
+                box-shadow: 0px 0px 10px .5px orange;
+                background: rgb(255,225,194);
+                background: -moz-radial-gradient(circle, rgba(255,225,194,1) 10%, rgba(255,104,0,1) 100%);
+                background: -webkit-radial-gradient(circle, rgba(255,225,194,1) 10%, rgba(255,104,0,1) 100%);
+                background: radial-gradient(circle, rgba(255,225,194,1) 10%, rgba(255,104,0,1) 100%);
+                filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ffe1c2",endColorstr="#ff6800",GradientType=1);
+            }
+            .mncont1 {
+                background: whitesmoke;
+                height: 600px;
+                margin-top: 30px;
+                margin-bottom: 30px;
+                margin-left: 20px;
+                margin-right: 20px;
+                border-style: solid;
+                border-width: 2px;
+                border-color: rgb(241, 167, 29);
+                border-radius: 5px;
+                box-shadow: 0px 0px 10px rgb(255, 197, 120);
+            }
+        }
+
