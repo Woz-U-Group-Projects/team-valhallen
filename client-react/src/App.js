@@ -12,7 +12,7 @@ import UserSignUp from"./components/UserSignUp";
 function App() {
   return (
     <div className="App">
-      
+      <UserSignUp />
       <Login />
       <UserPage />
     </div>
