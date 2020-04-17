@@ -1,13 +1,15 @@
 import React from "react";
 import jwt_decode from 'jwt-decode';
 import CreateTicket from "./CreateTicket";
-
+// import axios from "axios";
 
 
 class TenantProfile extends React.Component {
-    constructor () {
-        super();
+    constructor (props) {
+        super(props);
         this.state = {
+            users: [],
+            user: {},
             fName: '',
             lName: '',
             phone: '',
@@ -24,9 +26,14 @@ class TenantProfile extends React.Component {
             phone: decoded.phone,
             email: decoded.email
         })
+
+        // this.getData();
     }
 
-
+    // getData = () => {
+    //     let url = "http://localhost:3001/users/tenantProfile/:id/";
+    //     axios.get(url).then(response => this.setState({ user: response.data }));
+    //   };
 
     render() {
         return (
@@ -58,6 +65,7 @@ class TenantProfile extends React.Component {
                         </table>
                         <div>
                             <CreateTicket />
+                            
                         </div>
                     </div>
                 </div>

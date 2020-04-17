@@ -83,6 +83,13 @@ router.get('/tenantProfile', function (req, res, next) {
     })
 });
 
+// router.get("/tenantProfile/:id", function(req, res, next) {       //get userID from DB
+//   let userId = parseInt(req.params.id);             
+//   models.User.findByPk(userId)
+//     .then(user => res.json(user));                  //return user as json obj
+//   alert('userId');
+// });
+
 
 router.get('/logout', function (req, res, next) {
   res.cookie('jwt', "", { expires: new Date(0) });

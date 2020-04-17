@@ -30,4 +30,23 @@ export const login = user => {
     })
     }
 
-  
+    export const createTicket = newTicket => {
+        let url = "http://localhost:3001/tickets/createTicket/";
+        return axios.post(url, {
+            category: newTicket.category,
+            subCategory: newTicket.subCategory,
+            priority: newTicket.priority,
+            access: newTicket.access,
+            note: newTicket.note
+        }).then(res => {
+            if(res) {
+                this.props.history.push('/tenantProfile');
+                console.log("Ticket Created");
+            }
+            
+        }).then(res => {
+            // if(res) {
+            //     this.props.history.push('/tenantProfile')
+            // }
+        })
+    }  

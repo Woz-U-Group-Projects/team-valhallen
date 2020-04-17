@@ -18,13 +18,6 @@ class User extends React.Component {
   }
 
   getData = () => {
-    // Java Spring Boot uses port 8080
-    //let url = "http://localhost:8080/tasks";
-
-    // C# dotnetcore uses port 5000
-    //let url = "http://localhost:5000/projects";
-
-    // Express uses port 3001 (react uses 3000)
     let url = "http://localhost:3001/users/";
     axios.get(url).then(response => this.setState({ users: response.data }));
   };

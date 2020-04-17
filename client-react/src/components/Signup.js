@@ -37,7 +37,7 @@ class Signup extends React.Component {
 
        signup(user).then(res => {
            if(res) {
-               this.props.history.push('/login')
+               this.props.history.push('/login');
            }
        })
    }
