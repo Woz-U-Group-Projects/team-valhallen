@@ -32,7 +32,7 @@ class Login extends React.Component {
         let url = "http://localhost:3001/users/";
         axios.get(url).then(response => this.setState({ user: response.data }));
     };
-
+    
     login = () => {
         let url = "http://localhost:3001/users/login/";
         axios.post(url, {
@@ -42,8 +42,11 @@ class Login extends React.Component {
         }).then(res => {
             if (res) {
                 localStorage.setItem('usertoken', res.data);
-                this.props.history.push('/tenantProfile');
                 return res.data;  
+            }
+        }).then(res => {
+            if (res) {
+                this.props.history.push('/tenantProfile');  
             }
         }).catch(err => {
             console.log(err)
