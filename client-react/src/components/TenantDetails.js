@@ -15,7 +15,7 @@ class TenantDetails extends React.Component {
     }
 
     getTenant = () => {
-        let url = "http://localhost:3001/users/profile/";
+        let url = "http://localhost:3001/users/tenantProfile/";
         axios.get(url).then(response => this.setState({ user: response.data }));
     };
 

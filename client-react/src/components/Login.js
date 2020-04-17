@@ -11,29 +11,40 @@ class Login extends React.Component {
         super(props);
         this.state = {
             users: [],
-            userType: ''   
+            user: [],
+            email: '',
+            password: '',
+            userType: ''
         };
         this.email = React.createRef();
         this.password = React.createRef();
-        // this.userStatus = this.userStatus.bind(this);
+        this.userType = React.createRef();
     }
     componentDidMount() {
         this.getData();
     }
 
-    // userStatus(event) {
-    //     this.setState({value: event.target.value});
-    //   }
+    userType(event) {
+        this.setState({ value: event.target.value });
+    }
 
     getData = () => {
-        let url = "http://localhost:3001/users/"; 
+        let url = "http://localhost:3001/users/";
         axios.get(url).then(response => this.setState({ user: response.data }));
     };
 
     login = () => {
-        let url = "http://localhost:3001/users/login";
-        axios.post(url, { email: this.email.current.value, password: this.password.current.value })
-            .then(response => this.setState({ user: response.data }));
+        let url = "http://localhost:3001/users/login/";
+        axios.post(url, {
+            email: this.email.current.value,
+            password: this.password.current.value,
+            userType: this.userType.current.value
+        }).then(res => {
+            localStorage.setItem('usertoken', res.data)
+            return res.data
+        }).catch(err => {
+            console.log(err)
+        })
     };
 
     signup = () => {
@@ -74,10 +85,10 @@ class Login extends React.Component {
                                 Choose User Status
                             </Dropdown.Toggle>
 
-                            <Dropdown.Menu value={this.state.value} onChange={this.userStatus}>
-                                <Dropdown.Item href="#/action-1">Tenant</Dropdown.Item>
-                                <Dropdown.Item href="#/action-2">Manager</Dropdown.Item>
-                                <Dropdown.Item href="#/action-3">Technician</Dropdown.Item>
+                            <Dropdown.Menu value={this.state.value} ref={this.userType}>
+                                <Dropdown.Item value="tenant">Tenant</Dropdown.Item>
+                                <Dropdown.Item value="manager">Manager</Dropdown.Item>
+                                <Dropdown.Item value="technician">Technician</Dropdown.Item>
                             </Dropdown.Menu>
                         </Dropdown>
 
