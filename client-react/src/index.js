@@ -9,11 +9,14 @@ import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 import reducer from './reducers/edituser';
 
-
 const store = createStore(
     reducer,
     undefined
 );
+
+console.log(store.getState());
+
+const unsubscribe = store.subscribe(() => console.log(store.getState()));
 
 render( 
     <Provider store={store}>
@@ -22,6 +25,7 @@ render(
     document.getElementById('root')
 );
 
+unsubscribe();
 
 /*********************ROUTING WITH SWITCH CASE***********************
 import ConfigPage from './screens/ConfigPage';

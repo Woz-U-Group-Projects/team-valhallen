@@ -1,6 +1,12 @@
-export const addUser = () => (
+export const defineUserDetail = () => (
     {
-        type: "ADD_USER"
+        type: "DEFINE_USER_DETAIL"
+    }
+)
+
+export const updateUserDetail = () => (
+    {
+        type: "UPDATE_USER"
     }
 )
 

@@ -2,16 +2,15 @@ import React from "react";
 import axios from "axios";
 import UserDetail from "./UserDetail";
 import { connect } from 'react-redux';
-import { details, updateEmail, updatePassword, updatePhone, updateUserType, updateUnit } from '../actions/actions';
+import { updateUserDetail, defineUserDetail, updateEmail, updatePassword, updatePhone, updateUserType, updateUnit } from '../actions/actions';
 import '../task.min.css'
 
 class UserList extends React.Component {
-  constructor(props) {
+  constructor(props, { defineEmail, definePassword, definePhone, defineUserType, defineUnit }) {
     super(props);
     this.state = { 
       users: [],                    // used to store array of users
       viewSelected: false,          // used to determine if user view is selected
-      selectedUser: '',             // used to pass selected userId to child component 
       user: []                      // used to pass user details
     };   
   }
@@ -21,7 +20,7 @@ class UserList extends React.Component {
   }
 
   getUsers = () => {
-    let url = "http://localhost:3001/users";     
+    let url = "http://localhost:3001/users/tenants";     
     axios.get(url).then(response => this.setState({ users: response.data })); 
     this.setState({ viewSelected: false });
   };
@@ -38,8 +37,10 @@ class UserList extends React.Component {
     this.setState({ viewSelected: false });
   };
 
+  //NEED TO GET USER AND ASSIGN TO 'DEFINE' DETAIL OBJECTS IN STORE
+  //CALL DEFINEUSERDETAIL REDUCER TO PROMPT
   viewUser = (id) => {
-    this.setState({ viewSelected: true, selectedUser: id });      // viewSelected for rendering user detail component
+    this.setState({ viewSelected: true });      // viewSelected for rendering user detail component
     let url = "http://localhost:3001/users/" + id;
     axios.get(url, { userid: id }).then(response => {
       this.setState({ user: response.data })
@@ -48,13 +49,13 @@ class UserList extends React.Component {
 
   render() {
     const viewSelected = this.state.viewSelected;    //stores if view user is selected
-    let viewComp; 
-
+    let viewComp;
+    
     if (viewSelected){                          // renders userDetail if true
       viewComp = <UserDetail
-        userId={this.state.selectedUser}
         userDetails={this.state.user} 
-        details={this.props.details} 
+        onUpdateUserDetail={this.props.onUpdateUserDetail}
+        onDefineUserDetail={this.props.onDefineUserDetail}
         onUpdateEmail={this.props.onUpdateEmail}
         onUpdatePassword={this.props.onUpdatePassword}
         onUpdatePhone={this.props.onUpdatePhone}
@@ -101,6 +102,8 @@ class UserList extends React.Component {
 
 function mapDispatchToProps(dispatch) {
   return {
+    onDefineUserDetail: () => dispatch(defineUserDetail()),
+    onUpdateUserDetail: () => dispatch(updateUserDetail()),
     onUpdateEmail: text => dispatch(updateEmail(text)),
     onUpdatePassword: text => dispatch(updatePassword(text)),
     onUpdatePhone: text => dispatch(updatePhone(text)),
@@ -111,6 +114,11 @@ function mapDispatchToProps(dispatch) {
 function mapStateToProps(state) {
   return{
     details: state.details,
+    defineEmail: state.defineEmail,
+    definePassword: state.definePassword,
+    definePhone: state.definePhone,
+    defineUserType: state.defineUserType,
+    defineUnit: state.defineUnit,
     updateEmail: state.updateEmail,
     updatePassword: state.updatePassword,
     updatePhone: state.updatePhone,
