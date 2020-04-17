@@ -1,21 +1,30 @@
 import React from "react";
 import "./App.css";
-import UserPage from "./screens/UserPage";
-import Login from "./components/Login";
-import UserSignUp from"./components/UserSignUp";
-//import UserPage from "./screens/UserPage";
-//import ManagerHome from "./screens/ManagerHome";
-//import Login from "./components/Login";
+import {BrowserRouter as Router, Route} from "react-router-dom";
+import  Login from "./components/Login";
+import  TenantProfile from "./components/TenantDetails";
+import  Navbar from "./components/Navbar";
+import Signup from "./components/UserSignUp";
+// import User from "./components/User";
+// import Task from "./components/Task";
+// import TenantHome from "./components/TenantHome";
+// import TenantDetails from "./components/TenantDetails";
 
-//This is where we combine components for rendering
+
 
 function App() {
   return (
-    <div className="App">
-      <UserSignUp />
-      <Login />
-      <UserPage />
-    </div>
+    <Router>
+      <div className="App">
+        <Navbar />
+        <Route exact path="/" component={Landing} />
+        <div className="container">
+          <Route exact path="/signup" component={Signup} />
+          <Route exact path="/login" component={Login} />
+          <Route exact path="/tenantProfile/:id" component={TenantProfile} />
+        </div>
+      </div>
+    </Router>
   );
 }
 
