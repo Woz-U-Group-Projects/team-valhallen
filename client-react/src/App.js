@@ -1,12 +1,20 @@
 import React from "react";
-import  Task from "./components/Task";
 import "./App.css";
-import User from "./components/User";
+import UserPage from "./screens/UserPage";
+import Login from "./components/Login";
+import UserSignUp from"./components/UserSignUp";
+//import UserPage from "./screens/UserPage";
+//import ManagerHome from "./screens/ManagerHome";
+//import Login from "./components/Login";
+
+//This is where we combine components for rendering
 
 function App() {
   return (
     <div className="App">
-      <User />
+      
+      <Login />
+      <UserPage />
     </div>
   );
 }

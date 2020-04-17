@@ -11,6 +11,7 @@ class User extends React.Component {
     this.email = React.createRef();
     this.password = React.createRef();
     this.phone = React.createRef();
+    this.unitId = React.createRef();
   }
 
   componentDidMount() {
@@ -18,11 +19,6 @@ class User extends React.Component {
   }
 
   getData = () => {
-    // Java Spring Boot uses port 8080
-    //let url = "http://localhost:8080/tasks";
-
-    // C# dotnetcore uses port 5000
-    //let url = "http://localhost:5000/projects";
 
     // Express uses port 3001 (react uses 3000)
     let url = "http://localhost:3001/users/";
@@ -31,11 +27,13 @@ class User extends React.Component {
 
   addUser = () => {
     let url = "http://localhost:3001/users";
-    axios.post(url, { fName: this.fName.current.value,
-                      sName: this.sName.current.value,
-                      email: this.email.current.value,
-                      password: this.password.current.value,
-                      phone: this.phone.current.value
+    axios.post(url, {
+      fName: this.fName.current.value,
+      sName: this.sName.current.value,
+      email: this.email.current.value,
+      password: this.password.current.value,
+      phone: this.phone.current.value,
+      unitId: this.unitId.current.value
     }).then(response => {
       // refresh the data
       this.getData();
@@ -45,26 +43,11 @@ class User extends React.Component {
       this.email.current.value = "";
       this.password.current.value = "";
       this.phone.current.value = "";
+      this.unitId.current.value ="";
     });
   };
 
-  /*
 
-  updateTask = (id) => {
-    let url = "http://localhost:3001/signup/" + id + "/complete";
-    axios.put(url, { taskid: this.id, isComplete: this.isComplete }).then(response => {
-      this.getData();
-    });
-  };
-  
-  deleteUser = (id) => {
-    let url = `http://localhost:3001/users/${id}/delete`;
-    axios.delete(url, { id: this.id}).then(response => {
-      console.log(response)
-    });
-    
-  };
-*/
   render() {
     return (
       <div>
@@ -78,14 +61,37 @@ class User extends React.Component {
         <input ref={this.password} />
         <h3>Phone</h3>
         <input ref={this.phone} />
+        <h3>Unit #</h3>
+        <select ref={this.unitId}>
+          <option value="1" >Unit #1</option>
+          <option value="2">Unit #2</option>
+          <option value="3">Unit #3</option>
+          <option value="4">Unit #4</option>
+          <option value="5">Unit #5</option>
+          <option value="6">Unit #6</option>
+          <option value="7">Unit #7</option>
+          <option value="8">Unit #8</option>
+          <option value="9">Unit #9</option>
+          <option value="10">Unit #10</option>
+          <option value="11">Unit #11</option>
+          <option value="12">Unit #12</option>
+          <option value="13">Unit #13</option>
+          <option value="14">Unit #14</option>
+          <option value="15">Unit #15</option>
+          <option value="16">Unit #16</option>
+          <option value="17">Unit #17</option>
+          <option value="18">Unit #18</option>
+          <option value="19">Unit #19</option>
+          <option value="20">Unit #20</option>
+        </select>
         <button type="button" className="btn btn-primary" onClick={this.addUser}>add User</button>
-        <ul>
+        {/* <ul>
           {this.state.users.map(p => (
             <li key={p.id}>
               {p.fName} : { p.sName} : {p.email} # {p.phone}
             </li>
           ))}
-        </ul>
+        </ul> */}
       </div>
     );
   }
