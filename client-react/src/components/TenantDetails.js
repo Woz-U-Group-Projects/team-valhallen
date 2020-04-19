@@ -12,6 +12,7 @@ class TenantDetails extends React.Component {
             user: [],
             viewSelected: false,
             selectedUser: '',
+            
         };
     }
 
@@ -26,8 +27,6 @@ class TenantDetails extends React.Component {
     };
 
     viewTenant = (userId) => {
-        
-        
         this.setState({ viewSelected: true, selectedUser: userId });
         let url = "http://localhost:3001/users/tenantProfile/";
         axios.get(url, { userid: userId }).then(response => {
