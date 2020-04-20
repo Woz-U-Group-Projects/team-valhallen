@@ -7,10 +7,10 @@ const TenantDetail = (props) => {
       <div>
         <h3>Tenant Details</h3>
           <div>
-            <div>{props.tenantDetails.fName} </div>
-            <div>{props.tenantDetails.lName}</div>
-            <div>{props.tenantDetails.email}</div>
-            <div>{props.tenantDetails.phone}</div>
+            <div>{this.props.fName} </div>
+            <div>{this.props.lName}</div>
+            <div>{this.props.email}</div>
+            <div>{this.props.phone}</div>
           </div>   
       </div>
     );

@@ -44,7 +44,11 @@ class User extends React.Component {
       this.password.current.value = "";
       this.phone.current.value = "";
       this.userType.current.value ="";
-    });
+    }).then(res => {
+      if (res) {
+          this.props.history.push('/login');  
+      }
+  });
   };
 
 
@@ -53,7 +57,7 @@ class User extends React.Component {
       <div>
         <h3>First Name</h3>
         <input ref={this.fName} />
-        <h3> Second Name</h3>
+        <h3> Last Name</h3>
         <input ref={this.lName} />
         <h3>Email</h3>
         <input ref={this.email} />
@@ -67,7 +71,7 @@ class User extends React.Component {
           <option value="Technician">Technician</option>
           <option value="Tenant">Tenant</option>
         </select>
-        <button type="button" className="btn btn-primary" onClick={this.addUser}>add User</button>
+        <button type="button" className="btn btn-primary" onClick={this.addUser}>Signup</button>
       </div>
     );
   }

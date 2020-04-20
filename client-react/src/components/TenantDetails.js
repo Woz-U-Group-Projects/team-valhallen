@@ -23,7 +23,11 @@ class TenantDetails extends React.Component {
 
     getTenant = () => {
         let url = "http://localhost:3001/users/tenantProfile/";
-        axios.get(url).then(response => this.setState({ user: response.data, viewSelected: true, selectedUser: this.state.user.userId }));
+        axios.get(url).then(response => this.setState({
+            user: response.data, 
+            viewSelected: true, 
+            selectedUser: this.state.user.userId 
+        }));
     };
 
     viewTenant = (userId) => {
@@ -36,19 +40,19 @@ class TenantDetails extends React.Component {
 
 
     render() {
-        const viewSelected = this.state.viewSelected;
-        let viewComp;
+        // const viewSelected = this.state.viewSelected;
+        // let viewComp;
 
-        if (viewSelected) {
-            viewComp = <TenantDetail
-                userId={this.state.selectedUser}
-                tenantDetails={this.state.user}
-            />;
-        }
+        // if (viewSelected) {
+        //     viewComp = <TenantDetail
+        //         userId={this.state.selectedUser}
+                
+        //     />;
+        // }
         return (
             <div>
                 <h1>Tenant Profile</h1>
-                {viewComp}
+                {/* {viewComp} {this.state.fName} */}
                 <Table striped bordered hover>
                     <thead>
                         <tr>
@@ -63,7 +67,7 @@ class TenantDetails extends React.Component {
                     <tbody>
                         <tr >
                             <td></td>
-                            <td key={this.viewTenant}>{this.state.user.fName}</td>
+                            <td >{this.state.fName}</td>
                             <td>{this.state.user.lName}</td>
                             <td>{this.state.user.email}</td>
                             <td>{this.state.user.phone}</td>

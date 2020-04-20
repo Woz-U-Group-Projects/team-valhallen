@@ -6,7 +6,7 @@ var authService = {
         const token = jwt.sign(
             {
                 email: user.email,
-                userId: user.userId
+                userType: user.userType
             },
             'secretkey',
             {
@@ -18,7 +18,7 @@ var authService = {
     verifyUser: function (token) {
         try {
             let decoded = jwt.verify(token, 'secretkey');
-            return models.User.findByPk(decoded.userId);
+            return models.User.findByPk(decoded.userId, decoded.userType);
         } catch (err) {
             console.log(err);
             return null;

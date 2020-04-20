@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
-import {connect} from 'redux';
+// import {connect} from 'redux';
 
 class Navbar extends React.Component {
     logOut(e) {
@@ -28,7 +28,7 @@ class Navbar extends React.Component {
         const userLink = (
             <ul className="navbar-nav">
                 <li className="nav-item">
-                    <Link to="/tenantProfile" className="nav-link">
+                    <Link to="/tenantProfile/" className="nav-link">
                         Tenant
                     </Link>
                 </li>
@@ -39,6 +39,36 @@ class Navbar extends React.Component {
                 </li>
             </ul>
         )
+
+        // const techLink = (
+        //     <ul className="navbar-nav">
+        //         <li className="nav-item">
+        //             <Link to="/techProfile" className="nav-link">
+        //                 Technician
+        //             </Link>
+        //         </li>
+        //         <li className="nav-item">
+        //             <Link to="login" onClick={this.logOut.bind(this)} className="nav-link">
+        //                 Logout
+        //             </Link>
+        //         </li>
+        //     </ul>
+        // )
+
+        // const mgrLink = (
+        //     <ul className="navbar-nav">
+        //         <li className="nav-item">
+        //             <Link to="/mgrProfile" className="nav-link">
+        //                 Property Manager
+        //             </Link>
+        //         </li>
+        //         <li className="nav-item">
+        //             <Link to="login" onClick={this.logOut.bind(this)} className="nav-link">
+        //                 Logout
+        //             </Link>
+        //         </li>
+        //     </ul>
+        // )
 
         return (
             <nav className="navbar navbar-expand-lg navbar-dark bg-dark rounded">
