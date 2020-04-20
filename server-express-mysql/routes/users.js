@@ -12,13 +12,13 @@ router.get("/", function(req, res, next) {
 
 router.get("/techs", function(req, res, next) {
   models.User.findAll({
-    where:{ userType: "tech" }
+    where:{ userType: "technician" }
   }).then(users => res.json(users));
 });
 
 router.get("/mgrs", function(req, res, next) {
   models.User.findAll({
-    where:{ userType: "manager" }
+    where:{ userType: "property manager" }
   }).then(users => res.json(users));
 });
 
