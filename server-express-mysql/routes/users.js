@@ -2,6 +2,12 @@ var express = require("express");
 var router = express.Router();
 var models = require("../models");
 
+router.get("/new", function(req, res, next) {
+  models.User.findAll({
+    where:{ userType: null }
+  }).then(users => res.json(users));
+});
+
 router.get("/tenants", function(req, res, next) {
   models.User.findAll({
     where:{ userType: "tenant" }

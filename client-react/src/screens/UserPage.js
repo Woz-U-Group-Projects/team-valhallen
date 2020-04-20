@@ -1,18 +1,18 @@
 import React from 'react';
 import Header from '../components/header';
-import UserList from "../components/UserList";
-//import { connect } from 'react-redux';
+import UserManagement from '../components/UserManagement';
 
-function UserPage() {
-    return (
-      <div className="UserPage">
-        
-        <Header title="Users Page" />
 
-        <UserList />
+const UserPage = () => (
+
+  <div className="UserPage">
+
+    <Header title="Users Page" />
+
+    <UserManagement />
       
-      </div>
-    );
-  }
+  </div>
+    
+)
 
 export default UserPage;
