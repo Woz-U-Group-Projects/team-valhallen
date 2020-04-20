@@ -4,7 +4,13 @@ var models = require("../models");
 //var passport = require('../services/passport');
 var authService = require('../services/auth');
 
-router.get("/", function(req, res, next) {
+router.get("/new", function(req, res, next) {
+  models.User.findAll({
+    where:{ userType: null }
+  }).then(users => res.json(users));
+});
+
+router.get("/tenants", function(req, res, next) {
   models.User.findAll({
     where:{ userType: "tenant" }
   }).then(users => res.json(users));
@@ -43,11 +49,11 @@ router.put("/:id", function(req, res, next) {
 
 router.post("/signup", function(req, res, next) {
   let newUser = new models.User();
-  newUser.fName = req.body.fName;
   newUser.lName = req.body.lName;
+  newUser.fName = req.body.fName;
   newUser.email = req.body.email;
-  newUser.password = req.body.password;
   newUser.phone = req.body.phone;
+  newUser.password = req.body.password;
   newUser.userType = req.body.userType;
   newUser.save().then(user => res.json(user));
 });

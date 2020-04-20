@@ -12,12 +12,36 @@ const initialState = {
     updatePassword:"",
     updatePhone:"",
     updateUserType:"",
-    updateUnit:""
+    updateUnit:"",
+    defineEmail:"",
+    definePassword:"",
+    definePhone:"",
+    defineUserType:"",
+    defineUnit:""
 };
 
 function editUserReducer(state = initialState, action) {
     switch (action.type) {
-        case 'ADD_USER':
+        case 'DEFINE_USER_DETAIL':
+            return {
+                ...state,
+                details: [
+                    ...state.details,
+                    {
+                        email: state.defineEmail,
+                        password: state.definePassword,
+                        phone: state.definePhone,
+                        userType: state.defineUserType,
+                        unit: state.defineUnit
+                    }
+                ],
+                defineEmail:"",
+                definePassword:"",
+                definePhone:"",
+                defineUserType:"",
+                defineUnit:""
+            };
+        case 'UPDATE_USER_DETAIL':
             return {
                 ...state,
                 details: [
