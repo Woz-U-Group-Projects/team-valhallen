@@ -21,6 +21,33 @@ router.get("/mgrs", function(req, res, next) {
     where:{ userType: "manager" }
   }).then(users => res.json(users));
 });
+//------------------------------tech skill---------------------------------------
+
+router.post("/techSkills", function(req, res, next) {
+    let newTechSkill = new models.TechSkills();
+    newTechSkill.electrical = req.body.electrical;
+    newTechSkill.plumbing = req.body.plumbing;
+    newTechSkill.hvac = req.body.hvac;
+    newTechSkill.appliance = req.body.appliance;
+    newTechSkill.general = req.body.general;
+    newTechSkill.save()
+    .then(skills => res.json(skills));
+});
+
+//-----------------------------Tech skills End------------------------------------
+
+//------------------------------User unit #---------------------------------------
+router.put("/unitNumber", function(req, res, next) {
+  models.PropertyUnit.update(
+    {
+      userId: req.body.userId
+    },
+    {
+      where: { unitName: req.body.unitName }
+    }
+  );
+});
+//------------------------------end User Unit #---------------------------------------
 
 router.get("/:id", function(req, res, next) {       //get userID from DB
   let userId = parseInt(req.params.id);             
