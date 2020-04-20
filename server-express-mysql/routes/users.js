@@ -70,7 +70,7 @@ router.get("/login", function (req, res, next) {
   models.User.findAll().then(users => res.json(users));
 });
 
-router.get('/tenantProfile', function (req, res, next) {
+router.get('/tenantProfile/:id', function (req, res, next) {
   let token = req.cookies.jwt;
   authService.verifyUser(token)
     .then(user => {
