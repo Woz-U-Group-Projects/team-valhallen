@@ -1,43 +1,49 @@
-export const defineUserDetail = () => (
-    {
-        type: "DEFINE_USER_DETAIL"
-    }
-)
+export const DEFINE_USER_DETAIL = 'DEFINE_USER_DETAIL'
+export const UPDATE_USER_DETAIL = 'UPDATE_USER_DETAIL'
+export const UPDATE_EMAIL = 'UPDATE_EMAIL'
+export const UPDATE_PASSWORD = 'UPDATE_PASSWORD'
+export const UPDATE_PHONE = 'UPDATE_PHONE'
+export const UPDATE_USER_TYPE = 'UPDATE_USER_TYPE'
 
-export const updateUserDetail = () => (
-    {
-        type: "UPDATE_USER"
+export function defineUserDetail(text) {
+    return {
+        type: DEFINE_USER_DETAIL
     }
-)
+}
 
-export const updateEmail = (text) => (
-    {
-        type: "UPDATE_EMAIL"
+export function updateUserDetail(text) {
+    return {
+        type: UPDATE_USER_DETAIL
     }
-)   
+}
 
-export const updatePassword = (text) => (
-    {
-        type: "UPDATE_PASSWORD"
+export function updateEmail(text) {
+    return {
+        type: UPDATE_EMAIL,
+        text
     }
-) 
+}   
 
-export const updatePhone = (text) => (
-    {
-        type: "UPDATE_PHONE"
+export function updatePassword(text) {
+    return {
+        type: UPDATE_PASSWORD,
+        text
     }
-) 
+}
 
-export const updateUserType = (text) => (
-    {
-        type: "UPDATE_USER_TYPE"
+export function updatePhone(text) {
+    return {
+        type: UPDATE_PHONE,
+        text
     }
-) 
+} 
 
-export const updateUnit = (text) => (
-    {
-        type: "UPDATE_UNIT"
+export function updateUserType(text) {
+    return {
+        type: UPDATE_USER_TYPE,
+        text
     }
-)
+} 
+
 
 

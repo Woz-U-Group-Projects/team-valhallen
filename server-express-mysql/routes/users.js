@@ -6,7 +6,7 @@ var authService = require('../services/auth');
 
 router.get("/new", function(req, res, next) {
   models.User.findAll({
-    where:{ userType: null }
+    where:{ userType: null }  //approved: false
   }).then(users => res.json(users));
 });
 
@@ -18,13 +18,13 @@ router.get("/tenants", function(req, res, next) {
 
 router.get("/techs", function(req, res, next) {
   models.User.findAll({
-    where:{ userType: "tech" }
+    where:{ userType: "technician" } 
   }).then(users => res.json(users));
 });
 
 router.get("/mgrs", function(req, res, next) {
   models.User.findAll({
-    where:{ userType: "manager" }
+    where:{ userType: "propertyManager" }
   }).then(users => res.json(users));
 });
 

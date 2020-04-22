@@ -2,10 +2,11 @@ import React from "react";
 import axios from "axios";
 
 import UserList from "./UserList";
-import UserDetail from "./UserDetail";
+import UserDetailEdit from "./UserDetailEdit";
+import UserDetailRetrieve from "./UserDetailRetrieve";
 
-import { connect } from 'react-redux';
-import { updateUserDetail, defineUserDetail, updateEmail, updatePassword, updatePhone, updateUserType, updateUnit } from '../actions/actions';
+//import { connect } from 'react-redux';
+//import { updateUserDetail, defineUserDetail, updateEmail, updatePassword, updatePhone, updateUserType, updateUnit } from '../actions/actions';
 
 class UserManagement extends React.Component {
     constructor(props) {
@@ -52,8 +53,6 @@ class UserManagement extends React.Component {
         this.setState({ viewConfirm: false, newTrigger: false });
       };
     
-      //NEED TO GET USER AND ASSIGN TO 'DEFINE' DETAIL OBJECTS IN STORE
-      //CALL DEFINEUSERDETAIL REDUCER TO PROMPT
       viewUser (id) {
         this.setState({ viewConfirm: true });
         let url = "http://localhost:3001/users/" + id;
@@ -84,18 +83,21 @@ class UserManagement extends React.Component {
 
         const viewSelected = this.state.viewConfirm;    //stores if view user is selected
         const newTrigger = this.state.newTrigger;       //confirms user detail component render
-        let viewComp;
+        let viewComp, assignComp;
         
         if (viewSelected & newTrigger===false){                          // renders userDetail if true
-          viewComp = <UserDetail userDetail={this.state.user}
-          updateCall={this.updateUser}
-          archiveCall={this.archiveUser} 
+          assignComp = <UserDetailRetrieve userDetail={this.state.user} />
+          viewComp = <UserDetailEdit 
+            userDetail={this.state.user}
+            updateCall={this.updateUser}
+            archiveCall={this.archiveUser} 
           />;
         } 
         if (viewSelected & newTrigger) {
-          //viewComp = <NewUserConfirm userDetail={this.state.user}
-          //updateCcall={this.updateUser}
-          //deleteCall={this.deleteUser} 
+          //viewComp = <NewUserConfirm 
+          //  userDetail={this.state.user}
+          //  updateCcall={this.updateUser}
+          //  deleteCall={this.deleteUser} 
           ///>;
           console.log("Render New User Confirm")
         }
@@ -111,6 +113,7 @@ class UserManagement extends React.Component {
                     viewCall={this.viewUser} /> 
 
                 <div>
+                    { assignComp }
                     { viewComp }
                 </div>
 
@@ -119,6 +122,8 @@ class UserManagement extends React.Component {
     };
 }
 
+export default UserManagement;
+/*
 function mapDispatchToProps(dispatch) {
     return {
       onDefineUserDetail: () => dispatch(defineUserDetail()),
@@ -130,6 +135,8 @@ function mapDispatchToProps(dispatch) {
       onUpdateUnit: text => dispatch(updateUnit(text))
     };
 }
+
+
 
 function mapStateToProps(state) {
     return{
@@ -148,3 +155,4 @@ function mapStateToProps(state) {
 }
         
 export default connect(mapStateToProps, mapDispatchToProps)(UserManagement);
+*/
