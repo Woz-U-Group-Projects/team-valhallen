@@ -1,8 +1,6 @@
 var express = require("express");
 var router = express.Router();
 var models = require("../models");
-//var passport = require('../services/passport');
-var authService = require('../services/auth');
 
 
 // router.get('/', function(req, res, next) {

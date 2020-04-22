@@ -85,20 +85,15 @@ class CreateTicket extends React.Component {
                   </select>
                 </form>
               </td>
-              <td>
-                <form>
-                  <select value={this.state.subCategoryValue} onChange={this.handleSubCategoryChange} ref={this.subCategory}>
-                    <option value="centralAirConditoning">Central Air Conditioning</option>
-                    <option value="plumbing">Heat</option>
-                  </select>
-                </form>
-              </td>
+              
               <td>
                 <form>
                   <select value={this.state.priorityValue} onChange={this.handlePriorityChange} ref={this.priority}>
-                    <option value="highP">High Priority</option>
-                    <option value="mediumP">Medium Priority</option>
-                    <option value="lowP">Low Priority</option>
+                    <option value= {1} >High Priority</option>
+                    <option value={2}>Medium-High Priority</option>
+                    <option value={3}>Medium Priority</option>
+                    <option value={4}>Medium-Low Priority</option>
+                    <option value={5}>Low Priority</option>
                   </select>
                 </form>
               </td>

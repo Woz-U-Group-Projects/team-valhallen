@@ -34,4 +34,10 @@ export const updateUnit = (text) => (
     }
 )
 
+export const details = (text) => (
+    {
+        type: "DETAILS"
+    }
+)
+
 

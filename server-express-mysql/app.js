@@ -4,8 +4,6 @@ var cookieParser = require("cookie-parser");
 var logger = require("morgan");
 var models = require("./models");
 var cors = require("cors");
-var passport = require("passport");
-var session = require("express-session");
 
 var tasksRouter = require("./routes/tasks");
 var usersRouter = require("./routes/users");
@@ -22,9 +20,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 app.use(cors());
-app.use(session({ secret: 'perilous journey' }));
-app.use(passport.initialize());
-app.use(passport.session());
+
 
 app.use("/tasks", tasksRouter);
 app.use("/users", usersRouter);

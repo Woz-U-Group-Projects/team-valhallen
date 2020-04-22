@@ -1,5 +1,7 @@
 import React from "react";
 import "./App.css";
+
+import TenantDetails from "./components/TenantDetails";
 import UserPage from "./screens/UserPage";
 import Login from "./components/Login";
 import UserSignUp from"./components/UserSignUp";
@@ -13,8 +15,8 @@ function App() {
   return (
     <div className="App">
       
-      <Login />
-      <UserPage />
+      <TenantDetails />
+      
     </div>
   );
 }
