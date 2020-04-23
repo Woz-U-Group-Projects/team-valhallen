@@ -6,24 +6,19 @@ const UserDetailRetrieve = (props) => {
 
     const dispatch = useDispatch()
 
-    let initialPass = true;
-    if (initialPass) {
-    dispatch({ 
-        type: DEFINE_USER_DETAIL, 
+    dispatch({
+        type: DEFINE_USER_DETAIL,
         payload: {
+            fName: props.userDetail.fName,
+            lName: props.userDetail.lName,
             email: props.userDetail.email,
             password: props.userDetail.password,
             phone: props.userDetail.phone,
             userType: props.userDetail.userType
         }
     });
-    console.log(initialPass);
-    initialPass = false;
-    }
 
-    console.log(initialPass);
-
-    return ( 
+    return (
         <div></div>
     );
 }

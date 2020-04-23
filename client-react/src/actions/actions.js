@@ -11,12 +11,6 @@ export function defineUserDetail(text) {
     }
 }
 
-export function updateUserDetail(text) {
-    return {
-        type: UPDATE_USER_DETAIL
-    }
-}
-
 export function updateEmail(text) {
     return {
         type: UPDATE_EMAIL,
@@ -38,12 +32,6 @@ export function updatePhone(text) {
     }
 } 
 
-export function updateUserType(text) {
-    return {
-        type: UPDATE_USER_TYPE,
-        text
-    }
-} 
 
 
 
