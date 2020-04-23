@@ -18,12 +18,11 @@ module.exports = (sequelize, DataTypes) => {
       category: DataTypes.STRING,
       subCategory: DataTypes.STRING,
       access: DataTypes.BOOLEAN,
-      priority: DataTypes.STRING,
+      priority: DataTypes.INTEGER,
       status: DataTypes.STRING,
       assigned: DataTypes.BOOLEAN,
       dueDate: DataTypes.DATE,
       accessDate: DataTypes.DATE,
-      accessConfirm: DataTypes.BOOLEAN,
       mainNote: DataTypes.STRING
 
     },
