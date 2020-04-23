@@ -1,93 +1,44 @@
+//import { combineReducers } from 'redux'
+import {
+    DEFINE_USER_DETAIL,
+    UPDATE_EMAIL,
+    UPDATE_PASSWORD,
+    UPDATE_PHONE
+} from '../actions/actions'
+
 const initialState = {
-    details: [
-        {
-            email: "rescue183@yahoo.com",
-            password: "renegade",
-            phone: 8675309,
-            userType: "tenant",
-            unit: "69"
-        }
-    ],
-    updateEmail:"",
-    updatePassword:"",
-    updatePhone:"",
-    updateUserType:"",
-    updateUnit:"",
-    defineEmail:"",
-    definePassword:"",
-    definePhone:"",
-    defineUserType:"",
-    defineUnit:""
+    updateEmail: "update email",
+    updatePassword: "update password",
+    updatePhone: "update phone"
 };
 
-function editUserReducer(state = initialState, action) {
-    switch (action.type) {
-        case 'DEFINE_USER_DETAIL':
+function editUserReducer(state = initialState, { type, payload }) {
+    switch (type) {
+        case DEFINE_USER_DETAIL:
             return {
                 ...state,
-                details: [
-                    ...state.details,
-                    {
-                        email: state.defineEmail,
-                        password: state.definePassword,
-                        phone: state.definePhone,
-                        userType: state.defineUserType,
-                        unit: state.defineUnit
-                    }
-                ],
-                defineEmail:"",
-                definePassword:"",
-                definePhone:"",
-                defineUserType:"",
-                defineUnit:""
+                updateEmail: payload.email,
+                updatePassword: payload.password,
+                updatePhone: payload.phone
             };
-        case 'UPDATE_USER_DETAIL':
+        case UPDATE_EMAIL:
             return {
                 ...state,
-                details: [
-                    ...state.details,
-                    {
-                        email: state.updateEmail,
-                        password: state.updatePassword,
-                        phone: state.updatePhone,
-                        userType: state.updateUserType,
-                        unit: state.updateUnit
-                    }
-                ],
-                updateEmail:"",
-                updatePassword:"",
-                updatePhone:"",
-                updateUserType:"",
-                updateUnit:""
+                updateEmail: payload
             };
-        case 'UPDATE_EMAIL':
+        case UPDATE_PASSWORD:
             return {
                 ...state,
-                updateEmail: action.text
+                updatePassword: payload
             };
-        case 'UPDATE_PASSWORD':
+        case UPDATE_PHONE:
             return {
                 ...state,
-                updatePassword: action.text
-            };
-        case 'UPDATE_PHONE':
-            return {
-                ...state,
-                updatePhone: action.text
-            };
-        case 'UPDATE_USER_TYPE':
-            return {
-                ...state,
-                updateUserType: action.text
-            };
-        case 'UPDATE_UNIT':
-            return {
-                 ...state,
-                updateUnit: action.text
+                updatePhone: payload
             };
         default:
             return state;
     }
 }
 
-export default editUserReducer;
+export default editUserReducer
