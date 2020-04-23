@@ -4,6 +4,12 @@ export const addUser = () => (
     }
 )
 
+export const updateUser = () => (
+    {
+        type: 'UPDATE_USER'
+    }
+)
+
 export const updateEmail = (text) => (
     {
         type: "UPDATE_EMAIL"

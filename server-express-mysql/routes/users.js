@@ -2,51 +2,69 @@ var express = require("express");
 var router = express.Router();
 var models = require("../models");
 
-router.get("/", function(req, res, next) {
-  models.User.findAll().then(users => res.json(users));
+//GET LIST OF NEW USERS
+router.get("/new", function(req, res, next) {
+  models.User.findAll({
+    where:{ userType: null }  //approved: false
+  }).then(users => res.json(users));
 });
 
+//GET LIST OF TENANTS
+router.get("/tenants", function(req, res, next) {
+  models.User.findAll({
+    where:{ userType: "tenant" }
+  }).then(users => res.json(users));
+});
+
+//GET LIST OF TECHNICIANS
 router.get("/techs", function(req, res, next) {
   models.User.findAll({
-    where:{ userType: "technician" }
+    where:{ userType: "technician" } 
   }).then(users => res.json(users));
 });
 
+//GET LIST OF MANAGERS
 router.get("/mgrs", function(req, res, next) {
   models.User.findAll({
-    where:{ userType: "property manager" }
+    where:{ userType: "propertyManager" }
   }).then(users => res.json(users));
 });
 
+//GET SELECTED USER BY USERID
 router.get("/:id", function(req, res, next) {       //get userID from DB
   let userId = parseInt(req.params.id);             
   models.User.findByPk(userId)
     .then(user => res.json(user));                  //return user as json obj
 });
 
-
+//UPDATE USER INFORMATION
 router.put("/:id", function(req, res, next) {
   models.User.update(
     {
-      name: req.body.name,
-      complete: req.body.complete
+      email: req.body.newEmail,
+      password: req.body.newPassword,
+      phone: req.body.newPhone
     },
     {
-      where: { userId: parseInt(req.params.userId) }
+      where: { userId: parseInt(req.params.id) }
     }
   ).then(user => res.json(user));
 });
 
+//SIGN UP NEW USER
 router.post("/signup", function(req, res, next) {
   let newUser = new models.User();
-  newUser.fName = req.body.fName;
   newUser.lName = req.body.lName;
+  newUser.fName = req.body.fName;
   newUser.email = req.body.email;
-  newUser.password = req.body.password;
   newUser.phone = req.body.phone;
+  newUser.password = req.body.password;
   newUser.userType = req.body.userType;
   newUser.save().then(user => res.json(user));
 });
+
+
+
 
 
 //login router --------------------------------------------------------------*

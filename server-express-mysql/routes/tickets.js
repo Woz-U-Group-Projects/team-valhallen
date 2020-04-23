@@ -8,11 +8,12 @@ router.get("/", function(req, res, next) {
 
 router.post("/", function(req, res, next) {
   let newTicket = new models.Ticket();
+  newTicket.unitId = req.body.unitId;
   newTicket.category = req.body.category;
-  newTicket.subCategory = req.body.subCategory;
   newTicket.priority = req.body.priority;
   newTicket.access = req.body.access;
   newTicket.note = req.body.note;
+  newTicket.status = req.body.status
   newTicket.save().then(tickets => res.json(tickets));
 });
 

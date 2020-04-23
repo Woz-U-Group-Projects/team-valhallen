@@ -1,61 +1,88 @@
 import React from "react";
 import axios from "axios";
-import TenantDetail from "./TenantDetail";
+import TenantDetailEdit from "./TenantDetailEdit";
+import TenantDetailRetrieve from "./TenantDetailRetrieve";
 import { connect } from 'react-redux';
-import { details, updateEmail, updatePassword, updatePhone, updateUserType, updateUnit } from '../actions/actions';
+import { updateFirstName, updateLastName, updateEmail, updatePhone } from '../actions/tenantActions';
 import '../task.min.css'
+import CreateTicketModal from "./CreateTicketModal";
+import Card from 'react-bootstrap/Card';
 
 class TenantDetails extends React.Component {
-  constructor(props) {
+  constructor (props) {
     super(props);
-    this.state = { 
-      users: [],                    // used to store array of users
-      viewSelected: false,          // used to determine if user view is selected
-      selectedUser: '',             // used to pass selected userId to child component 
-      user: {}                     // used to pass user details
-    };   
+    this.state = {
+      users: [],                    // used to store array of users 
+      user: {},                     // used to pass user details
+      viewConfirm: false,
+      newTrigger: false,
+      viewUserId: ''                   // used to pass user details
+    };
+    this.getTenants = this.getTenants.bind(this)
+    this.viewUser = this.viewUser.bind(this)
   }
 
   componentDidMount() {
-    this.getUsers();
+    this.getTenants();
+    this.viewUser();
   }
 
-  getUsers = () => {
-    let url = "http://localhost:3001/users/";     
-    axios.get(url).then(response => this.setState({ users: response.data })); 
-    this.setState({ viewSelected: false });
+  getTenants() {
+    let url = "http://localhost:3001/users/tenants";
+    axios.get(url).then(response => this.setState({ users: response.data }));
+    this.setState({ viewConfirm: false, newTrigger: false });
   };
 
-  viewUser = (id) => {
-    this.setState({ viewSelected: true, selectedUser: id });      // viewSelected for rendering user detail component
-    let url = "http://localhost:3001/users/" + id;
+
+  viewUser(id) {
+    this.setState({ viewConfirm: true });
+    let url = "http://localhost:3001/users/" + 1;
     axios.get(url, { userid: id }).then(response => {
       this.setState({ user: response.data })
     });
+    this.setState({ viewUserId: id });
+    console.log("View User #" + id);
+  };
+
+  updateUser(evt) {
+    let url = "http://localhost:3001/users/" + evt.target.dataset.id;
+    axios.put(url, {
+      newFirstName: evt.target.dataset.fname,
+      newLastName: evt.target.dataset.lname,
+      newEmail: evt.target.dataset.email,
+      newPhone: evt.target.dataset.phone
+    }).then(alert("User Details Have Beed Saved"))
+    console.log(evt.target.dataset.email);
+    
+    console.log(evt.target.dataset.phone);
   };
 
   render() {
-    const viewSelected = this.state.viewSelected;    //stores if view user is selected
-    let viewComp; 
+    const viewSelected = this.state.viewConfirm;    //stores if view user is selected
+    const newTrigger = this.state.newTrigger;       //confirms user detail component render
+    let viewComp, assignComp;
 
-    if (viewSelected){                          // renders userDetail if true
-      viewComp = <TenantDetail
-        userId={this.state.selectedUser}
-        tenantDetails={this.state.user} 
-        details={this.props.details} 
-        onUpdateEmail={this.props.onUpdateEmail}
-        onUpdatePassword={this.props.onUpdatePassword}
-        onUpdatePhone={this.props.onUpdatePhone}
-        onUpdateUserType={this.props.onUpdateUserType}
-        onUpdateUnit={this.props.onUpdateUnit}
-        />;
+    if (viewSelected & newTrigger === false) {                          // renders userDetail if true
+      assignComp = <TenantDetailRetrieve tenantDetail={this.state.user} />
+      viewComp = <TenantDetailEdit
+        tenantDetail={this.state.user}
+      />;
+    }
+    if (viewSelected & newTrigger) {
+      //viewComp = <NewUserConfirm 
+      //  userDetail={this.state.user}
+      //  updateCcall={this.updateUser}
+      //  deleteCall={this.deleteUser} 
+      ///>;
+      console.log("Render New User Confirm")
     }
 
     return (
       <div>
-        
-        <h3>List of Users</h3>
-        <table>
+
+        {/* <h3>List of Users</h3> */}
+
+        {/* <table>
           <tbody>
             <tr>
               <th>User Name</th>
@@ -64,22 +91,25 @@ class TenantDetails extends React.Component {
               <th></th>
             </tr>
 
-            {this.state.users.map(p => (
-              <tr key={p.userId}>
-                <td>{p.fName} {p.lName}</td> 
-                <td>{p.email}</td> 
-                <td>{p.phone}</td> 
-                <td><button onClick={() => this.viewUser(p.userId)}>View User</button></td>
-              </tr>
-            ))}
+
+            <tr>
+              <td>{this.state.user.fName} {this.state.user.lName}</td>
+              <td>{this.state.user.email}</td>
+              <td>{this.state.user.phone}</td>
+              <td><button onClick={this.viewButton} >Edit Info</button></td>
+
+            </tr>
+
 
           </tbody>
-        </table>
+        </table> */}
 
-        <div className="detail-container">
-          { viewComp }
-        </div>
-
+        
+        {assignComp}
+        {viewComp}
+        <Card style={{ width: '18rem' }}>
+          <CreateTicketModal />
+        </Card>
       </div>
     );
   }
@@ -87,21 +117,19 @@ class TenantDetails extends React.Component {
 
 function mapDispatchToProps(dispatch) {
   return {
+    onUpdateFirstName: text => dispatch(updateFirstName(text)),
+    onUpdateLastName: text => dispatch(updateLastName(text)),
     onUpdateEmail: text => dispatch(updateEmail(text)),
-    onUpdatePassword: text => dispatch(updatePassword(text)),
-    onUpdatePhone: text => dispatch(updatePhone(text)),
-    onUpdateUserType: text => dispatch(updateUserType(text)),
-    onUpdateUnit: text => dispatch(updateUnit(text))
+    onUpdatePhone: text => dispatch(updatePhone(text))
   };
 }
 function mapStateToProps(state) {
-  return{
+  return {
     details: state.details,
+    updateFirstName: state.updateFirstName,
+    updateLastName: state.updateLastName,
     updateEmail: state.updateEmail,
-    updatePassword: state.updatePassword,
-    updatePhone: state.updatePhone,
-    updateUserType: state.updateUserType,
-    updateUnit: state.updateUnit
+    updatePhone: state.updatePhone
   };
 }
 
@@ -141,7 +169,7 @@ export default connect(mapStateToProps, mapDispatchToProps)(TenantDetails);
 //     render() {
 //         const viewSelected = this.state.viewSelected;    //stores if view user is selected
 //         let viewComp; 
-    
+
 //         if (viewSelected){                          // renders userDetail if true
 //           viewComp = <UserDetail
 //             userId={this.state.selectedUser}
@@ -189,8 +217,8 @@ export default connect(mapStateToProps, mapDispatchToProps)(TenantDetails);
 // }
 // function mapDispatchToProps(dispatch) {
 //     return {
-      
-      
+
+
 //     };
 //   }
 

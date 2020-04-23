@@ -8,14 +8,16 @@ module.exports = (sequelize, DataTypes) => {
         primaryKey: true,
         autoIncrement: true
       },
-      unitId: DataTypes.INTEGER,
+      unitId: {
+        type: DataTypes.INTEGER,
+        allowNull: false
+      },
       userId: DataTypes.INTEGER,
       note: DataTypes.STRING,
       techid: DataTypes.INTEGER,
       complete: DataTypes.BOOLEAN,
       creationDate: DataTypes.DATE,
       category: DataTypes.STRING,
-      subCategory: DataTypes.STRING,
       access: DataTypes.BOOLEAN,
       priority: DataTypes.INTEGER,
       status: DataTypes.STRING,
@@ -27,7 +29,7 @@ module.exports = (sequelize, DataTypes) => {
     },
     {}
   );
-  Ticket.associate = function(models) {
+  Ticket.associate = function (models) {
     // associations can be defined here
   };
   return Ticket;

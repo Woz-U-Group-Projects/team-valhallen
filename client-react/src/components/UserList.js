@@ -2,7 +2,7 @@ import React from "react";
 import axios from "axios";
 import UserDetail from "./UserDetail";
 import { connect } from 'react-redux';
-import { details, updateEmail, updatePassword, updatePhone, updateUserType, updateUnit } from '../actions/actions';
+import { updateEmail, updatePassword, updatePhone, updateUserType, updateUnit } from '../actions/actions';
 import '../task.min.css'
 
 class UserList extends React.Component {
