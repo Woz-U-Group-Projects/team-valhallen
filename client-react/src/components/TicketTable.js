@@ -5,8 +5,8 @@ import Card from 'react-bootstrap/Card';
 export default class TicketTable extends React.Component {
     render() {
         return (
-            <Card text-align="center">
-                <Card.Header text-align="center">
+            <Card >
+                <Card.Header >
                     {this.props.headerTitle}
                 </Card.Header>
                 <Card.Body>
