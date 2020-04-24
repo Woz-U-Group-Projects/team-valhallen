@@ -2,7 +2,7 @@ var express = require("express");
 var router = express.Router();
 var models = require("../models");
 //var passport = require('../services/passport');
-var authService = require('../services/auth');
+// var authService = require('../services/auth');
 
 //GET LIST OF NEW USERS
 router.get("/new", function(req, res, next) {
@@ -122,8 +122,8 @@ router.post('/login', function(req, res, next){
       });
     }
     if (user) {
-      let token = authService.signUser(user);
-      res.cookie('jwt', token);
+      // let token = authService.signUser(user);
+      // res.cookie('jwt', token);
       res.send('Login successful');
     } else {
       console.log('wrong Password');
