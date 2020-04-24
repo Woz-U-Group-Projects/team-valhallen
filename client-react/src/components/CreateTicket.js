@@ -43,15 +43,7 @@ class CreateTicket extends React.Component {
     });
   };
 
-  // handleCategoryChange(event) {
-  //   this.setState({ categoryValue: event.target.value });
-  // }
-  // handlePriorityChange(event) {
-  //   this.setState({ priorityValue: event.target.value });
-  // }
-  // handleAccessChange(event) {
-  //   this.setState({ accessValue: event.target.value });
-  // }
+  
 
   render() {
     return (
@@ -97,60 +89,7 @@ class CreateTicket extends React.Component {
             </Button>
       </Form>
 
-      // <div>
-      //   <h1>Create New Maintenance Request Ticket</h1>
-      //   <table striped bordered hover>
-      //     <thead>
-      //       <tr>
-      //         <th>Unit Number</th>
-      //         <th>Category</th>
-      //         <th>Service Priority Level</th>
-      //         <th>Property Access</th>
-      //         <th>Problem Notes</th>
-      //         <th></th>
-      //       </tr>
-      //     </thead>
-      //     <tbody>
-      //       <tr >
-      //         <td><input ref={this.unitId} /></td>
-      //         <td>
-      //           <form>
-      //             <select /*value={this.state.categoryValue} onChange={this.handleCategoryChange} */ ref={this.category}>
-      //               <option value="electrical">Electrical</option>
-      //               <option value="plumbing">Plumbing</option>
-      //               <option defaultValue="hvac">HVAC</option>
-      //               <option value="appliances">Appliances</option>
-      //             </select>
-      //           </form>
-      //         </td>
-
-      //         <td>
-      //           <form>
-      //             <select /*value={this.state.priorityValue} onChange={this.handlePriorityChange}*/ ref={this.priority}>
-      //               <option value={1} >High Priority</option>
-      //               <option value={2}>Medium-High Priority</option>
-      //               <option value={3}>Medium Priority</option>
-      //               <option value={4}>Medium-Low Priority</option>
-      //               <option value={5}>Low Priority</option>
-      //             </select>
-      //           </form>
-      //         </td>
-      //         <td>
-      //           <form>
-      //             <select /*value={this.state.accessValue} onChange={this.handleAccessChange}*/ ref={this.access}>
-      //               <option value="true" >Access Granted</option>
-      //               <option value="false" >Access Denied</option>
-      //             </select>
-      //           </form>
-      //         </td>
-      //         <td><input ref={this.note} /></td>
-      //         <td><button onClick={this.createTicket}>Create Ticket</button></td>
-      //       </tr>
-      //     </tbody>
-      //   </table>
-      //   <hr />
-      //   <div><h4>Current Ticket Status</h4><h5>{this.state.status}</h5></div>
-      // </div>
+      
     );
   }
 }
