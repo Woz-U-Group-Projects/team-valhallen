@@ -5,6 +5,7 @@ import TenantDetails from "./components/TenantDetails";
 import UserPage from "./screens/UserPage";
 import Login from "./components/Login";
 import UserSignUp from"./components/UserSignUp";
+import CreateTicketModal from "./components/CreateTicketModal";
 //import UserPage from "./screens/UserPage";
 //import ManagerHome from "./screens/ManagerHome";
 //import Login from "./components/Login";
@@ -15,7 +16,7 @@ function App() {
   return (
     <div className="App">
       
-     <TenantDetails />
+     <CreateTicketModal />
       
     </div>
   );
