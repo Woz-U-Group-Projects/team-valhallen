@@ -35,6 +35,7 @@ router.get("/mgrs", function(req, res, next) {
 
 router.post("/techSkills", function(req, res, next) {
     let newTechSkill = new models.TechSkills();
+    newTechSkill.userId = req.body.userId;
     newTechSkill.electrical = req.body.electrical;
     newTechSkill.plumbing = req.body.plumbing;
     newTechSkill.hvac = req.body.hvac;
@@ -45,6 +46,18 @@ router.post("/techSkills", function(req, res, next) {
 });
 
 //-----------------------------Tech skills End------------------------------------
+
+
+router.put("/newConfirmType", function(req, res, next) {
+  models.User.update(
+    {
+      userType: req.body.userType
+    },
+    {
+      where: { userId: req.body.userId }
+    }
+  );
+});
 
 //------------------------------User unit #---------------------------------------
 router.put("/unitNumber", function(req, res, next) {

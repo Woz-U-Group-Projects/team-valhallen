@@ -3,14 +3,14 @@ module.exports = (sequelize, DataTypes) => {
   const TechSkills = sequelize.define(
     "TechSkills",
     {
-      userId: {
-        type: DataTypes.INTEGER,
-        foreignKey: true
-      },
       techId: {
         type: DataTypes.INTEGER,
         primaryKey: true,
         autoIncrement: true
+      },
+      userId: {
+        type: DataTypes.INTEGER,
+        foreignKey: true
       },
       electrical: DataTypes.BOOLEAN,
       plumbing: DataTypes.BOOLEAN,
