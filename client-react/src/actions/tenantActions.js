@@ -13,6 +13,12 @@ export function defineTenantDetail(text) {
     }
 }
 
+export function updateTenantDetail(text) {
+    return {
+        type: UPDATE_TENANT_DETAIL
+    }
+}
+
 export function updateFirstName(text) {
     return {
         type: UPDATE_FIRSTNAME,

@@ -7,10 +7,16 @@ import * as serviceWorker from './serviceWorker';
 import { render } from 'react-dom';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
-import rootReducer from './reducers';
+import reducer from './reducers/edituser';
 
+const store = createStore(
+    reducer,
+    undefined
+);
 
-const store = createStore(rootReducer);
+console.log(store.getState());
+
+const unsubscribe = store.subscribe(() => console.log(store.getState()));
 
 render( 
     <Provider store={store}>
@@ -19,6 +25,7 @@ render(
     document.getElementById('root')
 );
 
+unsubscribe();
 
 /*********************ROUTING WITH SWITCH CASE***********************
 import ConfigPage from './screens/ConfigPage';
@@ -27,7 +34,6 @@ import ManagerHome from './screens/ManagerHome';
 import TechHome from './screens/TechHome';
 import TenantHome from './screens/TenantHome';
 import UserPage from './screens/UserPage';
-
 const Index = ({ pathname }) => {
     switch (pathname) {
         case '/manager':
@@ -44,13 +50,9 @@ const Index = ({ pathname }) => {
             return <LogIn />;
     }
 }
-
 let pathname = window.location.pathname;
-
 ReactDOM.render(<Index pathname={pathname} />, document.getElementById('root'));
-
 window.addEventListener('popstate', () => pathname = window.location.pathname);
-
 **************************************************************************/
 
 
