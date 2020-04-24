@@ -9,8 +9,7 @@ module.exports = (sequelize, DataTypes) => {
         autoIncrement: true
       },
       userId: DataTypes.INTEGER,
-      techId: DataTypes.INTEGER,
-      ticketId: DataTypes.INTEGER
+      unitName: DataTypes.STRING
     },
     {}
   );
