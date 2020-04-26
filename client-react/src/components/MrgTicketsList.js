@@ -37,7 +37,7 @@ class MrgTicketsList extends React.Component {
         event.preventDefault()
         const { viewCall } = this.props
         viewCall(event.target.name)
-      };
+    };
 
     render() {
         return (
@@ -68,7 +68,7 @@ class MrgTicketsList extends React.Component {
                             <tr key={t.ticketId}>
                                 <td>{t.unitId}</td>
                                 <td>{t.userId}</td>
-                                <td>{t.createdAt}</td>
+                                <td>{t.creationDate}</td>
                                 <td><h6>{t.category}</h6></td>
                                 <td>{t.status}</td>
                                 <td>{t.techid}</td>

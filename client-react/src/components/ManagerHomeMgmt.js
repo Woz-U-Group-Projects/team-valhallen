@@ -2,6 +2,7 @@ import React from 'react';
 import axios from 'axios';
 
 import MrgTicketsList from './MrgTicketsList';
+import TicketView from './TicketView';
 
 
 class ManagerHomeMgmt extends React.Component {
@@ -9,10 +10,12 @@ class ManagerHomeMgmt extends React.Component {
         super(props) 
         this.state = { 
             tickets: [],
+            users: [],
             ticket: [],
             linkedUser: [],
             viewConfirm: false,
-            newTrigger: false 
+            newTrigger: false,
+            completeTrigger: false 
         }
         this.getNewTickets = this.getNewTickets.bind(this)
         this.getPendingTickets = this.getPendingTickets.bind(this)
@@ -25,11 +28,15 @@ class ManagerHomeMgmt extends React.Component {
         this.getNewTickets();
     }
 
+    //  shouldComponentUpdate(nextProps, nextState) {
+    //      if (this.state.)
+    //  };
+
     getNewTickets() {
         let urla = "http://localhost:3001/ticketHistory/new";
-        let urlb = "http://localhost:3001/ticketHistory/user";
         axios.get(urla).then(response => this.setState({ tickets: response.data }));
-        axios.get(urlb).then(response => this.setState({ linkedUser: response.data }));
+        let urlb = "http://localhost:3001/users/tenants";
+        axios.get(urlb).then(response => this.setState({ users: response.data }));
         this.setState({ viewConfirm: false });
     };
 
@@ -53,12 +60,36 @@ class ManagerHomeMgmt extends React.Component {
 
     viewTicket(id) {
         this.setState({ viewConfirm: true });
-        let url = "http://localhost:3001/ticketHistory/" + id;
-        axios.get(url, { ticketId: id }).then(response => {
+        let urla = "http://localhost:3001/ticketHistory/" + id;
+        axios.get(urla).then(response => {
             this.setState({ ticket: response.data })
         });
-        //this.setState({ viewUserId: id });
-        console.log("View Ticket #" + id);
+        //this.getUserData(this.state.ticket.userId);
+        setTimeout(this.getUserData(this.state.ticket.userId), 200);
+        //let tktUserId = this.state.ticket.userId;
+        //let urlb = "http://localhost:3001/users/" + tktUserId;
+        //axios.get(urlb).then(response => {
+        //    this.setState({ linkedUser: response.data })
+        //});
+    };
+
+    getUserData(id) {
+        //let tktUserId = this.state.ticket.userId;
+        console.log("Linked User ID " + id);
+        let url = "http://localhost:3001/users/" + id;
+        axios.get(url).then(response => {
+            this.setState({ linkedUser: response.data })
+        });
+        console.log(this.state.linkedUser);
+    };
+
+    assignTech(evt) {
+        //let url = "http://localhost:3001/users/" + evt.target.dataset.id;     
+        //axios.put(url, { 
+            //newEmail: evt.target.dataset.email,
+            //newPassword: evt.target.dataset.pass, 
+            //newPhone: evt.target.dataset.phone
+        //}).then(alert("User Details Have Beed Saved"))
     };
 
     archiveTicket(id) {
@@ -67,17 +98,34 @@ class ManagerHomeMgmt extends React.Component {
 
     render() {
 
+        const viewSelected = this.state.viewConfirm;
+        let viewComp;
+
+        if (viewSelected) {
+            viewComp = <TicketView 
+                userDetail={this.state.linkedUser}
+                ticketDetail={this.state.ticket}
+                updateCall={this.assignTech}
+                archiveCall={this.archiveTicket}
+            />
+        }
+
         return(
             <div>
                 
                 <MrgTicketsList 
                 tickets={this.state.tickets}
+                users={this.state.users}
                 newTktCall={this.getNewTickets}
                 pendTktCall={this.getPendingTickets}
                 compTktCall={this.getCompletedTickets}
                 archTktCall={this.getArchivedTickets}
                 viewCall={this.viewTicket}
                 />
+
+                <div>
+                    {viewComp}
+                </div>
 
             </div>
         )        

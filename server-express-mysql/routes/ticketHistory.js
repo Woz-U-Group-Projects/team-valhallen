@@ -1,11 +1,15 @@
 var express = require("express");
 var router = express.Router();
+const mysql = require('mysql2');
 var models = require("../models");
+
 
 
 router.get("/", function (req, res, next) {
     models.Ticket.findAll().then(tickets => res.json(tickets));
 });
+
+/*****************Manager Ticket List Queries**************** */
 
 router.get('/new', function (req, res, next) {
     models.Ticket.findAll({
@@ -31,16 +35,13 @@ router.get('/archived', function (req, res, next) {
     }).then(tickets => res.json(tickets));
 });
 
-router.get('/user', function (req, res, next) {
-    models.User.findAll({
-        where:
-    })
-});
+/******************Manager Selected Ticket ***********************/
 
 router.get("/:id", function(req, res, next) {       
     let ticketId = parseInt(req.params.id);             
     models.Ticket.findByPk(ticketId)
-      .then(user => res.json(ticket));                 
+      .then(ticket => res.json(ticket));                 
 });
+
 
 module.exports = router;
