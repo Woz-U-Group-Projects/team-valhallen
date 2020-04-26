@@ -7,7 +7,7 @@ import Button from 'react-bootstrap/Button';
 class CreateTicket extends React.Component {
   constructor (props) {
     super(props);
-    this.state = { tickets: [], status: 'Pending' }
+    this.state = { tickets: [], status: 'Pending', mainNote: 'technician notes...' }
     this.unitId = React.createRef();
     this.category = React.createRef();
     this.priority = React.createRef();
@@ -32,7 +32,8 @@ class CreateTicket extends React.Component {
       priority: this.priority.current.value,
       access: this.access.current.value,
       note: this.note.current.value,
-      status: this.state.status
+      status: this.state.status,
+      mainNote: this.state.mainNote
     }).then(response => {
       this.getTickets();
       this.unitId.current.value = "";

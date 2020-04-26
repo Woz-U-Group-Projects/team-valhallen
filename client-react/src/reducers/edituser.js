@@ -3,13 +3,22 @@ import {
     DEFINE_USER_DETAIL,
     UPDATE_EMAIL,
     UPDATE_PASSWORD,
-    UPDATE_PHONE
+    UPDATE_PHONE,
+
+    //-----ticket Imports----------------*
+    DEFINE_TICKET_DETAIL,
+    UPDATE_TICKET_STATUS,
+    UPDATE_TICKET_NOTE
+
+
 } from '../actions/actions'
 
 const initialState = {
     updateEmail: "update email",
     updatePassword: "update password",
-    updatePhone: "update phone"
+    updatePhone: "update phone",
+    updaetTicketStatus: "Pending",
+    updateTicketNote: "working on..."
 };
 
 function editUserReducer(state = initialState, { type, payload }) {
@@ -36,6 +45,25 @@ function editUserReducer(state = initialState, { type, payload }) {
                 ...state,
                 updatePhone: payload
             };
+            //----------Ticket Reducer------------------------*
+
+        case DEFINE_TICKET_DETAIL:
+            return {
+                ...state,
+                updateTicketStatus: payload.status,
+                updateTicketNote: payload.mainNote
+            };
+        case UPDATE_TICKET_STATUS:
+            return {
+                ...state,
+                updateTicketStatus: payload
+            };
+        case UPDATE_TICKET_NOTE:
+            return {
+                ...state,
+                updateTicketNote: payload
+            };
+            //---------End Ticket Reducer ---------------------*
         default:
             return state;
     }

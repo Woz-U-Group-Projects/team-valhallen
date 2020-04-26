@@ -15,7 +15,7 @@ class TicketHistory extends React.Component {
     }
 
     getTickets = () => {
-        let url = "http://localhost:3001/ticketHistory/";
+        let url = "http://localhost:3001/tickets/";
         axios.get(url).then(response => this.setState({ tickets: response.data }));
     };
 
@@ -36,17 +36,17 @@ class TicketHistory extends React.Component {
                     </thead>
                     <tbody>
 
-                        {/* {this.state.tickets.map(t => ( */}
-                            <tr key={this.state.ticketId}>
-                                <td>{this.state.createdAt}</td>
-                                <td><h6>{this.state.category}</h6><hr /><h6>{this.state.subCategory}</h6><hr />{this.state.note}</td>
-                                <td>{this.state.techid}</td>
-                                <td>{this.state.priority}</td>
-                                <td>{this.state.updatedAt}</td>
-                                <td>{this.state.access}</td>
+                        {this.state.tickets.map(t => ( 
+                            <tr key={t.ticketId}>
+                                <td>{t.createdAt}</td>
+                                <td>{t.category}<hr />{t.note}</td>
+                                <td>{t.techid}</td>
+                                <td>{t.priority}</td>
+                                <td>{t.updatedAt}</td>
+                                <td>{t.access}</td>
 
                             </tr>
-                        {/* ))} */}
+                         )) }
 
                     </tbody>
                 </Table>
