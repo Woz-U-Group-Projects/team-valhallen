@@ -3,9 +3,7 @@ export const UPDATE_TENANT_DETAIL = 'UPDATE_TENANT_DETAIL'
 export const UPDATE_FIRSTNAME = 'UPDATE_FIRSTNAME'
 export const UPDATE_LASTNAME = 'UPDATE_LASTNAME'
 export const UPDATE_EMAIL = 'UPDATE_EMAIL'
-export const UPDATE_PASSWORD = 'UPDATE_PASSWORD'
 export const UPDATE_PHONE = 'UPDATE_PHONE'
-export const UPDATE_USER_TYPE = 'UPDATE_USER_TYPE'
 
 export function defineTenantDetail(text) {
     return {
@@ -36,13 +34,6 @@ export function updateLastName(text) {
 export function updateEmail(text) {
     return {
         type: UPDATE_EMAIL,
-        text
-    }
-}   
-
-export function updatePassword(text) {
-    return {
-        type: UPDATE_PASSWORD,
         text
     }
 }

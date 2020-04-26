@@ -93,6 +93,21 @@ router.put("/:id", function(req, res, next) {
   ).then(user => res.json(user));
 });
 
+//UPDATE TENANT INFORMATION
+router.put("/tenant/:id", function(req, res, next) {
+  models.User.update(
+    {
+      fName: req.body.newFirstName,
+      lName: req.body.newLastName,
+      email: req.body.newEmail,
+      phone: req.body.newPhone
+    },
+    {
+      where: { userId: parseInt(req.params.id) }
+    }
+  ).then(user => res.json(user));
+});
+
 //SIGN UP NEW USER
 router.post("/signup", function(req, res, next) {
   let newUser = new models.User();

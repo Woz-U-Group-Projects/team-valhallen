@@ -8,8 +8,10 @@ import { render } from 'react-dom';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 import reducer from './reducers/edituser';
+//import reducer from './reducers/tenantReducer'
 
 const store = createStore(
+    
     reducer,
     undefined
 );

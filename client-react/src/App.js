@@ -4,6 +4,7 @@ import UserPage from "./screens/UserPage";
 //import ManagerHome from "./screens/ManagerHome";
 //import Login from "./components/Login";
 import TenantDetails from './components/TenantDetails';
+import TenantHome from './screens/TenantHome';
 import UserList from "./components/UserList";
 import TicketHistory from "./components/TicketHistory";
 import UserManagement from "./components/UserManagement";
@@ -18,6 +19,7 @@ function App() {
     <div className="App">
       <CreateTicketModal />
       
+      <TenantHome />
       <TechTicketManagement />
 
     </div>

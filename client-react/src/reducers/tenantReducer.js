@@ -6,15 +6,14 @@ import {
     UPDATE_FIRSTNAME,
     UPDATE_LASTNAME,
     UPDATE_EMAIL,
-    UPDATE_PASSWORD,
     UPDATE_PHONE
 } from '../actions/tenantActions'
 
 const initialState = {
+    
     updateFirstName: "update firstname",
     updateLastName: "update lastname",
-    updateEmail: "update email",
-    updatePassword: "update password",
+    updateEmail: "update test",
     updatePhone: "update phone"
 };
 
@@ -28,7 +27,6 @@ function tenantReducer(state = initialState, { type, payload }) {
                 updateFirstName: payload.fName,
                 updateLastName: payload.lName,
                 updateEmail: payload.email,
-                updatePassword: payload.password,
                 updatePhone: payload.phone
             };
 
@@ -48,12 +46,6 @@ function tenantReducer(state = initialState, { type, payload }) {
             return {
                 ...state,
                 updateEmail: payload
-            };
-
-        case UPDATE_PASSWORD:
-            return {
-                ...state,
-                updatePassword: payload
             };
 
         case UPDATE_PHONE:

@@ -1,7 +1,7 @@
 import React from "react";
 import '../task.min.css';
 import { useSelector, useDispatch } from 'react-redux'
-import { UPDATE_FIRSTNAME, UPDATE_LASTNAME, UPDATE_EMAIL, UPDATE_PHONE} from '../actions/tenantActions'
+import { UPDATE_FIRSTNAME, UPDATE_LASTNAME, UPDATE_EMAIL, UPDATE_PHONE} from '../actions/actions'
 
 
 
@@ -20,7 +20,7 @@ const TenantDetailEdit = (props) => {
 
   return (
     <div>
-      <h3>Tenant Details</h3>
+      <h3>Edit Details</h3>
       <div>
         <h4>{props.tenantDetail.fName} {props.tenantDetail.lName}</h4>
         <h5>{props.tenantDetail.email}</h5>
@@ -30,7 +30,7 @@ const TenantDetailEdit = (props) => {
       <label htmlFor="fname">First Name</label>
         <input type="text" name="fname" value={fName} onChange={event => dispatch({ type: UPDATE_FIRSTNAME, payload: event.target.value })} />
         <label htmlFor="lname">Last Name</label>
-        <input type="text" name="lname" value={lName} onChange={event => dispatch({ type: UPDATE_LASTNAME, payload: event.target.value })} />
+        <input type="text" name="lname" value={lName}  onChange={event => dispatch({ type: UPDATE_LASTNAME, payload: event.target.value })} />
         <label htmlFor="email">Email</label>
         <input type="text" name="email" value={email} onChange={event => dispatch({ type: UPDATE_EMAIL, payload: event.target.value })} />
         <label htmlFor="phone">Phone</label>
