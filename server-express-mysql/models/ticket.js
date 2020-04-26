@@ -21,6 +21,7 @@ module.exports = (sequelize, DataTypes) => {
       assigned: DataTypes.BOOLEAN,
       dueDate: DataTypes.DATE,
       completeDate: DataTypes.DATE,
+      archived: DataTypes.BOOLEAN,
       mainNote: {
         type: DataTypes.STRING,
         allowNull: true
