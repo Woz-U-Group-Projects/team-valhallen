@@ -15,7 +15,6 @@ module.exports = (sequelize, DataTypes) => {
       complete: DataTypes.BOOLEAN,
       creationDate: DataTypes.DATE,
       category: DataTypes.STRING,
-      subCategory: DataTypes.STRING,
       access: DataTypes.BOOLEAN,
       priority: DataTypes.INTEGER,
       status: DataTypes.STRING,

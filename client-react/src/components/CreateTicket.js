@@ -85,7 +85,7 @@ class CreateTicket extends React.Component {
           <Form.Control as="textarea" rows="3" ref={this.note} />
         </Form.Group>
         <Button variant="primary" onClick={this.createTicket}>
-          Save Changes
+          Submit Ticket
             </Button>
       </Form>
 

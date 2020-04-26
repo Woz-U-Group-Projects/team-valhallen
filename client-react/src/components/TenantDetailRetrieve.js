@@ -1,6 +1,6 @@
 import React from "react";
 import { useDispatch } from 'react-redux';
-import { DEFINE_TENANT_DETAIL } from "../actions/tenantActions";
+import { DEFINE_TENANT_DETAIL } from "../actions/actions";
 
 const TenantDetailRetrieve = (props) => {
 

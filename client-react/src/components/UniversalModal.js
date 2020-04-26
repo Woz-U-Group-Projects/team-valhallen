@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
+import TenantDetailRetrieve from './TenantDetailRetrieve';
+import TenantDetailEdit from './TenantDetailEdit';
 
 const UniversalModal = () => {
 
@@ -22,7 +24,7 @@ const UniversalModal = () => {
                     <Modal.Title></Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    {/* whatever you want goes here! */}
+                    <TenantDetailEdit />
                 </Modal.Body>
                 <Modal.Footer>
                     <Button variant="secondary" onClick={handleClose}>
