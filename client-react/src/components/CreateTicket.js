@@ -20,7 +20,7 @@ class CreateTicket extends React.Component {
   }
 
   getTickets = () => {
-    let url = "http://localhost:3001/tickets/";
+    let url = "http://localhost:3001/tickets/createTicket";
     axios.get(url).then(response => this.setState({ tickets: response.data }));
   };
 

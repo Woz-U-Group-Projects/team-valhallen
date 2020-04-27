@@ -8,8 +8,16 @@ module.exports = (sequelize, DataTypes) => {
         primaryKey: true,
         autoIncrement: true
       },
-      unitId: DataTypes.INTEGER,
-      userId: DataTypes.INTEGER,
+      unitId: {
+        type: DataTypes.INTEGER,
+        foreingKey: true,
+        autoIncrement: false
+      },
+      userId: {
+        type:DataTypes.INTEGER,
+        foreingKey: true,
+        autoIncrement: false
+      },
       note: DataTypes.STRING,
       techid: DataTypes.INTEGER,
       complete: DataTypes.BOOLEAN,
