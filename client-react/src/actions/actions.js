@@ -16,7 +16,7 @@ export const UPDATE_TICKET_NOTE = 'UPDATE_TICKET_NOTE'
 //----------------------------------------------------------*
 
 
-//---------User Actions ------------------------------------*
+//---------User/Tenant Actions ------------------------------------*
 
 export function defineUserDetail(text) {
     return {
@@ -66,7 +66,7 @@ export function updatePhone(text) {
         text
     }
 } 
-//-------End User Actions -------------------------------------*
+//-------End User/Tenant Actions -------------------------------------*
 
 //-------Ticket Actions ---------------------------------------*
 

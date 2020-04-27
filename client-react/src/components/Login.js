@@ -10,24 +10,25 @@ class Login extends React.Component {
     constructor (props) {
         super(props);
         this.state = {
-            user: {}
-            // value: 'tenant'    
+            users: [],
+            user: {},
+            value: 'tenant'
         };
         this.email = React.createRef();
         this.password = React.createRef();
-        // this.userStatus = this.userStatus.bind(this);
+        this.userStatus = this.userStatus.bind(this);
     }
     componentDidMount() {
         this.getData();
     }
 
-    // userStatus(event) {
-    //     this.setState({value: event.target.value});
-    //   }
+    userStatus(event) {
+        this.setState({ value: event.target.value });
+    }
 
     getData = () => {
-        let url = "http://localhost:3001/users/"; 
-        axios.get(url).then(response => this.setState({ user: response.data }));
+        let url = "http://localhost:3001/users/login";
+        axios.get(url).then(response => this.setState({ users: response.data }));
     };
 
     login = () => {
@@ -45,19 +46,6 @@ class Login extends React.Component {
     render() {
         return (
             <div>
-                {/* <h3>Login</h3>
-                <label>Email:</label><input ref={this.email} />
-                <label>Password:</label><input ref={this.password} />
-                <select value={this.state.value} onChange={this.userStatus}>
-                    <option  defaultValue="tenant">Tenant</option>
-                    <option value="manager">Manager</option>
-                    <option value="technician">Technician</option>
-                </select>
-                <button type="button" className="btn btn-primary" onClick={this.login}>Login</button>
-                <div>
-                    <button type="button" className="btn btn-primary" onClick={this.signup}>Signup</button>
-                </div> */}
-                <div>
                     <Form>
                         <Form.Group controlId="formBasicEmail">
                             <Form.Label>Email address</Form.Label>
@@ -75,17 +63,17 @@ class Login extends React.Component {
                             </Dropdown.Toggle>
 
                             <Dropdown.Menu value={this.state.value} onChange={this.userStatus}>
-                                <Dropdown.Item href="#/action-1">Tenant</Dropdown.Item>
-                                <Dropdown.Item href="#/action-2">Manager</Dropdown.Item>
-                                <Dropdown.Item href="#/action-3">Technician</Dropdown.Item>
+                                <Dropdown.Item href="#/tenant">Tenant</Dropdown.Item>
+                                <Dropdown.Item href="#/manager">Manager</Dropdown.Item>
+                                <Dropdown.Item href="#/technician">Technician</Dropdown.Item>
                             </Dropdown.Menu>
                         </Dropdown>
 
                         <Button type="button" className="btn btn-primary" onClick={this.login}>
                             Submit
-            </Button>
+                        </Button>
                     </Form>
-                </div>
+                
             </div>
 
         );
