@@ -11,16 +11,17 @@ import UserManagement from "./components/UserManagement";
 import CreateTicketModal from "./components/CreateTicketModal";
 import TechTicketManagement from "./components/TechTicketManagement";
 import CreateTicket from "./components/CreateTicket";
+import Login from "./components/Login";
 
 //This is where we combine components for rendering
 
 function App() {
   return (
     <div className="App">
-      <CreateTicketModal />
       
-      <TenantHome />
-      <TechTicketManagement />
+      <UserManagement />
+      {/* <TenantHome />
+      <TechTicketManagement /> */}
 
     </div>
   );
