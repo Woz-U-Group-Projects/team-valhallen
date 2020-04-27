@@ -29,7 +29,7 @@ class TenantDetails extends React.Component {
 
   viewUser(id) {
     this.setState({ viewConfirm: true });
-    let url = "http://localhost:3001/users/" + 5;
+    let url = "http://localhost:3001/users/tenant/" + id;
     axios.get(url, { userid: id }).then(response => {
       this.setState({ user: response.data })
     });
@@ -79,7 +79,7 @@ class TenantDetails extends React.Component {
       <div>
         <Card>
           <Card.Title>{firstName} {lastName}</Card.Title>
-          <Card.Body>{email} {phone}</Card.Body>
+          <Card.Body>{email} | {phone}</Card.Body>
           <Card.Footer><Button onClick={this.editUser}>Edit User Details</Button></Card.Footer>
         </Card>
         <Card>

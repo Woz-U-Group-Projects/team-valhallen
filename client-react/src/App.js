@@ -1,10 +1,13 @@
 import React from "react";
 import "./App.css";
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+
 import UserPage from "./screens/UserPage";
-//import ManagerHome from "./screens/ManagerHome";
-//import Login from "./components/Login";
+import Login from "./components/Login";
 import TenantDetails from './components/TenantDetails';
 import TenantHome from './screens/TenantHome';
+import ManagerHome from './screens/ManagerHome';
+import TechHome from './screens/TechHome';
 import UserList from "./components/UserList";
 import TicketHistory from "./components/TicketHistory";
 import UserManagement from "./components/UserManagement";
@@ -17,10 +20,17 @@ import CreateTicket from "./components/CreateTicket";
 function App() {
   return (
     <div className="App">
-      <CreateTicketModal />
+      <Router>
+        <div>
+          <Route exact path="/" component={Login} />
+          <Route path="/tenantHome" component={TenantHome} />
+          <Route path="/managerHome" component={ManagerHome} />
+          <Route path="/techHome" component={TechHome} />
+        </div>
+      </Router>
+
       
-      <TenantHome />
-      <TechTicketManagement />
+
 
     </div>
   );

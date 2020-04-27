@@ -4,6 +4,11 @@ var models = require("../models");
 //var passport = require('../services/passport');
 // var authService = require('../services/auth');
 
+//GET ALL USERS
+router.get("/", function(req, res, next) {
+  models.User.findAll().then(users => res.json(users));
+});
+
 //GET LIST OF NEW USERS
 router.get("/new", function(req, res, next) {
   models.User.findAll({
@@ -91,6 +96,13 @@ router.put("/:id", function(req, res, next) {
       where: { userId: parseInt(req.params.id) }
     }
   ).then(user => res.json(user));
+});
+
+//GET SELECTED TENANT BY USERID
+router.get("/tenant/:id", function(req, res, next) {       //get userID from DB
+  let userId = parseInt(req.params.id);             
+  models.User.findByPk(userId)
+    .then(user => res.json(user));                  //return user as json obj
 });
 
 //UPDATE TENANT INFORMATION
