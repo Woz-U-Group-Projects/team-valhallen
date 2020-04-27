@@ -28,9 +28,9 @@ class ManagerHomeMgmt extends React.Component {
         this.getNewTickets();
     }
 
-    //  shouldComponentUpdate(nextProps, nextState) {
-    //      if (this.state.)
-    //  };
+    componentDidUpdate() {
+        
+    };
 
     getNewTickets() {
         let urla = "http://localhost:3001/ticketHistory/new";
@@ -59,21 +59,22 @@ class ManagerHomeMgmt extends React.Component {
     };
 
     viewTicket(id) {
-        this.setState({ viewConfirm: true });
+        
         let urla = "http://localhost:3001/ticketHistory/" + id;
         axios.get(urla).then(response => {
             this.setState({ ticket: response.data })
         });
         //this.getUserData(this.state.ticket.userId);
-        setTimeout(this.getUserData(this.state.ticket.userId), 200);
-        //let tktUserId = this.state.ticket.userId;
-        //let urlb = "http://localhost:3001/users/" + tktUserId;
-        //axios.get(urlb).then(response => {
-        //    this.setState({ linkedUser: response.data })
-        //});
+        //setTimeout(this.getUserData(this.state.ticket.userId), 200);
+        let tktUserId = this.state.ticket.userId;
+        let urlb = "http://localhost:3001/users/" + tktUserId;
+        axios.get(urlb).then(response => {
+            this.setState({ linkedUser: response.data })
+        });
+        this.setState({ viewConfirm: true });
     };
 
-    getUserData(id) {
+/*    getUserData(id) {
         //let tktUserId = this.state.ticket.userId;
         console.log("Linked User ID " + id);
         let url = "http://localhost:3001/users/" + id;
@@ -81,7 +82,7 @@ class ManagerHomeMgmt extends React.Component {
             this.setState({ linkedUser: response.data })
         });
         console.log(this.state.linkedUser);
-    };
+    };*/
 
     assignTech(evt) {
         //let url = "http://localhost:3001/users/" + evt.target.dataset.id;     
