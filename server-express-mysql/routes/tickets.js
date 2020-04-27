@@ -6,6 +6,21 @@ router.get("/", function(req, res, next) {
   models.Ticket.findAll().then(tickets => res.json(tickets));
 });
 
+router.get("/createTicket", function(req, res, next){
+models.User
+    .findAll({ 
+      attributes: ['userId','fName'],
+      include: [{ 
+        model: models.PropertyUnit, 
+        attributes: ['unitId','unitName'] 
+      }]     
+    })
+    .then(usersFound => {
+      res.setHeader('Content-Type', 'application/json');
+      res.json(usersFound);
+    });
+});
+
 //GET LIST OF NEW TICKETS
  router.get("/new", function(req, res, next) {
    models.User.findAll({

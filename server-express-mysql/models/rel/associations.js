@@ -1,14 +1,17 @@
 module.exports = function(models) {
+
+
+
     //------------------associations for User, Ticket and propertyUnit tables--------------*
-    models.User.belongsToMany(models.Ticket, 
+    models.User.belongsTo(models.PropertyUnit, 
         { 
-            through: models.PropertyUnit,
+            through: models.UserPropertyUnit,
             foreignKey: 'userId'
         });
-    models.Ticket.belongsToMany(models.User,
+    models.PropertyUnit.belongsToMany(models.User,
         {
-            through: models.PropertyUnit,
-            foreignKey: 'ticketId'
+            through: models.UserPropertyUnit,
+            foreignKey: 'unitId'
         });
-    //--------------------End associations--------------------------------------------------*
+    // // //--------------------End associations--------------------------------------------------*
 }
