@@ -20,16 +20,6 @@ const TicketView = (props) => {
       <div>Note: {props.ticketDetail.note}</div>
       <div>Created On: {props.ticketDetail.creationDate}</div>
       <div>Priority Level: {props.ticketDetail.priority}</div>
-      <form>
-        <label htmlFor="email">Tech</label>
-        <input type="text" name="email"  />
-        <label htmlFor="password">Due Date</label>
-        <input type="text" name="password"  />
-      </form>
-      <div>
-        <button type="button" className="btn btn-primary" >Assign Tech</button>
-        <button type="button" className="btn btn-danger" >Archive Ticket</button>
-      </div>
     </div>
   );
 }

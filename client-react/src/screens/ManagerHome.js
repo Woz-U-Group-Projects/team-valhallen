@@ -1,15 +1,13 @@
 import React from 'react';
 import Header from '../components/header';
 import ManagerHomeMgmt from '../components/ManagerHomeMgmt';
-import UserManagement from '../components/UserManagement';
 
 const ManagerHome = () => {
 
     return (
         <div>
-            <Header title="Manager" />
+            <h1>Manager Profile</h1>
             <ManagerHomeMgmt />
-            <UserManagement />
         </div>
     );
 
