@@ -1,19 +1,38 @@
 import React from "react";
+import PropTypes from 'prop-types';
+import { Provider } from 'react-redux';
+//import { BrowserRouter as Router, Link, Route, Switch } from 'react-router-dom';
+
 import "./App.css";
-//import UserPage from "./screens/UserPage";
 import ManagerHome from "./screens/ManagerHome";
-//import Login from "./components/Login";
+import UserPage from "./screens/UserPage";
+import ConfigPage from "./screens/ConfigPage";
 
-//This is where we combine components for rendering
+const App = ({ store }) => (
 
-function App() {
-  return (
-    <div className="App">
-      
-      <ManagerHome />
+  <Provider store={store}>
+    
+    <ManagerHome />
 
-    </div>
-  );
+    {/* <Router>
+      <div>
+        <Link to="/manager">Manager Home</Link>
+        <Link to="/manager/users">User Page</Link>
+        <Link to="/manager/config">Config Page</Link>
+
+        <Switch>
+          <Route exact path="/manager" component={ManagerHome} />
+          <Route exact path="/manager/users" component={UserPage} />
+          <Route exact path="/manager/config" component={ConfigPage} />
+        </Switch>
+      </div>
+    </Router> */}
+  
+  </Provider>
+)
+
+App.propTypes = {
+  store: PropTypes.object.isRequired
 }
 
 export default App;

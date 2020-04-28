@@ -56,7 +56,7 @@ class UserManagement extends React.Component {
   viewUser(id) {
     this.setState({ viewConfirm: true });
     let url = "http://localhost:3001/users/" + id;
-    axios.get(url, { userid: id }).then(response => {
+    axios.get(url).then(response => {
       this.setState({ user: response.data })
     });
     this.setState({ viewUserId: id });
