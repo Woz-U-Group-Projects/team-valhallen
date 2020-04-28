@@ -61,7 +61,7 @@ router.put("/newConfirmType", function (req, res, next) {
     {
       where: { userId: req.body.userId }
     }
-  );
+  });
 });
 
 //------------------------------User unit #---------------------------------------
@@ -73,7 +73,7 @@ router.put("/unitNumber", function (req, res, next) {
     {
       where: { unitName: req.body.unitName }
     }
-  );
+  });
 });
 //------------------------------end User Unit #---------------------------------------
 
@@ -81,7 +81,7 @@ router.put("/unitNumber", function (req, res, next) {
 router.get("/:id", function (req, res, next) {       //get userID from DB
   let userId = parseInt(req.params.id);
   models.User.findByPk(userId)
-    .then(user => res.json(user));                  //return user as json obj
+    .then(user => res.json(user)); //return user as json obj
 });
 
 //UPDATE USER INFORMATION
@@ -95,7 +95,7 @@ router.put("/:id", function (req, res, next) {
     {
       where: { userId: parseInt(req.params.id) }
     }
-  ).then(user => res.json(user));
+  }).then(user => res.json(user));
 });
 
 //GET SELECTED TENANT BY USERID
@@ -118,7 +118,7 @@ router.put("/tenant/:id", function (req, res, next) {
     {
       where: { userId: parseInt(req.params.id) }
     }
-  ).then(user => res.json(user));
+  }).then(user => res.json(user));
 });
 
 //SIGN UP NEW USER
@@ -127,7 +127,7 @@ router.post("/signup", function (req, res, next) {
   newUser.lName = req.body.lName;
   newUser.fName = req.body.fName;
   newUser.email = req.body.email;
-  newUser.phone = req.body.phone;
+  newUser.phone = parseInt(req.body.phone);
   newUser.password = req.body.password;
   newUser.userType = req.body.userType;
   newUser.save().then(user => res.json(user));

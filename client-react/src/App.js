@@ -1,3 +1,6 @@
+/// Joel's Front End ///
+
+// Necessary Imports
 import React from "react";
 import PropTypes from 'prop-types';
 import { Provider } from 'react-redux';
@@ -12,6 +15,7 @@ import ConfigPage from "./screens/ConfigPage";
 
 
 import TenantDetails from './components/TenantDetails';
+import Navbar from './components/NavBar';
 import TenantHome from './screens/TenantHome';
 import TechHome from './screens/TechHome';
 import UserList from "./components/UserList";
@@ -21,7 +25,8 @@ import CreateTicketModal from "./components/CreateTicketModal";
 import TechTicketManagement from "./components/TechTicketManagement";
 import CreateTicket from "./components/CreateTicket";
 
-//This is where we combine components for rendering
+// Styling Imports
+import "./App.css";
 
 const App = ({ store }) => (
   <Provider store={store}>
@@ -65,6 +70,9 @@ const App = ({ store }) => (
 
 App.propTypes = {
   store: PropTypes.object.isRequired
+      /* Imported Navigation Bar from Component*/
+    } <Navbar / >
+
 }
 
 export default App;

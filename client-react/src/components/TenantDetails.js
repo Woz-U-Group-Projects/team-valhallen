@@ -5,14 +5,36 @@ import { useSelector } from 'react-redux';
 
 import TenantDetailEdit from "./TenantDetailEdit";
 import TenantDetailRetrieve from "./TenantDetailRetrieve";
-import '../task.min.css'
+import styled from "styled-components";
 import CreateTicketModal from "./CreateTicketModal";
-import Card from 'react-bootstrap/Card';
-import Button from 'react-bootstrap/Button';
+import Card from "react-bootstrap/Card";
+import Button from "react-bootstrap/Button";
+import { Container, Col, Row } from "react-bootstrap";
 
+const Style = styled.div`
+#card1 {
+margin-top: 50px;
+}
+
+.btn {
+width: 180px;
+border-size: 50px;
+border-color: gold;
+border-width: 2px;
+border-radius: 5px;
+
+.btn:hover {
+  box-shadow: 0px 0px 5px darkorange, 0px 0px 50px gold;
+}
+
+#div1 {
+  background-color: blue;
+  height: 400px;
+}
+`
 
 class TenantDetails extends React.Component {
-  constructor (props) {
+  constructor(props) {
     super(props);
     this.state = {
       users: [],                    // used to store array of users 
@@ -23,8 +45,8 @@ class TenantDetails extends React.Component {
       viewUserId: '',
       loggedIn: false                   // used to pass user details
     };
-    this.viewUser = this.viewUser.bind(this)
-    this.editUser = this.editUser.bind(this)
+    this.viewUser = this.viewUser.bind(this);
+    this.editUser = this.editUser.bind(this);
   }
 
   componentDidMount() {
@@ -50,33 +72,35 @@ class TenantDetails extends React.Component {
 
   updateUser(event) {
     let url = "http://localhost:3001/users/tenant/" + event.target.dataset.id;
-    axios.put(url, {
-      newFirstName: event.target.dataset.fname,
-      newLastName: event.target.dataset.lname,
-      newEmail: event.target.dataset.email,
-      newPhone: event.target.dataset.phone
-    }).then(alert("User Details Have Beed Saved"))
+    axios
+      .put(url, {
+        newFirstName: event.target.dataset.fname,
+        newLastName: event.target.dataset.lname,
+        newEmail: event.target.dataset.email,
+        newPhone: event.target.dataset.phone,
+      })
+      .then(alert("User Details Have Beed Saved"));
     console.log(event.target.dataset);
-  };
-
-  editUser() {
-    this.setState({ editConfirm: true })
   }
 
+  editUser() {
+    this.setState({ editConfirm: true });
+  }
 
   render() {
-
-    const editConfirm = this.state.editConfirm;       //confirms tenant detail component render
+    const editConfirm = this.state.editConfirm; // confirms tenant detail component render
     let viewComp, assignComp;
 
-    if (editConfirm) {                          // renders tenantDetail if true
-      assignComp = <TenantDetailRetrieve
-        tenantDetail={this.state.user} />
+    if (editConfirm) {
+      // renders tenantDetail if true
+      assignComp = <TenantDetailRetrieve tenantDetail={this.state.user} />;
 
-      viewComp = <TenantDetailEdit
-        tenantDetail={this.state.user}
-        updateCall={this.updateUser}
-      />;
+      viewComp = (
+        <TenantDetailEdit
+          tenantDetail={this.state.user}
+          updateCall={this.updateUser}
+        />
+      );
     }
 
 
@@ -108,7 +132,7 @@ class TenantDetails extends React.Component {
         </Card>
       </div>
     );
-  }
+}
 }
 
 // const loggedUser = useSelector(state => state.currentUser)

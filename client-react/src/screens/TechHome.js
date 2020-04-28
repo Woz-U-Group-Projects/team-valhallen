@@ -1,8 +1,12 @@
 import React from 'react';
-import Header from '../components/header';
+]
 
-const TechHome = () => {
-return (<div>Tech Home</div>)
-    
-}
+const TechHome = () => (
+    <div>
+    <Container>
+    <TenantDetails />
+    </Container>
+    </div>
+);
+
 export default TechHome;
