@@ -5,6 +5,11 @@ var models = require("../models");
 //var passport = require('../services/passport');
 var authService = require('../services/auth');
 
+//GET LIST OF ALL USERS
+router.get("/", function(req, res, next) {
+  models.User.findAll().then(users => res.json(users));
+});
+
 //GET LIST OF NEW USERS
 router.get("/new", function(req, res, next) {
   models.User.findAll({
