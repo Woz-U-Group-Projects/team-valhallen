@@ -15,6 +15,8 @@ export const UPDATE_TICKET_NOTE = 'UPDATE_TICKET_NOTE'
 
 //----------------------------------------------------------*
 
+export const CURRENT_USER = 'CURRENT_USER'
+
 
 //---------User/Tenant Actions ------------------------------------*
 
@@ -91,4 +93,8 @@ export function updateTicketNote(text) {
 
 //----End Ticket Actions ---------------------------------------*
 
-
+export function currentUser(text) {
+    return {
+        type: CURRENT_USER
+    }
+}
