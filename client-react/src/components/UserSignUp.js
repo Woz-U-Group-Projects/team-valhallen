@@ -34,17 +34,23 @@ class User extends React.Component {
       password: this.password.current.value,
       phone: this.phone.current.value,
       userType: this.userType.current.value
-    }).then(response => {
-      // refresh the data
-      this.getData();
-      // empty the input
-      this.fName.current.value = "";
-      this.lName.current.value = "";
-      this.email.current.value = "";
-      this.password.current.value = "";
-      this.phone.current.value = "";
-      this.userType.current.value ="";
-    });
+    })
+    // .then(response => {
+    //   // refresh the data
+    //   this.getData();
+    //   // empty the input
+    //   this.fName.current.value = "";
+    //   this.lName.current.value = "";
+    //   this.email.current.value = "";
+    //   this.password.current.value = "";
+    //   this.phone.current.value = "";
+    //   this.userType.current.value ="";
+    // })
+    .then(res => {
+      if(res) {
+          this.props.history.push('/login')
+      }
+  });
   };
 
 

@@ -32,7 +32,7 @@ class Navbar extends React.Component {
                     </Link>
                 </li>
                 <li className="nav-item">
-                    <Link to="login" onClick={this.logOut.bind(this)} className="nav-link">
+                    <Link to="/login" onClick={this.logOut.bind(this)} className="nav-link">
                         Logout
                     </Link>
                 </li>
