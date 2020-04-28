@@ -1,12 +1,18 @@
 import React from "react";
-import "./App.css";
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import { Provider } from 'react-redux';
+import { BrowserRouter as Router, Link, Route, Switch } from 'react-router-dom';
 
 import UserPage from "./screens/UserPage";
 import Login from "./components/Login";
+import User from './components/UserSignUp';
+
+import ManagerHome from "./screens/ManagerHome";
+import ConfigPage from "./screens/ConfigPage";
+
+
 import TenantDetails from './components/TenantDetails';
 import TenantHome from './screens/TenantHome';
-import ManagerHome from './screens/ManagerHome';
 import TechHome from './screens/TechHome';
 import UserList from "./components/UserList";
 import TicketHistory from "./components/TicketHistory";
@@ -17,23 +23,48 @@ import CreateTicket from "./components/CreateTicket";
 
 //This is where we combine components for rendering
 
-function App() {
-  return (
-    <div className="App">
-      <Router>
-        <div>
-          <Route exact path="/" component={Login} />
-          <Route path="/tenantHome" component={TenantHome} />
-          <Route path="/managerHome" component={ManagerHome} />
-          <Route path="/techHome" component={TechHome} />
+const App = ({ store }) => (
+  <Provider store={store}>
+    <Router className="App" >
+      <center>
+
+        {/* <Link to="/manager">New Mgr Home</Link>
+        <Link to="/manager/users">New User Page</Link>
+        <Link to="/manager/config">New Config Page</Link> */}
+        {
+      /* This Div is utilized to create the ViewPort Window from App.css */}
+        <div className="style" >
+
+          {
+      /* Route paths and a Switch for individual rendering of components or screens */}
+          <Switch >
+            {/* //------------Landing/Login Routing ------------- */}
+            <Route exact path="/" component={Login} />
+            <Route path="/signup" component={User} />
+
+            {/* //------------Management Routing ------------- */}
+            <Route exact path="/manager" component={ManagerHome} />
+            <Route exact path="/manager/users" component={UserPage} />
+            <Route exact path="/manager/config" component={ConfigPage} />
+
+            {/* //------------Tenant Routing ------------- */}
+            <Route path="/tenantHome" component={TenantHome} />
+
+            {/* //------------Technician Routing ------------- */}
+            <Route path="/techHome" component={TechHome} />
+
+          </Switch>
+
         </div>
-      </Router>
 
-      
+      </center>
+    </Router>
+  </Provider>
+)
 
 
-    </div>
-  );
+App.propTypes = {
+  store: PropTypes.object.isRequired
 }
 
 export default App;

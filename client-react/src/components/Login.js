@@ -1,12 +1,23 @@
 import React from "react";
 import axios from "axios";
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Link, Redirect } from 'react-router-dom';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Dropdown from 'react-bootstrap/Dropdown';
 import TenantDetails from "./TenantDetails";
+import TenantHome from "../screens/TenantHome";
 
+// function LoginButton(props) {
+//     return (
+//         <Button type="button" className="btn btn-primary" onClick={props.onClick}>Login</Button>
+//     );
+// }
 
+// function LogoutButton(props) {
+//     return (
+//         <Button type="button" className="btn btn-primary" onClick={props.onClick}>Logout</Button>
+//     );
+// }
 
 class Login extends React.Component {
     constructor (props) {
@@ -14,20 +25,31 @@ class Login extends React.Component {
         this.state = {
             users: [],
             user: {},
-            loggedIn: false,
-            value: 'tenant'    
+            // loggedIn: false,
+            value: 'tenant'
         };
         this.email = React.createRef();
         this.password = React.createRef();
         this.userStatus = this.userStatus.bind(this);
+        // this.handleLoginClick = this.handleLoginClick.bind(this);
+        // this.handleLogoutClick = this.handleLogoutClick.bind(this);
     }
+
+    // handleLoginClick() {
+    //     this.setState({ loggedIn: true });
+    // }
+
+    // handleLogoutClick() {
+    //     this.setState({ loggedIn: false });
+    // }
+
     componentDidMount() {
         this.getData();
     }
 
     userStatus(event) {
-        this.setState({value: event.target.value});
-      }
+        this.setState({ value: event.target.value });
+    }
 
     getData = () => {
         let url = "http://localhost:3001/users/";
@@ -42,24 +64,22 @@ class Login extends React.Component {
             
     };
 
-    
+
 
 
     render() {
+
+        // const loggedIn = this.state.loggedIn;
+        // let button;
+        // if (loggedIn) {
+        //     button = <LogoutButton onClick={this.handleLogoutClick} />;
+        // } else {
+        //     button = <LoginButton onClick={this.handleLoginClick} />;
+        // }
+
         return (
             <div>
-                {/* <h3>Login</h3>
-                <label>Email:</label><input ref={this.email} />
-                <label>Password:</label><input ref={this.password} />
-                <select value={this.state.value} onChange={this.userStatus}>
-                    <option  defaultValue="tenant">Tenant</option>
-                    <option value="manager">Manager</option>
-                    <option value="technician">Technician</option>
-                </select>
-                <button type="button" className="btn btn-primary" onClick={this.login}>Login</button>
-                <div>
-                    <button type="button" className="btn btn-primary" onClick={this.signup}>Signup</button>
-                </div> */}
+                
                 <div>
                     <Form>
                         <Form.Group controlId="formBasicEmail">
@@ -83,11 +103,12 @@ class Login extends React.Component {
                                 <Dropdown.Item value="Technician">Technician</Dropdown.Item>
                             </Dropdown.Menu>
                         </Dropdown>
-                        
-                        <Button type="button" className="btn btn-primary" onClick={this.login}>
-                                    Submit
-                        </Button>
 
+                        <Button type="button" className="btn btn-primary" onClick={this.login}>
+                            Login
+                            
+                        </Button>
+                        
                     </Form>
                 </div>
             </div>

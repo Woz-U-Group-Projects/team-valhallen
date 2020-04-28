@@ -16,7 +16,8 @@ class TenantDetails extends React.Component {
       user: {},                     // used to pass user details
       viewConfirm: false,
       editConfirm: false,
-      viewUserId: ''                   // used to pass user details
+      viewUserId: '',
+      loggedIn: false                   // used to pass user details
     };
     this.viewUser = this.viewUser.bind(this)
     this.editUser = this.editUser.bind(this)
@@ -29,6 +30,7 @@ class TenantDetails extends React.Component {
 
   viewUser(id) {
     this.setState({ viewConfirm: true });
+    this.setState({ loggedIn: true });
     let url = "http://localhost:3001/users/tenant/" + id;
     axios.get(url, { userid: id }).then(response => {
       this.setState({ user: response.data })
