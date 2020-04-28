@@ -3,6 +3,7 @@ import axios from 'axios';
 
 import MrgTicketsList from './MrgTicketsList';
 import TicketView from './TicketView';
+import Analytics from './Analytics';
 
 
 class ManagerHomeMgmt extends React.Component {
@@ -113,7 +114,8 @@ class ManagerHomeMgmt extends React.Component {
 
         return(
             <div>
-                
+                <h1>Manager Profile</h1>
+                <Analytics />
                 <MrgTicketsList 
                 tickets={this.state.tickets}
                 users={this.state.users}
