@@ -149,8 +149,8 @@ router.post('/login', function(req, res, next){
       });
     }
     if (user) {
-      // let token = authService.signUser(user);
-      // res.cookie('jwt', token);
+      let token = authService.signUser(user);
+      res.cookie('jwt', token);
       res.send('Login successful');
     } else {
       console.log('wrong Password');
