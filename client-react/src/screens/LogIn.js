@@ -17,6 +17,7 @@ const LogIn = () => (
 
     {/* BrowserRouter, Switch, and Route are Neccesary for Independent Component Routing within the Login Page*/}
     <Switch>
+        
     <Route exact path="/" component={Login} />
     <Route path = "/signup" component={Signup} />
     </Switch>

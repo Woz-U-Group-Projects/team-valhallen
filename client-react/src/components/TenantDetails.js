@@ -3,7 +3,6 @@ import axios from "axios";
 import TenantDetailEdit from "./TenantDetailEdit";
 import TenantDetailRetrieve from "./TenantDetailRetrieve";
 import styled from "styled-components";
-import "../task.min.css";
 import CreateTicketModal from "./CreateTicketModal";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
@@ -27,6 +26,7 @@ border-radius: 5px;
 
 #div1 {
   background-color: blue;
+  height: 400px;
 }
 `
 

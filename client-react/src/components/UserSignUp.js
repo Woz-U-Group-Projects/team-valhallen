@@ -5,52 +5,9 @@ import React from "react";
 import axios from "axios";
 import '../task.min.css';
 
-import { Form, Col, Container, Card, Button } from 'react-bootstrap';
-import styled from 'styled-components';
+import { Form, Col, Container } from 'react-bootstrap';
+import '../App.js';
 
-const Style = styled.div`
-width: 600px;
-padding: 0px;
-margin-top: 50px;
-margin-bottom: 50px;
-margin-left: -50px;
-margin-right: 50px;
-
-.btn:hover {
-  box-shadow: 0px 0px 5px darkorange, 0px 0px 50px gold;
-  border-radius: 5px;
-}
-
-#fGroup1:hover {
-  box-shadow: 0px 0px 5px darkorange, 0px 0px 50px gold;
-  border-radius: 5px;
-}
-
-#lGroup1:hover {
-  box-shadow: 0px 0px 5px darkorange, 0px 0px 50px gold;
-  border-radius: 5px;
-}
-
-#eGroup1:hover {
-  box-shadow: 0px 0px 5px darkorange, 0px 0px 50px gold;
-  border-radius: 5px;
-}
-
-#pGroup1:hover {
-  box-shadow: 0px 0px 5px darkorange, 0px 0px 50px gold;
-  border-radius: 5px;
-}
-
-#phGroup1:hover {
-  box-shadow: 0px 0px 5px darkorange, 0px 0px 50px gold;
-  border-radius: 5px;
-}
-
-#oGroup1:hover {
-  box-shadow: 0px 0px 5px darkorange, 0px 0px 50px gold;
-  border-radius: 5px;
-}
-`
 
 class Signup extends React.Component {
   constructor(props) {
@@ -102,9 +59,7 @@ class Signup extends React.Component {
     return (
       <React.Fragment>
 
-        <Container>
-        <Style>
-
+        <Container className="mt-5">
           <h3>Registration Portal</h3>
 
         <Form>
@@ -146,9 +101,6 @@ class Signup extends React.Component {
         <button id="uBtn1" type="button" className="btn btn-warning mt-3" onClick={this.addUser}>Add User</button>
         
         </Form>
-
-        </Style>
-
         </Container>
 
       </React.Fragment>

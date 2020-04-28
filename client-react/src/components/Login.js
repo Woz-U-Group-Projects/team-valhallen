@@ -5,7 +5,6 @@ import React from "react";
 import axios from "axios";
 
 // Styling Imports
-import styled from 'styled-components';
 import {
     Col
 } from 'react-bootstrap';
@@ -22,44 +21,9 @@ import {
     Button
 } from 'react-bootstrap';
 
+import '../App.css';
+
 // Styling for Individual Component from Styled-Components Import
-const Style = styled.div `
-padding: 80px;
-margin-top: 75px;
-font-family: 'Rajdhani', sans-serif;
-
-#eGroup1 {
-    width: 600px;
-}
-
-#pGroup1 {
-    width: 600px;
-}
-
-#eLabel1 {
-    float: left;
-    font-size: 20px;
-}
-
-#pLabel1 {
-    float: left;
-    font-size: 20px;
-}
-
-#eGroup1:hover {
-    box-shadow: 0px 0px 5px darkorange, 0px 0px 50px gold;
-    border-radius: 5px;
-}
-
-#pGroup1:hover {
-    box-shadow: 0px 0px 5px darkorange, 0px 0px 50px gold;
-    border-radius: 5px;
-}
-
-.btn:hover {
-    box-shadow: 0px 0px 5px darkorange, 0px 0px 50px gold;
-    border-radius: 5px;
-}`
 
 // Component Extends
 class Login extends React.Component {
@@ -110,11 +74,13 @@ class Login extends React.Component {
 
     // Component Rendering
     render() {
-        return ( <Style>
-            <h1> Login Portal < /h1>
+        return (
 
-            <Container >
+            <div>
+            <Container id="lCont1">
             <Form >
+
+            <h1> Login Portal </h1>
 
             <Form.Group id = "eGroup1" controlId = "formBasicEmail" >
             <Form.Label id = "eLabel1" > Email address </Form.Label > 
@@ -124,28 +90,19 @@ class Login extends React.Component {
             <Form.Group id = "pGroup1" controlId = "formBasicPassword" >
             <Form.Label id = "pLabel1" > Password </Form.Label> 
             <Form.Control id = "pInput1" type = "password" placeholder = "Enter Password" ref = {this.password}/>
-             </Form.Group >
+            </Form.Group >
 
             <Button type = "button" className = "btn-lg btn-warning mt-3" onClick = {this.login} > Submit </Button>
 
-            <
-            Col id = "signupCol1"
-            className = "mt-5" >
-            <
-            h5 > New to Main - Quest ?
-            <
-            Link to = "/signup"
-            activeClassName = "active" >
-            Signup < /Link>!</h5 >
-            <
-            /Col>
+            <Col id = "signupCol1" className = "mt-5" >
+            <h5 > New to Main - Quest?
+            <Link to = "/signup" activeClassName = "active" >
+            Signup </Link>!</h5 ></Col>
 
-            <
-            /Form> < /
-            Container >
+            </Form> 
+            </Container >
+            </div>
 
-            <
-            /Style>
         );
     }
 }
