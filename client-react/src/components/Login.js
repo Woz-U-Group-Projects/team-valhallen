@@ -59,14 +59,14 @@ class Login extends React.Component {
     login = () => {
         let url = "http://localhost:3001/users/login";
         axios.post(url, { email: this.email.current.value, password: this.password.current.value })
-            .then(response => this.setState({ user: response.data }))
-            .then(this.setState({ loggedIn: true }))
-            .then(response => {
-                res.status(200).json({
-                    message: 'Welcome to the project-name api'
-                });
+        .then(res => {
+            localStorage.setItem('usertoken', res.data)
+            return res.data
+        }).catch(err => {
+            console.log(err)
+        })
             
-            });
+            
             
     };
 
