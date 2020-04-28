@@ -97,13 +97,28 @@ class Login extends React.Component {
         // }
 
         const approvedUser = this.state.approvedUser
+        const userType = this.state.currentUser.userType
         const userId = this.state.currentUser.userId
         let redirect;
 
-        if (approvedUser) {
+        if (approvedUser && userType === 'Tenant') {
             redirect = <Redirect 
             to={{
                 pathname: "/tenantDetails",
+                state: { userId: userId }
+              }}/>
+        }
+        if (approvedUser && userType === 'Manager') {
+            redirect = <Redirect 
+            to={{
+                pathname: "/managerHome",
+                state: { userId: userId }
+              }}/>
+        }
+        if (approvedUser && userType === 'Technician') {
+            redirect = <Redirect 
+            to={{
+                pathname: "/techHome",
                 state: { userId: userId }
               }}/>
         }
@@ -123,7 +138,7 @@ class Login extends React.Component {
                             <Form.Control type="password" placeholder="Password" ref={this.password} />
                         </Form.Group>
 
-                        <Dropdown>
+                        {/* <Dropdown>
                             <Dropdown.Toggle variant="success" id="dropdown-basic">
                                 Choose User Status
                             </Dropdown.Toggle>
@@ -133,7 +148,7 @@ class Login extends React.Component {
                                 <Dropdown.Item value="Manager">Manager</Dropdown.Item>
                                 <Dropdown.Item value="Technician">Technician</Dropdown.Item>
                             </Dropdown.Menu>
-                        </Dropdown>
+                        </Dropdown> */}
 
                         <Button type="button" className="btn btn-primary" onClick={this.login}>
                             Login
