@@ -85,7 +85,7 @@ class CreateTicket extends React.Component {
           <Form.Label>Problem Notes</Form.Label>
           <Form.Control as="textarea" rows="3" ref={this.note} />
         </Form.Group>
-        <Button variant="primary" onClick={this.createTicket}>
+        <Button variant="warning" onClick={this.createTicket}>
           Submit Ticket
             </Button>
       </Form>

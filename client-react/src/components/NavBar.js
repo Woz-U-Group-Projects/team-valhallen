@@ -1,13 +1,17 @@
+// Necessary Imports
 import React from "react";
+
+// Component Imports
+
+// Styling Imports
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
-
-import { Container, Breadcrumb } from 'react-bootstrap';
-
-
 import mq02 from '../img/mq02.png';
 
+// Routing Imports
+import { Container } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
+// Styling for Individual Component from Styled-Components Import
 const Nav1 = styled.div`
 display: flexbox;
 justify-content: center;
@@ -36,7 +40,7 @@ box-shadow: 0px 0px 10px 2px gold;
     width: 330px;
 }
 `
-
+// Component Extends
 class NavBar extends React.Component {
 render() {
     return (
@@ -56,3 +60,4 @@ render() {
     
 
 export default NavBar;
+

@@ -5,116 +5,120 @@ var models = require("../models");
 // var authService = require('../services/auth');
 
 //GET LIST OF NEW USERS
-router.get("/new", function(req, res, next) {
+router.get("/new", function (req, res, next) {
   models.User.findAll({
-    where:{ userType: null }  //approved: false
+    where: {
+      userType: null
+    } //approved: false
   }).then(users => res.json(users));
 });
 
 //GET LIST OF TENANTS
-router.get("/tenants", function(req, res, next) {
+router.get("/tenants", function (req, res, next) {
   models.User.findAll({
-    where:{ userType: "tenant" }
+    where: {
+      userType: "tenant"
+    }
   }).then(users => res.json(users));
 });
 
 //GET LIST OF TECHNICIANS
-router.get("/techs", function(req, res, next) {
+router.get("/techs", function (req, res, next) {
   models.User.findAll({
-    where:{ userType: "technician" } 
+    where: {
+      userType: "technician"
+    }
   }).then(users => res.json(users));
 });
 
 //GET LIST OF MANAGERS
-router.get("/mgrs", function(req, res, next) {
+router.get("/mgrs", function (req, res, next) {
   models.User.findAll({
-    where:{ userType: "propertyManager" }
+    where: {
+      userType: "propertyManager"
+    }
   }).then(users => res.json(users));
 });
 //------------------------------tech skill---------------------------------------
 
-router.post("/techSkills", function(req, res, next) {
-    let newTechSkill = new models.TechSkills();
-    newTechSkill.userId = req.body.userId;
-    newTechSkill.electrical = req.body.electrical;
-    newTechSkill.plumbing = req.body.plumbing;
-    newTechSkill.hvac = req.body.hvac;
-    newTechSkill.appliance = req.body.appliance;
-    newTechSkill.general = req.body.general;
-    newTechSkill.save()
+router.post("/techSkills", function (req, res, next) {
+  let newTechSkill = new models.TechSkills();
+  newTechSkill.userId = req.body.userId;
+  newTechSkill.electrical = req.body.electrical;
+  newTechSkill.plumbing = req.body.plumbing;
+  newTechSkill.hvac = req.body.hvac;
+  newTechSkill.appliance = req.body.appliance;
+  newTechSkill.general = req.body.general;
+  newTechSkill.save()
     .then(skills => res.json(skills));
 });
 
 //-----------------------------Tech skills End------------------------------------
 
 
-router.put("/newConfirmType", function(req, res, next) {
-  models.User.update(
-    {
-      userType: req.body.userType
-    },
-    {
-      where: { userId: req.body.userId }
+router.put("/newConfirmType", function (req, res, next) {
+  models.User.update({
+    userType: req.body.userType
+  }, {
+    where: {
+      userId: req.body.userId
     }
-  );
+  });
 });
 
 //------------------------------User unit #---------------------------------------
-router.put("/unitNumber", function(req, res, next) {
-  models.PropertyUnit.update(
-    {
-      userId: req.body.userId
-    },
-    {
-      where: { unitName: req.body.unitName }
+router.put("/unitNumber", function (req, res, next) {
+  models.PropertyUnit.update({
+    userId: req.body.userId
+  }, {
+    where: {
+      unitName: req.body.unitName
     }
-  );
+  });
 });
 //------------------------------end User Unit #---------------------------------------
 
 //GET SELECTED USER BY USERID
-router.get("/:id", function(req, res, next) {       //get userID from DB
-  let userId = parseInt(req.params.id);             
+router.get("/:id", function (req, res, next) { //get userID from DB
+  let userId = parseInt(req.params.id);
   models.User.findByPk(userId)
-    .then(user => res.json(user));                  //return user as json obj
+    .then(user => res.json(user)); //return user as json obj
 });
 
 //UPDATE USER INFORMATION
-router.put("/:id", function(req, res, next) {
-  models.User.update(
-    {
-      email: req.body.newEmail,
-      password: req.body.newPassword,
-      phone: req.body.newPhone
-    },
-    {
-      where: { userId: parseInt(req.params.id) }
+router.put("/:id", function (req, res, next) {
+  models.User.update({
+    email: req.body.newEmail,
+    password: req.body.newPassword,
+    phone: req.body.newPhone
+  }, {
+    where: {
+      userId: parseInt(req.params.id)
     }
-  ).then(user => res.json(user));
+  }).then(user => res.json(user));
 });
 
 //UPDATE TENANT INFORMATION
-router.put("/tenant/:id", function(req, res, next) {
-  models.User.update(
-    {
-      fName: req.body.newFirstName,
-      lName: req.body.newLastName,
-      email: req.body.newEmail,
-      phone: req.body.newPhone
-    },
-    {
-      where: { userId: parseInt(req.params.id) }
+router.put("/tenant/:id", function (req, res, next) {
+  models.User.update({
+    fName: req.body.newFirstName,
+    lName: req.body.newLastName,
+    email: req.body.newEmail,
+    phone: req.body.newPhone
+  }, {
+    where: {
+      userId: parseInt(req.params.id)
     }
-  ).then(user => res.json(user));
+  }).then(user => res.json(user));
 });
 
 //SIGN UP NEW USER
-router.post("/signup", function(req, res, next) {
+router.post("/signup", function (req, res, next) {
   let newUser = new models.User();
   newUser.lName = req.body.lName;
   newUser.fName = req.body.fName;
   newUser.email = req.body.email;
-  newUser.phone = req.body.phone;
+  newUser.phone = parseInt(req.body.phone);
   newUser.password = req.body.password;
   newUser.userType = req.body.userType;
   newUser.save().then(user => res.json(user));
@@ -123,7 +127,7 @@ router.post("/signup", function(req, res, next) {
 
 //login router --------------------------------------------------------------*
 
-router.post('/login', function(req, res, next){
+router.post('/login', function (req, res, next) {
   models.User.findOne({
     where: {
       email: req.body.email,

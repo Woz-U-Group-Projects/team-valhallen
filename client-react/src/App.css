@@ -11,9 +11,10 @@ body {
 .style {
     overflow-y: auto;
     overflow-y: scroll;
-    min-height: 700px;
+    height: 800px;
     max-width: 1400px;
     margin-top: 20px;
+    margin-bottom: 20px;
     margin-left: 15px;
     margin-right: 15px;
     background-color: lightgrey;

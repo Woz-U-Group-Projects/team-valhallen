@@ -1,6 +1,12 @@
 import React from 'react';
-import Header from '../components/header';
+]
 
-const TechHome = () => <Header title="Tech" />;
+const TechHome = () => (
+    <div>
+    <Container>
+    <TenantDetails />
+    </Container>
+    </div>
+);
 
 export default TechHome;
