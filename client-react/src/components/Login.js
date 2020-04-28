@@ -25,7 +25,7 @@ class Login extends React.Component {
         this.state = {
             users: [],
             user: {},
-            // loggedIn: false,
+            loggedIn: false,
             value: 'tenant'
         };
         this.email = React.createRef();
