@@ -6,6 +6,8 @@ import Button from 'react-bootstrap/Button';
 import Dropdown from 'react-bootstrap/Dropdown';
 import TenantDetails from "./TenantDetails";
 import TenantHome from "../screens/TenantHome";
+import { useDispatch } from 'react-redux';
+import { CURRENT_USER } from '../actions/actions';
 
 // function LoginButton(props) {
 //     return (
@@ -19,14 +21,22 @@ import TenantHome from "../screens/TenantHome";
 //     );
 // }
 
+// const dispatch = useDispatch()
+
 class Login extends React.Component {
     constructor (props) {
         super(props);
         this.state = {
             users: [],
             user: {},
+            userId: 0,
+            email: '',
+            password: '',
+            userType: '',
             loggedIn: false,
-            value: 'tenant'
+            value: 'tenant',
+            currentUser: {},
+            approvedUser: false
         };
         this.email = React.createRef();
         this.password = React.createRef();
@@ -42,6 +52,8 @@ class Login extends React.Component {
     // handleLogoutClick() {
     //     this.setState({ loggedIn: false });
     // }
+
+        
 
     componentDidMount() {
         this.getData();
@@ -59,12 +71,13 @@ class Login extends React.Component {
     login = () => {
         let url = "http://localhost:3001/users/login";
         axios.post(url, { email: this.email.current.value, password: this.password.current.value })
-        .then(res => {
-            localStorage.setItem('usertoken', res.data)
-            return res.data
+        .then(response => { this.setState({ currentUser: response.data, approvedUser: true })
+            //this.props.history.push('/tenantDetails');
         }).catch(err => {
             console.log(err)
-        })
+        });
+
+        // dispatch({ type: CURRENT_USER, payload: this.state.user });
             
             
             
@@ -82,6 +95,18 @@ class Login extends React.Component {
         // } else {
         //     button = <LoginButton onClick={this.handleLoginClick} />;
         // }
+
+        const approvedUser = this.state.approvedUser
+        const userId = this.state.currentUser.userId
+        let redirect;
+
+        if (approvedUser) {
+            redirect = <Redirect 
+            to={{
+                pathname: "/tenantDetails",
+                state: { userId: userId }
+              }}/>
+        }
 
         return (
             <div>
@@ -116,6 +141,10 @@ class Login extends React.Component {
                         </Button>
                         
                     </Form>
+
+                    {redirect}
+
+
                 </div>
             </div>
 

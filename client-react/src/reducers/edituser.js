@@ -11,7 +11,9 @@ import {
     //-----ticket Imports----------------*
     DEFINE_TICKET_DETAIL,
     UPDATE_TICKET_STATUS,
-    UPDATE_TICKET_NOTE
+    UPDATE_TICKET_NOTE,
+
+    CURRENT_USER
 
 
 } from '../actions/actions'
@@ -23,7 +25,8 @@ const initialState = {
     updatePassword: "update password",
     updatePhone: "update phone",
     updaetTicketStatus: "Pending",
-    updateTicketNote: "working on..."
+    updateTicketNote: "working on...",
+    currentUser: {}
 };
 
 function editUserReducer(state = initialState, { type, payload }) {
@@ -36,6 +39,7 @@ function editUserReducer(state = initialState, { type, payload }) {
                 updatePhone: payload.phone
             };
         case DEFINE_TENANT_DETAIL:
+
             return {
                 ...state,
                 updateFirstName: payload.fName,
@@ -43,6 +47,13 @@ function editUserReducer(state = initialState, { type, payload }) {
                 updateEmail: payload.email,
                 updatePhone: payload.phone
             };
+
+        case CURRENT_USER:
+            return {
+                ...state,
+                currentUser: payload.currentUser
+            };
+
         case UPDATE_FIRSTNAME:
             return {
                 ...state,
@@ -54,22 +65,26 @@ function editUserReducer(state = initialState, { type, payload }) {
                 ...state,
                 updateLastName: payload
             };
+
         case UPDATE_EMAIL:
             return {
                 ...state,
                 updateEmail: payload
             };
+
         case UPDATE_PASSWORD:
             return {
                 ...state,
                 updatePassword: payload
             };
+
         case UPDATE_PHONE:
             return {
                 ...state,
                 updatePhone: payload
             };
-            //----------Ticket Reducer------------------------*
+
+        //----------Ticket Reducer------------------------*
 
         case DEFINE_TICKET_DETAIL:
             return {
@@ -77,17 +92,21 @@ function editUserReducer(state = initialState, { type, payload }) {
                 updateTicketStatus: payload.status,
                 updateTicketNote: payload.mainNote
             };
+
         case UPDATE_TICKET_STATUS:
             return {
                 ...state,
                 updateTicketStatus: payload
             };
+
         case UPDATE_TICKET_NOTE:
             return {
                 ...state,
                 updateTicketNote: payload
             };
-            //---------End Ticket Reducer ---------------------*
+
+        //---------End Ticket Reducer ---------------------*
+        
         default:
             return state;
     }

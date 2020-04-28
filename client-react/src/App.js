@@ -43,12 +43,12 @@ const App = ({ store }) => (
             <Route path="/signup" component={User} />
 
             {/* //------------Management Routing ------------- */}
-            <Route exact path="/manager" component={ManagerHome} />
+            <Route exact path="/managerHome" component={ManagerHome} />
             <Route exact path="/manager/users" component={UserPage} />
             <Route exact path="/manager/config" component={ConfigPage} />
 
             {/* //------------Tenant Routing ------------- */}
-            <Route path="/tenantHome" component={TenantHome} />
+            <Route path="/tenantDetails" component={TenantDetails} />
 
             {/* //------------Technician Routing ------------- */}
             <Route path="/techHome" component={TechHome} />
