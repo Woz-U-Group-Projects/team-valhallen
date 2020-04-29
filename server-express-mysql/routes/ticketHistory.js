@@ -43,5 +43,17 @@ router.get("/:id", function(req, res, next) {
       .then(ticket => res.json(ticket));                 
 });
 
+router.put("/:id", function(req, res, next) {
+    models.Ticket.update(
+        {
+            techid: req.body.tech,
+            assigned: true
+        },
+        {
+            where: { ticketId: parseInt(req.params.id) }
+        }
+    ).then(ticket => res.json(ticket));
+});
+
 
 module.exports = router;

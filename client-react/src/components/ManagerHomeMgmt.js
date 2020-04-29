@@ -4,6 +4,7 @@ import axios from 'axios';
 import MrgTicketsList from './MrgTicketsList';
 import TicketView from './TicketView';
 import Analytics from './Analytics';
+import AssignTech from './AssignTech';
 
 
 class ManagerHomeMgmt extends React.Component {
@@ -16,7 +17,7 @@ class ManagerHomeMgmt extends React.Component {
             linkedUser: [],
             viewConfirm: false,
             newTrigger: false,
-            completeTrigger: false 
+            completeTrigger: false
         }
         this.getNewTickets = this.getNewTickets.bind(this)
         this.getPendingTickets = this.getPendingTickets.bind(this)
@@ -34,29 +35,27 @@ class ManagerHomeMgmt extends React.Component {
     };
 
     getNewTickets() {
-        let urla = "http://localhost:3001/ticketHistory/new";
-        axios.get(urla).then(response => this.setState({ tickets: response.data }));
-        let urlb = "http://localhost:3001/users/tenants";
-        axios.get(urlb).then(response => this.setState({ users: response.data }));
-        this.setState({ viewConfirm: false });
+        let url = "http://localhost:3001/ticketHistory/new";
+        axios.get(url).then(response => this.setState({ tickets: response.data }));
+        this.setState({ viewConfirm: false, newTrigger: true, completeTrigger: false });
     };
 
     getPendingTickets() {
         let url = "http://localhost:3001/ticketHistory/pending";
         axios.get(url).then(response => this.setState({ tickets: response.data }));
-        this.setState({ viewConfirm: false });
+        this.setState({ viewConfirm: false, newTrigger: false, completeTrigger: false });
     };
 
     getCompletedTickets() {
         let url = "http://localhost:3001/ticketHistory/complete";
         axios.get(url).then(response => this.setState({ tickets: response.data }));
-        this.setState({ viewConfirm: false });
+        this.setState({ viewConfirm: false, newTrigger: false, completeTrigger: true });
     };
 
     getArchivedTickets() {
         let url = "http://localhost:3001/ticketHistory/archived";
         axios.get(url).then(response => this.setState({ tickets: response.data }));
-        this.setState({ viewConfirm: false });
+        this.setState({ viewConfirm: false, newTrigger: false, completeTrigger: false });
     };
 
     viewTicket(id) {
@@ -65,25 +64,15 @@ class ManagerHomeMgmt extends React.Component {
         axios.get(urla).then(response => {
             this.setState({ ticket: response.data })
         });
-        //this.getUserData(this.state.ticket.userId);
-        //setTimeout(this.getUserData(this.state.ticket.userId), 200);
+
         let tktUserId = this.state.ticket.userId;
+
         let urlb = "http://localhost:3001/users/" + tktUserId;
         axios.get(urlb).then(response => {
             this.setState({ linkedUser: response.data })
         });
         this.setState({ viewConfirm: true });
     };
-
-/*    getUserData(id) {
-        //let tktUserId = this.state.ticket.userId;
-        console.log("Linked User ID " + id);
-        let url = "http://localhost:3001/users/" + id;
-        axios.get(url).then(response => {
-            this.setState({ linkedUser: response.data })
-        });
-        console.log(this.state.linkedUser);
-    };*/
 
     assignTech(evt) {
         //let url = "http://localhost:3001/users/" + evt.target.dataset.id;     
@@ -101,16 +90,23 @@ class ManagerHomeMgmt extends React.Component {
     render() {
 
         const viewSelected = this.state.viewConfirm;
-        let viewComp;
+        const newTrigger = this.state.newTrigger;
+        const completeTrigger = this.state.completeTrigger;
+        let viewComp, editComp;
 
         if (viewSelected) {
             viewComp = <TicketView 
                 userDetail={this.state.linkedUser}
                 ticketDetail={this.state.ticket}
-                updateCall={this.assignTech}
                 archiveCall={this.archiveTicket}
             />
         }
+        if (viewSelected && newTrigger) {
+            editComp = <AssignTech 
+                ticketDetail={this.state.ticket}
+            />
+        }
+    
 
         return(
             <div>
@@ -128,6 +124,7 @@ class ManagerHomeMgmt extends React.Component {
 
                 <div>
                     {viewComp}
+                    {editComp}
                 </div>
 
             </div>

@@ -4,6 +4,7 @@ import axios from "axios";
 import UserList from "./UserList";
 import UserDetailEdit from "./UserDetailEdit";
 import UserDetailRetrieve from "./UserDetailRetrieve";
+import UpdateUserDetail from "./AddUserDetail";
 
 //import { connect } from 'react-redux';
 //import { updateUserDetail, defineUserDetail, updateEmail, updatePassword, updatePhone, updateUserType, updateUnit } from '../actions/actions';
@@ -98,11 +99,11 @@ class UserManagement extends React.Component {
       />;
     }
     if (viewSelected & newTrigger) {
-      //viewComp = <NewUserConfirm 
-      //  userDetail={this.state.user}
-      //  updateCcall={this.updateUser}
-      //  deleteCall={this.deleteUser} 
-      ///>;
+      viewComp = <UpdateUserDetail
+        userDetail={this.state.user}
+        updateCcall={this.updateUser}
+        deleteCall={this.deleteUser} 
+      />;
       console.log("Render New User Confirm")
     }
 
