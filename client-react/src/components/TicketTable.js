@@ -1,6 +1,7 @@
 import React from 'react';
 import Table from 'react-bootstrap/Table';
 import Card from 'react-bootstrap/Card';
+import '../Styling.css'
 
 export default class TicketTable extends React.Component {
     render() {

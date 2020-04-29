@@ -1,5 +1,7 @@
 import React from "react";
 import Table from 'react-bootstrap/Table';
+import '../Styling.css'
+
 class TicketList extends React.Component {
   constructor(props) {
     super(props)

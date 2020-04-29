@@ -2,7 +2,7 @@ import React from "react";
 import axios from "axios";
 import UserDetail from "./UserDetail";
 import { connect } from 'react-redux';
-import '../task.min.css'
+import '../Styling.css'
 import Table from 'react-bootstrap/Table';
 
 class ManagerTicket extends React.Component {

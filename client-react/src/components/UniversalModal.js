@@ -3,6 +3,7 @@ import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import TenantDetailRetrieve from './TenantDetailRetrieve';
 import TenantDetailEdit from './TenantDetailEdit';
+import '../Styling.css'
 
 const UniversalModal = () => {
 

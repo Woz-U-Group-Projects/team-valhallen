@@ -1,11 +1,10 @@
-
+// Necessary Imports
 import React from "react";
 import axios from "axios";
 
-
+// Styling Imports
 import { Form, Col, Container } from 'react-bootstrap';
-import '../App.js';
-
+import '../Styling.css';
 
 class Signup extends React.Component {
   constructor(props) {
@@ -52,7 +51,7 @@ class Signup extends React.Component {
     });
   };
 
-
+  // JSX Rendering
   render() {
     return (
       <React.Fragment>

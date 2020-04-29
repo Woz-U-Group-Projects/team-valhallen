@@ -1,6 +1,7 @@
 import React from "react";
 import { useDispatch } from 'react-redux';
 import { DEFINE_TICKET_DETAIL } from "../actions/actions";
+import '../Styling.css'
 
 const TicketDetailRetrieve = (props) => {
 

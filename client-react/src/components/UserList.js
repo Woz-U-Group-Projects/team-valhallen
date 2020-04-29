@@ -1,4 +1,5 @@
 import React from "react";
+import '../Styling.css'
 
 class UserList extends React.Component {
   constructor(props) {
