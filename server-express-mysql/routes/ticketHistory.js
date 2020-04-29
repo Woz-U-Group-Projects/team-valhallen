@@ -25,13 +25,13 @@ router.get('/pending', function (req, res, next) {
 
 router.get('/complete', function (req, res, next) {
     models.Ticket.findAll({
-        where:{ status: 'complete' }
+        where:{ status: 'complete', archived: false }
     }).then(tickets => res.json(tickets));
 });
 
 router.get('/archived', function (req, res, next) {
     models.Ticket.findAll({
-        where:{ status: 'archived' }
+        where:{ status: 'complete', archived: true }
     }).then(tickets => res.json(tickets));
 });
 
@@ -53,6 +53,18 @@ router.put("/:id", function(req, res, next) {
             where: { ticketId: parseInt(req.params.id) }
         }
     ).then(ticket => res.json(ticket));
+});
+
+router.put("/archTkt/:id", function(req, res, next) {
+    models.Ticket.update(
+        {
+            archived: true
+        },
+        {
+            where: { ticketId: parseInt(req.params.id) }
+        }
+    ).then(ticket => res.json(ticket));
+    console.log("ticket #" + req.params.id + " is archived");
 });
 
 

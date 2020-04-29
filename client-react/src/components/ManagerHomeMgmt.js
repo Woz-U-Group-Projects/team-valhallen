@@ -5,6 +5,7 @@ import MrgTicketsList from './MrgTicketsList';
 import TicketView from './TicketView';
 import Analytics from './Analytics';
 import AssignTech from './AssignTech';
+import ArchiveTicket from './ArchiveTicket';
 
 
 class ManagerHomeMgmt extends React.Component {
@@ -103,6 +104,11 @@ class ManagerHomeMgmt extends React.Component {
         }
         if (viewSelected && newTrigger) {
             editComp = <AssignTech 
+                ticketDetail={this.state.ticket}
+            />
+        }
+        if (viewSelected && completeTrigger) {
+            editComp = <ArchiveTicket
                 ticketDetail={this.state.ticket}
             />
         }

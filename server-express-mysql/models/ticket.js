@@ -20,6 +20,8 @@ module.exports = (sequelize, DataTypes) => {
       status: DataTypes.STRING,
       assigned: DataTypes.BOOLEAN,
       dueDate: DataTypes.DATE,
+      completeDate: DataTypes.DATE,
+      archived: DataTypes.BOOLEAN,
       mainNote: DataTypes.STRING
 
     },
