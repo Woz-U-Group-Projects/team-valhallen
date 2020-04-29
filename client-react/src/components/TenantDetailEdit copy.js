@@ -36,7 +36,7 @@ const TicketDetailEdit = (props) => {
                 <option value="inComplete">
                   In complete
                 </option>
-         </select>
+        </select>
         <label htmlFor="mainNote">mainNote</label>
         <input type="text" name="mainNote" value={mainNote} onChange={event => dispatch({ type: UPDATE_TICKET_NOTE, payload: event.target.value })} />
       </form>

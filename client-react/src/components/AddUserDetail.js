@@ -86,6 +86,7 @@ class UpdateUserDetail extends React.Component {
     })
   };
 
+  // JSX Rendering
   render() {
     return (
       <div>

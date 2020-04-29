@@ -1,5 +1,8 @@
+// Necessary Imports
 import React from 'react';
 import ReactDOM from 'react-dom';
+
+// Component Imports
 import App from './App';
 
 it('renders without crashing', () => {

@@ -1,29 +1,28 @@
-/// Joel's Front End ///
-
 // Necessary Imports
 import React from "react";
-import PropTypes from 'prop-types';
 import { Provider } from 'react-redux';
-import { BrowserRouter as Router, Link, Route, Switch } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
+// Routing Imports
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+
+// Component Imports
 import UserPage from "./screens/UserPage";
-import Login from "./components/Login";
-import User from './components/UserSignUp';
-
+import TechHome from './screens/TechHome';
 import ManagerHome from "./screens/ManagerHome";
 import ConfigPage from "./screens/ConfigPage";
-
-
 import TenantDetails from './components/TenantDetails';
-import Navbar from './components/NavBar';
-import TenantHome from './screens/TenantHome';
-import TechHome from './screens/TechHome';
-import UserList from "./components/UserList";
-import TicketHistory from "./components/TicketHistory";
-import UserManagement from "./components/UserManagement";
-import CreateTicketModal from "./components/CreateTicketModal";
-import TechTicketManagement from "./components/TechTicketManagement";
-import CreateTicket from "./components/CreateTicket";
+import Login from "./components/Login";
+import User from './components/UserSignUp';
+import Navbar from './components/Navbar';
+
+// import UserList from "./components/UserList";
+// import TicketHistory from "./components/TicketHistory";
+// import UserManagement from "./components/UserManagement";
+// import CreateTicketModal from "./components/CreateTicketModal";
+// import TechTicketManagement from "./components/TechTicketManagement";
+// import CreateTicket from "./components/CreateTicket";
+// import TenantHome from './screens/TenantHome';
 
 // Styling Imports
 import "./App.css";
@@ -31,38 +30,42 @@ import "./App.css";
 const App = ({ store }) => (
   <Provider store={store}>
     <Router className="App" >
+      
       <center>
-
+        
+      <Navbar />
         {/* <Link to="/manager">New Mgr Home</Link>
         <Link to="/manager/users">New User Page</Link>
         <Link to="/manager/config">New Config Page</Link> */}
-        {
-      /* This Div is utilized to create the ViewPort Window from App.css */}
+        
+        {/* This Div is utilized to create the ViewPort Window from App.css */}
         <div className="style" >
 
-          {
-      /* Route paths and a Switch for individual rendering of components or screens */}
-          <Switch >
-            {/* //------------Landing/Login Routing ------------- */}
-            <Route exact path="/" component={Login} />
-            <Route path="/signup" component={User} />
+        {/* Route paths and a Switch for individual rendering of components or screens */}
 
-            {/* //------------Management Routing ------------- */}
-            <Route exact path="/managerHome" component={ManagerHome} />
-            <Route exact path="/manager/users" component={UserPage} />
-            <Route exact path="/manager/config" component={ConfigPage} />
+        <Switch >
+            
+          {/* //------------Landing/Login Routing ------------- */}
+          <Route exact path="/" component={Login} />
+          <Route path="/signup" component={User} />
 
-            {/* //------------Tenant Routing ------------- */}
-            <Route path="/tenantDetails" component={TenantDetails} />
+          {/* //------------Management Routing ------------- */}
+          <Route exact path="/managerHome" component={ManagerHome} />
+          <Route exact path="/manager/users" component={UserPage} />
+          <Route exact path="/manager/config" component={ConfigPage} />
 
-            {/* //------------Technician Routing ------------- */}
-            <Route path="/techHome" component={TechHome} />
+          {/* //------------Tenant Routing ------------- */}
+          <Route path="/tenantDetails" component={TenantDetails} />
+
+          {/* //------------Technician Routing ------------- */}
+          <Route path="/techHome" component={TechHome} />
 
           </Switch>
 
         </div>
 
       </center>
+
     </Router>
   </Provider>
 )
@@ -70,9 +73,8 @@ const App = ({ store }) => (
 
 App.propTypes = {
   store: PropTypes.object.isRequired
-      /* Imported Navigation Bar from Component*/
-    } <Navbar / >
+  /* Imported Navigation Bar from Component*/
+    }
 
-}
 
 export default App;

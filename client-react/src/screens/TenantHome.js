@@ -1,9 +1,13 @@
+// Necessary Imports
 import React from 'react';
 
-import { Container } from 'react-bootstrap';
-
+// Component Imports
 import TenantDetails from '../components/TenantDetails';
 
+// Styling Imports
+import { Container } from 'react-bootstrap';
+
+// JSX Rendering
 const TenantHome = (props) => (
     <div>
     <Container>
