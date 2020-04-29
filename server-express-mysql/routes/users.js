@@ -4,8 +4,8 @@ var models = require("../models");
 // var passport = require('../services/passport');
 // var authService = require('../services/auth');
 
-//GET ALL USERS
-router.get("/", function (req, res, next) {
+//GET LIST OF ALL USERS
+router.get("/", function(req, res, next) {
   models.User.findAll().then(users => res.json(users));
 });
 

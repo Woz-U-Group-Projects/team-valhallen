@@ -57,7 +57,7 @@ class UserManagement extends React.Component {
   viewUser(id) {
     this.setState({ viewConfirm: true });
     let url = "http://localhost:3001/users/" + id;
-    axios.get(url, { userid: id }).then(response => {
+    axios.get(url).then(response => {
       this.setState({ user: response.data })
     });
     this.setState({ viewUserId: id });
@@ -101,8 +101,8 @@ class UserManagement extends React.Component {
     if (viewSelected & newTrigger) {
       viewComp = <UpdateUserDetail
         userDetail={this.state.user}
-        //updateCall={this.updateUser}
-        //deleteCall={this.deleteUser} 
+        updateCcall={this.updateUser}
+        deleteCall={this.deleteUser} 
       />;
       console.log("Render New User Confirm")
     }
