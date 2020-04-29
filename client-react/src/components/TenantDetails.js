@@ -6,7 +6,7 @@ import { useSelector } from 'react-redux';
 import TenantDetailEdit from "./TenantDetailEdit";
 import TenantDetailRetrieve from "./TenantDetailRetrieve";
 import '../task.min.css'
-import CreateTicketModal from "./CreateTicketModal";
+import NewTicket from "./NewTicket";
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 
@@ -22,6 +22,7 @@ class TenantDetails extends React.Component {
       editConfirm: false,
       viewUserId: '',
       loggedIn: false                   // used to pass user details
+
     };
     this.viewUser = this.viewUser.bind(this)
     this.editUser = this.editUser.bind(this)
@@ -85,6 +86,8 @@ class TenantDetails extends React.Component {
     var lastName = this.state.user.lName;
     var email = this.state.user.email;
     var phone = this.state.user.phone;
+    var userId = this.state.user.userId;
+
 
     return (
       <div>
@@ -100,7 +103,7 @@ class TenantDetails extends React.Component {
           <Card.Body>{viewComp}</Card.Body>
         </Card>
         <Card style={{ width: '18rem' }}>
-          <CreateTicketModal />
+          <NewTicket userId={userId}/>
         </Card>
         <Card>
           <Card.Title>Ticket Status</Card.Title>
