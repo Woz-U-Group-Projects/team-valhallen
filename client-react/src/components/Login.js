@@ -101,21 +101,21 @@ class Login extends React.Component {
         const userId = this.state.currentUser.userId
         let redirect;
 
-        if (approvedUser && userType === 'Tenant') {
+        if (approvedUser && userType === 'tenant') {
             redirect = <Redirect 
             to={{
                 pathname: "/tenantDetails",
                 state: { userId: userId }
               }}/>
         }
-        if (approvedUser && userType === 'Manager') {
+        if (approvedUser && userType === 'propertyManager') {
             redirect = <Redirect 
             to={{
                 pathname: "/managerHome",
                 state: { userId: userId }
               }}/>
         }
-        if (approvedUser && userType === 'Technician') {
+        if (approvedUser && userType === 'technician') {
             redirect = <Redirect 
             to={{
                 pathname: "/techHome",

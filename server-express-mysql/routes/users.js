@@ -33,7 +33,7 @@ router.get("/techs", function (req, res, next) {
 //GET LIST OF MANAGERS
 router.get("/mgrs", function (req, res, next) {
   models.User.findAll({
-    where: { userType: "Manager" }
+    where: { userType: "propertyManager" }
   }).then(users => res.json(users));
 });
 //------------------------------tech skill---------------------------------------
