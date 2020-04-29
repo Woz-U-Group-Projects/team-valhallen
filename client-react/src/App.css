@@ -24,9 +24,16 @@ body {
     box-shadow: 0px 0px 15px 4px gold;
 }
 
+/* Independent Element Styling */
 #fGroup1 {
     margin-top: 50px;
 }
+
+#lCont1 {
+    margin-top: 150px;
+}
+
+/* Independent Element Hover Styling*/
 
 #fGroup1:hover {
     box-shadow: 0px 0px 5px darkorange, 0px 0px 50px gold;
@@ -60,6 +67,3 @@ body {
     border-radius: 5px;
 }
 
-#lCont1 {
-    margin-top: 150px;
-}

@@ -1,16 +1,18 @@
-// Joel's Front End
-
 // Necessary Imports
 import React from "react";
 import axios from "axios";
-import { BrowserRouter as Router, Route, Link, Redirect } from 'react-router-dom';
-import Form from 'react-bootstrap/Form';
-import Button from 'react-bootstrap/Button';
-import Dropdown from 'react-bootstrap/Dropdown';
-import TenantDetails from "./TenantDetails";
-import TenantHome from "../screens/TenantHome";
-import { useDispatch } from 'react-redux';
-import { CURRENT_USER } from '../actions/actions';
+
+// Routing Imports
+import { BrowserRouter as Link, Redirect } from 'react-router-dom';
+
+// Styling Imports
+import { Form, Button, Container, Col } from 'react-bootstrap';
+
+// import Dropdown from 'react-bootstrap/Dropdown';
+// import TenantDetails from "./TenantDetails";
+// import TenantHome from "../screens/TenantHome";
+// import { useDispatch } from 'react-redux';
+// import { CURRENT_USER } from '../actions/actions';
 
 // function LoginButton(props) {
 //     return (
@@ -26,6 +28,7 @@ import { CURRENT_USER } from '../actions/actions';
 
 // const dispatch = useDispatch()
 
+// JSX Rendering
 class Login extends React.Component {
     constructor(props) {
         super(props);
@@ -86,9 +89,6 @@ class Login extends React.Component {
             
     };
 
-
-
-
     // Component Rendering
     render() {
 
@@ -109,22 +109,19 @@ class Login extends React.Component {
             redirect = <Redirect 
             to={{
                 pathname: "/tenantDetails",
-                state: { userId: userId }
-              }}/>
+                state: { userId: userId }}}/>
         }
         if (approvedUser && userType === 'Manager') {
             redirect = <Redirect 
             to={{
                 pathname: "/managerHome",
-                state: { userId: userId }
-              }}/>
+                state: { userId: userId }}}/>
         }
         if (approvedUser && userType === 'Technician') {
             redirect = <Redirect 
             to={{
                 pathname: "/techHome",
-                state: { userId: userId }
-              }}/>
+                state: { userId: userId }}}/>
         }
 
         return (
