@@ -4,8 +4,8 @@ var models = require("../models");
 // var passport = require('../services/passport');
 // var authService = require('../services/auth');
 
-//GET ALL USERS
-router.get("/", function (req, res, next) {
+//GET LIST OF ALL USERS
+router.get("/", function(req, res, next) {
   models.User.findAll().then(users => res.json(users));
 });
 
@@ -33,7 +33,7 @@ router.get("/techs", function (req, res, next) {
 //GET LIST OF MANAGERS
 router.get("/mgrs", function (req, res, next) {
   models.User.findAll({
-    where: { userType: "Manager" }
+    where: { userType: "propertyManager" }
   }).then(users => res.json(users));
 });
 //------------------------------tech skill---------------------------------------

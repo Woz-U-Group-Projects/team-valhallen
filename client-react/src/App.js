@@ -13,8 +13,7 @@ import ManagerHome from "./screens/ManagerHome";
 import ConfigPage from "./screens/ConfigPage";
 import TenantDetails from './components/TenantDetails';
 import Login from "./components/Login";
-import User from './components/UserSignUp';
-import Navbar from './components/Navbar';
+import UserSignUp from './components/UserSignUp';
 
 // import UserList from "./components/UserList";
 // import TicketHistory from "./components/TicketHistory";
@@ -42,13 +41,17 @@ const App = ({ store }) => (
         {/* This Div is utilized to create the ViewPort Window from App.css */}
         <div className="style" >
 
-        {/* Route paths and a Switch for individual rendering of components or screens */}
+          {
+      /* Route paths and a Switch for individual rendering of components or screens */}
+          <Switch >
+            {/* //------------Landing/Login Routing ------------- */}
+            <Route exact path="/" component={Login} />
+            <Route path="/signup" component={UserSignUp} />
 
-        <Switch >
-            
-          {/* //------------Landing/Login Routing ------------- */}
-          <Route exact path="/" component={Login} />
-          <Route path="/signup" component={User} />
+            {/* //------------Management Routing ------------- */}
+            <Route exact path="/manager" component={ManagerHome} />
+            <Route exact path="/manager/users" component={UserPage} />
+            <Route exact path="/manager/config" component={ConfigPage} />
 
           {/* //------------Management Routing ------------- */}
           <Route exact path="/managerHome" component={ManagerHome} />

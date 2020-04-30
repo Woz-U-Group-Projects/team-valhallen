@@ -106,19 +106,20 @@ class Login extends React.Component {
         const userId = this.state.currentUser.userId
         let redirect;
 
-        if (approvedUser && userType === 'Tenant') {
+        if (approvedUser && userType === 'tenant') {
             redirect = <Redirect 
             to={{
                 pathname: "/tenantDetails",
                 state: { userId: userId }}}/>
         }
-        if (approvedUser && userType === 'Manager') {
+        if (approvedUser && userType === 'propertyManager') {
             redirect = <Redirect 
             to={{
-                pathname: "/managerHome",
-                state: { userId: userId }}}/>
+                pathname: "/manager",
+                state: { userId: userId }
+              }}/>
         }
-        if (approvedUser && userType === 'Technician') {
+        if (approvedUser && userType === 'technician') {
             redirect = <Redirect 
             to={{
                 pathname: "/techHome",
@@ -143,7 +144,12 @@ class Login extends React.Component {
             <Form.Control id = "pInput1" type = "password" placeholder = "Enter Password" ref = {this.password}/>
             </Form.Group >
 
-            <Button type = "button" className = "btn-lg btn-warning mt-3" onClick = {this.login} > Submit </Button>
+                        <Button type="button" className="btn btn-primary" onClick={this.login}>
+                            Login
+                        </Button>
+                        <a href="/signup">Sign-Up Here</a>
+                        
+                    </Form>
 
             <Col className = "mt-5" >
             <h5 > New to Main-Quest?
