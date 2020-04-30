@@ -1,6 +1,9 @@
+//Necessary Imports
 import React from "react";
 import axios from "axios";
+import '../Styling.css'
 
+// Component Imports
 import UserList from "./UserList";
 import UserDetailEdit from "./UserDetailEdit";
 import UserDetailRetrieve from "./UserDetailRetrieve";
@@ -83,7 +86,7 @@ class UserManagement extends React.Component {
     //});
   };
 
-
+  // JSX Rendering
   render() {
 
     const viewSelected = this.state.viewConfirm;    //stores if view user is selected

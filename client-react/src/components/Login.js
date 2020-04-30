@@ -7,6 +7,7 @@ import { BrowserRouter as Link, Redirect } from 'react-router-dom';
 
 // Styling Imports
 import { Form, Button, Container, Col } from 'react-bootstrap';
+import '../Styling.css'
 
 // import Dropdown from 'react-bootstrap/Dropdown';
 // import TenantDetails from "./TenantDetails";
@@ -144,9 +145,9 @@ class Login extends React.Component {
 
             <Button type = "button" className = "btn-lg btn-warning mt-3" onClick = {this.login} > Submit </Button>
 
-            <Col id = "signupCol1" className = "mt-5" >
-            <h5 > New to Main - Quest?
-            <Link to = "/signup" activeClassName = "active" >
+            <Col className = "mt-5" >
+            <h5 > New to Main-Quest?
+            <Link id="sLink1" to = "/signup" activeClassName = "active" >
             Signup </Link>!</h5 ></Col>
 
             </Form> 

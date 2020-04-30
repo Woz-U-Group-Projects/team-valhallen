@@ -1,9 +1,9 @@
 import React from "react";
-import '../task.min.css';
+import '../Styling.css';
 import styled from 'styled-components';
-import { Form, Row, Col, Button, Container } from 'react-bootstrap';
+import { Form, Col, Button, Container } from 'react-bootstrap';
 import { useSelector, useDispatch } from 'react-redux'
-import { UPDATE_FIRSTNAME, UPDATE_LASTNAME, UPDATE_EMAIL, UPDATE_PHONE} from '../actions/actions'
+// import { UPDATE_FIRSTNAME, UPDATE_LASTNAME, UPDATE_EMAIL, UPDATE_PHONE} from '../actions/actions'
 
 const Style = styled.div`
 width: 600px;
@@ -58,7 +58,7 @@ border-color: yellow;
 const TenantDetailEdit = (props) => {
 
 
-  const dispatch = useDispatch()
+const dispatch = useDispatch()
 
 
   const fName = useSelector(state => state.updateFirstName);

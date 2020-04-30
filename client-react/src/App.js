@@ -27,6 +27,7 @@ import Navbar from './components/Navbar';
 // Styling Imports
 import "./App.css";
 
+// JSX Rendering
 const App = ({ store }) => (
   <Provider store={store}>
     <Router className="App" >

@@ -1,6 +1,6 @@
 import React from "react";
 import axios from "axios";
-import '../task.min.css';
+import '../Styling.css'
 
 class UpdateUserDetail extends React.Component {
   constructor(props) {

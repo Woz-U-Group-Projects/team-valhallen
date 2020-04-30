@@ -1,5 +1,6 @@
 import React from "react";
 import axios from "axios";
+import '../Styling.css'
 
 import TicketList from "./TicketList";
 import TicketDetailEdit from "./TicketDetailEdit";

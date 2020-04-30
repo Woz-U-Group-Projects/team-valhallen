@@ -3,7 +3,7 @@ import Button from "react-bootstrap/Button";
 import CreateTicket from "./CreateTicket";
 import Modal from "react-bootstrap/Modal";
 import styled from "styled-components";
-
+import '../Styling.css'
 
 const Style = styled.div`
 background-color: lightgrey;

@@ -5,33 +5,11 @@ import { useSelector } from 'react-redux';
 
 import TenantDetailEdit from "./TenantDetailEdit";
 import TenantDetailRetrieve from "./TenantDetailRetrieve";
-import styled from "styled-components";
 import CreateTicketModal from "./CreateTicketModal";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 import { Container, Col, Row } from "react-bootstrap";
-
-const Style = styled.div`
-#card1 {
-margin-top: 50px;
-}
-
-.btn {
-width: 180px;
-border-size: 50px;
-border-color: gold;
-border-width: 2px;
-border-radius: 5px;
-
-.btn:hover {
-  box-shadow: 0px 0px 5px darkorange, 0px 0px 50px gold;
-}
-
-#div1 {
-  background-color: blue;
-  height: 400px;
-}
-`
+import '../Styling.css'
 
 class TenantDetails extends React.Component {
   constructor(props) {

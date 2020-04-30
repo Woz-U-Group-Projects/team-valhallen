@@ -1,0 +1,55 @@
+/* Independent Element Styling */
+#fGroup1 {
+    margin-top: 50px;
+}
+
+#lCont1 {
+    margin-top: 150px;
+}
+
+.btn {
+    width: 180px;
+}
+
+#card1 {
+    margin-top: 50px;
+    }
+    
+#div1 {
+    background-color: blue;
+    height: 400px;
+    }
+
+/* Independent Element Hover Styling*/
+
+#fGroup1:hover {
+    box-shadow: 0px 0px 5px darkorange, 0px 0px 50px gold;
+    border-radius: 5px;
+}
+
+#lGroup1:hover {
+    box-shadow: 0px 0px 5px darkorange, 0px 0px 50px gold;
+    border-radius: 5px;
+}
+
+#eGroup1:hover {
+    box-shadow: 0px 0px 5px darkorange, 0px 0px 50px gold;
+    border-radius: 5px;
+}
+
+#pGroup1:hover {
+    box-shadow: 0px 0px 5px darkorange, 0px 0px 50px gold;
+    border-radius: 5px;}
+#phGroup1:hover {
+    box-shadow: 0px 0px 5px darkorange, 0px 0px 50px gold;
+    border-radius: 5px;}
+
+#oGroup1:hover {
+    box-shadow: 0px 0px 5px darkorange, 0px 0px 50px gold;
+    border-radius: 5px;
+}
+
+.btn:hover {
+    box-shadow: 0px 0px 5px darkorange, 0px 0px 50px gold;
+    border-radius: 5px;
+}
