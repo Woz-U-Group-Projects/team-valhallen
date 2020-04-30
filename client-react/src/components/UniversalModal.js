@@ -17,7 +17,7 @@ const UniversalModal = () => {
     return (
         <>
             <Button variant="primary" onClick={handleShow}>
-               Universal Modal
+            Universal Modal
         </Button>
 
             <Modal show={show} onHide={handleClose}>

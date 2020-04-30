@@ -120,7 +120,7 @@ class Login extends React.Component {
             to={{
                 pathname: "/manager",
                 state: { userId: userId }
-              }}/>
+            }}/>
         }
         if (approvedUser && userType === 'Technician') {
             redirect = <Redirect 
@@ -132,32 +132,27 @@ class Login extends React.Component {
         return (
 
             <div>
+            <h1 id="headLogin1">Tenant Servicing at its Best!</h1>
             <Container id="lCont1">
             <Form >
+            
+            <h1 className="mb-5"> Login Portal </h1>
 
-            <h1> Login Portal </h1>
-
-            <Form.Group controlId = "formBasicEmail" >
-            <Form.Label  > Email address </Form.Label > 
-            <Form.Control  type = "email" placeholder = "Enter Email" ref = {this.email}/> 
+            <Form.Group id="eGroup1" className="mt-5">
+            <Form.Label id="eLabel1" > Email address </Form.Label > 
+            <Form.Control id="eInput1" type = "email" placeholder = "Enter Email" ref = {this.email}/> 
             </Form.Group >
 
-            <Form.Group  controlId = "formBasicPassword" >
-            <Form.Label  > Password </Form.Label> 
-            <Form.Control  type = "password" placeholder = "Enter Password" ref = {this.password}/>
+            <Form.Group id="pGroup1">
+            <Form.Label id="pLabel1" className="mt-2" > Password </Form.Label> 
+            <Form.Control id="pInput1" type = "password" placeholder = "Enter Password" ref = {this.password}/>
             </Form.Group >
 
-                        <Button type="button" className="btn btn-primary" onClick={this.login}>
-                            Login
-                        </Button>
-                        <a href="/signup">Sign-Up Here</a>
-                        
-                    
+            <Button type="button" className="btn btn-warning mt-3 mr-4" onClick={this.login}>
+            Login</Button>
 
-            <Col className = "mt-5" >
-            <h5 > New to Main-Quest?
-            <Link id="sLink1" to = "/signup" activeClassName = "active" >
-            Signup </Link>!</h5 ></Col>
+            <Button type="button" className="btn btn-warning mt-3" href="/signup">
+            Signup</Button>
 
             </Form> 
             </Container >

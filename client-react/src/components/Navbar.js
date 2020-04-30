@@ -5,66 +5,49 @@ import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
 
 // Styling Imports
+import { Container, Col, Navbar, Nav, NavDropdown } from 'react-bootstrap';
+import Logo from '../img/mq02.png';
 import '../Styling.css'
 
 // JSX Rendering
-class Navbar extends React.Component {
+class NavBar extends React.Component {
     logOut(e) {
         e.preventDefault()
-        localStorage.removeItem('usertoken')
+        
         this.props.history.push('/')
     }
 
+
     render() {
         const loginRegLink = (
-            <ul className="navbar-nav">
-                <li className="nav-item">
-                    <Link to="/login" className="nav-link">
-                        Login
-                    </Link>
-                </li>
-                <li className="nav-item">
-                    <Link to="/signup" className="nav-link">
-                        Sign Up
-                    </Link>
-                </li>
-            </ul>
+        <React.Fragment>
+            <Nav className="mr-auto">
+            <Nav.Link className="mt-1" href="/">Logout</Nav.Link>
+            
+            </Nav>
+            </React.Fragment>
         )
 
-        const userLink = (
-            <ul className="navbar-nav">
-                <li className="nav-item">
-                    <Link to="/tenantHome" className="nav-link">
-                        Tenant
-                    </Link>
-                </li>
-                <li className="nav-item">
-                    <Link to="/login" onClick={this.logOut.bind(this)} className="nav-link">
-                        Logout
-                    </Link>
-                </li>
-            </ul>
-        )
 
         return (
-            <nav className="navbar navbar-expand-lg navbar-dark bg-dark rounded">
-                <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar1" aria-controls="navbar1" aria-expanded="false" aria-label="Toggle navigation">
-                    <span className="nav-toggle-icon"></span>
-                </button>
-                <div className="collapse navbar-collapse justify-content-md-center" id="navbar1">
-                    <ul className="navbar-nav">
-                        <li className="nav-item">
-                            <Link to="/" className="nav-link">
-                            Home
-                            </Link>
-                        </li>
-                    </ul>
-                    {localStorage.usertoken ? userLink : loginRegLink}
+            
+            <Container id="navCont1">
+                <Navbar collapseOnSelect expand="lg" bg="warning" variant="dark">
+                <a href="/"><img class="navbar-brand" id="logoNav" src={Logo} /></a>
+                <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+                <Navbar.Collapse id="responsive-navbar-nav">
+            
+                <div>
+                {loginRegLink}
                 </div>
-            </nav>
+    
+                </Navbar.Collapse>
+                </Navbar>
+                </Container>
+            
         )
     }
 
 }
 
-export default withRouter(Navbar);
+export default withRouter(NavBar);

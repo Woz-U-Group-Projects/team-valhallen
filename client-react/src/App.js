@@ -3,6 +3,9 @@ import React from "react";
 import { Provider } from 'react-redux';
 import PropTypes from 'prop-types';
 
+// Component Imports
+import Navbar from './components/LandingNavbar';
+
 // Routing Imports
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
@@ -14,19 +17,17 @@ import ConfigPage from "./screens/ConfigPage";
 import TenantDetails from './components/TenantDetails';
 import Login from "./components/Login";
 import UserSignUp from './components/UserSignUp';
-import TechTicketManagement from "./components/TechTicketManagement";
-import Navbar from './components/Navbar';
 
 // import UserList from "./components/UserList";
 // import TicketHistory from "./components/TicketHistory";
 // import UserManagement from "./components/UserManagement";
 // import CreateTicketModal from "./components/CreateTicketModal";
-
 // import CreateTicket from "./components/CreateTicket";
 // import TenantHome from './screens/TenantHome';
 
 // Styling Imports
 import "./App.css";
+import TechTicketManagement from "./components/TechTicketManagement";
 
 // JSX Rendering
 const App = ({ store }) => (
@@ -35,7 +36,7 @@ const App = ({ store }) => (
       
       <center>
         
-      {/* <Navbar /> */}
+      {/* <LandingNavbar /> */}
         {/* <Link to="/manager">New Mgr Home</Link>
         <Link to="/manager/users">New User Page</Link>
         <Link to="/manager/config">New Config Page</Link> */}
@@ -55,16 +56,11 @@ const App = ({ store }) => (
             <Route exact path="/manager/users" component={UserPage} />
             <Route exact path="/manager/config" component={ConfigPage} />
 
-          {/* //------------Management Routing ------------- */}
-          <Route exact path="/managerHome" component={ManagerHome} />
-          <Route exact path="/manager/users" component={UserPage} />
-          <Route exact path="/manager/config" component={ConfigPage} />
-
           {/* //------------Tenant Routing ------------- */}
-          <Route exact path="/tenantDetails" component={TenantDetails} />
+          <Route path="/tenantDetails" component={TenantDetails} />
 
           {/* //------------Technician Routing ------------- */}
-          <Route exact path="/techTicketManagement" component={TechTicketManagement} />
+          <Route path="/techTicketManagement" component={TechTicketManagement} />
 
           </Switch>
 
