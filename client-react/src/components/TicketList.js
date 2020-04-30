@@ -58,7 +58,7 @@ class TicketList extends React.Component {
                 <td>{t.category}</td>
                 <td>{t.note}</td>
                 <td>{t.dueDate}</td>
-                <td>{t.access.toString()}</td>
+                <td>{t.access}</td>
                 <td>{t.status}</td>
                 <td>{t.mainNote}</td>
                 <td><button name={t.ticketId} onClick={this.viewButton} >View Ticket</button></td>

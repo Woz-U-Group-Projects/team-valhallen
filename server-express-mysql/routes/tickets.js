@@ -45,10 +45,20 @@ router.post("/", function(req, res, next) {
 });
 
 //SELECT TICKET BY ID
+
 router.get("/:id", function (req, res, next) {
   let ticketId = parseInt(req.params.id);
   models.Ticket.findByPk(ticketId)
     .then(ticket => res.json(ticket));
+});
+
+
+//SELECT TICKET BY TECHID 
+router.get("/tech/:id", function (req, res, next) {
+  let techId = parseInt(req.params.id);
+  models.Ticket.findAll({
+    where: { techId: techId }
+  }).then(tickets => res.json(tickets));
 });
 
 //UPDATE TICKET INFORMATION

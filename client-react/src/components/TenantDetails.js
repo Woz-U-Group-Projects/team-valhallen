@@ -73,12 +73,12 @@ class TenantDetails extends React.Component {
       // renders tenantDetail if true
       assignComp = <TenantDetailRetrieve tenantDetail={this.state.user} />;
 
-      viewComp = (
+      viewComp = 
         <TenantDetailEdit
           tenantDetail={this.state.user}
           updateCall={this.updateUser}
         />
-      );
+      
     }
 
 
@@ -93,14 +93,14 @@ class TenantDetails extends React.Component {
         <Card>
           <Card.Title>{firstName} {lastName}</Card.Title>
           <Card.Body>{email} | {phone}</Card.Body>
-          <Card.Footer><Button onClick={this.editUser}>Edit User Details</Button></Card.Footer>
+          <Card.Footer><Button onClick={this.editUser}>Edit User Details</Button>{assignComp}{viewComp}</Card.Footer>
         </Card>
-        <Card>
+        {/* <Card>
           <Card.Body>{assignComp}</Card.Body>
         </Card>
         <Card>
-          <Card.Body>{viewComp}</Card.Body>
-        </Card>
+          <Card.Body></Card.Body>
+        </Card> */}
         <Card style={{ width: '18rem' }}>
           <CreateTicketModal />
         </Card>

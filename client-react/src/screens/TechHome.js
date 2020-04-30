@@ -2,7 +2,7 @@
 import React from 'react';
 
 // Component Imports
-import TenantDetails from '../components/TenantDetails';
+import TechTicketManagement from '../components/TechTicketManagement';
 
 // Styling Imports
 import { Container } from 'react-bootstrap';
@@ -11,7 +11,7 @@ import { Container } from 'react-bootstrap';
 const TechHome = () => (
     <div>
     <Container>
-    <TenantDetails />
+    <TechTicketManagement />
     </Container>
     </div>
 );

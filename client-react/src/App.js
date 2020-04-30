@@ -14,12 +14,14 @@ import ConfigPage from "./screens/ConfigPage";
 import TenantDetails from './components/TenantDetails';
 import Login from "./components/Login";
 import UserSignUp from './components/UserSignUp';
+import TechTicketManagement from "./components/TechTicketManagement";
+import Navbar from './components/Navbar';
 
 // import UserList from "./components/UserList";
 // import TicketHistory from "./components/TicketHistory";
 // import UserManagement from "./components/UserManagement";
 // import CreateTicketModal from "./components/CreateTicketModal";
-// import TechTicketManagement from "./components/TechTicketManagement";
+
 // import CreateTicket from "./components/CreateTicket";
 // import TenantHome from './screens/TenantHome';
 
@@ -33,7 +35,7 @@ const App = ({ store }) => (
       
       <center>
         
-      <Navbar />
+      {/* <Navbar /> */}
         {/* <Link to="/manager">New Mgr Home</Link>
         <Link to="/manager/users">New User Page</Link>
         <Link to="/manager/config">New Config Page</Link> */}
@@ -59,10 +61,10 @@ const App = ({ store }) => (
           <Route exact path="/manager/config" component={ConfigPage} />
 
           {/* //------------Tenant Routing ------------- */}
-          <Route path="/tenantDetails" component={TenantDetails} />
+          <Route exact path="/tenantDetails" component={TenantDetails} />
 
           {/* //------------Technician Routing ------------- */}
-          <Route path="/techHome" component={TechHome} />
+          <Route exact path="/techTicketManagement" component={TechTicketManagement} />
 
           </Switch>
 

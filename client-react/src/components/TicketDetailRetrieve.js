@@ -7,7 +7,7 @@ const TicketDetailRetrieve = (props) => {
 
     const dispatch = useDispatch()
 
-    dispatch({
+    dispatch({ 
         type: DEFINE_TICKET_DETAIL,
         payload: {
             status: props.ticketDetail.status,

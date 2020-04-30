@@ -5,39 +5,50 @@ import '../Styling.css'
 import TicketList from "./TicketList";
 import TicketDetailEdit from "./TicketDetailEdit";
 import TicketDetailRetrieve from "./TicketDetailRetrieve";
+import UniversalModal from "./UniversalModal";
+import Table from 'react-bootstrap/Table';
 
 
 class TechTicketManagement extends React.Component {
-  constructor(props) {
+  constructor (props) {
     super(props)
     this.state = {
       tickets: [],                    // used to store array of tickets 
       ticket: {},                     // used to pass ticket details
       viewConfirm: false,
       newTrigger: false,
-      viewTicketId: ''
+      editConfirm: false,
+      loggedIn: false,
+      viewTechId: ''
     }
     this.getNewTickets = this.getNewTickets.bind(this)
-    this.getTenants = this.getTenants.bind(this)
     this.viewTicket = this.viewTicket.bind(this)
+    this.editTicket = this.editTicket.bind(this);
   }
 
   componentDidMount() {
-    this.getNewTickets();
+    this.getNewTickets(this.props.location.state.userId);
+    console.log(this.props.location.state.userId);
   }
-
-  getNewTickets() {
-    let url = "http://localhost:3001/tickets/";
+  /*
+  getNewTickets(id) {
+    let url = "http://localhost:3001/tickets/" + id;
     axios.get(url).then(response => this.setState({ tickets: response.data }));
     this.setState({ viewConfirm: false, newTrigger: true });
   };
+  */
 
-  getTenants() {
-    let url = "http://localhost:3001/users/tenants";
-    axios.get(url).then(response => this.setState({ users: response.data }));
-    this.setState({ viewConfirm: false, newTrigger: false });
+  getNewTickets(id) {
+    this.setState({ viewConfirm: true });
+    this.setState({ loggedIn: true });
+    //console.log(this..userId);
+    let url = "http://localhost:3001/tickets/tech/" + id;
+    axios.get(url).then(response => {
+      this.setState({ tickets: response.data })
+    });
+    this.setState({ viewTechId: id });
+    // console.log("View User #" + id);
   };
-  
 
   viewTicket(id) {
     this.setState({ viewConfirm: true });
@@ -49,14 +60,27 @@ class TechTicketManagement extends React.Component {
     console.log("View Ticket #" + id);
   };
 
+  viewTicketById(id) {
+    this.setState({ viewConfirm: true });
+    let url = "http://localhost:3001/tickets/" + id;
+    axios.get(url, { ticketId: id }).then(response => {
+      this.setState({ ticket: response.data })
+    });
+    this.setState({ viewTicketId: id });
+    console.log("View Ticket #" + id);
+  };
+
   updateTicket(evt) {
-    let url = "http://localhost:3001/tickets/" + evt.target.dataset.id;     
-    axios.put(url, { 
+    let url = "http://localhost:3001/tickets/" + evt.target.dataset.id;
+    axios.put(url, {
       newTicketStatus: evt.target.dataset.status,
-      newTicketNote: evt.target.dataset.note 
+      newTicketNote: evt.target.dataset.note
     }).then(alert("ticket Details Have Beed Saved"))
   };
 
+  editTicket() {
+    this.setState({ editConfirm: true });
+  }
 
   render() {
 
@@ -71,6 +95,7 @@ class TechTicketManagement extends React.Component {
       />;
     }
 
+let ticketlist;
     return (
       <div>
 
@@ -83,7 +108,7 @@ class TechTicketManagement extends React.Component {
           {assignComp}
           {viewComp}
         </div>
-
+        
       </div>
     )
   };

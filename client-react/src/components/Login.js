@@ -37,6 +37,8 @@ class Login extends React.Component {
             users: [],
             user: {},
             userId: 0,
+            ticketId: 0,
+            techId: 0,
             email: '',
             password: '',
             userType: '',
@@ -104,25 +106,26 @@ class Login extends React.Component {
         const approvedUser = this.state.approvedUser
         const userType = this.state.currentUser.userType
         const userId = this.state.currentUser.userId
+        const techId = this.state.currentUser.techId
         let redirect;
 
-        if (approvedUser && userType === 'tenant') {
+        if (approvedUser && userType === 'Tenant') {
             redirect = <Redirect 
             to={{
                 pathname: "/tenantDetails",
                 state: { userId: userId }}}/>
         }
-        if (approvedUser && userType === 'propertyManager') {
+        if (approvedUser && userType === 'Manager') {
             redirect = <Redirect 
             to={{
                 pathname: "/manager",
                 state: { userId: userId }
               }}/>
         }
-        if (approvedUser && userType === 'technician') {
+        if (approvedUser && userType === 'Technician') {
             redirect = <Redirect 
             to={{
-                pathname: "/techHome",
+                pathname: "/techTicketManagement",
                 state: { userId: userId }}}/>
         }
 
@@ -134,14 +137,14 @@ class Login extends React.Component {
 
             <h1> Login Portal </h1>
 
-            <Form.Group id = "eGroup1" controlId = "formBasicEmail" >
-            <Form.Label id = "eLabel1" > Email address </Form.Label > 
-            <Form.Control id = "eInput1" type = "email" placeholder = "Enter Email" ref = {this.email}/> 
+            <Form.Group controlId = "formBasicEmail" >
+            <Form.Label  > Email address </Form.Label > 
+            <Form.Control  type = "email" placeholder = "Enter Email" ref = {this.email}/> 
             </Form.Group >
 
-            <Form.Group id = "pGroup1" controlId = "formBasicPassword" >
-            <Form.Label id = "pLabel1" > Password </Form.Label> 
-            <Form.Control id = "pInput1" type = "password" placeholder = "Enter Password" ref = {this.password}/>
+            <Form.Group  controlId = "formBasicPassword" >
+            <Form.Label  > Password </Form.Label> 
+            <Form.Control  type = "password" placeholder = "Enter Password" ref = {this.password}/>
             </Form.Group >
 
                         <Button type="button" className="btn btn-primary" onClick={this.login}>
@@ -149,7 +152,7 @@ class Login extends React.Component {
                         </Button>
                         <a href="/signup">Sign-Up Here</a>
                         
-                    </Form>
+                    
 
             <Col className = "mt-5" >
             <h5 > New to Main-Quest?
@@ -158,6 +161,7 @@ class Login extends React.Component {
 
             </Form> 
             </Container >
+            {redirect}
             </div>
 
         );
