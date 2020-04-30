@@ -7,6 +7,7 @@ class AssignTech extends React.Component {
         super(props);
         this.state = { users: [] };
         this.select1 = React.createRef();
+        this.dueDate = React.createRef();
     }
 
     componentDidMount() {
@@ -20,9 +21,11 @@ class AssignTech extends React.Component {
 
     addTechs = () => {
         let url = "http://localhost:3001/ticketHistory/" + parseInt(this.props.ticketDetail.ticketId);
+        let dateMulti = 86400000 * parseInt(this.dueDate.current.value);
+        let setDate = new Date(Date.now() + dateMulti ).toISOString(); 
         axios.put(url, {
             tech: this.select1.current.value,
-            //dueDate: this.dueDate.current.value
+            dueDate: setDate
         }).then(alert("Technician has been assigned"));
         //close component callback
         const { techAssigned } = this.props

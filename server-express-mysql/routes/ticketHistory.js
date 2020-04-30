@@ -47,7 +47,8 @@ router.put("/:id", function(req, res, next) {
     models.Ticket.update(
         {
             techid: req.body.tech,
-            assigned: true
+            assigned: true,
+            dueDate: req.body.dueDate
         },
         {
             where: { ticketId: parseInt(req.params.id) }
