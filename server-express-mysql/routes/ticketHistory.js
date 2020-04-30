@@ -13,25 +13,25 @@ router.get("/", function (req, res, next) {
 
 router.get('/new', function (req, res, next) {
     models.Ticket.findAll({
-        where:{ assigned: 0 }
+        where:{ assigned: null }
     }).then(tickets => res.json(tickets));
 });
 
 router.get('/pending', function (req, res, next) {
     models.Ticket.findAll({
-        where:{ status: 'pending', assigned: true }
+        where:{ status: 'Pending', assigned: true }
     }).then(tickets => res.json(tickets));
 });
 
 router.get('/complete', function (req, res, next) {
     models.Ticket.findAll({
-        where:{ status: 'complete', archived: false }
+        where:{ status: 'Complete', archived: null }
     }).then(tickets => res.json(tickets));
 });
 
 router.get('/archived', function (req, res, next) {
     models.Ticket.findAll({
-        where:{ status: 'complete', archived: true }
+        where:{ status: 'Complete', archived: true }
     }).then(tickets => res.json(tickets));
 });
 

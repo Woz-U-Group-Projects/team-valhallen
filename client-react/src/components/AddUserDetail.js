@@ -53,7 +53,8 @@ class AddUserDetail extends React.Component {
     });
     axios.put(urlb, {
       userId: this.props.userDetail.userId,
-      userType: "technician"
+      userType: "Technician",
+      unitId: 500
     }).then(response => {
       //redirect to userpage
     })
@@ -74,7 +75,8 @@ class AddUserDetail extends React.Component {
     });
     axios.put(urlb, {
       userId: this.props.userDetail.userId,
-      userType: "tenant"
+      userType: "Tenant",
+      unitId: this.unitName.current.value
     })
   };
 
@@ -82,7 +84,8 @@ class AddUserDetail extends React.Component {
     let url = "http://localhost:3001/users/newConfirmType/";
     axios.put(url, {
       userId: this.props.userDetail.userId,
-      userType: "propertyManager"
+      userType: "Manager",
+      unitId: 1000
     })
   };
 
@@ -138,8 +141,10 @@ class AddUserDetail extends React.Component {
             checked={this.state.general}
             onChange={event => this.handleCheck(event, "general", true)}
             label="general" />
-
-          <button type="button" className="btn btn-primary" onClick={this.addSkills}>Add Skills</button>
+          
+          <div>
+            <button type="button" className="btn btn-primary" onClick={this.addSkills}>Add Skills</button>
+          </div>
 
         </div>
         <div>

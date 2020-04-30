@@ -80,13 +80,9 @@ class UserManagement extends React.Component {
     console.log(evt.target.dataset.phone);
   };
 
-  archiveUser = (id) => {
-    //NEED TO BUILD ARCHIVE IN USER TABLE
-
-    //let url = "http://localhost:3001/users/archive" + id;     
-    //axios.put(url, {}).then(response => {   
-    //  this.getData();
-    //});
+  archiveUser = (evt) => {
+    let url = "http://localhost:3001/users/archive/" + evt.target.value;     
+    axios.put(url, {}).then(alert("User has be archived"));
   };
 
   // JSX Rendering
