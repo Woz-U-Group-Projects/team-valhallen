@@ -13,7 +13,6 @@ class ManagerHomeMgmt extends React.Component {
         super(props) 
         this.state = { 
             tickets: [],
-            users: [],
             ticket: [],
             linkedUser: [],
             viewConfirm: false,
@@ -25,15 +24,13 @@ class ManagerHomeMgmt extends React.Component {
         this.getCompletedTickets = this.getCompletedTickets.bind(this)
         this.getArchivedTickets = this.getArchivedTickets.bind(this)
         this.viewTicket = this.viewTicket.bind(this)
+        this.techAssigned = this.techAssigned.bind(this)
+        this.ticketArchived = this.ticketArchived.bind(this)
     }
 
     componentDidMount() {
         this.getNewTickets();
     }
-
-    componentDidUpdate() {
-        
-    };
 
     getNewTickets() {
         let url = "http://localhost:3001/ticketHistory/new";
@@ -75,17 +72,12 @@ class ManagerHomeMgmt extends React.Component {
         this.setState({ viewConfirm: true });
     };
 
-    assignTech(evt) {
-        //let url = "http://localhost:3001/users/" + evt.target.dataset.id;     
-        //axios.put(url, { 
-            //newEmail: evt.target.dataset.email,
-            //newPassword: evt.target.dataset.pass, 
-            //newPhone: evt.target.dataset.phone
-        //}).then(alert("User Details Have Beed Saved"))
+    techAssigned(evt) {
+        this.getNewTickets();
     };
 
-    archiveTicket(id) {
-
+    ticketArchived(evt) {
+        this.getCompletedTickets();
     };
 
     render() {
@@ -99,17 +91,18 @@ class ManagerHomeMgmt extends React.Component {
             viewComp = <TicketView 
                 userDetail={this.state.linkedUser}
                 ticketDetail={this.state.ticket}
-                archiveCall={this.archiveTicket}
             />
         }
         if (viewSelected && newTrigger) {
             editComp = <AssignTech 
                 ticketDetail={this.state.ticket}
+                techAssigned={this.techAssigned}
             />
         }
         if (viewSelected && completeTrigger) {
             editComp = <ArchiveTicket
                 ticketDetail={this.state.ticket}
+                ticketArchived={this.ticketArchived}
             />
         }
     

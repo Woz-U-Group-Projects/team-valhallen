@@ -32,8 +32,8 @@ class User extends React.Component {
       lName: this.lName.current.value,
       email: this.email.current.value,
       password: this.password.current.value,
-      phone: this.phone.current.value,
-      userType: this.userType.current.value
+      phone: this.phone.current.value
+      //userType: this.userType.current.value
     })
     // .then(response => {
     //   // refresh the data
@@ -48,7 +48,7 @@ class User extends React.Component {
     // })
     .then(res => {
       if(res) {
-          this.props.history.push('/login')
+          this.props.history.push('/')
       }
   });
   };
@@ -59,7 +59,7 @@ class User extends React.Component {
       <div>
         <h3>First Name</h3>
         <input ref={this.fName} />
-        <h3> Second Name</h3>
+        <h3> Last Name</h3>
         <input ref={this.lName} />
         <h3>Email</h3>
         <input ref={this.email} />
@@ -67,12 +67,12 @@ class User extends React.Component {
         <input ref={this.password} />
         <h3>Phone</h3>
         <input ref={this.phone} />
-        <h3>UserType</h3>
+        {/* <h3>UserType</h3>
         <select ref={this.userType}>
-          <option value="Property Manager" >Property Manager</option>
-          <option value="Technician">Technician</option>
-          <option value="Tenant">Tenant</option>
-        </select>
+          <option value="propertyManager" >Property Manager</option>
+          <option value="technician">Technician</option>
+          <option value="tenant">Tenant</option>
+        </select> */}
         <button type="button" className="btn btn-primary" onClick={this.addUser}>add User</button>
       </div>
     );

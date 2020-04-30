@@ -16,7 +16,6 @@ class AssignTech extends React.Component {
     getTechs() {
         let url = "http://localhost:3001/users/techs/";
         axios.get(url).then(response => this.setState({ users: response.data }));
-        // this.setState({ viewConfirm: false, newTrigger: false });
     };
 
     addTechs = () => {
@@ -25,8 +24,11 @@ class AssignTech extends React.Component {
             tech: this.select1.current.value,
             //dueDate: this.dueDate.current.value
         }).then(alert("Technician has been assigned"));
-        console.log(this.select1.current.value);
+        //close component callback
+        const { techAssigned } = this.props
+        techAssigned()
     };
+
 
     render() {
         return (

@@ -2,7 +2,7 @@ import React from "react";
 import axios from "axios";
 import '../task.min.css';
 
-class UpdateUserDetail extends React.Component {
+class AddUserDetail extends React.Component {
   constructor(props) {
     super(props);
     this.state = { users: [], electrical: false, plumbing: false, hvac: false, appliance: false, general: false, userId: 6, value: "" }
@@ -161,4 +161,4 @@ class UpdateUserDetail extends React.Component {
   }
 }
 
-export default UpdateUserDetail;
+export default AddUserDetail;

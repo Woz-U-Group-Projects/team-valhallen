@@ -12,6 +12,9 @@ class ArchiveTicket extends React.Component {
     archTkt = () => {
         let url = "http://localhost:3001/ticketHistory/archTkt/" + parseInt(this.props.ticketDetail.ticketId);
         axios.put(url, {}).then(alert("Ticket has beed Archived"));
+        //close component callback
+        const { ticketArchived } = this.props
+        ticketArchived()
     };
 
     render() {

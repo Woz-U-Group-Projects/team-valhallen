@@ -5,7 +5,7 @@ import { BrowserRouter as Router, Link, Route, Switch } from 'react-router-dom';
 
 import UserPage from "./screens/UserPage";
 import Login from "./components/Login";
-import User from './components/UserSignUp';
+import UserSignUp from './components/UserSignUp';
 
 import ManagerHome from "./screens/ManagerHome";
 import ConfigPage from "./screens/ConfigPage";
@@ -40,10 +40,10 @@ const App = ({ store }) => (
           <Switch >
             {/* //------------Landing/Login Routing ------------- */}
             <Route exact path="/" component={Login} />
-            <Route path="/signup" component={User} />
+            <Route path="/signup" component={UserSignUp} />
 
             {/* //------------Management Routing ------------- */}
-            <Route exact path="/managerHome" component={ManagerHome} />
+            <Route exact path="/manager" component={ManagerHome} />
             <Route exact path="/manager/users" component={UserPage} />
             <Route exact path="/manager/config" component={ConfigPage} />
 

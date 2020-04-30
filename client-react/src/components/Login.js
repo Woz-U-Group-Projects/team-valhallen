@@ -111,7 +111,7 @@ class Login extends React.Component {
         if (approvedUser && userType === 'propertyManager') {
             redirect = <Redirect 
             to={{
-                pathname: "/managerHome",
+                pathname: "/manager",
                 state: { userId: userId }
               }}/>
         }
@@ -152,8 +152,8 @@ class Login extends React.Component {
 
                         <Button type="button" className="btn btn-primary" onClick={this.login}>
                             Login
-                            
                         </Button>
+                        <a href="/signup">Sign-Up Here</a>
                         
                     </Form>
 
