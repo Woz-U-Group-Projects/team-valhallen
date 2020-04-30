@@ -86,6 +86,13 @@ class AddUserDetail extends React.Component {
     })
   };
 
+  deleteUser = () => {
+    let url = "http://localhost:3001/users/" + this.props.userDetail.userId;
+    axios.delete(url).then(response => {
+      alert("User has been deleted")
+    });
+  };
+
   // JSX Rendering
   render() {
     return (
@@ -156,6 +163,9 @@ class AddUserDetail extends React.Component {
         </div>
         <div>
           <button type="button" className="btn btn-primary" onClick={this.newManager}>Add New Manager</button>
+        </div>
+        <div>
+          <button type="button" className="btn btn-danger" onClick={this.deleteUser}>Delete User</button>
         </div>
       </div>
     );

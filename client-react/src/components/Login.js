@@ -84,12 +84,8 @@ class Login extends React.Component {
             //this.props.history.push('/tenantDetails');
         }).catch(err => {
             console.log(err)
-        });
-
-        // dispatch({ type: CURRENT_USER, payload: this.state.user });
-            
-            
-            
+            alert("Login Information is Incorrect")
+        });     
     };
 
     // Component Rendering

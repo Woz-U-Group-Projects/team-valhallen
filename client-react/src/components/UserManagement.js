@@ -27,6 +27,7 @@ class UserManagement extends React.Component {
     this.getTechs = this.getTechs.bind(this)
     this.getMgrs = this.getMgrs.bind(this)
     this.viewUser = this.viewUser.bind(this)
+    this.updateUser = this.updateUser.bind(this)
   }
 
   componentDidMount() {
@@ -80,9 +81,11 @@ class UserManagement extends React.Component {
   };
 
   archiveUser = (id) => {
-    //let url = "http://localhost:3001/users/" + id + "/complete";     
-    //axios.put(url, { userid: this.id, isComplete: this.isComplete }).then(response => {   
-    //   this.getData();
+    //NEED TO BUILD ARCHIVE IN USER TABLE
+
+    //let url = "http://localhost:3001/users/archive" + id;     
+    //axios.put(url, {}).then(response => {   
+    //  this.getData();
     //});
   };
 
@@ -104,8 +107,6 @@ class UserManagement extends React.Component {
     if (viewSelected & newTrigger) {
       viewComp = <AddUserDetail
         userDetail={this.state.user}
-        updateCcall={this.updateUser}
-        deleteCall={this.deleteUser} 
       />;
       console.log("Render New User Confirm")
     }

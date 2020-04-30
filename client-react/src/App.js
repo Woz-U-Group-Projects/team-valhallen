@@ -55,11 +55,6 @@ const App = ({ store }) => (
             <Route exact path="/manager/users" component={UserPage} />
             <Route exact path="/manager/config" component={ConfigPage} />
 
-          {/* //------------Management Routing ------------- */}
-          <Route exact path="/managerHome" component={ManagerHome} />
-          <Route exact path="/manager/users" component={UserPage} />
-          <Route exact path="/manager/config" component={ConfigPage} />
-
           {/* //------------Tenant Routing ------------- */}
           <Route exact path="/tenantDetails" component={TenantDetails} />
 

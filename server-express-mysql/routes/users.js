@@ -19,21 +19,21 @@ router.get("/new", function (req, res, next) {
 //GET LIST OF TENANTS
 router.get("/tenants", function (req, res, next) {
   models.User.findAll({
-    where: { userType: "tenant" }
+    where: { userType: "Tenant" }
   }).then(users => res.json(users));
 });
 
 //GET LIST OF TECHNICIANS
 router.get("/techs", function (req, res, next) {
   models.User.findAll({
-    where: { userType: "technician" }
+    where: { userType: "Technician" }
   }).then(users => res.json(users));
 });
 
 //GET LIST OF MANAGERS
 router.get("/mgrs", function (req, res, next) {
   models.User.findAll({
-    where: { userType: "propertyManager" }
+    where: { userType: "Manager" }
   }).then(users => res.json(users));
 });
 //------------------------------tech skill---------------------------------------
@@ -131,6 +131,15 @@ router.post("/signup", function (req, res, next) {
   newUser.password = req.body.password;
   newUser.userType = req.body.userType;
   newUser.save().then(user => res.json(user));
+});
+
+//DELETE USER
+router.delete("/:id", function(req, res, next) {
+  let userId = parseInt(req.params.id);
+  models.User.findByPk(userId)
+    .then(user => user.destroy())
+    .then(() => res.send({ userId }))
+    .catch(err => res.status(400).send(err));
 });
 
 
