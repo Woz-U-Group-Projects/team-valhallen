@@ -3,6 +3,9 @@ import React from "react";
 import { Provider } from 'react-redux';
 import PropTypes from 'prop-types';
 
+// Component Imports
+import Navbar from './components/Navbar';
+
 // Routing Imports
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
@@ -52,11 +55,6 @@ const App = ({ store }) => (
             <Route exact path="/manager" component={ManagerHome} />
             <Route exact path="/manager/users" component={UserPage} />
             <Route exact path="/manager/config" component={ConfigPage} />
-
-          {/* //------------Management Routing ------------- */}
-          <Route exact path="/managerHome" component={ManagerHome} />
-          <Route exact path="/manager/users" component={UserPage} />
-          <Route exact path="/manager/config" component={ConfigPage} />
 
           {/* //------------Tenant Routing ------------- */}
           <Route path="/tenantDetails" component={TenantDetails} />

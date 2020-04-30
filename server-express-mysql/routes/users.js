@@ -61,8 +61,7 @@ router.put("/newConfirmType", function (req, res, next) {
     {
       where: { userId: req.body.userId }
     }
-  });
-});
+  )});
 
 //------------------------------User unit #---------------------------------------
 router.put("/unitNumber", function (req, res, next) {
@@ -73,8 +72,7 @@ router.put("/unitNumber", function (req, res, next) {
     {
       where: { unitName: req.body.unitName }
     }
-  });
-});
+  )});
 //------------------------------end User Unit #---------------------------------------
 
 //GET SELECTED USER BY USERID
@@ -95,8 +93,8 @@ router.put("/:id", function (req, res, next) {
     {
       where: { userId: parseInt(req.params.id) }
     }
-  }).then(user => res.json(user));
-});
+    .then(user => res.json(user))
+  )});
 
 //GET SELECTED TENANT BY USERID
 router.get("/tenant/:id", function (req, res, next) {       //get userID from DB
@@ -118,8 +116,8 @@ router.put("/tenant/:id", function (req, res, next) {
     {
       where: { userId: parseInt(req.params.id) }
     }
-  }).then(user => res.json(user));
-});
+  .then(user => res.json(user))
+  )});
 
 //SIGN UP NEW USER
 router.post("/signup", function (req, res, next) {

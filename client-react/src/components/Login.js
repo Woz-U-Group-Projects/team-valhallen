@@ -3,10 +3,10 @@ import React from "react";
 import axios from "axios";
 
 // Routing Imports
-import { BrowserRouter as Link, Redirect } from 'react-router-dom';
+import { BrowserRouter as Redirect } from 'react-router-dom';
 
 // Styling Imports
-import { Form, Button, Container, Col } from 'react-bootstrap';
+import { Form, Button, Container } from 'react-bootstrap';
 import '../Styling.css'
 
 // import Dropdown from 'react-bootstrap/Dropdown';
@@ -117,7 +117,7 @@ class Login extends React.Component {
             to={{
                 pathname: "/manager",
                 state: { userId: userId }
-              }}/>
+            }}/>
         }
         if (approvedUser && userType === 'technician') {
             redirect = <Redirect 
@@ -130,32 +130,29 @@ class Login extends React.Component {
 
             <div>
             <Container id="lCont1">
-            <Form >
+            <Form>
 
             <h1> Login Portal </h1>
-
-            <Form.Group id = "eGroup1" controlId = "formBasicEmail" >
-            <Form.Label id = "eLabel1" > Email address </Form.Label > 
-            <Form.Control id = "eInput1" type = "email" placeholder = "Enter Email" ref = {this.email}/> 
+            
+            
+            <Form.Group id="eGroup1" className="mt-5" controlId = "formBasicEmail" >
+            <Form.Label id="eLabel1" > Email address </Form.Label > 
+            <Form.Control id="eInput1" type = "email" placeholder = "Enter Email" ref = {this.email}/> 
             </Form.Group >
 
-            <Form.Group id = "pGroup1" controlId = "formBasicPassword" >
-            <Form.Label id = "pLabel1" > Password </Form.Label> 
-            <Form.Control id = "pInput1" type = "password" placeholder = "Enter Password" ref = {this.password}/>
+            <Form.Group id="pGroup1" controlId = "formBasicPassword" >
+            <Form.Label id="pLabel1" className="mt-2" > Password </Form.Label> 
+            <Form.Control id="pInput1" type = "password" placeholder = "Enter Password" ref = {this.password}/>
             </Form.Group >
 
-                        <Button type="button" className="btn btn-primary" onClick={this.login}>
-                            Login
-                        </Button>
-                        <a href="/signup">Sign-Up Here</a>
-                        
-                    </Form>
+            
+            <Button type="button" className="btn btn-warning mt-3 mr-4" onClick={this.login}>
+            Login</Button>
 
-            <Col className = "mt-5" >
-            <h5 > New to Main-Quest?
-            <Link id="sLink1" to = "/signup" activeClassName = "active" >
-            Signup </Link>!</h5 ></Col>
-
+            <Button type="button" className="btn btn-warning mt-3" href="/signup">
+            Signup</Button>
+            
+    
             </Form> 
             </Container >
             </div>
