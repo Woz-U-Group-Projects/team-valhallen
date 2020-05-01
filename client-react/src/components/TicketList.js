@@ -30,8 +30,7 @@ class TicketList extends React.Component {
   render() {
     return (
       <div>
-        <button type="button" className="btn btn-secondary" onClick={this.ticketQuery}>Tickets</button>
-        <button type="button" className="btn btn-secondary" onClick={this.tenantQuery}>Tenants</button>
+        
 
         <h3>List of Tickets</h3>
 
