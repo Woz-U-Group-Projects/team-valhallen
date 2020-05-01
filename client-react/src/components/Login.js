@@ -107,8 +107,9 @@ class Login extends React.Component {
                         <Button type="button" className="btn btn-primary" onClick={this.login}>
                             Login
                         </Button>
+                        <div>
                         <a href="/signup">Sign-Up Here</a>
-                        
+                        </div>
                     
 
             <Col className = "mt-5" >
