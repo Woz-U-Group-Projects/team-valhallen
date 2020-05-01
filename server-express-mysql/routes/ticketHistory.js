@@ -35,6 +35,14 @@ router.get('/archived', function (req, res, next) {
     }).then(tickets => res.json(tickets));
 });
 
+router.get("/byUnit/:id", function(req, res, next) {       
+    let unitId = parseInt(req.params.id);             
+    models.Ticket.findAll({
+        where:{ unitId: unitId }
+    })
+      .then(ticket => res.json(ticket));                 
+});
+
 /******************Manager Selected Ticket ***********************/
 
 router.get("/:id", function(req, res, next) {       

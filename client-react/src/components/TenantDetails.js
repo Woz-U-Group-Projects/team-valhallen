@@ -6,6 +6,7 @@ import TenantDetailEdit from "./TenantDetailEdit";
 import TenantDetailRetrieve from "./TenantDetailRetrieve";
 import CreateTicketModal from "./CreateTicketModal";
 import Card from "react-bootstrap/Card";
+import Table from "react-bootstrap/Table";
 import Button from "react-bootstrap/Button";
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger'
 import Popover from 'react-bootstrap/Popover'
@@ -18,7 +19,9 @@ class TenantDetails extends React.Component {
     this.state = {
       users: [],                    // used to store array of users 
       user: {},
+      tickets: [],
       userId: 0,                    // used to pass user details
+      unitId: 0,
       viewConfirm: false,
       editConfirm: true,
       viewUserId: '',
@@ -32,16 +35,21 @@ class TenantDetails extends React.Component {
     this.viewUser(this.props.location.state.userId);
     console.log(this.state.userId);
     console.log(this.props.location.state.userId);
+    this.getTickets(this.props.location.state.unitId);
+    console.log("TenantDetails - Unit#" + this.props.location.state.unitId);
   }
 
-
+  getTickets = (id) => {
+    let url = "http://localhost:3001/ticketHistory/byUnit/" + id;
+    axios.get(url).then(response => this.setState({ tickets: response.data }));
+};
 
   viewUser(id) {
     this.setState({ viewConfirm: true });
     this.setState({ loggedIn: true });
     let url = "http://localhost:3001/users/tenant/" + id;
     axios.get(url).then(response => {
-      this.setState({ user: response.data })
+      this.setState({ user: response.data, unitId: response.data.unitId })
     });
     this.setState({ viewUserId: id });
   };
@@ -115,10 +123,35 @@ class TenantDetails extends React.Component {
           <CreateTicketModal />
         </div>
         <hr />
-        {/* <Card>
+        <Card>
           <Card.Title>Ticket Status</Card.Title>
-          <Card.Body></Card.Body>
-        </Card> */}
+          <Card.Body>
+          <div>
+                <Table striped bordered hover>
+                    <thead>
+                        <tr>
+                            <th>Due Date</th>
+                            <th>Issue Category</th>
+                            <th>Tech Assigned</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                         {this.state.tickets.map(t => ( 
+                            <tr key={t.ticketId}>
+                                <td>{t.dueDate}</td>
+                                <td><h6>{t.category}</h6></td>
+                                <td>{t.techid}</td>
+                                <td>{t.status}</td>
+                            </tr>
+                         ))} 
+
+                    </tbody>
+                </Table>
+            </div>
+          </Card.Body>
+        </Card>
       </div>
     );
   }

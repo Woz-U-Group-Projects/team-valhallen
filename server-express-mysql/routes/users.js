@@ -56,7 +56,9 @@ router.post("/techSkills", function (req, res, next) {
 router.put("/newConfirmType", function (req, res, next) {
   models.User.update(
     {
-      userType: req.body.userType
+      userType: req.body.userType,
+      unitId: req.body.unitId,
+      unitName: req.body.unitId
     },
     {
       where: { userId: req.body.userId }
