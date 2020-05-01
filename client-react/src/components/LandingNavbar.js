@@ -21,7 +21,7 @@ class LandingNavBar extends React.Component {
             
             <Container id="navCont1">
                 <Navbar collapseOnSelect expand="lg" bg="warning" variant="dark">
-                <a href="/"><img class="navbar-brand" id="logoNav" src={Logo} /></a>
+                <a href="/"><img className="navbar-brand" id="logoNav" src={Logo} /></a>
                 </Navbar>
                 </Container>
             
