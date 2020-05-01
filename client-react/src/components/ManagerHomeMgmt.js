@@ -63,12 +63,12 @@ class ManagerHomeMgmt extends React.Component {
             this.setState({ ticket: response.data })
         });
 
-        let tktUserId = this.state.ticket.userId;
+        // let tktUserId = this.state.ticket.userId;
 
-        let urlb = "http://localhost:3001/users/" + tktUserId;
-        axios.get(urlb).then(response => {
-            this.setState({ linkedUser: response.data })
-        });
+        // let urlb = "http://localhost:3001/users/" + tktUserId;
+        // axios.get(urlb).then(response => {
+        //     this.setState({ linkedUser: response.data })
+        // });
         this.setState({ viewConfirm: true });
     };
 

@@ -20,13 +20,13 @@ class ManagerTicket extends React.Component {
         let url = "http://localhost:3001/ManagerTicket/";
         axios.get(url).then(response => this.setState({ tickets: response.data }));
     };
-    viewUser = (id) => {
-        this.setState({ viewSelected: true, selectedUser: id });      // viewSelected for rendering user detail component
-        let url = "http://localhost:3001/users/" + id;
-        axios.get(url, { userid: id }).then(response => {
-          this.setState({ user: response.data })
-        });
-      };
+    // viewUser = (id) => {
+    //     this.setState({ viewSelected: true, selectedUser: id });      // viewSelected for rendering user detail component
+    //     let url = "http://localhost:3001/users/" + id;
+    //     axios.get(url, { userid: id }).then(response => {
+    //       this.setState({ user: response.data })
+    //     });
+    //   };
 
     render() {
         return (
