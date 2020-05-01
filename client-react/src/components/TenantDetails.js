@@ -80,9 +80,9 @@ class TenantDetails extends React.Component {
     }
 
     const popover = (
-      <Popover id="popover-basic">
-        <Popover.Title ><Button onClick={this.editUser} >Open/Close</Button></Popover.Title>
-        <Popover.Content>
+      <Popover >
+        <Popover.Content >
+          <Button onClick={this.editUser} >Open/Close</Button>
           {assignComp}{viewComp}
         </Popover.Content>
       </Popover>
