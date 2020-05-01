@@ -1,7 +1,7 @@
 import React from "react";
-import axios from "axios";
+// import axios from "axios";
 import '../task.min.css'
-import Table from 'react-bootstrap/Table';
+// import Table from 'react-bootstrap/Table';
 
 class ConfigComp extends React.Component {
     constructor(props) {

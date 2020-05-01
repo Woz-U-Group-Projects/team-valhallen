@@ -2,24 +2,12 @@ import React, { useState } from "react";
 import Button from "react-bootstrap/Button";
 import CreateTicket from "./CreateTicket";
 import Modal from "react-bootstrap/Modal";
-// import styled from "styled-components";
 import '../Styling.css'
 
-// const Style = styled.div`
-// background-color: lightgrey;
-// padding: 0px;
-// font-family: "Rajdhani", sans-serif;
 
-// .btn {
-//     width: 180px;
-// }
-// .btn:hover {
-//     box-shadow: 0px 0px 5px darkorange, 0px 0px 50px gold;
-//     border-radius: 5px;
-// }
-// `;
 
 const CreateTicketModal = () => {
+    
     const [show, setShow] = useState(false);
 
     const handleClose = () => setShow(false);
@@ -29,27 +17,27 @@ const CreateTicketModal = () => {
     return (
         <>
 
-        <Button id="tButton1" variant="warning" onClick={handleShow}>Create Ticket</Button>
+            <Button id="tButton1" variant="warning" onClick={handleShow}>Create Ticket</Button>
 
-        <Modal show={show} onHide={handleClose}>
+            <Modal show={show} onHide={handleClose}>
 
-            <Modal.Header closeButton>
-                <Modal.Title>Ticket Request</Modal.Title>
-            </Modal.Header>
+                <Modal.Header closeButton>
+                    <Modal.Title>Ticket Request</Modal.Title>
+                </Modal.Header>
 
-            <Modal.Body>
-                <CreateTicket />
-            </Modal.Body>
+                <Modal.Body>
+                    <CreateTicket />
+                </Modal.Body>
 
-            <Modal.Footer>
+                <Modal.Footer>
 
-                <Button id="" variant="warning" onClick={handleClose}>Close</Button>
+                    <Button id="" variant="warning" onClick={handleClose}>Close</Button>
 
-            </Modal.Footer>
-        </Modal>
+                </Modal.Footer>
+            </Modal>
 
-        // </>
-)
-    }
+        </>
+    )
+}
 
 export default CreateTicketModal;

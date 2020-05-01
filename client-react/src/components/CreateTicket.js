@@ -44,7 +44,7 @@ class CreateTicket extends React.Component {
     });
   };
 
-  
+
   // JSX Rendering
   render() {
     return (
@@ -90,7 +90,7 @@ class CreateTicket extends React.Component {
             </Button>
       </Form>
 
-      
+
     );
   }
 }
