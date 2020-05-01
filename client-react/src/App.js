@@ -7,26 +7,19 @@ import PropTypes from 'prop-types';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 // Component Imports
-import UserPage from "./screens/UserPage";
-import TechHome from './screens/TechHome';
-import ManagerHome from "./screens/ManagerHome";
-import ConfigPage from "./screens/ConfigPage";
+import User from "./components/User";
+import ConfigComp from "./components/ConfigComp";
 import TenantDetails from './components/TenantDetails';
 import Login from "./components/Login";
 import UserSignUp from './components/UserSignUp';
+import ManagerHomeMgmt from "./components/ManagerHomeMgmt";
 import TechTicketManagement from "./components/TechTicketManagement";
-import Navbar from './components/Navbar';
+// import Navbar from './components/Navbar';
 
-// import UserList from "./components/UserList";
-// import TicketHistory from "./components/TicketHistory";
-// import UserManagement from "./components/UserManagement";
-// import CreateTicketModal from "./components/CreateTicketModal";
-
-// import CreateTicket from "./components/CreateTicket";
-// import TenantHome from './screens/TenantHome';
 
 // Styling Imports
 import "./App.css";
+
 
 // JSX Rendering
 const App = ({ store }) => (
@@ -36,9 +29,7 @@ const App = ({ store }) => (
       <center>
         
       {/* <Navbar /> */}
-        {/* <Link to="/manager">New Mgr Home</Link>
-        <Link to="/manager/users">New User Page</Link>
-        <Link to="/manager/config">New Config Page</Link> */}
+        
         
         {/* This Div is utilized to create the ViewPort Window from App.css */}
         <div className="style" >
@@ -51,14 +42,10 @@ const App = ({ store }) => (
             <Route path="/signup" component={UserSignUp} />
 
             {/* //------------Management Routing ------------- */}
-            <Route exact path="/manager" component={ManagerHome} />
-            <Route exact path="/manager/users" component={UserPage} />
-            <Route exact path="/manager/config" component={ConfigPage} />
+            <Route exact path="/manager" component={ManagerHomeMgmt} />
+            <Route exact path="/manager/users" component={User} />
+            <Route exact path="/manager/config" component={ConfigComp} />
 
-          {/* //------------Management Routing ------------- */}
-          <Route exact path="/managerHome" component={ManagerHome} />
-          <Route exact path="/manager/users" component={UserPage} />
-          <Route exact path="/manager/config" component={ConfigPage} />
 
           {/* //------------Tenant Routing ------------- */}
           <Route exact path="/tenantDetails" component={TenantDetails} />

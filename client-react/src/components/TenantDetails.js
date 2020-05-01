@@ -1,25 +1,25 @@
 import React from "react";
 import axios from "axios";
-import { BrowserRouter as Router, Link, Route, Switch, withRouter } from 'react-router-dom';
-import { useSelector } from 'react-redux';
 
 import TenantDetailEdit from "./TenantDetailEdit";
 import TenantDetailRetrieve from "./TenantDetailRetrieve";
 import CreateTicketModal from "./CreateTicketModal";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
-import { Container, Col, Row } from "react-bootstrap";
+import OverlayTrigger from 'react-bootstrap/OverlayTrigger'
+import Popover from 'react-bootstrap/Popover'
 import '../Styling.css'
 
+
 class TenantDetails extends React.Component {
-  constructor(props) {
+  constructor (props) {
     super(props);
     this.state = {
       users: [],                    // used to store array of users 
-      user: {}, 
+      user: {},
       userId: 0,                    // used to pass user details
       viewConfirm: false,
-      editConfirm: false,
+      editConfirm: true,
       viewUserId: '',
       loggedIn: false                   // used to pass user details
     };
@@ -28,26 +28,24 @@ class TenantDetails extends React.Component {
   }
 
   componentDidMount() {
-    // this.setState({userId: this.props.location.state.userId})
     this.viewUser(this.props.location.state.userId);
     console.log(this.state.userId);
     console.log(this.props.location.state.userId);
   }
 
-  
+
 
   viewUser(id) {
     this.setState({ viewConfirm: true });
     this.setState({ loggedIn: true });
-    //console.log(this..userId);
     let url = "http://localhost:3001/users/tenant/" + id;
     axios.get(url).then(response => {
-      this.setState({ user: response.data})
+      this.setState({ user: response.data })
     });
     this.setState({ viewUserId: id });
-   // console.log("View User #" + id);
   };
 
+  
   updateUser(event) {
     let url = "http://localhost:3001/users/tenant/" + event.target.dataset.id;
     axios
@@ -55,7 +53,7 @@ class TenantDetails extends React.Component {
         newFirstName: event.target.dataset.fname,
         newLastName: event.target.dataset.lname,
         newEmail: event.target.dataset.email,
-        newPhone: event.target.dataset.phone,
+        newPhone: event.target.dataset.phone
       })
       .then(alert("User Details Have Beed Saved"));
     console.log(event.target.dataset);
@@ -69,17 +67,32 @@ class TenantDetails extends React.Component {
     const editConfirm = this.state.editConfirm; // confirms tenant detail component render
     let viewComp, assignComp;
 
-    if (editConfirm) {
+    if (editConfirm === true) {
       // renders tenantDetail if true
       assignComp = <TenantDetailRetrieve tenantDetail={this.state.user} />;
 
-      viewComp = 
+      viewComp =
         <TenantDetailEdit
           tenantDetail={this.state.user}
           updateCall={this.updateUser}
         />
-      
+
     }
+
+    const popover = (
+      <Popover >
+        <Popover.Content >
+          <Button onClick={this.editUser} >Open/Close</Button>
+          {assignComp}{viewComp}
+        </Popover.Content>
+      </Popover>
+    );
+
+    const EditDetailsButtonPopup = () => (
+      <OverlayTrigger trigger='click' placement="bottom" overlay={popover} >
+        <Button variant="success"  >Edit User Details</Button>
+      </OverlayTrigger>
+    );
 
 
 
@@ -93,29 +106,21 @@ class TenantDetails extends React.Component {
         <Card>
           <Card.Title>{firstName} {lastName}</Card.Title>
           <Card.Body>{email} | {phone}</Card.Body>
-          <Card.Footer><Button onClick={this.editUser}>Edit User Details</Button>{assignComp}{viewComp}</Card.Footer>
+          <Card.Footer><EditDetailsButtonPopup /></Card.Footer>
         </Card>
-        {/* <Card>
-          <Card.Body>{assignComp}</Card.Body>
-        </Card>
-        <Card>
-          <Card.Body></Card.Body>
-        </Card> */}
-        <Card style={{ width: '18rem' }}>
+        <hr />
+        <div>
           <CreateTicketModal />
-        </Card>
-        <Card>
+        </div>
+        <hr />
+        {/* <Card>
           <Card.Title>Ticket Status</Card.Title>
           <Card.Body></Card.Body>
-        </Card>
+        </Card> */}
       </div>
     );
+  }
 }
-}
-
-// const loggedUser = useSelector(state => state.currentUser)
-// console.log('logged in user' + loggedUser)
 
 
-
-export default withRouter(TenantDetails);
+export default TenantDetails;

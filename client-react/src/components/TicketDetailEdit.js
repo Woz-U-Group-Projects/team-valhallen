@@ -1,7 +1,6 @@
 import React from "react";
-import { useSelector, useDispatch } from 'react-redux'
-import { UPDATE_TICKET_STATUS, UPDATE_TICKET_NOTE } from '../actions/actions'
-import Table from 'react-bootstrap/Table';
+import { useSelector, useDispatch } from 'react-redux';
+import { UPDATE_TICKET_STATUS, UPDATE_TICKET_NOTE } from '../actions/actions';
 import Card from "react-bootstrap/Card";
 
 const TicketDetailEdit = (props) => {

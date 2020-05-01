@@ -5,8 +5,6 @@ import '../Styling.css'
 import TicketList from "./TicketList";
 import TicketDetailEdit from "./TicketDetailEdit";
 import TicketDetailRetrieve from "./TicketDetailRetrieve";
-import UniversalModal from "./UniversalModal";
-import Table from 'react-bootstrap/Table';
 
 
 class TechTicketManagement extends React.Component {
@@ -30,13 +28,7 @@ class TechTicketManagement extends React.Component {
     this.getNewTickets(this.props.location.state.userId);
     console.log(this.props.location.state.userId);
   }
-  /*
-  getNewTickets(id) {
-    let url = "http://localhost:3001/tickets/" + id;
-    axios.get(url).then(response => this.setState({ tickets: response.data }));
-    this.setState({ viewConfirm: false, newTrigger: true });
-  };
-  */
+  
 
   getNewTickets(id) {
     this.setState({ viewConfirm: true });
@@ -95,7 +87,6 @@ class TechTicketManagement extends React.Component {
       />;
     }
 
-let ticketlist;
     return (
       <div>
 
