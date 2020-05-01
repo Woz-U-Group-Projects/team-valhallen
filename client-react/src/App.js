@@ -12,6 +12,7 @@ import ConfigComp from "./components/ConfigComp";
 import TenantDetails from './components/TenantDetails';
 import Login from "./components/Login";
 import UserSignUp from './components/UserSignUp';
+import ManagerHome from './screens/ManagerHome';
 import ManagerHomeMgmt from "./components/ManagerHomeMgmt";
 import TechTicketManagement from "./components/TechTicketManagement";
 // import Navbar from './components/Navbar';
@@ -42,7 +43,7 @@ const App = ({ store }) => (
             <Route path="/signup" component={UserSignUp} />
 
             {/* //------------Management Routing ------------- */}
-            <Route exact path="/manager" component={ManagerHomeMgmt} />
+            <Route exact path="/manager" component={ManagerHome} />
             <Route exact path="/manager/users" component={User} />
             <Route exact path="/manager/config" component={ConfigComp} />
 

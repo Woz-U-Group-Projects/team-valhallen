@@ -52,7 +52,6 @@ class MrgTicketsList extends React.Component {
                     <thead>
                         <tr>
                             <th>Unit Id</th>
-                            <th>Tenant Id</th>
                             <th>Request Date</th>
                             <th>Issue Category</th>
                             <th>Status</th>
@@ -67,7 +66,6 @@ class MrgTicketsList extends React.Component {
                         {this.props.tickets.map(t => ( 
                             <tr key={t.ticketId}>
                                 <td>{t.unitId}</td>
-                                <td>{t.userId}</td>
                                 <td>{t.creationDate}</td>
                                 <td><h6>{t.category}</h6></td>
                                 <td>{t.status}</td>
