@@ -1,6 +1,5 @@
 // Necessary Imports
 import React from 'react';
-import Header from '../components/header';
 import ConfigComp from '../components/ConfigComp';
 
 const ConfigPage = () => {

@@ -2,10 +2,10 @@
 import React from 'react';
 
 // Routing Imports
-import { Link, withRouter } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 
 // Styling Imports
-import { Container, Col, Navbar, Nav, NavDropdown } from 'react-bootstrap';
+import { Container, Navbar, Nav } from 'react-bootstrap';
 import Logo from '../img/mq02.png';
 import '../Styling.css'
 
@@ -33,7 +33,7 @@ class NavBar extends React.Component {
             
             <Container id="navCont1">
                 <Navbar collapseOnSelect expand="lg" bg="warning" variant="dark">
-                <a href="/"><img className="navbar-brand" id="logoNav" src={Logo} /></a>
+                <a href="/"><img className="navbar-brand" id="logoNav" src={Logo} alt="logo"  /></a>
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="responsive-navbar-nav">
             
