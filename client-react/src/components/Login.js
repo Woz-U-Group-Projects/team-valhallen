@@ -51,7 +51,8 @@ class Login extends React.Component {
         .then(response => { this.setState({ currentUser: response.data, approvedUser: true })
         }).catch(err => {
             console.log(err)
-        });
+            alert("Login Information is Incorrect")
+        });     
     };
 
     // Component Rendering

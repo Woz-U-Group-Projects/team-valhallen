@@ -1,5 +1,6 @@
 import React from "react";
 import '../Styling.css'
+import Table from 'react-bootstrap/Table';
 
 class UserList extends React.Component {
   constructor(props) {
@@ -47,27 +48,26 @@ class UserList extends React.Component {
         <button type="button" className="btn btn-secondary" onClick={this.mgrQuery}>Managers</button>
 
         <h3>List of Users</h3>
-
-        <table>
-          <tbody>
+        <Table striped bordered hover>
+          <thead>
             <tr>
               <th>User Name</th>
               <th>Email</th>
               <th>Phone Number</th>
               <th></th>
             </tr>
-
+          </thead>
+          <tbody>
             {this.props.usersList.map(p => (
               <tr key={p.userId}>
                 <td>{p.fName} {p.lName}</td>
                 <td>{p.email}</td>
                 <td>{p.phone}</td>
                 <td><button name={p.userId} onClick={this.viewButton} >View User</button></td>
-
               </tr>
             ))}
           </tbody>
-        </table>
+        </Table>
 
       </div>
     );

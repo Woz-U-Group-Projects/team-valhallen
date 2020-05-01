@@ -57,7 +57,7 @@ class MrgTicketsList extends React.Component {
                             <th>Issue Category</th>
                             <th>Status</th>
                             <th>Tech Assigned</th>
-                            <th>Ticket Activity Date</th>
+                            <th>Ticket Due</th>
                             <th></th>
                             
                         </tr>
@@ -72,7 +72,7 @@ class MrgTicketsList extends React.Component {
                                 <td><h6>{t.category}</h6></td>
                                 <td>{t.status}</td>
                                 <td>{t.techid}</td>
-                                <td>{t.updatedAt}</td>
+                                <td>{t.dueDate}</td>
                                 <td><button name={t.ticketId} onClick={this.viewButton} >View Ticket</button></td>
                             </tr>
                         ))} 

@@ -27,6 +27,7 @@ class UserManagement extends React.Component {
     this.getTechs = this.getTechs.bind(this)
     this.getMgrs = this.getMgrs.bind(this)
     this.viewUser = this.viewUser.bind(this)
+    this.updateUser = this.updateUser.bind(this)
   }
 
   componentDidMount() {
@@ -79,11 +80,9 @@ class UserManagement extends React.Component {
     console.log(evt.target.dataset.phone);
   };
 
-  archiveUser = (id) => {
-    //let url = "http://localhost:3001/users/" + id + "/complete";     
-    //axios.put(url, { userid: this.id, isComplete: this.isComplete }).then(response => {   
-    //   this.getData();
-    //});
+  archiveUser = (evt) => {
+    let url = "http://localhost:3001/users/archive/" + evt.target.value;     
+    axios.put(url, {}).then(alert("User has be archived"));
   };
 
   // JSX Rendering
@@ -104,8 +103,6 @@ class UserManagement extends React.Component {
     if (viewSelected & newTrigger) {
       viewComp = <AddUserDetail
         userDetail={this.state.user}
-        updateCcall={this.updateUser}
-        deleteCall={this.deleteUser} 
       />;
       console.log("Render New User Confirm")
     }
