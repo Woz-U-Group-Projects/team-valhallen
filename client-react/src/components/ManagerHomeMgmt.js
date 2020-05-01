@@ -49,7 +49,7 @@ class ManagerHomeMgmt extends React.Component {
         axios.get(url).then(response => this.setState({ tickets: response.data }));
         this.setState({ viewConfirm: false, newTrigger: false, completeTrigger: true });
     };
-
+ 
     getArchivedTickets() {
         let url = "http://localhost:3001/ticketHistory/archived";
         axios.get(url).then(response => this.setState({ tickets: response.data }));
