@@ -2,6 +2,7 @@
 import React from 'react';
 
 // Component Imports
+import Navbar from "../components/Navbar";
 import Header from '../components/header';
 import ManagerHomeMgmt from '../components/ManagerHomeMgmt';
 import UserPage from "../screens/UserPage";
@@ -14,7 +15,7 @@ const ManagerHome = () => {
 
     return (
         <div>
-            
+            <Navbar />
             <Router>
                 <div>
                     <Link to="/manager">Manager Home</Link>

@@ -32,7 +32,7 @@ Object.keys(db).forEach(modelName => {
   }
 });
 
-associations(db);
+// associations(db);
 
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;

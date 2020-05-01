@@ -1,6 +1,7 @@
 import React from "react";
 import axios from "axios";
 
+import Navbar from "./Navbar";
 import TenantDetailEdit from "./TenantDetailEdit";
 import TenantDetailRetrieve from "./TenantDetailRetrieve";
 import CreateTicketModal from "./CreateTicketModal";
@@ -103,6 +104,7 @@ class TenantDetails extends React.Component {
 
     return (
       <div>
+        <Navbar />
         <Card>
           <Card.Title>{firstName} {lastName}</Card.Title>
           <Card.Body>{email} | {phone}</Card.Body>

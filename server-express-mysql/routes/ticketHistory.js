@@ -27,7 +27,7 @@ router.get('/complete', function (req, res, next) {
     models.Ticket.findAll({
         where:{ status: 'Complete', archived: null }
     }).then(tickets => res.json(tickets));
-});
+}); 
 
 router.get('/archived', function (req, res, next) {
     models.Ticket.findAll({

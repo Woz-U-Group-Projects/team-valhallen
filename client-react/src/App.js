@@ -13,7 +13,6 @@ import TenantDetails from './components/TenantDetails';
 import Login from "./components/Login";
 import UserSignUp from './components/UserSignUp';
 import ManagerHome from './screens/ManagerHome';
-import ManagerHomeMgmt from "./components/ManagerHomeMgmt";
 import TechTicketManagement from "./components/TechTicketManagement";
 // import Navbar from './components/Navbar';
 

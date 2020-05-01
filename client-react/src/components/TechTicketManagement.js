@@ -5,6 +5,7 @@ import '../Styling.css'
 import TicketList from "./TicketList";
 import TicketDetailEdit from "./TicketDetailEdit";
 import TicketDetailRetrieve from "./TicketDetailRetrieve";
+import Navbar from "../components/Navbar";
 
 
 class TechTicketManagement extends React.Component {
@@ -28,7 +29,7 @@ class TechTicketManagement extends React.Component {
     this.getNewTickets(this.props.location.state.userId);
     console.log(this.props.location.state.userId);
   }
-  
+
 
   getNewTickets(id) {
     this.setState({ viewConfirm: false });
@@ -89,7 +90,7 @@ class TechTicketManagement extends React.Component {
 
     return (
       <div>
-
+        <Navbar />
         <TicketList ticketsList={this.state.tickets}
           ticketCall={this.getNewTickets}
           tenantCall={this.getTenants}
@@ -99,7 +100,7 @@ class TechTicketManagement extends React.Component {
           {assignComp}
           {viewComp}
         </div>
-        
+
       </div>
     )
   };

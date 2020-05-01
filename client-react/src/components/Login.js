@@ -8,6 +8,7 @@ import { BrowserRouter as Link, Redirect } from 'react-router-dom';
 // Styling Imports
 import { Form, Button, Container, Col } from 'react-bootstrap';
 import '../Styling.css'
+import LandingNavbar from "./LandingNavbar";
 
 // JSX Rendering
 class Login extends React.Component {
@@ -86,6 +87,7 @@ class Login extends React.Component {
         return (
 
             <div>
+                <LandingNavbar />
             <Container id="lCont1">
             <Form >
 

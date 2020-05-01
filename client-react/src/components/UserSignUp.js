@@ -4,9 +4,11 @@ import axios from "axios";
 
 // Styling Imports
 import '../Styling.css';
+import { Form, Container } from "react-bootstrap";
+import Button from "react-bootstrap/Button";
 
 class Signup extends React.Component {
-  constructor(props) {
+  constructor (props) {
     super(props);
     this.state = { users: [] };
     this.fName = React.createRef();
@@ -14,11 +16,10 @@ class Signup extends React.Component {
     this.email = React.createRef();
     this.password = React.createRef();
     this.phone = React.createRef();
-    this.userType = React.createRef();
   }
 
   componentDidMount() {
-    this.getData();
+    // this.getData();
   }
 
   getData = () => {
@@ -37,18 +38,54 @@ class Signup extends React.Component {
       password: this.password.current.value,
       phone: this.phone.current.value
     })
-    .then(res => {
-      if(res) {
+      .then(res => {
+        if (res) {
           this.props.history.push('/')
-      }
-  });
+        }
+      });
   };
 
   // JSX Rendering
   render() {
     return (
       <div>
-        <h3>First Name</h3>
+        <Container id="lCont1">
+          <Form>
+            <Form.Group >
+              <Form.Label><h2>Sign Up!</h2></Form.Label>
+            </Form.Group>
+
+            <Form.Group >
+              <Form.Label>First Name</Form.Label>
+              <Form.Control type="text" name="fname" ref={this.fName} />
+            </Form.Group>
+
+            <Form.Group >
+              <Form.Label>Last Name</Form.Label>
+              <Form.Control type="text" name="lname" ref={this.lName} />
+            </Form.Group>
+
+            <Form.Group >
+              <Form.Label>Email</Form.Label>
+              <Form.Control type="text" name="email" ref={this.email} />
+            </Form.Group>
+
+            <Form.Group  >
+              <Form.Label  > Password </Form.Label>
+              <Form.Control type="password" name="password" ref={this.password} />
+            </Form.Group >
+
+            <Form.Group >
+              <Form.Label>Phone</Form.Label>
+              <Form.Control type="text" name="phone" ref={this.phone} />
+            </Form.Group>
+
+            <Button variant="danger" type="button" className="btn btn-primary" onClick={this.addUser} >
+              Submit
+          </Button>
+          </Form>
+        </Container>
+        {/* <h3>First Name</h3>
         <input ref={this.fName} />
         <h3> Last Name</h3>
         <input ref={this.lName} />
@@ -58,8 +95,8 @@ class Signup extends React.Component {
         <input ref={this.password} />
         <h3>Phone</h3>
         <input ref={this.phone} />
-        
-        <button type="button" className="btn btn-primary" onClick={this.addUser}>add User</button>
+
+        <button type="button" className="btn btn-primary" onClick={this.addUser}>add User</button> */}
       </div>
     );
   }
