@@ -3,7 +3,6 @@ import React from 'react';
 
 // Component Imports
 import Navbar from "../components/Navbar";
-import Header from '../components/header';
 import ManagerHomeMgmt from '../components/ManagerHomeMgmt';
 import UserPage from "../screens/UserPage";
 import ConfigPage from "../screens/ConfigPage";

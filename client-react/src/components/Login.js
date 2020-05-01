@@ -94,12 +94,12 @@ class Login extends React.Component {
 
             <h1> Login Portal </h1>
 
-            <Form.Group controlId = "formBasicEmail" >
+            <Form.Group  >
             <Form.Label  > Email address </Form.Label > 
             <Form.Control  type = "email" placeholder = "Enter Email" ref = {this.email}/> 
             </Form.Group >
 
-            <Form.Group  controlId = "formBasicPassword" >
+            <Form.Group   >
             <Form.Label  > Password </Form.Label> 
             <Form.Control  type = "password" placeholder = "Enter Password" ref = {this.password}/>
             </Form.Group >
