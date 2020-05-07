@@ -21,6 +21,7 @@ class ManagerHomeMgmt extends React.Component {
         }
         this.getNewTickets = this.getNewTickets.bind(this)
         this.getPendingTickets = this.getPendingTickets.bind(this)
+        this.getOnHoldTickets = this.getOnHoldTickets.bind(this)
         this.getCompletedTickets = this.getCompletedTickets.bind(this)
         this.getArchivedTickets = this.getArchivedTickets.bind(this)
         this.viewTicket = this.viewTicket.bind(this)
@@ -44,6 +45,12 @@ class ManagerHomeMgmt extends React.Component {
         this.setState({ viewConfirm: false, newTrigger: false, completeTrigger: false });
     };
 
+    getOnHoldTickets() {
+        let url = "http://localhost:3001/ticketHistory/onHold";
+        axios.get(url).then(response => this.setState({ tickets: response.data }));
+        this.setState({ viewConfirm: false, newTrigger: false, completeTrigger: false });
+    };
+
     getCompletedTickets() {
         let url = "http://localhost:3001/ticketHistory/complete";
         axios.get(url).then(response => this.setState({ tickets: response.data }));
@@ -62,7 +69,7 @@ class ManagerHomeMgmt extends React.Component {
         axios.get(urla).then(response => {
             this.setState({ ticket: response.data })
         });
-
+        /****Pull User Data if no Associations***********/
         // let tktUserId = this.state.ticket.userId;
 
         // let urlb = "http://localhost:3001/users/" + tktUserId;
@@ -72,6 +79,8 @@ class ManagerHomeMgmt extends React.Component {
         this.setState({ viewConfirm: true });
     };
 
+
+    /********RESET TABLES AFTER MODIFICATION??************/
     techAssigned(evt) {
         this.getNewTickets();
     };
@@ -116,6 +125,7 @@ class ManagerHomeMgmt extends React.Component {
                 users={this.state.users}
                 newTktCall={this.getNewTickets}
                 pendTktCall={this.getPendingTickets}
+                holdTktCall={this.getOnHoldTickets}
                 compTktCall={this.getCompletedTickets}
                 archTktCall={this.getArchivedTickets}
                 viewCall={this.viewTicket}

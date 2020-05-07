@@ -17,10 +17,8 @@ class TenantDetails extends React.Component {
   constructor (props) {
     super(props);
     this.state = {
-      users: [],                    // used to store array of users 
       user: {},
       tickets: [],
-      userId: 0,                    // used to pass user details
       unitId: 0,
       viewConfirm: false,
       editConfirm: true,
@@ -33,16 +31,13 @@ class TenantDetails extends React.Component {
 
   componentDidMount() {
     this.viewUser(this.props.location.state.userId);
-    console.log(this.state.userId);
-    console.log(this.props.location.state.userId);
     this.getTickets(this.props.location.state.unitId);
-    console.log("TenantDetails - Unit#" + this.props.location.state.unitId);
   }
 
   getTickets = (id) => {
     let url = "http://localhost:3001/ticketHistory/byUnit/" + id;
     axios.get(url).then(response => this.setState({ tickets: response.data }));
-};
+  };
 
   viewUser(id) {
     this.setState({ viewConfirm: true });
@@ -65,7 +60,6 @@ class TenantDetails extends React.Component {
         newPhone: event.target.dataset.phone
       })
       .then(alert("User Details Have Beed Saved"));
-    console.log(event.target.dataset);
   }
 
   editUser() {

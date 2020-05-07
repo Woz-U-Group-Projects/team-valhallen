@@ -105,7 +105,11 @@ router.get("/tenant/:id", function (req, res, next) {       //get userID from DB
   console.log('from within the query >>>>>' + req.params.id);
   let userId = parseInt(req.params.id);
   models.User.findByPk(userId)
-    .then(user => res.json(user));                  //return user as json obj
+    .then(user => res.json(user))
+    .catch(err => {
+      res.status(400);
+      res.send(err.message);
+    });                  //return user as json obj
 });
 
 //UPDATE TENANT INFORMATION
@@ -132,7 +136,12 @@ router.post("/signup", function (req, res, next) {
   newUser.phone = parseInt(req.body.phone);
   newUser.password = req.body.password;
   newUser.userType = req.body.userType;
-  newUser.save().then(user => res.json(user));
+  newUser.save()
+  .then(user => res.json(user))
+  .catch(err => {
+    res.status(400);
+    res.send(err.message);
+  });
 });
 
 //ARCHIVE USER

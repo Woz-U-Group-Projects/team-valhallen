@@ -23,6 +23,12 @@ router.get('/pending', function (req, res, next) {
     }).then(tickets => res.json(tickets));
 });
 
+router.get('/onHold', function (req, res, next) {
+    models.Ticket.findAll({
+        where:{ status: 'onHold', archived: null }
+    }).then(tickets => res.json(tickets));
+}); 
+
 router.get('/complete', function (req, res, next) {
     models.Ticket.findAll({
         where:{ status: 'Complete', archived: null }

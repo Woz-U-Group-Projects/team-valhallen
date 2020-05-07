@@ -5,9 +5,10 @@ import Table from 'react-bootstrap/Table';
 class MrgTicketsList extends React.Component {
     constructor (props) {
         super(props)
-        this.state = { tickets: [] }
+        this.state = { }
         this.newTicketQuery = this.newTicketQuery.bind(this)
         this.pendTicketQuery = this.pendTicketQuery.bind(this)
+        this.holdTicketQuery = this.holdTicketQuery.bind(this)
         this.compTicketQuery = this.compTicketQuery.bind(this)
         this.archTicketQuery = this.archTicketQuery.bind(this)
         this.viewButton = this.viewButton.bind(this)
@@ -22,6 +23,11 @@ class MrgTicketsList extends React.Component {
         event.preventDefault()
         const { pendTktCall } = this.props
         pendTktCall()
+    };
+    holdTicketQuery(event) {
+        event.preventDefault()
+        const { holdTktCall } = this.props
+        holdTktCall()
     };
     compTicketQuery(event) {
         event.preventDefault()
@@ -44,6 +50,7 @@ class MrgTicketsList extends React.Component {
             <div>
                 <button type="button" className="btn btn-secondary" onClick={ this.newTicketQuery }>New Tickets</button>
                 <button type="button" className="btn btn-secondary" onClick={ this.pendTicketQuery }>Pending Tickets</button>
+                <button type="button" className="btn btn-secondary" onClick={ this.holdTicketQuery }>On Hold Tickets</button>
                 <button type="button" className="btn btn-secondary" onClick={ this.compTicketQuery }>Completed Tickets</button>
                 <button type="button" className="btn btn-secondary" onClick={ this.archTicketQuery }>Archived Tickets</button>
 
@@ -71,7 +78,7 @@ class MrgTicketsList extends React.Component {
                                 <td>{t.status}</td>
                                 <td>{t.techid}</td>
                                 <td>{t.dueDate}</td>
-                                <td><button name={t.ticketId} onClick={this.viewButton} >View Ticket</button></td>
+                                <td><button name={t.ticketId} onClick={this.viewButton}>View Ticket</button></td>
                             </tr>
                         ))} 
 

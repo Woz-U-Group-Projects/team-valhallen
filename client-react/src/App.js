@@ -7,8 +7,8 @@ import PropTypes from 'prop-types';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 // Component Imports
-import User from "./components/User";
-import ConfigComp from "./components/ConfigComp";
+import UserPage from "./screens/UserPage";
+import ConfigPage from "./screens/ConfigPage";
 import TenantDetails from './components/TenantDetails';
 import Login from "./components/Login";
 import UserSignUp from './components/UserSignUp';
@@ -34,8 +34,7 @@ const App = ({ store }) => (
         {/* This Div is utilized to create the ViewPort Window from App.css */}
         <div className="style" >
 
-          {
-      /* Route paths and a Switch for individual rendering of components or screens */}
+          {/* Route paths and a Switch for individual rendering of components or screens */}
           <Switch >
             {/* //------------Landing/Login Routing ------------- */}
             <Route exact path="/" component={Login} />
@@ -43,8 +42,8 @@ const App = ({ store }) => (
 
             {/* //------------Management Routing ------------- */}
             <Route exact path="/manager" component={ManagerHome} />
-            <Route exact path="/manager/users" component={User} />
-            <Route exact path="/manager/config" component={ConfigComp} />
+            <Route exact path="/manager/users" component={UserPage} />
+            <Route exact path="/manager/config" component={ConfigPage} />
 
 
           {/* //------------Tenant Routing ------------- */}

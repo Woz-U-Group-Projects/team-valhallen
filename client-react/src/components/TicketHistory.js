@@ -9,7 +9,6 @@ class TicketHistory extends React.Component {
         this.state = { tickets: [] };
     }
 
-
     componentDidMount() {
         this.getTickets();
     }

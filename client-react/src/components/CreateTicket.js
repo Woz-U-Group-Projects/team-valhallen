@@ -15,14 +15,7 @@ class CreateTicket extends React.Component {
     this.note = React.createRef();
   }
 
-  componentDidMount() {
-    this.getTickets();
-  }
-
-  getTickets = () => {
-    let url = "http://localhost:3001/tickets/createTicket";
-    axios.get(url).then(response => this.setState({ tickets: response.data }));
-  };
+  componentDidMount() {}
 
   createTicket = () => {
     let url = "http://localhost:3001/tickets/";
@@ -35,7 +28,6 @@ class CreateTicket extends React.Component {
       status: this.state.status,
       mainNote: this.state.mainNote
     }).then(response => {
-      this.getTickets();
       this.unitId.current.value = "";
       this.category.current.value = "";
       this.priority.current.value = "";
@@ -89,7 +81,6 @@ class CreateTicket extends React.Component {
           Submit Ticket
             </Button>
       </Form>
-
 
     );
   }

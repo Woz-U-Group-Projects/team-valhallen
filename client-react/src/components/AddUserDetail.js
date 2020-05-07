@@ -16,20 +16,11 @@ class AddUserDetail extends React.Component {
     this.unitName = React.createRef();
   }
 
-  componentDidMount() {
-    this.getData();
-  }
+  componentDidMount() {}
 
   unitName(event) {
     this.setState({ value: event.target.value });
   }
-
-  getData = () => {
-
-    // Express uses port 3001 (react uses 3000)
-    //let url = "http://localhost:3001/users/";
-    //axios.get(url).then(response => this.setState({ users: response.data }));
-  };
 
   addSkills = () => {
     let urla = "http://localhost:3001/users/techSkills/";
@@ -42,8 +33,6 @@ class AddUserDetail extends React.Component {
       appliance: this.state.appliance,
       general: this.state.general
     }).then(response => {
-      // refresh the data
-      // this.getData();
       // empty the input
       this.electrical.current.checked = false;
       this.plumbing.current.checked = false;
@@ -100,8 +89,8 @@ class AddUserDetail extends React.Component {
   render() {
     return (
       <div>
-        <div>
 
+        <div>
           <h3> electrical</h3>
           <input ref={this.electrical}
             type="checkbox"
@@ -145,8 +134,8 @@ class AddUserDetail extends React.Component {
           <div>
             <button type="button" className="btn btn-primary" onClick={this.addSkills}>Add Skills</button>
           </div>
-
         </div>
+
         <div>
           <select ref={this.unitName}
             name="unitNumber"
@@ -166,12 +155,15 @@ class AddUserDetail extends React.Component {
           </select>
           <button type="button" className="btn btn-primary" onClick={this.addUnit}>Assign Unit</button>
         </div>
+
         <div>
           <button type="button" className="btn btn-primary" onClick={this.newManager}>Add New Manager</button>
         </div>
+
         <div>
           <button type="button" className="btn btn-danger" onClick={this.deleteUser}>Delete User</button>
         </div>
+
       </div>
     );
   }

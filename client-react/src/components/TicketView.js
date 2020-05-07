@@ -1,15 +1,7 @@
 import React from "react";
 import Card from "react-bootstrap/Card";
-//import { useSelector, useDispatch } from 'react-redux'
-//import { UPDATE_EMAIL, UPDATE_PASSWORD, UPDATE_PHONE } from '../actions/actions'
 
 const TicketView = (props) => {
-
-  //const dispatch = useDispatch()
-
-  // const email = useSelector(state => state.updateEmail);
-  // const password = useSelector(state => state.updatePassword);
-  // const phone = useSelector(state => state.updatePhone);
 
   return (
     <div>
