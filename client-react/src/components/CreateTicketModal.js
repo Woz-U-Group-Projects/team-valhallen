@@ -6,13 +6,13 @@ import '../Styling.css'
 
 
 
-const CreateTicketModal = () => {
+const CreateTicketModal = (props) => {
     
     const [show, setShow] = useState(false);
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
-
+    
     // JSX Rendering
     return (
         <>
@@ -26,7 +26,8 @@ const CreateTicketModal = () => {
                 </Modal.Header>
 
                 <Modal.Body>
-                    <CreateTicket />
+                    <CreateTicket assignUserId={props.assignUserId}
+                    assignUnitId={props.assignUnitId}/>
                 </Modal.Body>
 
                 <Modal.Footer>
