@@ -24,7 +24,7 @@ const initialState = {
     updateEmail: "update email",
     updatePassword: "update password",
     updatePhone: "update phone",
-    updaetTicketStatus: "Pending",
+    updateTicketStatus: "Pending",
     updateTicketNote: "working on...",
     currentUser: {}
 };

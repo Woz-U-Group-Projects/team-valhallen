@@ -90,7 +90,7 @@ class ManagerHomeMgmt extends React.Component {
         axios.get(urla).then(response => {
             this.setState({ ticket: response.data })
         });
-
+        /****Pull User Data if no Associations***********/
         // let tktUserId = this.state.ticket.userId;
 
         // let urlb = "http://localhost:3001/users/" + tktUserId;
@@ -100,6 +100,8 @@ class ManagerHomeMgmt extends React.Component {
         this.setState({ viewConfirm: true });
     };
 
+
+    /********RESET TABLES AFTER MODIFICATION??************/
     techAssigned(evt) {
         this.getNewTickets();
     };

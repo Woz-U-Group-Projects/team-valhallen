@@ -5,7 +5,7 @@ import Table from 'react-bootstrap/Table';
 class MrgTicketsList extends React.Component {
     constructor (props) {
         super(props)
-        this.state = { tickets: [] }
+        this.state = { }
         this.newTicketQuery = this.newTicketQuery.bind(this)
         this.pendTicketQuery = this.pendTicketQuery.bind(this)
         this.onHoldTicketQuery = this.onHoldTicketQuery.bind(this)
@@ -86,7 +86,7 @@ class MrgTicketsList extends React.Component {
                                 <td>{t.status}</td>
                                 <td>{t.techid}</td>
                                 <td>{t.dueDate}</td>
-                                <td><button name={t.ticketId} onClick={this.viewButton} >View Ticket</button></td>
+                                <td><button name={t.ticketId} onClick={this.viewButton}>View Ticket</button></td>
                             </tr>
                         ))} 
 

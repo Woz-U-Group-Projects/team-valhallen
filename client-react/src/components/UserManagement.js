@@ -3,14 +3,10 @@ import React from "react";
 import axios from "axios";
 import '../Styling.css'
 
-// Component Imports
 import UserList from "./UserList";
 import UserDetailEdit from "./UserDetailEdit";
 import UserDetailRetrieve from "./UserDetailRetrieve";
 import AddUserDetail from "./AddUserDetail";
-
-//import { connect } from 'react-redux';
-//import { updateUserDetail, defineUserDetail, updateEmail, updatePassword, updatePhone, updateUserType, updateUnit } from '../actions/actions';
 
 class UserManagement extends React.Component {
   constructor(props) {
@@ -65,7 +61,6 @@ class UserManagement extends React.Component {
       this.setState({ user: response.data })
     });
     this.setState({ viewUserId: id });
-    console.log("View User #" + id);
   };
 
   updateUser(evt) {
@@ -75,9 +70,6 @@ class UserManagement extends React.Component {
       newPassword: evt.target.dataset.pass, 
       newPhone: evt.target.dataset.phone
     }).then(alert("User Details Have Beed Saved"))
-    console.log(evt.target.dataset.email);
-    console.log(evt.target.dataset.pass);
-    console.log(evt.target.dataset.phone);
   };
 
   archiveUser = (evt) => {
@@ -104,7 +96,6 @@ class UserManagement extends React.Component {
       viewComp = <AddUserDetail
         userDetail={this.state.user}
       />;
-      console.log("Render New User Confirm")
     }
 
     return (
@@ -128,36 +119,3 @@ class UserManagement extends React.Component {
 }
 
 export default UserManagement;
-/*
-function mapDispatchToProps(dispatch) {
-    return {
-      onDefineUserDetail: () => dispatch(defineUserDetail()),
-      onUpdateUserDetail: () => dispatch(updateUserDetail()),
-      onUpdateEmail: text => dispatch(updateEmail(text)),
-      onUpdatePassword: text => dispatch(updatePassword(text)),
-      onUpdatePhone: text => dispatch(updatePhone(text)),
-      onUpdateUserType: text => dispatch(updateUserType(text)),
-      onUpdateUnit: text => dispatch(updateUnit(text))
-    };
-}
-
-
-
-function mapStateToProps(state) {
-    return{
-      details: state.details,
-      defineEmail: state.defineEmail,
-      definePassword: state.definePassword,
-      definePhone: state.definePhone,
-      defineUserType: state.defineUserType,
-      defineUnit: state.defineUnit,
-      updateEmail: state.updateEmail,
-      updatePassword: state.updatePassword,
-      updatePhone: state.updatePhone,
-      updateUserType: state.updateUserType,
-      updateUnit: state.updateUnit
-    };
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(UserManagement);
-*/

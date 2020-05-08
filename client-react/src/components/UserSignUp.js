@@ -1,11 +1,10 @@
-// Necessary Imports
 import React from "react";
 import axios from "axios";
 
-// Styling Imports
 import '../Styling.css';
 import { Form, Container } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
+import LandingNavbar from "./LandingNavbar";
 
 class Signup extends React.Component {
   constructor (props) {
@@ -18,16 +17,7 @@ class Signup extends React.Component {
     this.phone = React.createRef();
   }
 
-  componentDidMount() {
-    // this.getData();
-  }
-
-  getData = () => {
-
-    // Express uses port 3001 (react uses 3000)
-    let url = "http://localhost:3001/users/signup";
-    axios.get(url).then(response => this.setState({ users: response.data }));
-  };
+  componentDidMount() {}
 
   addUser = () => {
     let url = "http://localhost:3001/users/signup";
@@ -45,10 +35,10 @@ class Signup extends React.Component {
       });
   };
 
-  // JSX Rendering
   render() {
     return (
       <div>
+        <LandingNavbar />
         <Container id="lCont1">
           <Form>
             <Form.Group >
@@ -85,18 +75,6 @@ class Signup extends React.Component {
           </Button>
           </Form>
         </Container>
-        {/* <h3>First Name</h3>
-        <input ref={this.fName} />
-        <h3> Last Name</h3>
-        <input ref={this.lName} />
-        <h3>Email</h3>
-        <input ref={this.email} />
-        <h3>Password</h3>
-        <input ref={this.password} />
-        <h3>Phone</h3>
-        <input ref={this.phone} />
-
-        <button type="button" className="btn btn-primary" onClick={this.addUser}>add User</button> */}
       </div>
     );
   }

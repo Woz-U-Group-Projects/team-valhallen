@@ -27,20 +27,16 @@ class TechTicketManagement extends React.Component {
 
   componentDidMount() {
     this.getNewTickets(this.props.location.state.userId);
-    console.log(this.props.location.state.userId);
   }
-
 
   getNewTickets(id) {
     this.setState({ viewConfirm: false });
     this.setState({ loggedIn: true });
-    //console.log(this..userId);
     let url = "http://localhost:3001/tickets/tech/" + id;
     axios.get(url).then(response => {
       this.setState({ tickets: response.data })
     });
     this.setState({ viewTechId: id });
-    // console.log("View User #" + id);
   };
 
   viewTicket(id) {
@@ -50,10 +46,7 @@ class TechTicketManagement extends React.Component {
       this.setState({ ticket: response.data })
     });
     this.setState({ viewTicketId: id });
-    console.log("View Ticket #" + id);
   };
-
- 
 
   updateTicket(evt) {
     let url = "http://localhost:3001/tickets/" + evt.target.dataset.id;

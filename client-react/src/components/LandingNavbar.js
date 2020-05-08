@@ -11,20 +11,19 @@ import '../Styling.css'
 
 // JSX Rendering
 class LandingNavBar extends React.Component {
-    
+
 
 
     render() {
-        
 
         return (
-            
+
             <Container id="navCont1">
                 <Navbar collapseOnSelect expand="lg" bg="warning" variant="dark">
-                <a href="/"><img className="navbar-brand" id="logoNav" src={Logo} alt="logo" /></a>
+                    <a href="/"><img className="navbar-brand" id="logoNav" src={Logo} alt="logo" /></a>
                 </Navbar>
-                </Container>
-            
+            </Container>
+
         )
     }
 

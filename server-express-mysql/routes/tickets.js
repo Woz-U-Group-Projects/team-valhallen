@@ -6,21 +6,6 @@ router.get("/", function(req, res, next) {
   models.Ticket.findAll().then(tickets => res.json(tickets));
 });
 
-// router.get("/createTicket", function(req, res, next){
-// models.User
-//     .findAll({ 
-//       attributes: ['userId','fName'],
-//       include: [{ 
-//         model: models.PropertyUnit, 
-//         attributes: ['unitId','unitName'] 
-//       }]     
-//     })
-//     .then(usersFound => {
-//       res.setHeader('Content-Type', 'application/json');
-//       res.json(usersFound);
-//     });
-// });
-
 //GET LIST OF NEW TICKETS
  router.get("/new", function(req, res, next) {
    models.User.findAll({
@@ -58,7 +43,10 @@ router.get("/:id", function (req, res, next) {
 router.get("/tech/:id", function (req, res, next) {
   let techId = parseInt(req.params.id);
   models.Ticket.findAll({
-    where: { techId: techId }
+    where: { 
+      techId: techId,
+      archived: null
+    }
   }).then(tickets => res.json(tickets));
 });
 
