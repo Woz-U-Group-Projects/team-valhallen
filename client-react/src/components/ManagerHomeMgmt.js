@@ -37,12 +37,12 @@ class ManagerHomeMgmt extends React.Component {
     }
 
     componentDidMount() {
-        this.getNewTickets();
         this.getPendingTickets();
         this.getCompletedTickets();
         this.getArchivedTickets();
         this.getInProgressTickets();
         this.getOnHoldTickets();
+        this.getNewTickets();
 
 
     }
