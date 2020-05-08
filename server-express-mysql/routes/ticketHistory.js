@@ -28,6 +28,16 @@ router.get('/complete', function (req, res, next) {
         where:{ status: 'Complete', archived: null }
     }).then(tickets => res.json(tickets));
 }); 
+router.get('/inProgress', function(req, res, next){
+    models.Ticket.findAll({
+        where: {status: 'inProgress'}
+    }).then(tickets => res.json(tickets));
+});
+router.get('/onHold', function(req, res, next){
+    models.Ticket.findAll({
+        where: {status: 'onHold'}
+    }).then(tickets => res.json(tickets));
+});
 
 router.get('/archived', function (req, res, next) {
     models.Ticket.findAll({

@@ -8,6 +8,8 @@ class MrgTicketsList extends React.Component {
         this.state = { tickets: [] }
         this.newTicketQuery = this.newTicketQuery.bind(this)
         this.pendTicketQuery = this.pendTicketQuery.bind(this)
+        this.onHoldTicketQuery = this.onHoldTicketQuery.bind(this)
+        this.inProgTicketQuery = this.inProgTicketQuery.bind(this)
         this.compTicketQuery = this.compTicketQuery.bind(this)
         this.archTicketQuery = this.archTicketQuery.bind(this)
         this.viewButton = this.viewButton.bind(this)
@@ -23,6 +25,17 @@ class MrgTicketsList extends React.Component {
         const { pendTktCall } = this.props
         pendTktCall()
     };
+    inProgTicketQuery(event) {
+        event.preventDefault()
+        const { inProgTktCall } = this.props
+        inProgTktCall()
+    };
+    onHoldTicketQuery(event) {
+        event.preventDefault()
+        const { onHoldTktCall } = this.props
+        onHoldTktCall()
+    };
+
     compTicketQuery(event) {
         event.preventDefault()
         const { compTktCall } = this.props
@@ -44,6 +57,8 @@ class MrgTicketsList extends React.Component {
             <div>
                 <button type="button" className="btn btn-secondary" onClick={ this.newTicketQuery }>New Tickets</button>
                 <button type="button" className="btn btn-secondary" onClick={ this.pendTicketQuery }>Pending Tickets</button>
+                <button type="button" className="btn btn-secondary" onClick={ this.inProgTicketQuery }>In-Progress Tickets</button>
+                <button type="button" className="btn btn-secondary" onClick={ this.onHoldTicketQuery }>On-Hold Tickets</button>
                 <button type="button" className="btn btn-secondary" onClick={ this.compTicketQuery }>Completed Tickets</button>
                 <button type="button" className="btn btn-secondary" onClick={ this.archTicketQuery }>Archived Tickets</button>
 
