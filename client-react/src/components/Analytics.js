@@ -1,6 +1,7 @@
 import React from "react";
 // import axios from "axios";
 import '../task.min.css'
+import Card from "react-bootstrap/Card"
 
 class Analytics extends React.Component {
     constructor(props) {
@@ -19,32 +20,20 @@ class Analytics extends React.Component {
 
     }
 
-    pastDue = () => {
-        //ticket #'s that are past due
-    };
-
-    qtyPending = () => {
-        //qty of tickets in pending
-    };
-
-    backlog = () => {
-        //if tech has more than (#) tickets assigned to them, alert
-    }; 
-
-    busyUnits = () => {
-        //if unit has had (#) tickets within past 90 days, alert
-    };
-
-    troubleArea = () => {
-        //if (#) of a certain category has occured in all units within in the past 90 days, alert
-    }
-
-    //#tickets on hold
-
     render() {
         return (
             <div>
-                <h3>Analytics</h3>
+                <Card className="text-center" style={{ width: '18 rem' }}>
+                    <Card.Body>
+                <h6>New Tickets # {this.props.newTicketsNumber} 
+                || Pending Tickets # {this.props.pendingTicketsNumber} 
+                || In Progress Ticktes# {this.props.inProgressTicketsNumber}
+                || On Hold Tickets# {this.props.onHoldTicketsNumber} 
+                || Completed Tickets # {this.props.completedTicketsNumber}
+                || Archived Tickets # {this.props.archivedTicketsNumber}
+                </h6>
+                </Card.Body>
+                </Card>
             </div>
         );
     }

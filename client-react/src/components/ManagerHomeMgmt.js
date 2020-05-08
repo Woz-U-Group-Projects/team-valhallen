@@ -14,6 +14,12 @@ class ManagerHomeMgmt extends React.Component {
         this.state = { 
             tickets: [],
             ticket: [],
+            newTickets: [],
+            pendingTickets: [],
+            completedTickets: [],
+            archivedTickets: [],
+            inProgressTickets: [],
+            onHoldTickets: [],
             linkedUser: [],
             viewConfirm: false,
             newTrigger: false,
@@ -21,6 +27,8 @@ class ManagerHomeMgmt extends React.Component {
         }
         this.getNewTickets = this.getNewTickets.bind(this)
         this.getPendingTickets = this.getPendingTickets.bind(this)
+        this.getInProgressTickets = this.getInProgressTickets.bind(this)
+        this.getOnHoldTickets = this.getOnHoldTickets.bind(this)
         this.getCompletedTickets = this.getCompletedTickets.bind(this)
         this.getArchivedTickets = this.getArchivedTickets.bind(this)
         this.viewTicket = this.viewTicket.bind(this)
@@ -30,29 +38,49 @@ class ManagerHomeMgmt extends React.Component {
 
     componentDidMount() {
         this.getNewTickets();
+        this.getPendingTickets();
+        this.getCompletedTickets();
+        this.getArchivedTickets();
+        this.getInProgressTickets();
+        this.getOnHoldTickets();
+
+
     }
 
     getNewTickets() {
         let url = "http://localhost:3001/ticketHistory/new";
-        axios.get(url).then(response => this.setState({ tickets: response.data }));
+        axios.get(url).then(response => this.setState({ tickets: response.data, newTickets: response.data }));
         this.setState({ viewConfirm: false, newTrigger: true, completeTrigger: false });
     };
 
     getPendingTickets() {
         let url = "http://localhost:3001/ticketHistory/pending";
-        axios.get(url).then(response => this.setState({ tickets: response.data }));
+        axios.get(url).then(response => this.setState({ tickets: response.data, pendingTickets: response.data}));
         this.setState({ viewConfirm: false, newTrigger: false, completeTrigger: false });
     };
 
+    getInProgressTickets() {
+        let url = "http://localhost:3001/ticketHistory/inProgress";
+        axios.get(url).then(response => this.setState({ tickets: response.data, inProgressTickets: response.data }));
+        this.setState({ viewConfirm: false, newTrigger: false, completeTrigger: false });
+    };
+
+    getOnHoldTickets() {
+        let url = "http://localhost:3001/ticketHistory/onHold";
+        axios.get(url).then(response => this.setState({ tickets: response.data, onHoldTickets: response.data }));
+        this.setState({ viewConfirm: false, newTrigger: false, completeTrigger: false });
+    };
+
+
     getCompletedTickets() {
         let url = "http://localhost:3001/ticketHistory/complete";
-        axios.get(url).then(response => this.setState({ tickets: response.data }));
+        axios.get(url).then(response => this.setState({ tickets: response.data, completedTickets: response.data }));
         this.setState({ viewConfirm: false, newTrigger: false, completeTrigger: true });
     };
  
     getArchivedTickets() {
         let url = "http://localhost:3001/ticketHistory/archived";
-        axios.get(url).then(response => this.setState({ tickets: response.data }));
+        axios.get(url).then(response => this.setState({ tickets: response.data, archivedTickets: response.data }));
         this.setState({ viewConfirm: false, newTrigger: false, completeTrigger: false });
     };
 
@@ -106,16 +134,22 @@ class ManagerHomeMgmt extends React.Component {
             />
         }
     
-
         return(
             <div>
                 <h1>Manager Profile</h1>
-                <Analytics />
+                <Analytics newTicketsNumber = {this.state.newTickets.length} 
+                        pendingTicketsNumber = {this.state.pendingTickets.length}
+                        completedTicketsNumber = {this.state.completedTickets.length}
+                        archivedTicketsNumber = {this.state.archivedTickets.length}
+                        inProgressTicketsNumber = {this.state.inProgressTickets.length}
+                        onHoldTicketsNumber = {this.state.onHoldTickets.length}/>
                 <MrgTicketsList 
                 tickets={this.state.tickets}
                 users={this.state.users}
                 newTktCall={this.getNewTickets}
                 pendTktCall={this.getPendingTickets}
+                onHoldTktCall={this.getOnHoldTickets}
+                inProgTktCall={this.getInProgressTickets}
                 compTktCall={this.getCompletedTickets}
                 archTktCall={this.getArchivedTickets}
                 viewCall={this.viewTicket}

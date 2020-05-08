@@ -2,6 +2,7 @@ import React from "react";
 import { useSelector, useDispatch } from 'react-redux';
 import { UPDATE_TICKET_STATUS, UPDATE_TICKET_NOTE } from '../actions/actions';
 import Card from "react-bootstrap/Card";
+import Form from "react-bootstrap/Form"
 
 const TicketDetailEdit = (props) => {
   const dispatch = useDispatch()
@@ -17,9 +18,11 @@ const TicketDetailEdit = (props) => {
         <h4>Priority Level:{ props.ticketDetail.priority }</h4>
         <h4>Current Ticket Status:{ props.ticketDetail.status }</h4>
         <h5>Tenant Problem Notes:{ props.ticketDetail.note }</h5></Card.Body>
-        <Card.Footer><form>
-        <label htmlFor="status">Status</label>
-        <select type="text" name="status" value={status} onChange={event => dispatch({ type: UPDATE_TICKET_STATUS, payload: event.target.value })}>Change Status
+       <Form>
+      
+        <Form.Group>
+          <Form.Label>Set Status</Form.Label>
+          <Form.Control as = "select" multiple  onChange={event => dispatch({ type: UPDATE_TICKET_STATUS, payload: event.target.value })}>Change Status
                 <option value="inProgress">
                   In progress
                 </option>
@@ -32,13 +35,14 @@ const TicketDetailEdit = (props) => {
                 <option value="inComplete">
                   In complete
                 </option>
-         </select>
+                </Form.Control>
+         </Form.Group>
         <label htmlFor="mainNote">mainNote</label>
         <input type="text" name="mainNote" value={mainNote} onChange={event => dispatch({ type: UPDATE_TICKET_NOTE, payload: event.target.value })} />
-      </form>
+      </Form>
       <div>
         <button type="button" className="btn btn-primary" data-id={ props.ticketDetail.ticketId } data-status={ status } data-note={ mainNote } onClick={ props.updateCall }>Update Ticket</button>
-      </div></Card.Footer>
+      </div>
         </Card>
 
     </div>

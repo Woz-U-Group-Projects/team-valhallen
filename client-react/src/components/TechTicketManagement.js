@@ -53,15 +53,7 @@ class TechTicketManagement extends React.Component {
     console.log("View Ticket #" + id);
   };
 
-  // viewTicketById(id) {
-  //   this.setState({ viewConfirm: true });
-  //   let url = "http://localhost:3001/tickets/" + id;
-  //   axios.get(url, { ticketId: id }).then(response => {
-  //     this.setState({ ticket: response.data })
-  //   });
-  //   this.setState({ viewTicketId: id });
-  //   console.log("View Ticket #" + id);
-  // };
+ 
 
   updateTicket(evt) {
     let url = "http://localhost:3001/tickets/" + evt.target.dataset.id;
@@ -93,7 +85,6 @@ class TechTicketManagement extends React.Component {
         <Navbar />
         <TicketList ticketsList={this.state.tickets}
           ticketCall={this.getNewTickets}
-          tenantCall={this.getTenants}
           viewCall={this.viewTicket} />
 
         <div>
