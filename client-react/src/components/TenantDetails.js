@@ -31,10 +31,7 @@ class TenantDetails extends React.Component {
 
   componentDidMount() {
     this.viewUser(this.props.location.state.userId);
-    console.log(this.state.userId);
-    console.log(this.props.location.state.unitName);
     this.getTickets(this.props.location.state.unitId);
-    console.log("TenantDetails - Unit#" + this.props.location.state.unitId);
   }
 
   getTickets = (id) => {
