@@ -18,6 +18,8 @@ class Login extends React.Component {
             users: [],
             user: {},
             userId: 0,
+            unitId: 0,
+            unitName: "",
             ticketId: 0,
             techId: 0,
             email: '',

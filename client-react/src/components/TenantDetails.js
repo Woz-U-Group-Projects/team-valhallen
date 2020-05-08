@@ -20,8 +20,6 @@ class TenantDetails extends React.Component {
       users: [],                    // used to store array of users 
       user: {},
       tickets: [],
-      userId: 0,                    // used to pass user details
-      unitId: 0,
       viewConfirm: false,
       editConfirm: true,
       viewUserId: '',
@@ -34,7 +32,7 @@ class TenantDetails extends React.Component {
   componentDidMount() {
     this.viewUser(this.props.location.state.userId);
     console.log(this.state.userId);
-    console.log(this.props.location.state.userId);
+    console.log(this.props.location.state.unitName);
     this.getTickets(this.props.location.state.unitId);
     console.log("TenantDetails - Unit#" + this.props.location.state.unitId);
   }
@@ -120,7 +118,8 @@ class TenantDetails extends React.Component {
         </Card>
         <hr />
         <div>
-          <CreateTicketModal />
+          <CreateTicketModal assignUserId={this.props.location.state.userId}
+            assignUnitId={this.props.location.state.unitId}/>
         </div>
         <hr />
         <Card>

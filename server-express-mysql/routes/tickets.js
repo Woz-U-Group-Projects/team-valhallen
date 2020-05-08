@@ -32,7 +32,8 @@ router.get("/", function(req, res, next) {
 
 router.post("/", function(req, res, next) {
   let newTicket = new models.Ticket();
-  newTicket.unitId = parseInt(req.body.unitId);
+  newTicket.userId = req.body.userId;
+  newTicket.unitId = req.body.unitId;
   newTicket.category = req.body.category;
   newTicket.priority = req.body.priority;
   newTicket.access = req.body.access;
