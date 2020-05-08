@@ -23,15 +23,17 @@ class TenantDetails extends React.Component {
       viewConfirm: false,
       editConfirm: true,
       viewUserId: '',
-      loggedIn: false                   // used to pass user details
+      loggedIn: false,
+      userId: this.props.location.state.userId,
+      unitId: this.props.location.state.unitId,                    // used to pass user details
     };
     this.viewUser = this.viewUser.bind(this);
     this.editUser = this.editUser.bind(this);
   }
 
   componentDidMount() {
-    this.viewUser(this.props.location.state.userId);
-    this.getTickets(this.props.location.state.unitId);
+    this.viewUser(this.state.userId);
+    this.getTickets(this.state.unitId);
   }
 
   getTickets = (id) => {
@@ -115,8 +117,8 @@ class TenantDetails extends React.Component {
         </Card>
         <hr />
         <div>
-          <CreateTicketModal assignUserId={this.props.location.state.userId}
-            assignUnitId={this.props.location.state.unitId}/>
+          <CreateTicketModal assignUserId={this.state.userId}
+            assignUnitId={this.state.unitId}/>
         </div>
         <hr />
         <Card>
