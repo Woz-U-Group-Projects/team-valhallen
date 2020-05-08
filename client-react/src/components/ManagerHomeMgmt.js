@@ -137,13 +137,14 @@ class ManagerHomeMgmt extends React.Component {
         return(
             <div>
                 <h1>Manager Profile</h1>
-                <Analytics newTicketsNumber = {this.state.newTickets.length} 
-                        pendingTicketsNumber = {this.state.pendingTickets.length}
-                        completedTicketsNumber = {this.state.completedTickets.length}
-                        archivedTicketsNumber = {this.state.archivedTickets.length}
-                        inProgressTicketsNumber = {this.state.inProgressTickets.length}
-                        onHoldTicketsNumber = {this.state.onHoldTickets.length}/>
                 <MrgTicketsList 
+                newTicketsNumber = {this.state.newTickets.length} 
+                pendingTicketsNumber = {this.state.pendingTickets.length}
+                completedTicketsNumber = {this.state.completedTickets.length}
+                archivedTicketsNumber = {this.state.archivedTickets.length}
+                inProgressTicketsNumber = {this.state.inProgressTickets.length}
+                onHoldTicketsNumber = {this.state.onHoldTickets.length}
+
                 tickets={this.state.tickets}
                 users={this.state.users}
                 newTktCall={this.getNewTickets}
