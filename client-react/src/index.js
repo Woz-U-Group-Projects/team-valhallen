@@ -20,7 +20,7 @@ const store = createStore(
     undefined
 );
 
-console.log(store.getState());
+//console.log(store.getState());
 
 const unsubscribe = store.subscribe(() => console.log(store.getState()));
 

@@ -8,28 +8,27 @@ module.exports = (sequelize, DataTypes) => {
         primaryKey: true,
         autoIncrement: true
       },
-      unitId: {
-        type: DataTypes.INTEGER,
-        foreingKey: true,
-        autoIncrement: false
-      },
-      userId: {
-        type:DataTypes.INTEGER,
-        foreingKey: true,
-        autoIncrement: false
-      },
+      unitId: DataTypes.INTEGER,
       note: DataTypes.STRING,
-      techid: DataTypes.INTEGER,
-      complete: DataTypes.BOOLEAN,
+      complete: {
+        type: DataTypes.BOOLEAN,
+        defaultValue: false
+      },
       creationDate: DataTypes.DATE,
       category: DataTypes.STRING,
       access: DataTypes.BOOLEAN,
       priority: DataTypes.INTEGER,
       status: DataTypes.STRING,
-      assigned: DataTypes.BOOLEAN,
+      assigned: {
+        type: DataTypes.BOOLEAN,
+        defaultValue: false
+      },
       dueDate: DataTypes.DATE,
       completeDate: DataTypes.DATE,
-      archived: DataTypes.BOOLEAN,
+      archived: {
+        type: DataTypes.BOOLEAN,
+        defaultValue: false
+      },
       mainNote: {
         type: DataTypes.STRING,
         allowNull: true
@@ -39,7 +38,8 @@ module.exports = (sequelize, DataTypes) => {
     {}
   );
   Ticket.associate = function(models) {
-    // associations can be defined here
+    Ticket.belongsTo(models.User, {as: 'ticketUser', foreignKey: 'userId'});
+    Ticket.belongsTo(models.User, {as: 'ticketTech', foreignKey: 'techId'});
   };
   return Ticket;
 };

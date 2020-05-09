@@ -12,34 +12,34 @@ router.get("/", function(req, res, next) {
 //GET LIST OF NEW USERS
 router.get("/new", function (req, res, next) {
   models.User.findAll({
-    where: { userType: null }  //approved: false
+    where: { userType: null }
   }).then(users => res.json(users));
 });
 
 //GET LIST OF TENANTS
 router.get("/tenants", function (req, res, next) {
   models.User.findAll({
-    where: { userType: "Tenant", archive: null }
+    where: { userType: "Tenant", archive: false }
   }).then(users => res.json(users));
 });
 
 //GET LIST OF TECHNICIANS
 router.get("/techs", function (req, res, next) {
   models.User.findAll({
-    where: { userType: "Technician", archive: null }
+    where: { userType: "Technician", archive: false }
   }).then(users => res.json(users));
 });
 
 //GET LIST OF MANAGERS
 router.get("/mgrs", function (req, res, next) {
   models.User.findAll({
-    where: { userType: "Manager", archive: null }
+    where: { userType: "Manager", archive: false }
   }).then(users => res.json(users));
 });
 //------------------------------tech skill---------------------------------------
 
 router.post("/techSkills", function (req, res, next) {
-  let newTechSkill = new models.TechSkills();
+  let newTechSkill = new models.TechSkill();
   newTechSkill.userId = parseInt(req.body.userId);
   newTechSkill.electrical = req.body.electrical;
   newTechSkill.plumbing = req.body.plumbing;

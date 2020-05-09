@@ -13,7 +13,7 @@ class ManagerHomeMgmt extends React.Component {
         super(props) 
         this.state = { 
             tickets: [],
-            ticket: [],
+            ticket: {},
             newTickets: [],
             pendingTickets: [],
             completedTickets: [],
@@ -43,8 +43,6 @@ class ManagerHomeMgmt extends React.Component {
         this.getInProgressTickets();
         this.getOnHoldTickets();
         this.getNewTickets();
-
-
     }
 
     getNewTickets() {
@@ -85,19 +83,12 @@ class ManagerHomeMgmt extends React.Component {
     };
 
     viewTicket(id) {
-        
         let urla = "http://localhost:3001/ticketHistory/" + id;
         axios.get(urla).then(response => {
             this.setState({ ticket: response.data })
         });
-        /****Pull User Data if no Associations***********/
-        // let tktUserId = this.state.ticket.userId;
-
-        // let urlb = "http://localhost:3001/users/" + tktUserId;
-        // axios.get(urlb).then(response => {
-        //     this.setState({ linkedUser: response.data })
-        // });
         this.setState({ viewConfirm: true });
+        console.log(this.state.ticket);
     };
 
 

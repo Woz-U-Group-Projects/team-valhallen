@@ -1,16 +1,12 @@
 "use strict";
 module.exports = (sequelize, DataTypes) => {
-  const TechSkills = sequelize.define(
-    "TechSkills",
+  const TechSkill = sequelize.define(
+    "TechSkill",
     {
       techId: {
         type: DataTypes.INTEGER,
         primaryKey: true,
         autoIncrement: true
-      },
-      userId: {
-        type: DataTypes.INTEGER,
-        foreignKey: true
       },
       electrical: DataTypes.BOOLEAN,
       plumbing: DataTypes.BOOLEAN,
@@ -20,8 +16,8 @@ module.exports = (sequelize, DataTypes) => {
     },
     {}
   );
-  TechSkills.associate = function(models) {
-    // associations can be defined here
+  TechSkill.associate = function(models) {
+    TechSkill.belongsTo(models.User, {foreignKey: 'userId'});
   };
-  return TechSkills;
+  return TechSkill;
 };

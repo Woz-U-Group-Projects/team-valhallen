@@ -13,55 +13,71 @@ router.get("/", function (req, res, next) {
 
 router.get('/new', function (req, res, next) {
     models.Ticket.findAll({
-        where:{ assigned: null }
+        where: { assigned: false }
     }).then(tickets => res.json(tickets));
 });
 
 router.get('/pending', function (req, res, next) {
     models.Ticket.findAll({
-        where:{ status: 'Pending', assigned: true }
+        where: { status: 'Pending', assigned: true }
     }).then(tickets => res.json(tickets));
 });
 
 router.get('/complete', function (req, res, next) {
     models.Ticket.findAll({
-        where:{ status: 'Complete', archived: null }
-    }).then(tickets => res.json(tickets));
-}); 
-router.get('/inProgress', function(req, res, next){
-    models.Ticket.findAll({
-        where: {status: 'inProgress'}
+        where: { status: 'Complete', archived: false }
     }).then(tickets => res.json(tickets));
 });
-router.get('/onHold', function(req, res, next){
+router.get('/inProgress', function (req, res, next) {
     models.Ticket.findAll({
-        where: {status: 'onHold'}
+        where: { status: 'inProgress', archived: false }
+    }).then(tickets => res.json(tickets));
+});
+router.get('/onHold', function (req, res, next) {
+    models.Ticket.findAll({
+        where: { status: 'onHold', archived: false }
     }).then(tickets => res.json(tickets));
 });
 
 router.get('/archived', function (req, res, next) {
     models.Ticket.findAll({
-        where:{ status: 'Complete', archived: true }
+        where: { status: 'Complete', archived: true }
     }).then(tickets => res.json(tickets));
 });
 
-router.get("/byUnit/:id", function(req, res, next) {       
-    let unitId = parseInt(req.params.id);             
+router.get("/byUnit/:id", function (req, res, next) {
+    let unitId = parseInt(req.params.id);
     models.Ticket.findAll({
-        where:{ unitId: unitId }
+        where: { unitId: unitId },
+        include: ['ticketTech']
     })
-      .then(ticket => res.json(ticket));                 
+        .then(ticket => res.json(ticket));
 });
 
 /******************Manager Selected Ticket ***********************/
 
-router.get("/:id", function(req, res, next) {       
-    let ticketId = parseInt(req.params.id);             
-    models.Ticket.findByPk(ticketId)
-      .then(ticket => res.json(ticket));                 
+router.get("/:id", function (req, res, next) {
+    let ticketId = parseInt(req.params.id);
+    models.Ticket.findByPk(ticketId, { include: ['ticketUser'] })
+        .then(ticket => {
+            const resObj = Object.assign(
+                {},
+                {
+                    ticketId: ticket.ticketId,
+                    unitId: ticket.unitId,
+                    category: ticket.category,
+                    note: ticket.note,
+                    creationDate: ticket.creationDate,
+                    priority: ticket.priority,
+                    tenantFName: ticket.ticketUser.fName,
+                    tenantLName: ticket.ticketUser.lName
+                }
+            )
+            res.json(resObj)
+        });
 });
 
-router.put("/:id", function(req, res, next) {
+router.put("/:id", function (req, res, next) {
     models.Ticket.update(
         {
             techid: req.body.tech,
@@ -74,7 +90,7 @@ router.put("/:id", function(req, res, next) {
     ).then(ticket => res.json(ticket));
 });
 
-router.put("/archTkt/:id", function(req, res, next) {
+router.put("/archTkt/:id", function (req, res, next) {
     models.Ticket.update(
         {
             archived: true
