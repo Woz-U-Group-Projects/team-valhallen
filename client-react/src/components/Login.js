@@ -6,9 +6,8 @@ import axios from "axios";
 import { Redirect } from 'react-router-dom';
 
 // Styling Imports
-import { Form, Button, Container } from 'react-bootstrap';
+import { Form, Button, Container, Col } from 'react-bootstrap';
 import '../Styling.css'
-import LandingNavbar from "./LandingNavbar";
 
 // JSX Rendering
 class Login extends React.Component {
@@ -79,11 +78,10 @@ class Login extends React.Component {
         return (
 
             <div>
-                <LandingNavbar />
                 <Container id="lCont1">
                     <Form >
 
-                        <h1> Login Portal </h1>
+                        <h1 className="mb-5"> Login Portal </h1>
 
                         <Form.Group  >
                             <Form.Label  > Email address </Form.Label >
@@ -95,12 +93,18 @@ class Login extends React.Component {
                             <Form.Control type="password" placeholder="Enter Password" ref={this.password} />
                         </Form.Group >
 
-                        <Button type="button" className="btn btn-primary" onClick={this.login}>
+                        <Container>
+
+                        <Col className="mt-4">
+                        <Button type="button" className="btn btn-warning mr-3 mt-2" onClick={this.login}>
                             Login
                         </Button>
-                        <div>
-                            <a href="/signup">Sign-Up Here</a>
-                        </div>
+            
+                        <Button type="button" className="btn btn-warning mr-3 mt-2" href="/signup">
+                            Signup
+                        </Button>
+                        </Col>
+                    </Container>
 
                     </Form>
                 </Container >

@@ -5,6 +5,7 @@
 
 #lCont1 {
     margin-top: 150px;
+    max-width: 600px
 }
 
 .btn {
@@ -19,6 +20,10 @@
     background-color: blue;
     height: 400px;
     }
+
+#logoNav {
+    width: 300px;
+}
 
 /* Independent Element Hover Styling*/
 

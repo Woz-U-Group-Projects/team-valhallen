@@ -5,7 +5,7 @@ import React from 'react';
 import { withRouter } from 'react-router-dom';
 
 // Styling Imports
-import { Container, Navbar } from 'react-bootstrap';
+import { Navbar } from 'react-bootstrap';
 import Logo from '../img/mq02.png';
 import '../Styling.css'
 
@@ -18,11 +18,11 @@ class LandingNavBar extends React.Component {
 
         return (
 
-            <Container id="navCont1">
-                <Navbar collapseOnSelect expand="lg" bg="warning" variant="dark">
-                    <a href="/"><img className="navbar-brand" id="logoNav" src={Logo} alt="logo" /></a>
-                </Navbar>
-            </Container>
+                <div>
+
+                    <a href="/"><img id="logoNav" src={Logo} alt="logo" /></a>
+
+                </div>
 
         )
     }

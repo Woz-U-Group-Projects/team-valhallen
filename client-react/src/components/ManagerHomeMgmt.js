@@ -3,7 +3,7 @@ import axios from 'axios';
 
 import MrgTicketsList from './MrgTicketsList';
 import TicketView from './TicketView';
-import Analytics from './Analytics';
+// import Analytics from './Analytics';
 import AssignTech from './AssignTech';
 import ArchiveTicket from './ArchiveTicket';
 

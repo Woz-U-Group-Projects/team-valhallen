@@ -14,7 +14,7 @@ import Login from "./components/Login";
 import UserSignUp from './components/UserSignUp';
 import ManagerHome from './screens/ManagerHome';
 import TechTicketManagement from "./components/TechTicketManagement";
-// import Navbar from './components/Navbar';
+import LandingNavbar from './components/LandingNavbar';
 
 
 // Styling Imports
@@ -28,7 +28,7 @@ const App = ({ store }) => (
       
       <center>
         
-      {/* <Navbar /> */}
+      <LandingNavbar />
         
         
         {/* This Div is utilized to create the ViewPort Window from App.css */}
