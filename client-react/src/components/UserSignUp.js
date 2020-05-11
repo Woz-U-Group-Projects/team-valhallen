@@ -38,39 +38,38 @@ class Signup extends React.Component {
   render() {
     return (
       <div>
-        <LandingNavbar />
         <Container id="lCont1">
           <Form>
             <Form.Group >
-              <Form.Label><h2>Sign Up!</h2></Form.Label>
+              <Form.Label ><h1>Sign Up</h1></Form.Label>
             </Form.Group>
 
             <Form.Group >
-              <Form.Label>First Name</Form.Label>
+              <Form.Label className="float-left">First Name:</Form.Label>
               <Form.Control type="text" name="fname" ref={this.fName} />
             </Form.Group>
 
             <Form.Group >
-              <Form.Label>Last Name</Form.Label>
+              <Form.Label className="float-left">Last Name:</Form.Label>
               <Form.Control type="text" name="lname" ref={this.lName} />
             </Form.Group>
 
             <Form.Group >
-              <Form.Label>Email</Form.Label>
+              <Form.Label className="float-left">Preferred Email:</Form.Label>
               <Form.Control type="text" name="email" ref={this.email} />
             </Form.Group>
 
             <Form.Group  >
-              <Form.Label  > Password </Form.Label>
+              <Form.Label className="float-left" >Create a Password: </Form.Label>
               <Form.Control type="password" name="password" ref={this.password} />
             </Form.Group >
 
             <Form.Group >
-              <Form.Label>Phone</Form.Label>
+              <Form.Label className="float-left">Contact Number:</Form.Label>
               <Form.Control type="text" name="phone" ref={this.phone} />
             </Form.Group>
 
-            <Button variant="danger" type="button" className="btn btn-primary" onClick={this.addUser} >
+            <Button type="button" className="btn btn-warning" onClick={this.addUser} >
               Submit
           </Button>
           </Form>
@@ -81,4 +80,6 @@ class Signup extends React.Component {
 }
 
 export default Signup;
+
+// Merge to Dev - Good to Go! //
 

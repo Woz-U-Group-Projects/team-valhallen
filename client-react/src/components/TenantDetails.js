@@ -134,14 +134,14 @@ class TenantDetails extends React.Component {
                     </thead>
                     <tbody>
 
-                         {this.state.tickets.map(t => ( 
+                        {this.state.tickets.map(t => ( 
                             <tr key={t.ticketId}>
                                 <td>{t.dueDate}</td>
                                 <td><h6>{t.category}</h6></td>
                                 <td>{t.techid}</td>
                                 <td>{t.status}</td>
                             </tr>
-                         ))} 
+                        ))} 
 
                     </tbody>
                 </Table>

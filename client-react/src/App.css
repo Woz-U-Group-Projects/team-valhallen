@@ -1,12 +1,12 @@
 /* App.js Primary Bady Styling */
 body {
     background-image: url(./img/mqback01.png);
+    background-position: center;
+    background-size: 140em;
 }
 
 /* Styling for the Viewport Window */
 .style {
-    overflow-y: auto;
-    overflow-y: scroll;
     height: 800px;
     max-width: 1400px;
     margin-top: 20px;
@@ -21,4 +21,4 @@ body {
 }
 
 
-
+/* Marge App.css to Dev  - Good to Go! */

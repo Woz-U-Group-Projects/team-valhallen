@@ -81,15 +81,15 @@ class Login extends React.Component {
                 <Container id="lCont1">
                     <Form >
 
-                        <h1 className="mb-5"> Login Portal </h1>
+                        <h1 className="mb-5"> Login </h1>
 
                         <Form.Group  >
-                            <Form.Label  > Email address </Form.Label >
+                            <Form.Label className="float-left" > Email Address: </Form.Label >
                             <Form.Control type="email" placeholder="Enter Email" ref={this.email} />
                         </Form.Group >
 
                         <Form.Group   >
-                            <Form.Label  > Password </Form.Label>
+                            <Form.Label className="float-left" > Password: </Form.Label>
                             <Form.Control type="password" placeholder="Enter Password" ref={this.password} />
                         </Form.Group >
 
@@ -116,3 +116,5 @@ class Login extends React.Component {
 }
 
 export default Login;
+
+// Merge to Dev - Good to Go! //
