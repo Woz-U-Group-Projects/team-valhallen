@@ -13,14 +13,18 @@ class CreateTicket extends React.Component {
     this.priority = React.createRef();
     this.access = React.createRef();
     this.note = React.createRef();
+    this.dueDate = React.createRef();
   }
 
   componentDidMount() {
-    
+
   }
   createTicket = () => {
+    let dateMulti = 86400000 * parseInt(7);
+    let setDate = new Date(Date.now() + dateMulti).toISOString();
     let url = "http://localhost:3001/tickets/";
     axios.post(url, {
+      dueDate: setDate,
       userId: this.state.userId,
       unitId: this.state.unitId,
       category: this.category.current.value,

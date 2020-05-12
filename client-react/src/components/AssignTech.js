@@ -10,7 +10,9 @@ class AssignTech extends React.Component {
         this.dueDate = React.createRef();
     }
 
-    componentDidMount() {}
+    componentDidMount() { 
+        this.getTechs();
+    }
 
     addTechs = () => {
         let url = "http://localhost:3001/ticketHistory/" + parseInt(this.props.ticketDetail.ticketId);
