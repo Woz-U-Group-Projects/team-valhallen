@@ -6,7 +6,7 @@ import { Card } from "react-bootstrap";
 class MrgTicketsList extends React.Component {
     constructor (props) {
         super(props)
-        this.state = { }
+        this.state = { compCall: false }
         this.newTicketQuery = this.newTicketQuery.bind(this)
         this.pendTicketQuery = this.pendTicketQuery.bind(this)
         this.onHoldTicketQuery = this.onHoldTicketQuery.bind(this)
@@ -20,32 +20,38 @@ class MrgTicketsList extends React.Component {
         event.preventDefault()
         const { newTktCall } = this.props
         newTktCall()
+        this.setState({ compCall: false })
     };
     pendTicketQuery(event) {
         event.preventDefault()
         const { pendTktCall } = this.props
         pendTktCall()
+        this.setState({ compCall: false })
     };
     inProgTicketQuery(event) {
         event.preventDefault()
         const { inProgTktCall } = this.props
         inProgTktCall()
+        this.setState({ compCall: false })
     };
     onHoldTicketQuery(event) {
         event.preventDefault()
         const { onHoldTktCall } = this.props
         onHoldTktCall()
+        this.setState({ compCall: false })
     };
 
     compTicketQuery(event) {
         event.preventDefault()
         const { compTktCall } = this.props
         compTktCall()
+        this.setState({ compCall: true })
     };
     archTicketQuery(event) {
         event.preventDefault()
         const { archTktCall } = this.props
         archTktCall()
+        this.setState({ compCall: true })
     };
     viewButton(event) {
         event.preventDefault()
@@ -54,6 +60,8 @@ class MrgTicketsList extends React.Component {
     };
 
     render() {
+        const compCall = this.state.compCall;
+
         return (
             <div>
                 <button type="button" className="btn btn-secondary" onClick={this.newTicketQuery}>New Tickets ({this.props.newTicketsNumber})</button>

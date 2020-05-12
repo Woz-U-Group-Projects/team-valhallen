@@ -79,6 +79,7 @@ router.get('/complete', function (req, res, next) {
                     techFName: ticket.ticketTech.fName,
                     techLName: ticket.ticketTech.lName,
                     dueDate: (ticket.dueDate).toLocaleDateString(),
+                    completeDate: (ticket.completeDate).toLocaleDateString()
                 }
             )
         })
@@ -152,6 +153,7 @@ router.get('/archived', function (req, res, next) {
                     techFName: ticket.ticketTech.fName,
                     techLName: ticket.ticketTech.lName,
                     dueDate: (ticket.dueDate).toLocaleDateString(),
+                    completeDate: (ticket.completeDate).toLocaleDateString()
                 }
             )
         })

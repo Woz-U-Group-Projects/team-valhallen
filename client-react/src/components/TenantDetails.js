@@ -138,7 +138,13 @@ class TenantDetails extends React.Component {
                             <tr key={t.ticketId}>
                                 <td>{t.dueDate}</td>
                                 <td><h6>{t.category}</h6></td>
-                                <td>{t.techFName} {t.techLName}</td>
+                                {(function(){
+                                if(t.assigned == false){
+                                    return <td>Not Yet Assigned</td>
+                                } else {
+                                return <td>{t.techFName} {t.techLName}</td>
+                                }
+                                })()}
                                 <td>{t.status}</td>
                             </tr>
                          ))} 
