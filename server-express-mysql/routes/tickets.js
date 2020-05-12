@@ -25,8 +25,11 @@ router.post("/", function(req, res, next) {
   newTicket.note = req.body.note;
   newTicket.status = req.body.status;
   newTicket.mainNote = req.body.mainNote;
+  newTicket.techId = 7;
   var createdAt = new Date(Date.now()).toISOString();
+  var dueDate = new Date(Date.now() + 604800000).toISOString();
   newTicket.creationDate = createdAt;
+  newTicket.dueDate = dueDate;
   newTicket.save().then(tickets => res.json(tickets));
 });
 
@@ -45,9 +48,28 @@ router.get("/tech/:id", function (req, res, next) {
   models.Ticket.findAll({
     where: { 
       techId: techId,
-      archived: null
+      archived: false
     }
-  }).then(tickets => res.json(tickets));
+  })
+  .then(tickets => {
+    const resObj = tickets.map(ticket => {
+        return Object.assign(
+            {},
+            {
+                ticketId: ticket.ticketId,
+                unitId: ticket.unitId,
+                priority: ticket.priority,
+                dueDate: (ticket.dueDate).toLocaleDateString(),
+                category: ticket.category,
+                note: ticket.note,
+                access: ticket.access,
+                status: ticket.status,
+                mainNote: ticket.mainNote
+            }
+        )
+    });
+    res.json(resObj)
+});
 });
 
 //UPDATE TICKET INFORMATION

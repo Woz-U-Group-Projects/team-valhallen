@@ -21,6 +21,7 @@ class ManagerHomeMgmt extends React.Component {
             inProgressTickets: [],
             onHoldTickets: [],
             linkedUser: [],
+            techs: [],
             viewConfirm: false,
             newTrigger: false,
             completeTrigger: false
@@ -43,6 +44,12 @@ class ManagerHomeMgmt extends React.Component {
         this.getInProgressTickets();
         this.getOnHoldTickets();
         this.getNewTickets();
+    }
+
+    componentDidUpdate(prevProps, prevState) {
+        if (this.state.ticket !== prevState.ticket) {
+            this.getTechs(this.state.ticket);
+        }
     }
 
     getNewTickets() {
@@ -88,7 +95,16 @@ class ManagerHomeMgmt extends React.Component {
             this.setState({ ticket: response.data })
         });
         this.setState({ viewConfirm: true });
-        console.log(this.state.ticket);
+        this.getTechs();
+    };
+
+    getTechs() {
+        let category = this.state.ticket.category;
+        console.log(this.state.ticket.category);
+        let url = "http://localhost:3001/users/techSkills/" + category;
+        axios.get(url)
+        .then(response => this.setState({ techs: response.data }));
+        
     };
 
 
@@ -117,6 +133,7 @@ class ManagerHomeMgmt extends React.Component {
         if (viewSelected && newTrigger) {
             editComp = <AssignTech 
                 ticketDetail={this.state.ticket}
+                skilledTechs={this.state.techs}
                 techAssigned={this.techAssigned}
             />
         }

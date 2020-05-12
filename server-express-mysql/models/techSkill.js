@@ -17,7 +17,7 @@ module.exports = (sequelize, DataTypes) => {
     {}
   );
   TechSkill.associate = function(models) {
-    TechSkill.belongsTo(models.User, {foreignKey: 'userId'});
+    TechSkill.belongsTo(models.User, {as: 'techSkills', foreignKey: 'userId'});
   };
   return TechSkill;
 };

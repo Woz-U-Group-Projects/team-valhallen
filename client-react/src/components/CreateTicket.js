@@ -55,7 +55,7 @@ class CreateTicket extends React.Component {
                 <option value="plumbing">Plumbing</option>
                 <option value="hvac">HVAC</option>
                 <option value="appliances">Appliances</option>
-
+                <option value="other">Other</option>
               </Form.Control>
             </Form.Group>
             <Form.Group controlId="exampleForm.ControlSelect2">

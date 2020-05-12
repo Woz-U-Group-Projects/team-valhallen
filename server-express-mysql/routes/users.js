@@ -38,6 +38,56 @@ router.get("/mgrs", function (req, res, next) {
 });
 //------------------------------tech skill---------------------------------------
 
+//GET LIST OF TECHS with SKILLS
+router.get("/techSkills/:category", function (req, res, next) {
+  let skill = req.params.category;
+  let skillQuery;
+  console.log('backEnd value' + skill);
+  
+    switch (skill) {
+      case "electrical":
+        skillQuery = {electrical: true};
+        break;
+      case "plumbing":
+        skillQuery = {plumbing: true};
+        break;
+      case "hvac":
+        skillQuery = {hvac: true};
+        break;
+      case "appliances":
+        skillQuery = {appliance: true};
+        break;
+      default:
+        skillQuery = {general: true};
+    }
+  
+  models.TechSkill.findAll({
+    where: skillQuery ,
+    include: ['techSkills']
+  })
+  .then(techs => {
+    const resObj = techs.map(tech => {
+      return Object.assign(
+        {},
+        {
+          userId: tech.techSkills.userId,
+          fName: tech.techSkills.fName,
+          lName: tech.techSkills.lName,
+          email: tech.techSkills.email,
+          phone: tech.techSkills.phone,
+          electrical: tech.electrical,
+          plumbing: tech.plumbing,
+          hvac: tech.hvac,
+          appliance: tech.appliance,
+          general: tech.general
+        }
+      )
+    })  
+    res.json(resObj)
+  }
+  );
+});
+
 router.post("/techSkills", function (req, res, next) {
   let newTechSkill = new models.TechSkill();
   newTechSkill.userId = parseInt(req.body.userId);
