@@ -1,6 +1,7 @@
 import React from "react";
 import '../task.min.css';
 import Table from 'react-bootstrap/Table';
+import { Card } from "react-bootstrap";
 
 class MrgTicketsList extends React.Component {
     constructor (props) {
@@ -55,43 +56,48 @@ class MrgTicketsList extends React.Component {
     render() {
         return (
             <div>
-                <button type="button" className="btn btn-secondary" onClick={ this.newTicketQuery }>New Tickets ({this.props.newTicketsNumber})</button>
-                <button type="button" className="btn btn-secondary" onClick={ this.pendTicketQuery }>Pending Tickets ({this.props.pendingTicketsNumber})</button>
-                <button type="button" className="btn btn-secondary" onClick={ this.inProgTicketQuery }>In-Progress Tickets ({this.props.inProgressTicketsNumber})</button>
-                <button type="button" className="btn btn-secondary" onClick={ this.onHoldTicketQuery }>On-Hold Tickets ({this.props.onHoldTicketsNumber})</button>
-                <button type="button" className="btn btn-secondary" onClick={ this.compTicketQuery }>Completed Tickets ({this.props.completedTicketsNumber})</button>
-                <button type="button" className="btn btn-secondary" onClick={ this.archTicketQuery }>Archived Tickets ({this.props.archivedTicketsNumber})</button>
+                <button type="button" className="btn btn-secondary" onClick={this.newTicketQuery}>New Tickets ({this.props.newTicketsNumber})</button>
+                <button type="button" className="btn btn-secondary" onClick={this.pendTicketQuery}>Pending Tickets ({this.props.pendingTicketsNumber})</button>
+                <button type="button" className="btn btn-secondary" onClick={this.inProgTicketQuery}>In-Progress Tickets ({this.props.inProgressTicketsNumber})</button>
+                <button type="button" className="btn btn-secondary" onClick={this.onHoldTicketQuery}>On-Hold Tickets ({this.props.onHoldTicketsNumber})</button>
+                <button type="button" className="btn btn-secondary" onClick={this.compTicketQuery}>Completed Tickets ({this.props.completedTicketsNumber})</button>
+                <button type="button" className="btn btn-secondary" onClick={this.archTicketQuery}>Archived Tickets ({this.props.archivedTicketsNumber})</button>
 
-                <h1>Ticket History</h1>
-                <Table striped bordered hover>
-                    <thead>
-                        <tr>
-                            <th>Unit Id</th>
-                            <th>Request Date</th>
-                            <th>Issue Category</th>
-                            <th>Status</th>
-                            <th>Tech Assigned</th>
-                            <th>Ticket Due</th>
-                            <th></th>
-                            
-                        </tr>
-                    </thead>
-                    <tbody>
+                
+                <Card>
+                    <Card.Title as="h3">New Ticket Requests</Card.Title>
+                    <Card.Body>
+                        <Table striped bordered hover size="sm">
+                            <thead>
+                                <tr>
+                                    <th>Unit Id</th>
+                                    <th>Request Date</th>
+                                    <th>Issue Category</th>
+                                    <th>Status</th>
+                                    <th>Tech Assigned</th>
+                                    <th>Ticket Due</th>
+                                    <th></th>
 
-                        {this.props.tickets.map(t => ( 
-                            <tr key={t.ticketId}>
-                                <td>{t.unitId}</td>
-                                <td>{t.creationDate}</td>
-                                <td><h6>{t.category}</h6></td>
-                                <td>{t.status}</td>
-                                <td>{t.techid}</td>
-                                <td>{t.dueDate}</td>
-                                <td><button name={t.ticketId} onClick={this.viewButton} >View Ticket</button></td>
-                            </tr>
-                        ))} 
+                                </tr>
+                            </thead>
+                            <tbody>
 
-                    </tbody>
-                </Table>
+                                {this.props.tickets.map(t => (
+                                    <tr key={t.ticketId}>
+                                        <td>{t.unitId}</td>
+                                        <td>{t.creationDate}</td>
+                                        <td><h6>{t.category}</h6></td>
+                                        <td>{t.status}</td>
+                                        <td>{t.techid}</td>
+                                        <td>{t.dueDate}</td>
+                                        <td><button name={t.ticketId} onClick={this.viewButton} >View Ticket</button></td>
+                                    </tr>
+                                ))}
+
+                            </tbody>
+                        </Table>
+                    </Card.Body>
+                </Card>
             </div>
         );
     }

@@ -1,9 +1,10 @@
 import React from "react";
 import '../Styling.css'
 import Table from 'react-bootstrap/Table';
+import { Card } from "react-bootstrap";
 
 class UserList extends React.Component {
-  constructor(props) {
+  constructor (props) {
     super(props)
     this.newQuery = this.newQuery.bind(this)
     this.tenantQuery = this.tenantQuery.bind(this)
@@ -47,29 +48,34 @@ class UserList extends React.Component {
         <button type="button" className="btn btn-secondary" onClick={this.techQuery}>Technicians</button>
         <button type="button" className="btn btn-secondary" onClick={this.mgrQuery}>Managers</button>
 
-        <h3>List of Users</h3>
-        <Table striped bordered hover>
-          <thead>
-            <tr>
-              <th>User Name</th>
-              <th>Email</th>
-              <th>Phone Number</th>
-              <th></th>
-            </tr>
-          </thead>
-          <tbody>
-            {this.props.usersList.map(p => (
-              <tr key={p.userId}>
-                <td>{p.fName} {p.lName}</td>
-                <td>{p.email}</td>
-                <td>{p.phone}</td>
-                <td><button name={p.userId} onClick={this.viewButton} >View User</button></td>
-              </tr>
-            ))}
-          </tbody>
-        </Table>
 
-      </div>
+        <Card>
+          <Card.Title as="h3">List of Users</Card.Title>
+          <Card.Body>
+            <Table striped bordered hover>
+              <thead>
+                <tr>
+                  <th>User Name</th>
+                  <th>Email</th>
+                  <th>Phone Number</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                {this.props.usersList.map(p => (
+                  <tr key={p.userId}>
+                    <td>{p.fName} {p.lName}</td>
+                    <td>{p.email}</td>
+                    <td>{p.phone}</td>
+                    <td><button name={p.userId} onClick={this.viewButton} >View User</button></td>
+                  </tr>
+                ))}
+              </tbody>
+            </Table>
+          </Card.Body>
+        </Card>
+
+      </div >
     );
   }
 }

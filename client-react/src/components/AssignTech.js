@@ -10,7 +10,7 @@ class AssignTech extends React.Component {
         this.dueDate = React.createRef();
     }
 
-    componentDidMount() {
+    componentDidMount() { 
         this.getTechs();
     }
 

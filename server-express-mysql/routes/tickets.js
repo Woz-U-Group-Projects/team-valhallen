@@ -29,9 +29,9 @@ router.get("/", function(req, res, next) {
 });
 
 //CREATE NEW TICKET
-
 router.post("/", function(req, res, next) {
   let newTicket = new models.Ticket();
+  newTicket.dueDate = req.body.dueDate;
   newTicket.userId = req.body.userId;
   newTicket.unitId = req.body.unitId;
   newTicket.category = req.body.category;

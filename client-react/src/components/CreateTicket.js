@@ -13,14 +13,18 @@ class CreateTicket extends React.Component {
     this.priority = React.createRef();
     this.access = React.createRef();
     this.note = React.createRef();
+    this.dueDate = React.createRef();
   }
 
   componentDidMount() {
-    
+
   }
   createTicket = () => {
+    let dateMulti = 86400000 * parseInt(7);
+    let setDate = new Date(Date.now() + dateMulti).toISOString();
     let url = "http://localhost:3001/tickets/";
     axios.post(url, {
+      dueDate: setDate,
       userId: this.state.userId,
       unitId: this.state.unitId,
       category: this.category.current.value,
@@ -62,10 +66,8 @@ class CreateTicket extends React.Component {
               <Form.Label>Service Priority Level</Form.Label>
               <Form.Control as="select" multiple ref={this.priority}>
                 <option value={1}>High Priority</option>
-                <option value={2}>Medium-High Priority</option>
-                <option value={3}>Medium Priority</option>
-                <option value={4}>Medium-Low Priority</option>
-                <option value={5}>Low Priority</option>
+                <option value={2}>Medium Priority</option>
+                <option value={3}>Low Priority</option>
               </Form.Control>
             </Form.Group>
             <Form.Group controlId="exampleForm.ControlSelect2">
