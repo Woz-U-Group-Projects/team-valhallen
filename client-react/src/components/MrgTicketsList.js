@@ -66,7 +66,7 @@ class MrgTicketsList extends React.Component {
                 <Table striped bordered hover>
                     <thead>
                         <tr>
-                            <th>Unit Id</th>
+                            <th>Unit #</th>
                             <th>Request Date</th>
                             <th>Issue Category</th>
                             <th>Status</th>
@@ -84,7 +84,7 @@ class MrgTicketsList extends React.Component {
                                 <td>{t.creationDate}</td>
                                 <td><h6>{t.category}</h6></td>
                                 <td>{t.status}</td>
-                                <td>{t.techid}</td>
+                                <td>{t.techFName} {t.techLName}</td>
                                 <td>{t.dueDate}</td>
                                 <td><button name={t.ticketId} onClick={this.viewButton}>View Ticket</button></td>
                             </tr>

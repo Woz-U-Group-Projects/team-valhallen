@@ -10,14 +10,7 @@ class AssignTech extends React.Component {
         this.dueDate = React.createRef();
     }
 
-    componentDidMount() {
-        this.getTechs();
-    }
-
-    getTechs() {
-        let url = "http://localhost:3001/users/techs/";
-        axios.get(url).then(response => this.setState({ users: response.data }));
-    };
+    componentDidMount() {}
 
     addTechs = () => {
         let url = "http://localhost:3001/ticketHistory/" + parseInt(this.props.ticketDetail.ticketId);
@@ -40,7 +33,7 @@ class AssignTech extends React.Component {
                     <h3>Assign Technician</h3>
                     <div>
                         <select ref={this.select1}>
-                            {this.state.users.map(p => (
+                            {this.props.skilledTechs.map(p => (
                                 <option key={p.userId} value={p.userId}>
                                     {p.fName} {p.lName}
                                 </option>

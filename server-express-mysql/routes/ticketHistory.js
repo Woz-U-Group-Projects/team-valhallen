@@ -13,58 +13,204 @@ router.get("/", function (req, res, next) {
 
 router.get('/new', function (req, res, next) {
     models.Ticket.findAll({
-        where:{ assigned: null }
-    }).then(tickets => res.json(tickets));
+        where: { assigned: false },
+        include: ['ticketTech']
+    })
+    .then(tickets => {
+        const resObj = tickets.map(ticket => {
+            return Object.assign(
+                {},
+                {
+                    ticketId: ticket.ticketId,
+                    unitId: ticket.unitId,
+                    creationDate: (ticket.creationDate).toLocaleDateString(),
+                    category: ticket.category,
+                    status: ticket.status,
+                    techFName: "Not Yet",
+                    techLName: " Assigned",
+                    dueDate: "Not Yet Assigned"
+                }
+            )
+        })
+        res.json(resObj)
+    });
 });
 
 router.get('/pending', function (req, res, next) {
     models.Ticket.findAll({
-        where:{ status: 'Pending', assigned: true }
-    }).then(tickets => res.json(tickets));
+        where: { status: 'Pending', assigned: true },
+        include: ['ticketTech']
+    })
+    .then(tickets => {
+        const resObj = tickets.map(ticket => {
+            return Object.assign(
+                {},
+                {
+                    ticketId: ticket.ticketId,
+                    unitId: ticket.unitId,
+                    creationDate: (ticket.creationDate).toLocaleDateString(),
+                    category: ticket.category,
+                    status: ticket.status,
+                    techFName: ticket.ticketTech.fName,
+                    techLName: ticket.ticketTech.lName,
+                    dueDate: (ticket.dueDate).toLocaleDateString(),
+                }
+            )
+        })
+        res.json(resObj)
+    });
 });
 
 router.get('/complete', function (req, res, next) {
     models.Ticket.findAll({
-        where:{ status: 'Complete', archived: null }
-    }).then(tickets => res.json(tickets));
-}); 
-router.get('/inProgress', function(req, res, next){
-    models.Ticket.findAll({
-        where: {status: 'inProgress'}
-    }).then(tickets => res.json(tickets));
+        where: { status: 'Complete', archived: false },
+        include: ['ticketTech']
+    })
+    .then(tickets => {
+        const resObj = tickets.map(ticket => {
+            return Object.assign(
+                {},
+                {
+                    ticketId: ticket.ticketId,
+                    unitId: ticket.unitId,
+                    creationDate: (ticket.creationDate).toLocaleDateString(),
+                    category: ticket.category,
+                    status: ticket.status,
+                    techFName: ticket.ticketTech.fName,
+                    techLName: ticket.ticketTech.lName,
+                    dueDate: (ticket.dueDate).toLocaleDateString(),
+                }
+            )
+        })
+        res.json(resObj)
+    });
 });
-router.get('/onHold', function(req, res, next){
+router.get('/inProgress', function (req, res, next) {
     models.Ticket.findAll({
-        where: {status: 'onHold'}
-    }).then(tickets => res.json(tickets));
+        where: { status: 'inProgress', archived: false },
+        include: ['ticketTech']
+    })
+    .then(tickets => {
+        const resObj = tickets.map(ticket => {
+            return Object.assign(
+                {},
+                {
+                    ticketId: ticket.ticketId,
+                    unitId: ticket.unitId,
+                    creationDate: (ticket.creationDate).toLocaleDateString(),
+                    category: ticket.category,
+                    status: ticket.status,
+                    techFName: ticket.ticketTech.fName,
+                    techLName: ticket.ticketTech.lName,
+                    dueDate: (ticket.dueDate).toLocaleDateString(),
+                }
+            )
+        })
+        res.json(resObj)
+    });
+});
+router.get('/onHold', function (req, res, next) {
+    models.Ticket.findAll({
+        where: { status: 'onHold', archived: false },
+        include: ['ticketTech']
+    })
+    .then(tickets => {
+        const resObj = tickets.map(ticket => {
+            return Object.assign(
+                {},
+                {
+                    ticketId: ticket.ticketId,
+                    unitId: ticket.unitId,
+                    creationDate: (ticket.creationDate).toLocaleDateString(),
+                    category: ticket.category,
+                    status: ticket.status,
+                    techFName: ticket.ticketTech.fName,
+                    techLName: ticket.ticketTech.lName,
+                    dueDate: (ticket.dueDate).toLocaleDateString(),
+                }
+            )
+        })
+        res.json(resObj)
+    });
 });
 
 router.get('/archived', function (req, res, next) {
     models.Ticket.findAll({
-        where:{ status: 'Complete', archived: true }
-    }).then(tickets => res.json(tickets));
+        where: { status: 'Complete', archived: true },
+        include: ['ticketTech']
+    })
+    .then(tickets => {
+        const resObj = tickets.map(ticket => {
+            return Object.assign(
+                {},
+                {
+                    ticketId: ticket.ticketId,
+                    unitId: ticket.unitId,
+                    creationDate: (ticket.creationDate).toLocaleDateString(),
+                    category: ticket.category,
+                    status: ticket.status,
+                    techFName: ticket.ticketTech.fName,
+                    techLName: ticket.ticketTech.lName,
+                    dueDate: (ticket.dueDate).toLocaleDateString(),
+                }
+            )
+        })
+        res.json(resObj)
+    });
 });
 
-router.get("/byUnit/:id", function(req, res, next) {       
-    let unitId = parseInt(req.params.id);             
+router.get("/byUnit/:id", function (req, res, next) {
+    let unitId = parseInt(req.params.id);
     models.Ticket.findAll({
-        where:{ unitId: unitId }
+        where: { unitId: unitId },
+        include: ['ticketTech']
     })
-      .then(ticket => res.json(ticket));                 
+    .then(tickets => {
+        const resObj = tickets.map(ticket => {
+            return Object.assign(
+                {},
+                {
+                    ticketId: ticket.ticketId,
+                    dueDate: (ticket.dueDate).toLocaleDateString(),
+                    category: ticket.category,
+                    status: ticket.status,
+                    techFName: ticket.ticketTech.fName,
+                    techLName: ticket.ticketTech.lName
+                }
+            )
+        });
+        res.json(resObj)
+    });
 });
 
 /******************Manager Selected Ticket ***********************/
 
-router.get("/:id", function(req, res, next) {       
-    let ticketId = parseInt(req.params.id);             
-    models.Ticket.findByPk(ticketId)
-      .then(ticket => res.json(ticket));                 
+router.get("/:id", function (req, res, next) {
+    let ticketId = parseInt(req.params.id);
+    models.Ticket.findByPk(ticketId, { include: ['ticketUser'] })
+        .then(ticket => {
+            const resObj = Object.assign(
+                {},
+                {
+                    ticketId: ticket.ticketId,
+                    unitId: ticket.unitId,
+                    category: ticket.category,
+                    note: ticket.note,
+                    creationDate: (ticket.creationDate).toLocaleDateString(),
+                    priority: ticket.priority,
+                    tenantFName: ticket.ticketUser.fName,
+                    tenantLName: ticket.ticketUser.lName,
+                    mainNote: ticket.mainNote
+                }
+            )
+            res.json(resObj)
+        });
 });
 
-router.put("/:id", function(req, res, next) {
+router.put("/:id", function (req, res, next) {
     models.Ticket.update(
         {
-            techid: req.body.tech,
+            techId: req.body.tech,
             assigned: true,
             dueDate: req.body.dueDate
         },
@@ -74,7 +220,7 @@ router.put("/:id", function(req, res, next) {
     ).then(ticket => res.json(ticket));
 });
 
-router.put("/archTkt/:id", function(req, res, next) {
+router.put("/archTkt/:id", function (req, res, next) {
     models.Ticket.update(
         {
             archived: true

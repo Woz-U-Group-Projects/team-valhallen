@@ -55,17 +55,15 @@ class CreateTicket extends React.Component {
                 <option value="plumbing">Plumbing</option>
                 <option value="hvac">HVAC</option>
                 <option value="appliances">Appliances</option>
-
+                <option value="other">Other</option>
               </Form.Control>
             </Form.Group>
             <Form.Group controlId="exampleForm.ControlSelect2">
               <Form.Label>Service Priority Level</Form.Label>
               <Form.Control as="select" multiple ref={this.priority}>
                 <option value={1}>High Priority</option>
-                <option value={2}>Medium-High Priority</option>
-                <option value={3}>Medium Priority</option>
-                <option value={4}>Medium-Low Priority</option>
-                <option value={5}>Low Priority</option>
+                <option value={2}>Medium Priority</option>
+                <option value={3}>Low Priority</option>
               </Form.Control>
             </Form.Group>
             <Form.Group controlId="exampleForm.ControlSelect2">

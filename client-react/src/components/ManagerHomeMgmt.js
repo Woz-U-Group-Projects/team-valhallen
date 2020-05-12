@@ -13,7 +13,7 @@ class ManagerHomeMgmt extends React.Component {
         super(props) 
         this.state = { 
             tickets: [],
-            ticket: [],
+            ticket: {},
             newTickets: [],
             pendingTickets: [],
             completedTickets: [],
@@ -21,6 +21,7 @@ class ManagerHomeMgmt extends React.Component {
             inProgressTickets: [],
             onHoldTickets: [],
             linkedUser: [],
+            techs: [],
             viewConfirm: false,
             newTrigger: false,
             completeTrigger: false
@@ -43,8 +44,12 @@ class ManagerHomeMgmt extends React.Component {
         this.getInProgressTickets();
         this.getOnHoldTickets();
         this.getNewTickets();
+    }
 
-
+    componentDidUpdate(prevProps, prevState) {
+        if (this.state.ticket !== prevState.ticket) {
+            this.getTechs(this.state.ticket);
+        }
     }
 
     getNewTickets() {
@@ -85,19 +90,21 @@ class ManagerHomeMgmt extends React.Component {
     };
 
     viewTicket(id) {
-        
         let urla = "http://localhost:3001/ticketHistory/" + id;
         axios.get(urla).then(response => {
             this.setState({ ticket: response.data })
         });
-        /****Pull User Data if no Associations***********/
-        // let tktUserId = this.state.ticket.userId;
-
-        // let urlb = "http://localhost:3001/users/" + tktUserId;
-        // axios.get(urlb).then(response => {
-        //     this.setState({ linkedUser: response.data })
-        // });
         this.setState({ viewConfirm: true });
+        this.getTechs();
+    };
+
+    getTechs() {
+        let category = this.state.ticket.category;
+        console.log(this.state.ticket.category);
+        let url = "http://localhost:3001/users/techSkills/" + category;
+        axios.get(url)
+        .then(response => this.setState({ techs: response.data }));
+        
     };
 
 
@@ -126,6 +133,7 @@ class ManagerHomeMgmt extends React.Component {
         if (viewSelected && newTrigger) {
             editComp = <AssignTech 
                 ticketDetail={this.state.ticket}
+                skilledTechs={this.state.techs}
                 techAssigned={this.techAssigned}
             />
         }

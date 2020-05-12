@@ -14,14 +14,18 @@ module.exports = (sequelize, DataTypes) => {
       password: DataTypes.STRING,
       phone: DataTypes.BIGINT,
       userType: DataTypes.STRING,
-      archive: DataTypes.BOOLEAN,
+      archive: {
+        type: DataTypes.BOOLEAN,
+        defaultValue: false
+      },
       unitId: DataTypes.INTEGER,
       unitName: DataTypes.STRING
     },
     {}
   );
   User.associate = function(models) {
-    // associations can be defined here
+    User.hasMany(models.Ticket, { foreignKey: 'userId' });
+    User.hasMany(models.TechSkill, { foreignKey: 'userId'});
   };
   return User;
 };
