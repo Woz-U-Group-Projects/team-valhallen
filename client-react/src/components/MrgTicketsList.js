@@ -83,7 +83,14 @@ class MrgTicketsList extends React.Component {
                                     <th>Issue Category</th>
                                     <th>Status</th>
                                     <th>Tech Assigned</th>
-                                    <th>Ticket Due</th>
+                                    <th>Due Date</th>
+                                    {(function() {
+                                        if (compCall) {
+                                            return <th>Complete Date</th>
+                                        } else {
+                                            return
+                                        }
+                                    })()}
                                     <th></th>
 
                                 </tr>
@@ -98,6 +105,13 @@ class MrgTicketsList extends React.Component {
                                         <td>{t.status}</td>
                                         <td>{t.techFName} {t.techLName}</td>
                                         <td>{t.dueDate}</td>
+                                        {(function() {
+                                        if (compCall) {
+                                            return <td>{t.completeDate}</td>
+                                        } else {
+                                            return
+                                        }
+                                    })()}
                                         <td><button name={t.ticketId} onClick={this.viewButton} >View Ticket</button></td>
                                     </tr>
                                 ))}
