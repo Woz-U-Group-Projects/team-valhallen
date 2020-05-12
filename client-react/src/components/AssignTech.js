@@ -11,7 +11,7 @@ class AssignTech extends React.Component {
     }
 
     componentDidMount() { 
-        this.getTechs();
+        
     }
 
     addTechs = () => {
