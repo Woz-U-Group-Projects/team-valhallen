@@ -7,7 +7,6 @@ import UserList from "./UserList";
 import UserDetailEdit from "./UserDetailEdit";
 import UserDetailRetrieve from "./UserDetailRetrieve";
 import AddUserDetail from "./AddUserDetail";
-import {Container} from 'react-bootstrap';
 
 class UserManagement extends React.Component {
   constructor(props) {
@@ -103,7 +102,6 @@ class UserManagement extends React.Component {
 
     return (
       <div>
-        <Container>
           <UserList usersList={this.state.users}
           newCall={this.getNewUsers}
           tenantCall={this.getTenants}
@@ -115,7 +113,6 @@ class UserManagement extends React.Component {
           {assignComp}
           {viewComp}
         </div>
-      </Container>
       </div>
     )
   };

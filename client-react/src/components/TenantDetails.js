@@ -136,7 +136,6 @@ class TenantDetails extends React.Component {
                 </Row>
 
             </Navbar>
-        <Container>
         <Card>
           <Card.Title>{firstName} {lastName}</Card.Title>
           <Card.Body>{email} | {phone}</Card.Body>
@@ -183,7 +182,6 @@ class TenantDetails extends React.Component {
             </div>
           </Card.Body>
         </Card>
-        </Container>
       </div>
     );
   }

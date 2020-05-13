@@ -30,9 +30,9 @@ class TicketList extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="container">
 
-        <Card>
+        <Card style={{width: "60rem"}}>
           <Card.Header>
             <Card.Title as="h3">List of Tickets</Card.Title>
           </Card.Header>

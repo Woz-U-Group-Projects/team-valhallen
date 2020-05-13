@@ -28,6 +28,16 @@ const TicketDetailEdit = (props) => {
                 <th>Priority Level</th>
                 <th>Current Ticket Status</th>
                 <th>Tenant Problem Notes</th>
+                {(function (){
+                  if(access === false) {
+                    return <th>Tenant Contact Info</th>
+                  }
+                })()}
+                {(function (){
+                  if(access === false) {
+                    return <th>Tenant Phone Number</th>
+                  }
+                })()}
               </tr>
             </thead>
             <tbody>
@@ -38,6 +48,16 @@ const TicketDetailEdit = (props) => {
                 <td>{props.ticketDetail.priority}</td>
                 <td>{props.ticketDetail.status}</td>
                 <td>{props.ticketDetail.note}</td>
+                {(function (){
+                  if(access === false) {
+                    return <td>{props.ticketDetail.tenantFName} {props.ticketDetail.tenantLName}</td>
+                  }
+                })()}
+                {(function (){
+                  if(access === false) {
+                    return <td>{props.ticketDetail.phone}</td>
+                  }
+                })()}
               </tr>
             </tbody>
           </Table>

@@ -106,22 +106,16 @@ class AddUserDetail extends React.Component {
               <Card.Title as="h3">New Tenant</Card.Title>
             </Card.Header>
             <Card.Body>
-              <select ref={this.unitName}
-                name="unitNumber"
-                value={this.state.title}
-                onChange={event => this.handleCheck(event, "title")}
-              >
-                <option value='1'>1</option>
-                <option value='2'>2</option>
-                <option value='3'>3</option>
-                <option value='4'>4</option>
-                <option value='5'>5</option>
-                <option value='6'>6</option>
-                <option value='7'>7</option>
-                <option value='8'>8</option>
-                <option value='9'>9</option>
-                <option value='10'>10</option>
-              </select>
+            <select ref={this.unitName}
+          name="unitNumber"
+          value={this.state.title}
+          onChange={event => this.handleCheck(event, "title")}>
+              {this.state.units.map(p => (
+                  <option key={p.unitId} value={p.unitId} ref={p.unitName}>
+                      {p.unitName}
+                  </option>
+              ))}
+          </select>
             </Card.Body>
             <Card.Footer>
               <button type="button" className="btn btn-primary" onClick={this.addUnit}>Assign Unit</button>
@@ -190,16 +184,6 @@ class AddUserDetail extends React.Component {
           </Card>
         </CardGroup>
         
-          <select ref={this.unitName}
-          name="unitNumber"
-          value={this.state.title}
-          onChange={event => this.handleCheck(event, "title")}>
-              {this.state.units.map(p => (
-                  <option key={p.unitId} value={p.unitId} ref={p.unitName}>
-                      {p.unitName}
-                  </option>
-              ))}
-          </select>
       </div>
     );
   }

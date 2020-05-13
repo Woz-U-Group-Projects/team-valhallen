@@ -99,7 +99,6 @@ class TechTicketManagement extends React.Component {
                 </Row>
 
             </Navbar>
-        <Container className="mt-5">
         <TicketList ticketsList={this.state.tickets}
           ticketCall={this.getNewTickets}
           viewCall={this.viewTicket} />
@@ -108,7 +107,7 @@ class TechTicketManagement extends React.Component {
           {assignComp}
           {viewComp}
         </div>
-      </Container>
+
       </div>
     )
   };
