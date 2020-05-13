@@ -2,6 +2,7 @@ import React from "react";
 // import axios from "axios";
 import '../task.min.css'
 // import Table from 'react-bootstrap/Table';
+import { Row, Col } from 'react-bootstrap';
 
 class ConfigComp extends React.Component {
     constructor(props) {
@@ -56,11 +57,20 @@ class ConfigComp extends React.Component {
             <div>
                 <h3>Building Configuration</h3>
                 <form>
+                    <Row>
+                    <Col>
                     <label>Number of Units in Building</label>
+                    </Col>
+                    </Row>
+                    <Row>
+                    <Col>
                     <input ref={this.quantity} />
+                    </Col>
+                    </Row>
+                    
                 </form>
                 <div>
-                    <button type="button" className="btn btn-primary" onClick={this.createUnits}>Set Units</button>
+                    <button type="button" className="btn btn-warning mt-3" onClick={this.createUnits}>Set Units</button>
                 </div>
 
                 <div>

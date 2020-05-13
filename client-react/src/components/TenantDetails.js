@@ -16,7 +16,7 @@ import Logo from '../img/mq03.png';
 import Navbar from 'react-bootstrap/Navbar';
 import { Row, Col } from 'react-bootstrap';
 import Nav from 'react-bootstrap/Nav';
-import { BrowserRouter as Router, Link, Route, Switch } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 
 class TenantDetails extends React.Component {
