@@ -1,71 +1,90 @@
 import React from "react";
-// import axios from "axios";
+import axios from "axios";
 import '../task.min.css'
+import Card from "react-bootstrap/Card";
+import Table from "react-bootstrap/Table";
 // import Table from 'react-bootstrap/Table';
 
 class ConfigComp extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { units: [], nameEntries: false };
-        this.quantity = React.createRef();
+        this.state = { units: [] };
+        this.unitName = React.createRef();
     }
-
 
     componentDidMount() {
-
+        this.getUnits();
     }
 
-    createUnits = () => {
-        //let url = "http://localhost:3001/propertyUnits/";
-        //axios.post(url, {
-        //numberOfUnits: this.quantity.current.value
-        alert("Units have been created");
-        //}).then(response => {this.quantity.current.value = "";});
-        //this.nameUnits();
-        this.setState({ nameEntries: true });
+    // componentDidUpdate(prevProps, prevState) {
+    //     if (this.state.units !== prevState.units) {
+    //         this.getUnits(this.state.units);
+    //     }
+    // }
+
+    getUnits = () => {
+        let url = "http://localhost:3001/propertyUnits/";
+        axios.get(url).then(response => this.setState({ units: response.data }));
     };
 
-    nameUnits = () => {
-        //let url = "http://localhost:3001/propertyUnits/";
-        //axios.get(url).then(response => this.setState({ units: response.data }));
-        this.setState({ nameEntries: true });
+    createUnit = () => {
+        let url = "http://localhost:3001/propertyUnits/";
+        axios.post(url, {
+        unitName: this.unitName.current.value
+        }).then(response => {this.unitName.current.value = "";});
+        alert("Unit " + this.unitName.current.value + " has been created");
     };
 
-    saveNames = () => {
-
+    removeUnit = (event) => {
+        let url = "http://localhost:3001/propertyUnits/" + event.target.name;
+        axios.delete(url).then(response => {
+          alert("Unit has been deleted")
+        });
+        this.getUnits();
     };
+
 
     render() {
 
-        const nameUnits = this.state.nameEntries;
-        let showEntries;
-
-        if (nameUnits) {
-            showEntries = 
-                this.state.units.map(p => (
-                    <div key={p.unitId}>
-                        <div>
-                            {p.unitId}
-                            <input ref={this.unitName}></input>
-                        </div>
-                    </div>
-                ))
-        }
-
         return (
             <div>
-                <h3>Building Configuration</h3>
+                <h2>Add Units Here</h2>
                 <form>
-                    <label>Number of Units in Building</label>
-                    <input ref={this.quantity} />
+                    <div>Unit Name</div>
+                    <input ref={this.unitName} />
                 </form>
                 <div>
-                    <button type="button" className="btn btn-primary" onClick={this.createUnits}>Set Units</button>
+                    <button type="button" className="btn btn-primary" onClick={this.createUnit}>Create Unit</button>
                 </div>
 
+                <Card>
+                <Card.Title>Building Configuration</Card.Title>
+                <Card.Body>
                 <div>
-                    { showEntries }
+                    <Table striped bordered hover>
+                        <thead>
+                            <tr>
+                                <th>Unit Number</th>
+                                <th>Unit Name</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                           {this.state.units.map(p => ( 
+                                <tr key={p.unitId}>
+                                    <td>{p.unitId}</td>
+                                    <td>{p.unitName}</td>
+                                    <td><button type="button" className="btn btn-primary" name={p.unitId} onClick={this.removeUnit}>Remove Unit</button></td>
+                                </tr>
+                            ))} 
+                        </tbody>
+                    </Table>
                 </div>
+                </Card.Body>
+                </Card>
+
+                
+
             </div>
         );
     }

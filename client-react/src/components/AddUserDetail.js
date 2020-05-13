@@ -5,7 +5,7 @@ import '../Styling.css'
 class AddUserDetail extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { users: [], electrical: false, plumbing: false, hvac: false, appliance: false, general: false, userId: 6, value: "" }
+    this.state = { users: [], units: [], electrical: false, plumbing: false, hvac: false, appliance: false, general: false, userId: 6, value: "", name: "" }
     this.unitName = this.unitName.bind(this)
     this.techId = React.createRef();
     this.electrical = React.createRef();
@@ -16,10 +16,12 @@ class AddUserDetail extends React.Component {
     this.unitName = React.createRef();
   }
 
-  componentDidMount() {}
+  componentDidMount() {
+    this.getUnits();
+  }
 
   unitName(event) {
-    this.setState({ value: event.target.value });
+    this.setState({ value: event.target.value, ref: event.target.ref });
   }
 
   addSkills = () => {
@@ -52,13 +54,17 @@ class AddUserDetail extends React.Component {
     this.setState({ [fieldName]: isCheckbox ? event.target.checked : event.target.checked })
   };
 
+  getUnits = () => {
+    let url = "http://localhost:3001/propertyUnits/";
+    axios.get(url).then(response => this.setState({ units: response.data }));
+  };
 
   addUnit = () => {
     let urla = "http://localhost:3001/users/unitNumber/";
     let urlb = "http://localhost:3001/users/newConfirmType/";
     axios.put(urla, {
-      unitName: this.unitName.current.value,
-      userId: this.props.userDetail.userId
+      userId: this.props.userDetail.userId,
+      unitId: this.unitName.current.value
     }).then(response => {
       // this.unitNumber.current.value = "";
     });
@@ -66,6 +72,7 @@ class AddUserDetail extends React.Component {
       userId: this.props.userDetail.userId,
       userType: "Tenant",
       unitId: this.unitName.current.value
+      //unitName: this.unitName.current.ref
     })
   };
 
@@ -137,7 +144,19 @@ class AddUserDetail extends React.Component {
         </div>
 
         <div>
+
           <select ref={this.unitName}
+          name="unitNumber"
+          value={this.state.title}
+          onChange={event => this.handleCheck(event, "title")}>
+              {this.state.units.map(p => (
+                  <option key={p.unitId} value={p.unitId} ref={p.unitName}>
+                      {p.unitName}
+                  </option>
+              ))}
+          </select>
+
+          {/* <select ref={this.unitName}
             name="unitNumber"
             value={this.state.title}
             onChange={event => this.handleCheck(event, "title")}
@@ -152,7 +171,7 @@ class AddUserDetail extends React.Component {
             <option value='8'>8</option>
             <option value='9'>9</option>
             <option value='10'>10</option>
-          </select>
+          </select> */}
           <button type="button" className="btn btn-primary" onClick={this.addUnit}>Assign Unit</button>
         </div>
 

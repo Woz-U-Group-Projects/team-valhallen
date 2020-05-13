@@ -41,7 +41,7 @@ class TechTicketManagement extends React.Component {
 
   viewTicket(id) {
     this.setState({ viewConfirm: true });
-    let url = "http://localhost:3001/tickets/" + id;
+    let url = "http://localhost:3001/ticketHistory/" + id;
     axios.get(url, { ticketId: id }).then(response => {
       this.setState({ ticket: response.data })
     });

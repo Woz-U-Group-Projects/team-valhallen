@@ -11,6 +11,7 @@ var cors = require("cors");
 var usersRouter = require("./routes/users");
 var ticketsRouter = require("./routes/tickets");
 var ticketHistoryRouter = require("./routes/ticketHistory");
+var propertyUnitsRouter = require("./routes/propertyUnits");
 
 
 var app = express();
@@ -27,6 +28,7 @@ app.use(cors());
 app.use("/users", usersRouter);
 app.use("/tickets", ticketsRouter);
 app.use("/ticketHistory", ticketHistoryRouter);
+app.use("/propertyUnits", propertyUnitsRouter);
 
 
 models.sequelize.sync().then(function() {

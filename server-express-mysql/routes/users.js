@@ -123,7 +123,7 @@ router.put("/unitNumber", function (req, res, next) {
       userId: req.body.userId
     },
     {
-      where: { unitName: req.body.unitName }
+      where: { unitId: req.body.unitId }
     }
   );
 });
