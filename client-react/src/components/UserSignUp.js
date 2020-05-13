@@ -2,9 +2,11 @@ import React from "react";
 import axios from "axios";
 
 import '../Styling.css';
-import { Form, Container } from "react-bootstrap";
+import { Form, Container, Row, Col, Navbar, Nav } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
-import LandingNavbar from "./LandingNavbar";
+import Logo from '../img/mq03.png';
+import Link from 'react-router-dom/Link';
+
 
 class Signup extends React.Component {
   constructor (props) {
@@ -38,7 +40,33 @@ class Signup extends React.Component {
   render() {
     return (
       <div>
-        <Container id="lCont1">
+
+        <Navbar id="sgnNav" expand="lg" bg="gray">
+
+          <Row>
+
+            <Col id="sgnT2Col">
+              <Navbar.Toggle id="sgnNavToggle" aria-controls="basic-navbar-toggle" />
+              <Navbar.Collapse id="basic-navbar-toggle">
+              <Nav className="mr-auto">
+                <Link id="sgnT2Links" to="/">Login</Link>
+              </Nav >
+              </Navbar.Collapse>
+            </Col>
+
+            <Col id="sgnT3Col">
+                <Navbar.Brand className="center" href="/"><img id="sgnLogoNav" src={Logo} alt="logo" /></Navbar.Brand>
+            </Col>
+
+            <Col id="sgnT4Col">
+            </Col>
+
+          </Row>
+
+        </Navbar>
+  
+
+        <Container id="sgnCont">
           <Form>
             <Form.Group >
               <Form.Label ><h1>Sign Up</h1></Form.Label>
@@ -69,7 +97,7 @@ class Signup extends React.Component {
               <Form.Control type="text" name="phone" ref={this.phone} />
             </Form.Group>
 
-            <Button type="button" className="btn btn-warning" onClick={this.addUser} >
+            <Button type="button" className="btn btn-warning mt-3" onClick={this.addUser} >
               Submit
           </Button>
           </Form>

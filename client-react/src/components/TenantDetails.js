@@ -11,6 +11,12 @@ import OverlayTrigger from 'react-bootstrap/OverlayTrigger'
 import Popover from 'react-bootstrap/Popover'
 import Container from 'react-bootstrap/Container'
 import '../Styling.css'
+import Logo from '../img/mq03.png';
+
+import Navbar from 'react-bootstrap/Navbar';
+import { Row, Col } from 'react-bootstrap';
+import Nav from 'react-bootstrap/Nav';
+import { BrowserRouter as Router, Link, Route, Switch } from 'react-router-dom';
 
 
 class TenantDetails extends React.Component {
@@ -107,7 +113,28 @@ class TenantDetails extends React.Component {
 
     return (
       
-      <div className="mt-5">
+      <div>
+        <Navbar id="tnaNav" expand="lg" bg="gray">
+                <Row>
+                <Col id="tnaT2Col">
+                <Navbar.Toggle id="tnaNavToggle" aria-controls="1" />
+                <Navbar.Collapse id="1">
+                <Nav className="mr-auto">
+                    <Link id="tnaT2Links" to="/">Logout</Link>
+                </Nav >
+                </Navbar.Collapse>
+                </Col>
+
+                <Col id="tnaT3Col">
+                        <Navbar.Brand className="center" href="/"><img id="mngLogoNav" src={Logo} alt="logo" /></Navbar.Brand>
+                </Col>
+
+
+                <Col id="tnaT4Col">
+                </Col>
+                </Row>
+
+            </Navbar>
         <Container>
         <Card>
           <Card.Title>{firstName} {lastName}</Card.Title>

@@ -8,6 +8,7 @@ import { Redirect } from 'react-router-dom';
 // Styling Imports
 import { Form, Button, Container, Col } from 'react-bootstrap';
 import '../Styling.css'
+import Logo from '../img/mq03.png';
 
 // JSX Rendering
 class Login extends React.Component {
@@ -78,6 +79,9 @@ class Login extends React.Component {
         return (
 
             <div>
+                <div id="loginNav">
+                    <a href="/"><img id="loginLogoNav" src={Logo} alt="logo" /></a>
+            </div>
                 <Container id="lCont1">
                     <Form >
 

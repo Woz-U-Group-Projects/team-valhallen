@@ -14,7 +14,6 @@ import Login from "./components/Login";
 import UserSignUp from './components/UserSignUp';
 import ManagerHome from './screens/ManagerHome';
 import TechTicketManagement from "./components/TechTicketManagement";
-import LandingNavbar from './components/LandingNavbar';
 
 
 // Styling Imports

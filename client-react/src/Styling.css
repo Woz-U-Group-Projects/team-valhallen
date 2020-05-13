@@ -1,4 +1,5 @@
-/* Input form field by multiple */
+/* Input form field Color for all Imput Boxes */
+
 textarea:focus,
 input[type="text"]:focus,
 input[type="password"]:focus,
@@ -20,12 +21,409 @@ input[type="color"]:focus,
     outline: 0 none;
 }
 
-/* Independent Element Styling */
+/* Default Bootstrap Button and On-Hover for all Bootstrap Buttons */
 
-#logoutButton1 {
-    width: 75px;
-    margin-left: 25px;
+.btn {
+    width: 180px;
 }
+
+.btn:hover {
+    box-shadow: 0px 0px 5px darkorange, 0px 0px 50px gold;
+    border-radius: 5px;
+}
+
+/* ------------------------------------------- */
+
+/* Independent Element Styling */
+/* Manager Landing Page Navbar */
+
+#mngNav {
+    margin-top: -100px;
+    margin-bottom: 60px;
+    max-width: 1395px;
+    height: 80px;
+    background-color: lightgray;
+    border-style: solid;
+    border-color: orange;
+    border-radius: 10px;
+    box-shadow: 0px 0px 15px 4px gold;
+}
+
+#mngLogoNav {
+    width: 300px;
+    margin-top: -10px;
+}
+
+#mngLogoNav:hover {
+    cursor: pointer;
+    width: 320px;
+}
+
+#mngT2Col {
+    height: 50px;
+    width: 500px;
+    margin-top: 0px;
+    margin-bottom: 5px;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+#mngT2Links {
+    float: left;
+    color: rgb(150, 90, 0);
+    margin-top: 10px;
+    margin-left: 20px;
+    margin-right: 20px;
+    font-size: 20px;
+}
+
+#mngT2Links:hover {
+    cursor: pointer;
+    color: orange;
+}
+
+#mngT3Col {
+    height: 50px;
+    width: 500px;
+    margin-bottom: 5px;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+#mngT4Col {
+    height: 50px;
+    width: 500px;
+    margin-top: 0px;
+    margin-bottom: 5px;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+#mngT4Links {
+    float: left;
+    color: rgb(150, 90, 0);
+    margin-top: 10px;
+    margin-left: 20px;
+    margin-right: 20px;
+    font-size: 20px;
+}
+
+#mngT4Links:hover {
+    cursor: pointer;
+    color: orange;
+}
+
+#mngCont {
+    margin-top: 120px;
+    max-width: 600px
+}
+
+/* Technician Landing Page Navbar */
+
+#tecNav {
+    margin-top: -100px;
+    margin-bottom: 60px;
+    max-width: 1395px;
+    height: 80px;
+    background-color: lightgray;
+    border-style: solid;
+    border-color: orange;
+    border-radius: 10px;
+    box-shadow: 0px 0px 15px 4px gold;
+}
+
+#tecLogoNav {
+    width: 300px;
+    margin-top: -10px;
+}
+
+#tecLogoNav:hover {
+    cursor: pointer;
+    width: 320px;
+}
+
+#tecT2Col {
+    height: 50px;
+    width: 500px;
+    margin-top: 0px;
+    margin-bottom: 5px;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+#tecT2Links {
+    float: left;
+    color: rgb(150, 90, 0);
+    margin-top: 10px;
+    margin-left: 20px;
+    margin-right: 20px;
+    font-size: 20px;
+}
+
+#tecT2Links:hover {
+    cursor: pointer;
+    color: orange;
+}
+
+#tecT3Col {
+    height: 50px;
+    width: 500px;
+    margin-bottom: 5px;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+#tecT4Col {
+    height: 50px;
+    width: 500px;
+    margin-top: 0px;
+    margin-bottom: 5px;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+#tecT4Links {
+    float: left;
+    color: rgb(150, 90, 0);
+    margin-top: 10px;
+    margin-left: 20px;
+    margin-right: 20px;
+    font-size: 20px;
+}
+
+#tecT4Links:hover {
+    cursor: pointer;
+    color: orange;
+}
+
+#tecCont {
+    margin-top: 120px;
+    max-width: 600px
+}
+
+/* Tenant Landing Page Navbar */
+
+#tnaNav {
+    margin-top: -100px;
+    margin-bottom: 60px;
+    max-width: 1395px;
+    height: 80px;
+    background-color: lightgray;
+    border-style: solid;
+    border-color: orange;
+    border-radius: 10px;
+    box-shadow: 0px 0px 15px 4px gold;
+}
+
+#tnaLogoNav {
+    width: 300px;
+    margin-top: -10px;
+}
+
+#tnaLogoNav:hover {
+    cursor: pointer;
+    width: 320px;
+}
+
+#tnaT2Col {
+    height: 50px;
+    width: 500px;
+    margin-top: 0px;
+    margin-bottom: 5px;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+#tnaT2Links {
+    float: left;
+    color: rgb(150, 90, 0);
+    margin-top: 10px;
+    margin-left: 20px;
+    margin-right: 20px;
+    font-size: 20px;
+}
+
+#tnaT2Links:hover {
+    cursor: pointer;
+    color: orange;
+}
+
+#tnaT3Col {
+    height: 50px;
+    width: 500px;
+    margin-bottom: 5px;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+#tnaT4Col {
+    height: 50px;
+    width: 500px;
+    margin-top: 0px;
+    margin-bottom: 5px;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+#tnaT4Links {
+    float: left;
+    color: rgb(150, 90, 0);
+    margin-top: 10px;
+    margin-left: 20px;
+    margin-right: 20px;
+    font-size: 20px;
+}
+
+#tnaT4Links:hover {
+    cursor: pointer;
+    color: orange;
+}
+
+#tnaCont {
+    margin-top: 120px;
+    max-width: 600px
+}
+
+/* Login Landing Page Navbar */
+
+#lgnNav {
+    margin-top: -100px;
+    margin-bottom: 60px;
+    max-width: 1395px;
+    height: 80px;
+    background-color: lightgray;
+    border-style: solid;
+    border-color: orange;
+    border-radius: 10px;
+    box-shadow: 0px 0px 15px 4px gold;
+}
+
+#lgnLogoNav {
+    width: 300px;
+    margin-top: -10px;
+}
+
+#lgnLogoNav:hover {
+    cursor: pointer;
+    width: 320px;
+}
+
+#lgnT2Col {
+    height: 50px;
+    width: 500px;
+    margin-top: 0px;
+    margin-bottom: 5px;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+#lgnT2Links {
+    float: left;
+    color: rgb(150, 90, 0);
+    margin-top: 10px;
+    margin-left: 20px;
+    margin-right: 20px;
+    font-size: 20px;
+}
+
+#lgnT2Links:hover {
+    cursor: pointer;
+    color: orange;
+}
+
+#lgnT3Col {
+    height: 50px;
+    width: 500px;
+    margin-top: 0px;
+    margin-bottom: 5px;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+#lgnT4Col {
+    height: 50px;
+    width: 500px;
+    margin-top: 0px;
+    margin-bottom: 5px;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+#lgnCont {
+    margin-top: 120px;
+    max-width: 600px
+}
+
+/* Signup Landing Page Navbar */
+
+#sgnNav {
+    margin-top: -100px;
+    margin-bottom: 60px;
+    max-width: 1395px;
+    height: 80px;
+    background-color: lightgray;
+    border-style: solid;
+    border-color: orange;
+    border-radius: 10px;
+    box-shadow: 0px 0px 15px 4px gold;
+}
+
+#sgnLogoNav {
+    width: 300px;
+    margin-top: -10px;
+}
+
+#sgnLogoNav:hover {
+    cursor: pointer;
+    width: 320px;
+}
+
+#sgnT2Col {
+    height: 50px;
+    width: 500px;
+    margin-top: 0px;
+    margin-bottom: 5px;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+#sgnT2Links {
+    float: left;
+    color: rgb(150, 90, 0);
+    margin-top: 10px;
+    margin-left: 20px;
+    margin-right: 20px;
+    font-size: 20px;
+}
+
+#sgnT2Links:hover {
+    cursor: pointer;
+    color: orange;
+}
+
+#sgnT3Col {
+    height: 50px;
+    width: 500px;
+    margin-top: 0px;
+    margin-bottom: 5px;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+#sgnT4Col {
+    height: 50px;
+    width: 500px;
+    margin-top: 0px;
+    margin-bottom: 5px;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+#sgnCont {
+    margin-top: 120px;
+    max-width: 600px
+}
+
 
 #fGroup1 {
     margin-top: 50px;
@@ -34,10 +432,6 @@ input[type="color"]:focus,
 #lCont1 {
     margin-top: 200px;
     max-width: 600px
-}
-
-.btn {
-    width: 180px;
 }
 
 #card1 {
@@ -49,18 +443,18 @@ input[type="color"]:focus,
     height: 400px;
     }
 
-#logoNav {
+#loginLogoNav {
     width: 300px;
     margin-top: 5px;
     margin-bottom: 5px;
 }
 
-#logoNav:hover {
+#loginLogoNav:hover {
     cursor: pointer;
     width: 320px;
 }
 
-#mngNav {
+#loginNav {
     margin-top: -100px;
     margin-bottom: 100px;
     max-width: 1395px;
@@ -71,6 +465,8 @@ input[type="color"]:focus,
     border-radius: 10px;
     box-shadow: 0px 0px 15px 4px gold;
 }
+
+
 
 #test02 {
     float: left;
@@ -111,9 +507,246 @@ input[type="color"]:focus,
     border-radius: 5px;
 }
 
-.btn:hover {
-    box-shadow: 0px 0px 5px darkorange, 0px 0px 50px gold;
-    border-radius: 5px;
+@media only screen and (max-width: 1363px) {
+
+    #T4Links {
+        float: right;
+        color: rgb(150, 90, 0);
+        margin-top: 15px;
+        margin-left: 10px;
+        margin-right: 10px;
+        font-size: 15px;
+    
+}}
+
+@media only screen and (max-width: 1276px) {
+    
+    #mngT2Links {
+        width: 140px;
+        margin-left: -15px;
+        margin-right: -15px;
+        padding-top: 2px;
+        padding-bottom: 4px;
+        color: rgb(150, 90, 0);
+        font-size: 20px;
+    }
+
+}
+
+@media only screen and (max-width: 991px) {
+
+    #mngNavToggle {
+        margin-top: 10px;
+        margin-left: -10px;
+    }
+
+    #mngLogoNav {
+        width: 300px;
+    }
+    
+    #mngLogoNav:hover {
+        cursor: pointer;
+        width: 320px;
+    }
+
+    #mngT2Col {
+        width: 60px;
+        margin-top: 10px;
+        }
+
+    #mngT2Links {
+        background-color: lightgrey;
+        border-style: solid;
+        border-color: orange;
+        border-width: 2px;
+        border-radius: 10px;
+        padding-top: 2px;
+        padding-bottom: 4px;
+        color: rgb(150, 90, 0);
+        margin-top: 15px;
+        font-size: 20px;
+    }
+
+    #mngT2Links:hover {
+        cursor: pointer;
+        color: orange;
+        box-shadow: 0px 0px 10px goldenrod;
+    }
+
+    #mngT3Col {
+        width: 300px;
+        margin-top: 0px;
+        margin-bottom: 5px;
+        margin-left: 5px;
+        margin-right: 5px;
+    }
+
+    #mngT4Col {
+        width: 50px;
+        margin-top: 0px;
+        margin-bottom: 5px;
+        margin-left: 5px;
+        margin-right: 5px;
+    }
+
+    #tecLogoNav {
+        width: 300px;
+    }
+    
+    #tecLogoNav:hover {
+        cursor: pointer;
+        width: 320px;
+    }
+
+    #tecT2Col {
+        width: 60px;
+        margin-top: 10px;
+        }
+
+    #tecT2Links {
+            width: 100px;
+            z-index: 9999;
+            background-color: lightgrey;
+            border-style: solid;
+            border-color: orange;
+            border-width: 2px;
+            border-radius: 10px;
+            padding-top: 2px;
+            padding-bottom: 4px;
+            color: rgb(150, 90, 0);
+            margin-top: 25px;
+            font-size: 20px;
+        }
+
+    #tecT2Links:hover {
+        cursor: pointer;
+        color: orange;
+        box-shadow: 0px 0px 10px goldenrod;
+    }
+
+    #tecT3Col {
+        width: 300px;
+        margin-top: 0px;
+        margin-bottom: 5px;
+        margin-left: 5px;
+        margin-right: 5px;
+    }
+
+    #tecT4Col {
+        width: 50px;
+        margin-top: 0px;
+        margin-bottom: 5px;
+        margin-left: 5px;
+        margin-right: 5px;
+    }
+
+    #tnaLogoNav {
+        width: 300px;
+    }
+    
+    #tnaLogoNav:hover {
+        cursor: pointer;
+        width: 320px;
+    }
+
+    #tnaT2Col {
+        width: 60px;
+        margin-top: 10px;
+        }
+
+    #tnaT2Links {
+        width: 100px;
+        z-index: 9999;
+        background-color: lightgrey;
+        border-style: solid;
+        border-color: orange;
+        border-width: 2px;
+        border-radius: 10px;
+        padding-top: 2px;
+        padding-bottom: 4px;
+        color: rgb(150, 90, 0);
+        margin-top: 25px;
+        font-size: 20px;
+    }
+
+    #tnaT2Links:hover {
+        cursor: pointer;
+        color: orange;
+        box-shadow: 0px 0px 10px goldenrod;
+    }
+
+    #tnaT3Col {
+        width: 300px;
+        margin-top: 0px;
+        margin-bottom: 5px;
+        margin-left: 5px;
+        margin-right: 5px;
+    }
+
+    #tnaT4Col {
+        width: 50px;
+        margin-top: 0px;
+        margin-bottom: 5px;
+        margin-left: 5px;
+        margin-right: 5px;
+    }
+
+
+    #sgnLogoNav {
+        width: 300px;
+    }
+    
+    #sgnLogoNav:hover {
+        cursor: pointer;
+        width: 320px;
+    }
+
+    #sgnT2Col {
+        width: 60px;
+        margin-top: 10px;
+        }
+
+    #sgnT2Links {
+        width: 100px;
+        z-index: 9999;
+        background-color: lightgrey;
+        border-style: solid;
+        border-color: orange;
+        border-width: 2px;
+        border-radius: 10px;
+        padding-top: 2px;
+        padding-bottom: 4px;
+        color: rgb(150, 90, 0);
+        margin-top: 25px;
+        font-size: 20px;
+    }
+
+    #sgnT2Links:hover {
+        cursor: pointer;
+        color: orange;
+        box-shadow: 0px 0px 10px goldenrod;
+    }
+
+    #sgnT3Col {
+        width: 300px;
+        margin-top: 0px;
+        margin-bottom: 5px;
+        margin-left: 5px;
+        margin-right: 5px;
+    }
+
+    #sgnT4Col {
+        width: 50px;
+        margin-top: 0px;
+        margin-bottom: 5px;
+        margin-left: 5px;
+        margin-right: 5px;
+    }
+
+
+
+
+
 }
 
 /* Merge this to Dev - Good to Go! */
