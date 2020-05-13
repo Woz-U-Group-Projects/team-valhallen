@@ -6,9 +6,9 @@ import axios from "axios";
 import { Redirect } from 'react-router-dom';
 
 // Styling Imports
-import { Form, Button, Container } from 'react-bootstrap';
+import { Form, Button, Container, Col } from 'react-bootstrap';
 import '../Styling.css'
-import LandingNavbar from "./LandingNavbar";
+import Logo from '../img/mq03.png';
 
 // JSX Rendering
 class Login extends React.Component {
@@ -79,28 +79,36 @@ class Login extends React.Component {
         return (
 
             <div>
-                <LandingNavbar />
+                <div id="loginNav">
+                    <a href="/"><img id="loginLogoNav" src={Logo} alt="logo" /></a>
+            </div>
                 <Container id="lCont1">
                     <Form >
 
-                        <h1> Login Portal </h1>
+                        <h1 className="mb-5"> Login </h1>
 
                         <Form.Group  >
-                            <Form.Label  > Email address </Form.Label >
+                            <Form.Label className="float-left" > Email Address: </Form.Label >
                             <Form.Control type="email" placeholder="Enter Email" ref={this.email} />
                         </Form.Group >
 
                         <Form.Group   >
-                            <Form.Label  > Password </Form.Label>
+                            <Form.Label className="float-left" > Password: </Form.Label>
                             <Form.Control type="password" placeholder="Enter Password" ref={this.password} />
                         </Form.Group >
 
-                        <Button type="button" className="btn btn-primary" onClick={this.login}>
+                        <Container>
+
+                        <Col className="mt-4">
+                        <Button type="button" className="btn btn-warning mr-3 mt-2" onClick={this.login}>
                             Login
                         </Button>
-                        <div>
-                            <a href="/signup">Sign-Up Here</a>
-                        </div>
+            
+                        <Button type="button" className="btn btn-warning mr-3 mt-2" href="/signup">
+                            Signup
+                        </Button>
+                        </Col>
+                    </Container>
 
                     </Form>
                 </Container >
@@ -112,3 +120,5 @@ class Login extends React.Component {
 }
 
 export default Login;
+
+// Merge to Dev - Good to Go! //

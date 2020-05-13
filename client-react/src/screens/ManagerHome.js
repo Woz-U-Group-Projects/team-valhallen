@@ -4,39 +4,50 @@ import Nav from 'react-bootstrap/Nav';
 import '../Styling.css'
 
 // Component Imports
-import Navbar from "../components/Navbar";
 import ManagerHomeMgmt from '../components/ManagerHomeMgmt';
 import UserPage from "../screens/UserPage";
 import ConfigPage from "../screens/ConfigPage";
 import { BrowserRouter as Router, Link, Route, Switch } from 'react-router-dom';
+import Container from 'react-bootstrap/Container';
+import Navbar from 'react-bootstrap/Navbar';
+import { Row, Col } from 'react-bootstrap';
+import Nav from 'react-bootstrap/Nav';
+import '../Styling.css';
+import Logo from '../img/mq03.png';
 
 const ManagerHome = () => {
 
 
 
     return (
-        <div className="text-center">
-            <Navbar />
+        <div>
+            <Navbar id="mngNav" expand="lg" bg="gray">
+                <Row>
+                <Col id="mngT2Col">
+                <Navbar.Toggle id="mngToggleMenu" aria-controls="1" />
+                <Navbar.Collapse id="1">
+                <Nav className="mr-auto">
+                    <Link id="mngT2Links" to="/manager/users">User Page</Link>
+                    <Link id="mngT2Links" to="/manager/config">Config Page</Link>
+                    <Link id="mngT2Links" to="/">Logout</Link>
+                </Nav >
+                </Navbar.Collapse>
+                </Col>
+
+                <Col id="mngT3Col">
+                        <Navbar.Brand className="center" href="/"><img id="mngLogoNav" src={Logo} alt="logo" /></Navbar.Brand>
+                </Col>
+
+
+                <Col id="mngT4Col">
+                </Col>
+                </Row>
+
+            </Navbar>
+
+            <Container>
             <Router>
-                <div  >
-                    <Nav variant="pills" defaultActiveKey="/manager" className="justify-content-center">
-                        <Nav.Item >
-                            <Nav.Link href="/manager" >Manager Home</Nav.Link>
-                        </Nav.Item>
-                        <Nav.Item>
-                            <Nav.Link eventKey="/manager/users">
-                                <Link to="/manager/users" >User Page</Link>
-                            </Nav.Link>
-                        </Nav.Item>
-                        <Nav.Item>
-                            <Nav.Link eventKey="/manager/config" >
-                                <Link to="/manager/config" >Config Page</Link>
-                            </Nav.Link>
-                        </Nav.Item>
-                    </Nav>
-                    {/* <Link to="/manager">Manager Home</Link>
-                    <Link to="/manager/users">User Page</Link>
-                    <Link to="/manager/config">Config Page</Link> */}
+                <div>
 
                     <Switch>
                         <Route exact path="/manager" component={ManagerHomeMgmt} />
@@ -46,8 +57,9 @@ const ManagerHome = () => {
 
                 </div>
             </Router>
-
-
+            </Container>
+            
+            
         </div>
     );
 

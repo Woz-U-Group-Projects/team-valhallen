@@ -5,7 +5,9 @@ import '../Styling.css'
 import TicketList from "./TicketList";
 import TicketDetailEdit from "./TicketDetailEdit";
 import TicketDetailRetrieve from "./TicketDetailRetrieve";
-import Navbar from "../components/Navbar";
+import { Container, Row, Col, Navbar, Nav } from 'react-bootstrap';
+import Logo from '../img/mq03.png';
+import { Link } from 'react-router-dom';
 
 
 class TechTicketManagement extends React.Component {
@@ -76,7 +78,28 @@ class TechTicketManagement extends React.Component {
 
     return (
       <div>
-        <Navbar />
+        <Navbar id="tecNav" expand="lg" bg="gray">
+                <Row>
+                <Col id="tecT2Col">
+                <Navbar.Toggle id="tecNavToggle" aria-controls="1" />
+                <Navbar.Collapse id="1">
+                <Nav className="mr-auto">
+                    <Link id="tecT2Links" to="/">Logout</Link>
+                </Nav >
+                </Navbar.Collapse>
+                </Col>
+
+                <Col id="tecT3Col">
+                        <Navbar.Brand className="center" href="/"><img id="tecLogoNav" src={Logo} alt="logo" /></Navbar.Brand>
+                </Col>
+
+
+                <Col id="tecT4Col">
+                </Col>
+                </Row>
+
+            </Navbar>
+        <Container className="mt-5">
         <TicketList ticketsList={this.state.tickets}
           ticketCall={this.getNewTickets}
           viewCall={this.viewTicket} />
@@ -85,7 +108,7 @@ class TechTicketManagement extends React.Component {
           {assignComp}
           {viewComp}
         </div>
-
+      </Container>
       </div>
     )
   };

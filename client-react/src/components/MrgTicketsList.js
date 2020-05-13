@@ -64,12 +64,13 @@ class MrgTicketsList extends React.Component {
 
         return (
             <div>
-                <button type="button" className="btn btn-secondary" onClick={this.newTicketQuery}>New Tickets ({this.props.newTicketsNumber})</button>
-                <button type="button" className="btn btn-secondary" onClick={this.pendTicketQuery}>Pending Tickets ({this.props.pendingTicketsNumber})</button>
-                <button type="button" className="btn btn-secondary" onClick={this.inProgTicketQuery}>In-Progress Tickets ({this.props.inProgressTicketsNumber})</button>
-                <button type="button" className="btn btn-secondary" onClick={this.onHoldTicketQuery}>On-Hold Tickets ({this.props.onHoldTicketsNumber})</button>
-                <button type="button" className="btn btn-secondary" onClick={this.compTicketQuery}>Completed Tickets ({this.props.completedTicketsNumber})</button>
-                <button type="button" className="btn btn-secondary" onClick={this.archTicketQuery}>Archived Tickets ({this.props.archivedTicketsNumber})</button>
+                <button type="button" className="btn btn-secondary" onClick={ this.newTicketQuery }>New Tickets ({this.props.newTicketsNumber})</button>
+                <button type="button" className="btn btn-secondary" onClick={ this.pendTicketQuery }>Pending Tickets ({this.props.pendingTicketsNumber})</button>
+                <button type="button" className="btn btn-secondary" onClick={ this.inProgTicketQuery }>In-Progress Tickets ({this.props.inProgressTicketsNumber})</button>
+                <button type="button" className="btn btn-secondary" onClick={ this.onHoldTicketQuery }>On-Hold Tickets ({this.props.onHoldTicketsNumber})</button>
+                <button type="button" className="btn btn-secondary" onClick={ this.compTicketQuery }>Completed Tickets ({this.props.completedTicketsNumber})</button>
+                <button type="button" className="btn btn-secondary" onClick={ this.archTicketQuery }>Archived Tickets ({this.props.archivedTicketsNumber})</button>
+                <br /><br />
 
                 
                 <Card>

@@ -24,10 +24,8 @@ import "./App.css";
 const App = ({ store }) => (
   <Provider store={store}>
     <Router className="App" >
-      
+
       <center>
-        
-      {/* <Navbar /> */}
         
         
         {/* This Div is utilized to create the ViewPort Window from App.css */}
@@ -39,11 +37,10 @@ const App = ({ store }) => (
             <Route exact path="/" component={Login} />
             <Route path="/signup" component={UserSignUp} />
 
-            {/* //------------Management Routing ------------- */}
+          {/* //------------Management Routing ------------- */}
             <Route exact path="/manager" component={ManagerHome} />
             <Route exact path="/manager/users" component={UserPage} />
             <Route exact path="/manager/config" component={ConfigPage} />
-
 
           {/* //------------Tenant Routing ------------- */}
           <Route exact path="/tenantDetails" component={TenantDetails} />

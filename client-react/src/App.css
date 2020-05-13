@@ -1,19 +1,15 @@
-
-/*  Font Style Import from Google Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Baloo+Bhaina+2:wght@400;500;600&family=Rajdhani:wght@300;400;500&display=swap');
-
 /* App.js Primary Bady Styling */
 body {
     background-image: url(./img/mqback01.png);
+    background-position: center;
+    background-size: 150em;
 }
 
 /* Styling for the Viewport Window */
 .style {
-    overflow-y: auto;
-    overflow-y: scroll;
     height: 800px;
     max-width: 1400px;
-    margin-top: 20px;
+    margin-top: 120px;
     margin-bottom: 20px;
     margin-left: 15px;
     margin-right: 15px;
@@ -30,4 +26,4 @@ body {
     justify-content: center;
 }
 
-
+/* Marge App.css to Dev  - Good to Go! */

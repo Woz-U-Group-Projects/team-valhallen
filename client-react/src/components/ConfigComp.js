@@ -4,6 +4,7 @@ import '../task.min.css'
 import Card from "react-bootstrap/Card";
 import Table from "react-bootstrap/Table";
 // import Table from 'react-bootstrap/Table';
+import { Row, Col } from 'react-bootstrap';
 
 class ConfigComp extends React.Component {
     constructor(props) {
