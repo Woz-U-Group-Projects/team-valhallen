@@ -10,6 +10,8 @@ const TicketDetailEdit = (props) => {
   const dispatch = useDispatch()
   const status = useSelector(state => state.updateTicketStatus);
   const mainNote = useSelector(state => state.updateTicketNote);
+  let access = props.ticketDetail.access
+
   return (
     <div className="container">
       <Card style={{ width: '48rem' }}>

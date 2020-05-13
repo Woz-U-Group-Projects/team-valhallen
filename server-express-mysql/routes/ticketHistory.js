@@ -202,7 +202,10 @@ router.get("/:id", function (req, res, next) {
                     priority: ticket.priority,
                     tenantFName: ticket.ticketUser.fName,
                     tenantLName: ticket.ticketUser.lName,
-                    mainNote: ticket.mainNote
+                    mainNote: ticket.mainNote,
+                    access: ticket.access,
+                    phone: ticket.ticketUser.phone,
+                    status: ticket.status
                 }
             )
             res.json(resObj)
