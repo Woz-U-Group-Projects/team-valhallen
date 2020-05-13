@@ -2,7 +2,7 @@
 import React from 'react';
 import ConfigComp from '../components/ConfigComp';
 
-import { Navbar, Col, Row, Nav, FormLabel } from 'react-bootstrap';
+import { Navbar, Col, Row, Nav } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import Logo from '../img/mq03.png';
 
