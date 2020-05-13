@@ -52,7 +52,7 @@ class UserList extends React.Component {
         <Card>
           <Card.Title as="h3">List of Users</Card.Title>
           <Card.Body>
-            <Table striped bordered hover>
+            <Table striped bordered hover size="sm">
               <thead>
                 <tr>
                   <th>User Name</th>

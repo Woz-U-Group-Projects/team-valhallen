@@ -28,7 +28,10 @@ class UserManagement extends React.Component {
 
   componentDidMount() {
     this.getNewUsers();
+    this.getTechs();
   }
+
+
 
   getNewUsers() {
     let url = "http://localhost:3001/users/new";
@@ -69,7 +72,8 @@ class UserManagement extends React.Component {
       newEmail: evt.target.dataset.email,
       newPassword: evt.target.dataset.pass, 
       newPhone: evt.target.dataset.phone
-    }).then(alert("User Details Have Beed Saved"))
+    }).then(alert("User Details Have Beed Saved"));
+    this.viewUser();
   };
 
   archiveUser = (evt) => {

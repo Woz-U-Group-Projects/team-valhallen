@@ -35,6 +35,7 @@ class TenantDetails extends React.Component {
     this.getTickets(this.state.unitId);
   }
 
+
   getTickets = (id) => {
     let url = "http://localhost:3001/ticketHistory/byUnit/" + id;
     axios.get(url).then(response => this.setState({ tickets: response.data }));

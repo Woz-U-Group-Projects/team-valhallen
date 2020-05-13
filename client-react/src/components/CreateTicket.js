@@ -19,6 +19,8 @@ class CreateTicket extends React.Component {
   componentDidMount() {
 
   }
+
+  
   createTicket = () => {
     let dateMulti = 86400000 * parseInt(7); 
     let url = "http://localhost:3001/tickets/";

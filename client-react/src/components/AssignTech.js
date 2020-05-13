@@ -1,23 +1,24 @@
 import React from "react";
 import axios from "axios";
 import '../task.min.css';
+import { Form, Button, Card } from "react-bootstrap";
 
 class AssignTech extends React.Component {
-    constructor(props) {
+    constructor (props) {
         super(props);
         this.state = { users: [] };
         this.select1 = React.createRef();
         this.dueDate = React.createRef();
     }
 
-    componentDidMount() { 
-        
+    componentDidMount() {
+
     }
 
     addTechs = () => {
         let url = "http://localhost:3001/ticketHistory/" + parseInt(this.props.ticketDetail.ticketId);
         let dateMulti = 86400000 * parseInt(this.dueDate.current.value);
-        let setDate = new Date(Date.now() + dateMulti ).toISOString(); 
+        let setDate = new Date(Date.now() + dateMulti).toISOString();
         axios.put(url, {
             tech: this.select1.current.value,
             dueDate: setDate
@@ -30,26 +31,40 @@ class AssignTech extends React.Component {
 
     render() {
         return (
-            <div>
-                <form>
-                    <h3>Assign Technician</h3>
-                    <div>
-                        <select ref={this.select1}>
-                            {this.props.skilledTechs.map(p => (
-                                <option key={p.userId} value={p.userId}>
-                                    {p.fName} {p.lName}
-                                </option>
-                            ))}
-                        </select>
-                    </div>
-                    <h4>Set Due Date</h4>
-                    <select ref={this.dueDate}>
-                        <option value="1">1 Day</option>
-                        <option value="3">3 Days</option>
-                        <option value="7">7 Days</option>
-                    </select>        
-                    <button type="button" className="btn btn-primary" onClick={this.addTechs}>Assign Tech</button>
-                </form>
+            <div class="container">
+                
+                    <Card style={{ width: '40rem' }} className="text-center" >
+                        <Card.Body>
+                            <Form>
+                                <Form.Group>
+                                    <Form.Label>Assign Technician</Form.Label>
+
+                                    <Form.Control as="select" ref={this.select1}>
+                                        {this.props.skilledTechs.map(p => (
+                                            <option key={p.userId} value={p.userId}>
+                                                {p.fName} {p.lName}
+                                            </option>
+                                        ))}
+                                    </Form.Control>
+
+                                </Form.Group>
+                                <Form.Group>
+                                    <Form.Label>Set Due Date</Form.Label>
+                                    <Form.Control as="select" multiple ref={this.dueDate}>
+                                        <option value="1">1 Day</option>
+                                        <option value="3">3 Days</option>
+                                        <option value="7">7 Days</option>
+                                    </Form.Control>
+                                </Form.Group>
+                                <Form.Group>
+                                    <Card.Footer>
+                                        <Button type="button" className="btn btn-primary" onClick={this.addTechs}>Assign Tech</Button>
+                                    </Card.Footer>
+                                </Form.Group>
+                            </Form>
+                        </Card.Body>
+                    </Card>
+                
             </div>
         );
     }

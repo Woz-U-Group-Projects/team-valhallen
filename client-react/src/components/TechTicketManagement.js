@@ -12,6 +12,7 @@ class TechTicketManagement extends React.Component {
   constructor (props) {
     super(props)
     this.state = {
+      userId: this.props.location.state.userId,
       tickets: [],                    // used to store array of tickets 
       ticket: {},                     // used to pass ticket details
       viewConfirm: false,
@@ -26,7 +27,7 @@ class TechTicketManagement extends React.Component {
   }
 
   componentDidMount() {
-    this.getNewTickets(this.props.location.state.userId);
+    this.getNewTickets(this.state.userId);
   }
 
   getNewTickets(id) {

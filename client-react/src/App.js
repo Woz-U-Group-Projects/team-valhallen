@@ -14,6 +14,7 @@ import Login from "./components/Login";
 import UserSignUp from './components/UserSignUp';
 import ManagerHome from './screens/ManagerHome';
 import TechTicketManagement from "./components/TechTicketManagement";
+import UserManagement from './components/UserManagement';
 // import Navbar from './components/Navbar';
 
 
@@ -42,7 +43,7 @@ const App = ({ store }) => (
 
             {/* //------------Management Routing ------------- */}
             <Route exact path="/manager" component={ManagerHome} />
-            <Route exact path="/manager/users" component={UserPage} />
+            <Route exact path="/manager/users" component={UserManagement} />
             <Route exact path="/manager/config" component={ConfigPage} />
 
 
