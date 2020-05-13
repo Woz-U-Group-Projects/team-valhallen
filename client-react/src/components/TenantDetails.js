@@ -140,7 +140,7 @@ class TenantDetails extends React.Component {
                                 <td>{t.dueDate}</td>
                                 <td><h6>{t.category}</h6></td>
                                 {(function(){
-                                if(t.assigned == false){
+                                if(t.assigned === false){
                                     return <td>Not Yet Assigned</td>
                                 } else {
                                 return <td>{t.techFName} {t.techLName}</td>

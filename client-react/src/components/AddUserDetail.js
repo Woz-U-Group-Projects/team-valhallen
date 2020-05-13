@@ -1,9 +1,14 @@
 import React from "react";
 import axios from "axios";
-import '../Styling.css'
+import '../Styling.css';
+import Card from 'react-bootstrap/Card';
+import CardGroup from 'react-bootstrap/CardGroup';
+import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
+
 
 class AddUserDetail extends React.Component {
-  constructor(props) {
+  constructor (props) {
     super(props);
     this.state = { users: [], electrical: false, plumbing: false, hvac: false, appliance: false, general: false, userId: 6, value: "" }
     this.unitName = this.unitName.bind(this)
@@ -16,7 +21,8 @@ class AddUserDetail extends React.Component {
     this.unitName = React.createRef();
   }
 
-  componentDidMount() {}
+  componentDidMount() {
+  }
 
   unitName(event) {
     this.setState({ value: event.target.value });
@@ -89,81 +95,96 @@ class AddUserDetail extends React.Component {
   render() {
     return (
       <div>
+        <CardGroup>
+          <Card>
+            <Card.Header>
+              <Card.Title as="h3">New Tenant</Card.Title>
+            </Card.Header>
+            <Card.Body>
+              <select ref={this.unitName}
+                name="unitNumber"
+                value={this.state.title}
+                onChange={event => this.handleCheck(event, "title")}
+              >
+                <option value='1'>1</option>
+                <option value='2'>2</option>
+                <option value='3'>3</option>
+                <option value='4'>4</option>
+                <option value='5'>5</option>
+                <option value='6'>6</option>
+                <option value='7'>7</option>
+                <option value='8'>8</option>
+                <option value='9'>9</option>
+                <option value='10'>10</option>
+              </select>
+            </Card.Body>
+            <Card.Footer>
+              <button type="button" className="btn btn-primary" onClick={this.addUnit}>Assign Unit</button>
+            </Card.Footer>
+          </Card>
+          <Card>
+            <Card.Header>
+              <Card.Title as="h3">New Technician</Card.Title>
+            </Card.Header>
+            <Card.Body>
+              <label htmlFor="electricalCheck">Electrical</label>
+              <input ref={this.electrical}
+                type="checkbox"
+                name="electricalCheck"
+                checked={this.state.electrical}
+                onChange={event => this.handleCheck(event, "electrical", true)}
+                label="Electrical" /><br/>
 
-        <div>
-          <h3> electrical</h3>
-          <input ref={this.electrical}
-            type="checkbox"
-            name="electricalCheck"
-            checked={this.state.electrical}
-            onChange={event => this.handleCheck(event, "electrical", true)}
-            label="Electrical" />
+              <label htmlFor="plumbingCheck">Plumbing</label>
+              <input ref={this.plumbing}
+                type="checkbox"
+                name="plumbingcheck"
+                checked={this.state.plumbing}
+                onChange={event => this.handleCheck(event, "plumbing", true)}
+                label="plumbing" /><br/>
 
-          <h3>plumbing</h3>
-          <input ref={this.plumbing}
-            type="checkbox"
-            name="plumbingcheck"
-            checked={this.state.plumbing}
-            onChange={event => this.handleCheck(event, "plumbing", true)}
-            label="plumbing" />
+              <label htmlFor="hvacCheck">HVAC</label>
+              <input ref={this.hvac}
+                type="checkbox"
+                name="hvacCheck"
+                checked={this.state.hvac}
+                onChange={event => this.handleCheck(event, "hvac", true)}
+                label="hvac" /><br/>
 
-          <h3>hvac</h3>
-          <input ref={this.hvac}
-            type="checkbox"
-            name="hvacCheck"
-            checked={this.state.hvac}
-            onChange={event => this.handleCheck(event, "hvac", true)}
-            label="hvac" />
+              <label htmlFor="applianceCheck">Appliance</label>
+              <input ref={this.appliance}
+                type="checkbox"
+                name="applianceCheck"
+                checked={this.state.appliance}
+                onChange={event => this.handleCheck(event, "appliance", true)}
+                label="appliance" /><br/>
 
-          <h3>appliance</h3>
-          <input ref={this.appliance}
-            type="checkbox"
-            name="applianceCheck"
-            checked={this.state.appliance}
-            onChange={event => this.handleCheck(event, "appliance", true)}
-            label="appliance" />
-
-          <h3>general</h3>
-          <input ref={this.general}
-            type="checkbox"
-            name="generalCheck"
-            checked={this.state.general}
-            onChange={event => this.handleCheck(event, "general", true)}
-            label="general" />
-          
-          <div>
-            <button type="button" className="btn btn-primary" onClick={this.addSkills}>Add Skills</button>
-          </div>
-        </div>
-
-        <div>
-          <select ref={this.unitName}
-            name="unitNumber"
-            value={this.state.title}
-            onChange={event => this.handleCheck(event, "title")}
-          >
-            <option value='1'>1</option>
-            <option value='2'>2</option>
-            <option value='3'>3</option>
-            <option value='4'>4</option>
-            <option value='5'>5</option>
-            <option value='6'>6</option>
-            <option value='7'>7</option>
-            <option value='8'>8</option>
-            <option value='9'>9</option>
-            <option value='10'>10</option>
-          </select>
-          <button type="button" className="btn btn-primary" onClick={this.addUnit}>Assign Unit</button>
-        </div>
-
-        <div>
-          <button type="button" className="btn btn-primary" onClick={this.newManager}>Add New Manager</button>
-        </div>
-
-        <div>
-          <button type="button" className="btn btn-danger" onClick={this.deleteUser}>Delete User</button>
-        </div>
-
+              <label htmlFor="generalCheck">General</label>
+              <input ref={this.general}
+                type="checkbox"
+                name="generalCheck"
+                checked={this.state.general}
+                onChange={event => this.handleCheck(event, "general", true)}
+                label="general" />
+            </Card.Body>
+            <Card.Footer>
+              <button type="button" className="btn btn-primary" onClick={this.addSkills}>Add Skills</button>
+            </Card.Footer>
+          </Card>
+          <Card>
+            <Card.Header>
+              <Card.Title as="h3">New Manager</Card.Title>
+            </Card.Header>
+            <Card.Body>
+              <button type="button" className="btn btn-primary" onClick={this.newManager}>Add New Manager</button>
+            </Card.Body>
+            <Card.Footer>
+              <Card.Title>Delete User</Card.Title>
+              <button type="button" className="btn btn-danger" onClick={this.deleteUser}>Delete User</button>
+            </Card.Footer>
+          </Card>
+        </CardGroup>
+        
       </div>
     );
   }

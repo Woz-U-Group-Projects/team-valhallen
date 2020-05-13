@@ -6,7 +6,9 @@ import '../Styling.css'
 // Component Imports
 import Navbar from "../components/Navbar";
 import ManagerHomeMgmt from '../components/ManagerHomeMgmt';
-import UserPage from "./UserPage";
+import UserManagement from '../components/UserManagement';
+import ConfigComp from '../components/ConfigComp';
+import UserPage from "../screens/UserPage";
 import ConfigPage from "../screens/ConfigPage";
 import { BrowserRouter as Router, Link, Route, Switch } from 'react-router-dom';
 
