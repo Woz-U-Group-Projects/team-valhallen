@@ -24,7 +24,7 @@ router.post("/", function(req, res, next) {
   newTicket.note = req.body.note;
   newTicket.status = req.body.status;
   newTicket.mainNote = req.body.mainNote;
-  newTicket.techId = 7;
+  newTicket.techId = 1;
   var createdAt = new Date(Date.now()).toISOString();
   var dueDate = new Date(Date.now() + 604800000).toISOString();
   newTicket.creationDate = createdAt;
