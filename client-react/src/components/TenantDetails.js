@@ -1,7 +1,6 @@
 import React from "react";
 import axios from "axios";
 
-import Navbar from "./Navbar";
 import TenantDetailEdit from "./TenantDetailEdit";
 import TenantDetailRetrieve from "./TenantDetailRetrieve";
 import CreateTicketModal from "./CreateTicketModal";
@@ -10,6 +9,7 @@ import Table from "react-bootstrap/Table";
 import Button from "react-bootstrap/Button";
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger'
 import Popover from 'react-bootstrap/Popover'
+import Container from 'react-bootstrap/Container'
 import '../Styling.css'
 
 
@@ -106,8 +106,9 @@ class TenantDetails extends React.Component {
     var phone = this.state.user.phone;
 
     return (
-      <div>
-        <Navbar />
+      
+      <div className="mt-5">
+        <Container>
         <Card>
           <Card.Title>{firstName} {lastName}</Card.Title>
           <Card.Body>{email} | {phone}</Card.Body>
@@ -148,6 +149,7 @@ class TenantDetails extends React.Component {
             </div>
           </Card.Body>
         </Card>
+        </Container>
       </div>
     );
   }

@@ -2,11 +2,14 @@
 import React from 'react';
 
 // Component Imports
-import Navbar from "../components/Navbar";
+import LandingNavbar from "../components/LandingNavbar";
 import ManagerHomeMgmt from '../components/ManagerHomeMgmt';
 import UserPage from "../screens/UserPage";
 import ConfigPage from "../screens/ConfigPage";
 import { BrowserRouter as Router, Link, Route, Switch } from 'react-router-dom';
+import Container from 'react-bootstrap/Container';
+import '../Styling.css';
+import Logo from '../img/mq03.png';
 
 const ManagerHome = () => {
 
@@ -14,12 +17,15 @@ const ManagerHome = () => {
 
     return (
         <div>
-            <Navbar />
+            <div id="mngNav">
+                    <a href="/"><img id="logoNav" src={Logo} alt="logo" /></a>
+            </div>
+            <Container>
             <Router>
                 <div>
-                    <Link to="/manager">Manager Home</Link>
+                    {/* <Link to="/manager">Manager Home</Link>
                     <Link to="/manager/users">User Page</Link>
-                    <Link to="/manager/config">Config Page</Link>
+                    <Link to="/manager/config">Config Page</Link> */}
 
                     <Switch>
                         <Route exact path="/manager" component={ManagerHomeMgmt} />
@@ -28,6 +34,7 @@ const ManagerHome = () => {
                     </Switch>
                 </div>
             </Router>
+            </Container>
             
             
         </div>

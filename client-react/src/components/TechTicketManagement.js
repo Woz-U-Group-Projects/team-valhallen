@@ -5,7 +5,7 @@ import '../Styling.css'
 import TicketList from "./TicketList";
 import TicketDetailEdit from "./TicketDetailEdit";
 import TicketDetailRetrieve from "./TicketDetailRetrieve";
-import Navbar from "../components/Navbar";
+import Navbar from "./Navbar";
 
 
 class TechTicketManagement extends React.Component {

@@ -61,6 +61,7 @@ class MrgTicketsList extends React.Component {
                 <button type="button" className="btn btn-secondary" onClick={ this.onHoldTicketQuery }>On-Hold Tickets ({this.props.onHoldTicketsNumber})</button>
                 <button type="button" className="btn btn-secondary" onClick={ this.compTicketQuery }>Completed Tickets ({this.props.completedTicketsNumber})</button>
                 <button type="button" className="btn btn-secondary" onClick={ this.archTicketQuery }>Archived Tickets ({this.props.archivedTicketsNumber})</button>
+                <br /><br />
 
                 <h1>Ticket History</h1>
                 <Table striped bordered hover>
