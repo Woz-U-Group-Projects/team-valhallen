@@ -11,7 +11,7 @@ const TicketDetailEdit = (props) => {
   const status = useSelector(state => state.updateTicketStatus);
   const mainNote = useSelector(state => state.updateTicketNote);
   return (
-    <div class="container">
+    <div className="container">
       <Card style={{ width: '48rem' }}>
         <Card.Header>
         <Card.Title as="h3">Ticket Detail</Card.Title>

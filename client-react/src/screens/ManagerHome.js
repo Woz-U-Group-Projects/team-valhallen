@@ -6,8 +6,6 @@ import '../Styling.css'
 // Component Imports
 import Navbar from "../components/Navbar";
 import ManagerHomeMgmt from '../components/ManagerHomeMgmt';
-import UserManagement from '../components/UserManagement';
-import ConfigComp from '../components/ConfigComp';
 import UserPage from "../screens/UserPage";
 import ConfigPage from "../screens/ConfigPage";
 import { BrowserRouter as Router, Link, Route, Switch } from 'react-router-dom';
@@ -26,10 +24,14 @@ const ManagerHome = () => {
                             <Nav.Link href="/manager" >Manager Home</Nav.Link>
                         </Nav.Item>
                         <Nav.Item>
-                            <Nav.Link eventKey="/manager/users"><Link to="/manager/users" >User Page</Link></Nav.Link>
+                            <Nav.Link eventKey="/manager/users">
+                                <Link to="/manager/users" >User Page</Link>
+                            </Nav.Link>
                         </Nav.Item>
                         <Nav.Item>
-                            <Nav.Link eventKey="/manager/config" ><Link to="/manager/config" >Config Page</Link></Nav.Link>
+                            <Nav.Link eventKey="/manager/config" >
+                                <Link to="/manager/config" >Config Page</Link>
+                            </Nav.Link>
                         </Nav.Item>
                     </Nav>
                     {/* <Link to="/manager">Manager Home</Link>

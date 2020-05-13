@@ -5,7 +5,7 @@ import Table from 'react-bootstrap/Table';
 const TicketView = (props) => {
 
   return (
-    <div class="container">
+    <div className="container">
       <Card style={{ width: '48rem' }}>
         <Card.Title><h3>Ticket Detail</h3></Card.Title>
         <h3>Tenant: {props.ticketDetail.tenantFName} {props.ticketDetail.tenantLName}</h3>

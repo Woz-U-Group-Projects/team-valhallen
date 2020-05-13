@@ -31,8 +31,6 @@ class UserManagement extends React.Component {
     this.getTechs();
   }
 
-
-
   getNewUsers() {
     let url = "http://localhost:3001/users/new";
     axios.get(url).then(response => this.setState({ users: response.data }));

@@ -3,14 +3,12 @@ import axios from "axios";
 import '../Styling.css';
 import Card from 'react-bootstrap/Card';
 import CardGroup from 'react-bootstrap/CardGroup';
-import Form from 'react-bootstrap/Form';
-import Button from 'react-bootstrap/Button';
 
 
 class AddUserDetail extends React.Component {
   constructor (props) {
     super(props);
-    this.state = { users: [], electrical: false, plumbing: false, hvac: false, appliance: false, general: false, userId: 6, value: "" }
+    this.state = { users: [], electrical: false, plumbing: false, hvac: false, appliance: false, general: false, userId: 6, value: ""}
     this.unitName = this.unitName.bind(this)
     this.techId = React.createRef();
     this.electrical = React.createRef();
@@ -19,9 +17,7 @@ class AddUserDetail extends React.Component {
     this.appliance = React.createRef();
     this.general = React.createRef();
     this.unitName = React.createRef();
-  }
-
-  componentDidMount() {
+    
   }
 
   unitName(event) {

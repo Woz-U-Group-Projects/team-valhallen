@@ -73,7 +73,7 @@ class MrgTicketsList extends React.Component {
 
                 
                 <Card>
-                    <Card.Title as="h3">New Ticket Requests</Card.Title>
+                    <Card.Title as="h3">Tickets</Card.Title>
                     <Card.Body>
                         <Table striped bordered hover size="sm">
                             <thead>

@@ -31,7 +31,7 @@ class AssignTech extends React.Component {
 
     render() {
         return (
-            <div class="container">
+            <div className="container">
                 
                     <Card style={{ width: '40rem' }} className="text-center" >
                         <Card.Body>
