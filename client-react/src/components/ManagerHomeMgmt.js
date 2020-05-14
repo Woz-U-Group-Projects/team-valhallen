@@ -5,12 +5,14 @@ import MrgTicketsList from './MrgTicketsList';
 import TicketView from './TicketView';
 import AssignTech from './AssignTech';
 import ArchiveTicket from './ArchiveTicket';
+import Analytics from './Analytics';
 
 
 class ManagerHomeMgmt extends React.Component {
     constructor(props) {
         super(props) 
         this.state = { 
+            users: [],
             tickets: [],
             ticket: {},
             newTickets: [],
@@ -34,6 +36,7 @@ class ManagerHomeMgmt extends React.Component {
         this.viewTicket = this.viewTicket.bind(this)
         this.techAssigned = this.techAssigned.bind(this)
         this.ticketArchived = this.ticketArchived.bind(this)
+        this.getTechsWL = this.getTechsWL.bind(this)
     }
 
     componentDidMount() {
@@ -43,6 +46,7 @@ class ManagerHomeMgmt extends React.Component {
         this.getInProgressTickets();
         this.getOnHoldTickets();
         this.getNewTickets();
+        this.getTechsWL();
     }
 
     componentDidUpdate(prevProps, prevState) {
@@ -105,6 +109,11 @@ class ManagerHomeMgmt extends React.Component {
         .then(response => this.setState({ techs: response.data }));
         
     };
+    getTechsWL() {
+        let url = "http://localhost:3001/users/techs";
+        axios.get(url).then(response => this.setState({ users: response.data }));
+        this.setState({ viewConfirm: false, newTrigger: false });
+      };
 
 
     /********RESET TABLES AFTER MODIFICATION************/
@@ -146,6 +155,9 @@ class ManagerHomeMgmt extends React.Component {
         return(
             <div>
                 <h1>Manager Profile</h1>
+                <Analytics
+                usersList={this.state.users} 
+                techCall={this.getTechs}/>
                 <MrgTicketsList 
                 newTicketsNumber = {this.state.newTickets.length} 
                 pendingTicketsNumber = {this.state.pendingTickets.length}
