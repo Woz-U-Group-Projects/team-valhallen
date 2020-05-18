@@ -19,6 +19,7 @@ import Nav from 'react-bootstrap/Nav';
 import { Link } from 'react-router-dom';
 
 
+
 class TenantDetails extends React.Component {
   constructor (props) {
     super(props);
@@ -78,7 +79,7 @@ class TenantDetails extends React.Component {
         newPhone: event.target.dataset.phone
       })
       .then(alert("User Details Have Beed Saved"))
-      .then(this.viewUpdatedUser());
+      // .then(this.viewUser(this.state.userId));
   }
 
 
@@ -156,10 +157,17 @@ class TenantDetails extends React.Component {
           </Card>
 
 
-          <Card className="align-content-center">
+          <Card >
             <Card.Header as="h3">Maintenance Request</Card.Header>
-            <Card.Body>
-
+            <Card.Body className="text-left">
+            <Card.Title className="text-center" as="h4">Instructions:</Card.Title>
+            <ol>
+              <li>Click Create Ticket</li>
+              <li>Choose Priority level.</li>
+              <li>Choose Category.</li>
+              <li>Add any problem notes for technician.</li>
+              <li>Choose Technician Access.</li>
+            </ol>
             </Card.Body>
             <Card.Footer>
               <CreateTicketModal assignUserId={this.state.userId}
