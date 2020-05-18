@@ -9,7 +9,7 @@ import Table from "react-bootstrap/Table";
 import Button from "react-bootstrap/Button";
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger'
 import Popover from 'react-bootstrap/Popover'
-import Container from 'react-bootstrap/Container'
+import CardGroup from 'react-bootstrap/CardGroup';
 import '../Styling.css'
 import Logo from '../img/mq03.png';
 
@@ -41,6 +41,12 @@ class TenantDetails extends React.Component {
     this.getTickets(this.state.unitId);
   }
 
+  //   componentDidUpdate(prevProps, prevState) {
+  //     if (this.state.user !== prevState.user) {
+  //         this.viewUser(this.state.userId);
+  //     }
+  // }
+
 
   getTickets = (id) => {
     let url = "http://localhost:3001/ticketHistory/byUnit/" + id;
@@ -57,7 +63,11 @@ class TenantDetails extends React.Component {
     this.setState({ viewUserId: id });
   };
 
-  
+  editUser() {
+    this.setState({ editConfirm: true });
+  }
+
+
   updateUser(event) {
     let url = "http://localhost:3001/users/tenant/" + event.target.dataset.id;
     axios
@@ -67,12 +77,11 @@ class TenantDetails extends React.Component {
         newEmail: event.target.dataset.email,
         newPhone: event.target.dataset.phone
       })
-      .then(alert("User Details Have Beed Saved"));
+      .then(alert("User Details Have Beed Saved"))
+      .then(this.viewUpdatedUser());
   }
 
-  editUser() {
-    this.setState({ editConfirm: true });
-  }
+
 
   render() {
     const editConfirm = this.state.editConfirm; // confirms tenant detail component render
@@ -113,72 +122,84 @@ class TenantDetails extends React.Component {
     var phone = this.state.user.phone;
 
     return (
-      
+
       <div>
         <Navbar id="tnaNav" expand="lg" bg="gray">
-                <Row>
-                <Col id="tnaT2Col">
-                <Navbar.Toggle id="tnaNavToggle" aria-controls="1" />
-                <Navbar.Collapse id="1">
+          <Row>
+            <Col id="tnaT2Col">
+              <Navbar.Toggle id="tnaNavToggle" aria-controls="1" />
+              <Navbar.Collapse id="1">
                 <Nav className="mr-auto">
-                    <Link id="tnaT2Links" to="/">Logout</Link>
+                  <Link id="tnaT2Links" to="/">Logout</Link>
                 </Nav >
-                </Navbar.Collapse>
-                </Col>
+              </Navbar.Collapse>
+            </Col>
 
-                <Col id="tnaT3Col">
-                        <Navbar.Brand className="center" href="/"><img id="mngLogoNav" src={Logo} alt="logo" /></Navbar.Brand>
-                </Col>
+            <Col id="tnaT3Col">
+              <Navbar.Brand className="center" href="/"><img id="mngLogoNav" src={Logo} alt="logo" /></Navbar.Brand>
+            </Col>
 
 
-                <Col id="tnaT4Col">
-                </Col>
-                </Row>
+            <Col id="tnaT4Col">
+            </Col>
+          </Row>
 
-            </Navbar>
-        <Card>
-          <Card.Title>{firstName} {lastName}</Card.Title>
-          <Card.Body>{email} | {phone}</Card.Body>
-          <Card.Footer><EditDetailsButtonPopup /></Card.Footer>
-        </Card>
+        </Navbar>
+        <CardGroup>
+          <Card>
+            <Card.Header as="h3">Tenant Details</Card.Header>
+            <Card.Body>
+              {firstName} {lastName}
+              <br /><br />{email} | {phone}
+            </Card.Body>
+            <Card.Footer><EditDetailsButtonPopup /></Card.Footer>
+          </Card>
+
+
+          <Card className="align-content-center">
+            <Card.Header as="h3">Maintenance Request</Card.Header>
+            <Card.Body>
+
+            </Card.Body>
+            <Card.Footer>
+              <CreateTicketModal assignUserId={this.state.userId}
+                assignUnitId={this.state.unitId} />
+            </Card.Footer>
+          </Card>
+        </CardGroup>
         <hr />
-        <div>
-          <CreateTicketModal assignUserId={this.state.userId}
-            assignUnitId={this.state.unitId}/>
-        </div>
-        <hr />
         <Card>
-          <Card.Title>Ticket Status</Card.Title>
+          <Card.Header as="h3">Ticket Status</Card.Header>
           <Card.Body>
-          <div>
-                <Table striped bordered hover>
-                    <thead>
-                        <tr>
-                            <th>Due Date</th>
-                            <th>Issue Category</th>
-                            <th>Tech Assigned</th>
-                            <th>Status</th>
-                        </tr>
-                    </thead>
-                    <tbody>
+            <div>
+              <Table striped bordered hover>
+                <thead>
+                  <tr>
+                    <th>Due Date</th>
+                    <th>Issue Category</th>
+                    <th>Tech Assigned</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+                <tbody>
 
-                        {this.state.tickets.map(t => ( 
-                            <tr key={t.ticketId}>
-                                <td>{t.dueDate}</td>
-                                <td><h6>{t.category}</h6></td>
-                                {(function(){
-                                if(t.assigned === false){
-                                    return <td>Not Yet Assigned</td>
-                                } else {
-                                return <td>{t.techFName} {t.techLName}</td>
-                                }
-                                })()}
-                                <td>{t.status}</td>
-                            </tr>
-                        ))} 
+                  {this.state.tickets.map(t => (
+                    <tr key={t.ticketId}>
+                      <td>{t.dueDate}</td>
+                      <td><h6>{t.category}</h6></td>
+                      {(function () {
+                        if (t.assigned === false) {
+                          return <td>Not Yet Assigned</td>
+                        } else {
+                          return <td>{t.techFName} {t.techLName}</td>
+                        }
+                      })()}
+                      <td>{t.status}</td>
+                    </tr>
+                  ))}
 
-                    </tbody>
-                </Table>
+                </tbody>
+              </Table>
             </div>
           </Card.Body>
         </Card>

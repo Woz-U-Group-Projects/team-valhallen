@@ -12,7 +12,7 @@ import Logo from '../img/mq03.png';
 
 // JSX Rendering
 class Login extends React.Component {
-    constructor(props) {
+    constructor (props) {
         super(props);
         this.state = {
             email: '',
@@ -28,7 +28,7 @@ class Login extends React.Component {
         this.userStatus = this.userStatus.bind(this);
     }
 
-    componentDidMount() {}
+    componentDidMount() { }
 
     userStatus(event) {
         this.setState({ value: event.target.value });
@@ -81,7 +81,7 @@ class Login extends React.Component {
             <div>
                 <div id="loginNav">
                     <a href="/"><img id="loginLogoNav" src={Logo} alt="logo" /></a>
-            </div>
+                </div>
                 <Container id="lCont1">
                     <Form >
 
@@ -99,16 +99,16 @@ class Login extends React.Component {
 
                         <Container>
 
-                        <Col className="mt-4">
-                        <Button type="button" className="btn btn-warning mr-3 mt-2" onClick={this.login}>
-                            Login
+                            <Col className="mt-4">
+                                <Button type="button" className="btn btn-warning mr-3 mt-2" onClick={this.login}>
+                                    Login
                         </Button>
-            
-                        <Button type="button" className="btn btn-warning mr-3 mt-2" href="/signup">
-                            Signup
+
+                                <Button type="button" className="btn btn-warning mr-3 mt-2" href="/signup">
+                                    Signup
                         </Button>
-                        </Col>
-                    </Container>
+                            </Col>
+                        </Container>
 
                     </Form>
                 </Container >
