@@ -61,12 +61,6 @@ const TicketDetailEdit = (props) => {
               </tr>
             </tbody>
           </Table>
-          {/* <h4>Ticket Id: {props.ticketDetail.ticketId}</h4>
-          <h4>Unit Id:{props.ticketDetail.unitId}</h4>
-          <h5>Category:{props.ticketDetail.category}</h5>
-          <h4>Priority Level:{props.ticketDetail.priority}</h4>
-          <h4>Current Ticket Status:{props.ticketDetail.status}</h4>
-          <h5>Tenant Problem Notes:{props.ticketDetail.note}</h5> */}
           
         <Form >
 
@@ -95,9 +89,7 @@ const TicketDetailEdit = (props) => {
             <Button className="btn btn-primary" data-id={props.ticketDetail.ticketId} data-status={status} data-note={mainNote} onClick={props.updateCall}>Update Ticket</Button>
           </Form.Group>
         </Form>
-        <div>
-
-        </div>
+        
         </Card.Body>
       </Card>
 

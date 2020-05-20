@@ -3,7 +3,7 @@ import axios from "axios";
 import '../task.min.css'
 import Card from "react-bootstrap/Card";
 import Table from "react-bootstrap/Table";
-// import Table from 'react-bootstrap/Table';
+import CardGroup from 'react-bootstrap/CardGroup';
 
 class ConfigComp extends React.Component {
     constructor(props) {
@@ -47,18 +47,23 @@ class ConfigComp extends React.Component {
     render() {
 
         return (
-            <div>
-                <h2>Add Units Here</h2>
+            <div className="container">
+                {/* <CardGroup style={{width: "60rem"}}> */}
+                <Card >
+                <Card.Header as="h2">Add Units Here</Card.Header>
+                <Card.Body>
                 <form>
                     <div>Unit Name</div>
                     <input ref={this.unitName} />
                 </form>
+                <br />
+                <button type="button" className="btn btn-primary" onClick={this.createUnit}>Create Unit</button>
+                </Card.Body>
+                
+                </Card><br/>
                 <div>
-                    <button type="button" className="btn btn-primary" onClick={this.createUnit}>Create Unit</button>
-                </div>
-
                 <Card>
-                <Card.Title>Building Configuration</Card.Title>
+                <Card.Header as="h2">Building Configuration</Card.Header>
                 <Card.Body>
                 <div>
                     <Table striped bordered hover>
@@ -82,9 +87,9 @@ class ConfigComp extends React.Component {
                 </div>
                 </Card.Body>
                 </Card>
-
+                {/* </CardGroup> */}
                 
-
+                </div>
             </div>
         );
     }
