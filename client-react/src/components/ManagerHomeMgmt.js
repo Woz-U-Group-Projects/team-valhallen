@@ -6,6 +6,7 @@ import TicketView from './TicketView';
 import AssignTech from './AssignTech';
 import ArchiveTicket from './ArchiveTicket';
 import Analytics from './Analytics';
+import { Card } from 'react-bootstrap';
 
 
 class ManagerHomeMgmt extends React.Component {
@@ -154,10 +155,12 @@ class ManagerHomeMgmt extends React.Component {
     
         return(
             <div>
-                <h1>Manager Profile</h1>
-                <Analytics
+                <Card>
+                <Card.Header as="h1">Manager Profile</Card.Header>
+                <Card.Body>
+                {/* <Analytics
                 usersList={this.state.users} 
-                techCall={this.getTechs}/>
+                techCall={this.getTechs}/> */}
                 <MrgTicketsList 
                 newTicketsNumber = {this.state.newTickets.length} 
                 pendingTicketsNumber = {this.state.pendingTickets.length}
@@ -181,7 +184,8 @@ class ManagerHomeMgmt extends React.Component {
                     {viewComp}
                     {editComp}
                 </div>
-
+                </Card.Body>
+                </Card>
             </div>
         )        
     };
