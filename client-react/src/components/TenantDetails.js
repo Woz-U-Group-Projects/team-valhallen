@@ -5,6 +5,7 @@ import TenantDetailEdit from "./TenantDetailEdit";
 import TenantDetailRetrieve from "./TenantDetailRetrieve";
 import CreateTicketModal from "./CreateTicketModal";
 import Card from "react-bootstrap/Card";
+import ListGroup from 'react-bootstrap/ListGroup';
 import Table from "react-bootstrap/Table";
 import Button from "react-bootstrap/Button";
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger'
@@ -79,7 +80,7 @@ class TenantDetails extends React.Component {
         newPhone: event.target.dataset.phone
       })
       .then(alert("User Details Have Beed Saved"))
-      // .then(this.viewUser(this.state.userId));
+    // .then(this.viewUser(this.state.userId));
   }
 
 
@@ -149,9 +150,12 @@ class TenantDetails extends React.Component {
         <CardGroup>
           <Card>
             <Card.Header as="h3">Tenant Details</Card.Header>
-            <Card.Body>
-              {firstName} {lastName}
-              <br /><br />{email} | {phone}
+            <Card.Body >
+              <ListGroup variant="flush">
+                <ListGroup.Item as="h4"><span><strong>Name:</strong></span>    {firstName} {lastName} </ListGroup.Item>
+                <ListGroup.Item as="h4"><span><strong>Email:</strong></span>    {email} </ListGroup.Item>
+                <ListGroup.Item as="h4"><span><strong>Phone:</strong></span>    {phone} </ListGroup.Item>
+              </ListGroup>
             </Card.Body>
             <Card.Footer><EditDetailsButtonPopup /></Card.Footer>
           </Card>
@@ -160,18 +164,18 @@ class TenantDetails extends React.Component {
           <Card >
             <Card.Header as="h3">Maintenance Request</Card.Header>
             <Card.Body className="text-left">
-            <Card.Title className="text-center" as="h4">Instructions:</Card.Title>
-            <ol>
-              <li>Click Create Ticket</li>
-              <li>Choose Priority level.</li>
-              <li>Choose Category.</li>
-              <li>Add any problem notes for technician.</li>
-              <li>Choose Technician Access.</li>
-            </ol>
+              <Card.Title className="text-center" as="h4">Instructions:</Card.Title>
+              <ol>
+                <li>Click Create Ticket</li>
+                <li>Choose Priority level.</li>
+                <li>Choose Category.</li>
+                <li>Add any problem notes for technician.</li>
+                <li>Choose Technician Access.</li>
+              </ol>
             </Card.Body>
             <Card.Footer>
               <CreateTicketModal assignUserId={this.state.userId}
-                assignUnitId={this.state.unitId} />
+                assignUnitId={this.state.unitId}/>
             </Card.Footer>
           </Card>
         </CardGroup>
