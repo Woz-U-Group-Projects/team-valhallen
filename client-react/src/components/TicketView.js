@@ -10,8 +10,9 @@ const TicketView = (props) => {
       
       <Card style={{ width: '48rem' }}>
         <Card.Header as="h2"><Card.Title>Ticket Detail</Card.Title></Card.Header>
-        <Card.Title>Tenant: {props.ticketDetail.tenantFName} {props.ticketDetail.tenantLName}</Card.Title>
+        
         <Card.Body>
+        <Card.Title>Tenant: {props.ticketDetail.tenantFName} {props.ticketDetail.tenantLName}</Card.Title>
           <Table striped bordered hover size="sm">
             <thead>
               <tr>

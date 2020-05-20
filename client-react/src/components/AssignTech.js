@@ -34,11 +34,11 @@ class AssignTech extends React.Component {
             <div className="container">
 
                 <Card style={{ width: '40rem' }} className="text-center" >
+                    <Card.Header as="h3">Assign Technician/Due Date</Card.Header>
                     <Card.Body>
                         <Form>
                             <Form.Group>
                                 <Form.Label>Assign Technician</Form.Label>
-
                                 <Form.Control as="select" ref={this.select1}>
                                     {this.props.skilledTechs.map(p => (
                                         <option key={p.userId} value={p.userId}>
@@ -46,7 +46,6 @@ class AssignTech extends React.Component {
                                         </option>
                                     ))}
                                 </Form.Control>
-
                             </Form.Group>
                             <Form.Group>
                                 <Form.Label>Set Due Date</Form.Label>
