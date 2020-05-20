@@ -115,7 +115,8 @@ input[type="color"]:focus,
 
 #mngCont {
     margin-top: 120px;
-    max-width: 600px
+    max-width: 600px;
+    
 }
 
 /* Technician Landing Page Navbar */

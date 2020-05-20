@@ -1,14 +1,16 @@
 import React from "react";
 import Card from "react-bootstrap/Card";
 import Table from 'react-bootstrap/Table';
+import CardGroup from 'react-bootstrap/CardGroup';
 
 const TicketView = (props) => {
 
   return (
     <div className="container">
+      
       <Card style={{ width: '48rem' }}>
-        <Card.Title><h3>Ticket Detail</h3></Card.Title>
-        <h3>Tenant: {props.ticketDetail.tenantFName} {props.ticketDetail.tenantLName}</h3>
+        <Card.Header as="h2"><Card.Title>Ticket Detail</Card.Title></Card.Header>
+        <Card.Title>Tenant: {props.ticketDetail.tenantFName} {props.ticketDetail.tenantLName}</Card.Title>
         <Card.Body>
           <Table striped bordered hover size="sm">
             <thead>
@@ -34,17 +36,10 @@ const TicketView = (props) => {
               </tr>
             </tbody>
           </Table>
-          {/* <div>
-            <h3>Unit #: {props.ticketDetail.unitId}</h3>
-            <h4>Ticket Id: {props.ticketDetail.ticketId}</h4>
-          </div>
-          <div>Priority Level: {props.ticketDetail.priority}</div>
-          <div>Issue Category: {props.ticketDetail.category}</div>
-          <div>Note: {props.ticketDetail.note}</div>
-          <div>Created On: {props.ticketDetail.creationDate}</div>
-          <div>Tech Note: {props.ticketDetail.mainNote}</div> */}
+          
         </Card.Body>
       </Card>
+      
     </div>
   );
 }

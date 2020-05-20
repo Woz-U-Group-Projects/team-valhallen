@@ -32,39 +32,37 @@ class AssignTech extends React.Component {
     render() {
         return (
             <div className="container">
-                
-                    <Card style={{ width: '40rem' }} className="text-center" >
-                        <Card.Body>
-                            <Form>
-                                <Form.Group>
-                                    <Form.Label>Assign Technician</Form.Label>
 
-                                    <Form.Control as="select" ref={this.select1}>
-                                        {this.props.skilledTechs.map(p => (
-                                            <option key={p.userId} value={p.userId}>
-                                                {p.fName} {p.lName}
-                                            </option>
-                                        ))}
-                                    </Form.Control>
+                <Card style={{ width: '40rem' }} className="text-center" >
+                    <Card.Body>
+                        <Form>
+                            <Form.Group>
+                                <Form.Label>Assign Technician</Form.Label>
 
-                                </Form.Group>
-                                <Form.Group>
-                                    <Form.Label>Set Due Date</Form.Label>
-                                    <Form.Control as="select" multiple ref={this.dueDate}>
-                                        <option value="1">1 Day</option>
-                                        <option value="3">3 Days</option>
-                                        <option value="7">7 Days</option>
-                                    </Form.Control>
-                                </Form.Group>
-                                <Form.Group>
-                                    <Card.Footer>
-                                        <Button type="button" className="btn btn-primary" onClick={this.addTechs}>Assign Tech</Button>
-                                    </Card.Footer>
-                                </Form.Group>
-                            </Form>
-                        </Card.Body>
-                    </Card>
-                
+                                <Form.Control as="select" ref={this.select1}>
+                                    {this.props.skilledTechs.map(p => (
+                                        <option key={p.userId} value={p.userId}>
+                                            {p.fName} {p.lName}
+                                        </option>
+                                    ))}
+                                </Form.Control>
+
+                            </Form.Group>
+                            <Form.Group>
+                                <Form.Label>Set Due Date</Form.Label>
+                                <Form.Control as="select" multiple ref={this.dueDate}>
+                                    <option value="1">1 Day</option>
+                                    <option value="3">3 Days</option>
+                                    <option value="7">7 Days</option>
+                                </Form.Control>
+                            </Form.Group>
+                        </Form>
+                    </Card.Body>
+                    <Card.Footer>
+                        <Button type="button" className="btn btn-primary" onClick={this.addTechs}>Assign Tech</Button>
+                    </Card.Footer>
+                </Card>
+
             </div>
         );
     }

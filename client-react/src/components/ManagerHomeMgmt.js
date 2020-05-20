@@ -7,12 +7,13 @@ import AssignTech from './AssignTech';
 import ArchiveTicket from './ArchiveTicket';
 import Analytics from './Analytics';
 import { Card } from 'react-bootstrap';
+import CardGroup from 'react-bootstrap/CardGroup';
 
 
 class ManagerHomeMgmt extends React.Component {
-    constructor(props) {
-        super(props) 
-        this.state = { 
+    constructor (props) {
+        super(props)
+        this.state = {
             users: [],
             tickets: [],
             ticket: {},
@@ -64,7 +65,7 @@ class ManagerHomeMgmt extends React.Component {
 
     getPendingTickets() {
         let url = "http://localhost:3001/ticketHistory/pending";
-        axios.get(url).then(response => this.setState({ tickets: response.data, pendingTickets: response.data}));
+        axios.get(url).then(response => this.setState({ tickets: response.data, pendingTickets: response.data }));
         this.setState({ viewConfirm: false, newTrigger: false, completeTrigger: false });
     };
 
@@ -86,7 +87,7 @@ class ManagerHomeMgmt extends React.Component {
         axios.get(url).then(response => this.setState({ tickets: response.data, completedTickets: response.data }));
         this.setState({ viewConfirm: false, newTrigger: false, completeTrigger: true });
     };
- 
+
     getArchivedTickets() {
         let url = "http://localhost:3001/ticketHistory/archived";
         axios.get(url).then(response => this.setState({ tickets: response.data, archivedTickets: response.data }));
@@ -107,14 +108,14 @@ class ManagerHomeMgmt extends React.Component {
         console.log(this.state.ticket.category);
         let url = "http://localhost:3001/users/techSkills/" + category;
         axios.get(url)
-        .then(response => this.setState({ techs: response.data }));
-        
+            .then(response => this.setState({ techs: response.data }));
+
     };
     getTechsWL() {
         let url = "http://localhost:3001/users/techs";
         axios.get(url).then(response => this.setState({ users: response.data }));
         this.setState({ viewConfirm: false, newTrigger: false });
-      };
+    };
 
 
     /********RESET TABLES AFTER MODIFICATION************/
@@ -134,13 +135,13 @@ class ManagerHomeMgmt extends React.Component {
         let viewComp, editComp;
 
         if (viewSelected) {
-            viewComp = <TicketView 
+            viewComp = <TicketView
                 userDetail={this.state.linkedUser}
                 ticketDetail={this.state.ticket}
             />
         }
         if (viewSelected && newTrigger) {
-            editComp = <AssignTech 
+            editComp = <AssignTech
                 ticketDetail={this.state.ticket}
                 skilledTechs={this.state.techs}
                 techAssigned={this.techAssigned}
@@ -152,42 +153,51 @@ class ManagerHomeMgmt extends React.Component {
                 ticketArchived={this.ticketArchived}
             />
         }
-    
-        return(
+
+        return (
             <div>
                 <Card>
-                <Card.Header as="h1">Manager Profile</Card.Header>
-                <Card.Body>
-                {/* <Analytics
+                    <Card.Header as="h1">Manager Profile</Card.Header>
+                    <Card.Body>
+                        {/* <Analytics
                 usersList={this.state.users} 
                 techCall={this.getTechs}/> */}
-                <MrgTicketsList 
-                newTicketsNumber = {this.state.newTickets.length} 
-                pendingTicketsNumber = {this.state.pendingTickets.length}
-                completedTicketsNumber = {this.state.completedTickets.length}
-                archivedTicketsNumber = {this.state.archivedTickets.length}
-                inProgressTicketsNumber = {this.state.inProgressTickets.length}
-                onHoldTicketsNumber = {this.state.onHoldTickets.length}
+                        <MrgTicketsList
+                            newTicketsNumber={this.state.newTickets.length}
+                            pendingTicketsNumber={this.state.pendingTickets.length}
+                            completedTicketsNumber={this.state.completedTickets.length}
+                            archivedTicketsNumber={this.state.archivedTickets.length}
+                            inProgressTicketsNumber={this.state.inProgressTickets.length}
+                            onHoldTicketsNumber={this.state.onHoldTickets.length}
 
-                tickets={this.state.tickets}
-                users={this.state.users}
-                newTktCall={this.getNewTickets}
-                pendTktCall={this.getPendingTickets}
-                onHoldTktCall={this.getOnHoldTickets}
-                inProgTktCall={this.getInProgressTickets}
-                compTktCall={this.getCompletedTickets}
-                archTktCall={this.getArchivedTickets}
-                viewCall={this.viewTicket}
-                />
+                            tickets={this.state.tickets}
+                            users={this.state.users}
+                            newTktCall={this.getNewTickets}
+                            pendTktCall={this.getPendingTickets}
+                            onHoldTktCall={this.getOnHoldTickets}
+                            inProgTktCall={this.getInProgressTickets}
+                            compTktCall={this.getCompletedTickets}
+                            archTktCall={this.getArchivedTickets}
+                            viewCall={this.viewTicket}
+                        />
 
-                <div>
+                        {/* <div>
                     {viewComp}
                     {editComp}
-                </div>
-                </Card.Body>
+                </div> */}
+                    </Card.Body>
                 </Card>
+                <hr />
+                <CardGroup>
+                    <Card>
+                        {viewComp}
+                    </Card>
+                    <Card>
+                        {editComp}
+                    </Card>
+                </CardGroup>
             </div>
-        )        
+        )
     };
 }
 
